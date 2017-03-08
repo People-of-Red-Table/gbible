@@ -1,0 +1,19 @@
+a:hover, a:link, a:visited, a:hover 
+{
+	text-decoration: none;
+}
+
+select
+{
+	max-width: 20em;
+}
+
+.number
+{
+	font-size: 0.5em;
+}
+
+p 
+{
+	text-align: justify;
+}
