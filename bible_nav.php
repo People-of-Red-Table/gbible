@@ -10,7 +10,7 @@
 		if (!isset($verse_index))
 				echo "var verse_index = 0;";
 			else echo "var verse_index = " . $verse_index . ';';
-		echo '// verse_index = ' . $verse_index;
+
 		if (isset($b_code))
 		{
 			echo "var b_code = '$b_code';";

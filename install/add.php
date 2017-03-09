@@ -8,29 +8,23 @@
 	Archives' preparing... 
 */
 
-	/*$host = '50.62.209.41';
-	$database = 'sofia';
-	$user = 'php';
-	$password = 'Tirh73~3';*/
-
-	$host = '127.0.0.1';
-	$database = 'sofia'; // sofia in scripts
-	$user = 'root';
-	$password = '';
+	require '../config.php';
 
 	$log = fopen('log.txt', 'w');
 
-	$argv = $_SERVER['argv'];
-	$argc = $_SERVER['argc'];
-
-	$from_vpl = '_vpl';
-
-	if ($argc > 1)
+	if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1')
 	{
-		$from_vpl = $argv[1];
+		$argv = $_SERVER['argv'];
+		$argc = $_SERVER['argc'];			
+		if ($argc > 1)
+		{
+			$from_vpl = $argv[1];
+		}
+		else
+			echo "You've got to add name of translation as argument: `php -f add.php translation_vpl`";
 	}
 	else
-		echo "You've got to add name of translation as argument: `php -f add.php translation_vpl`";
+	$from_vpl = $_REQUEST['vpl'];
 
 	if (stripos($from_vpl, '_vpl') === FALSE)
   	{
@@ -72,7 +66,7 @@
 	$licensed = 0;
 	$info = file('info.html');
 
-	$link = mysqli_connect($host, $user, $password, $database);
+	$link = $links['sofia']['mysql'];
 	mysqli_set_charset($link,'utf8');
 	if (!$link) { echo mysqli_connect_error(); exit;};
 
@@ -87,7 +81,7 @@
 				if(!$link)
 				{
 					fwrite($log, 'Reconnect.' . PHP_EOL);
-					$link = mysqli_connect($host, $user, $password, $database);
+					$link = open_connection($db, 'mysql', 'sofia');
 					mysqli_set_charset($link,'utf8');
 					if (!$link) { fwrite($log, mysqli_connect_error()); };
 				}
@@ -261,7 +255,7 @@
 				// b_shelf
 				try 
 				{
-					$dbh = new PDO("mysql:host=$host;dbname=$database", $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+					$dbh = $links['sofia']['pdo'];
 					$command = $dbh -> prepare('insert into b_shelf (country,language,dialect,b_code,title,description,copyright,license, table_name) 
 								values (:country,:language,:dialect,:b_code,:title,:description,:copyright,:license, :table_name);');
 					$dbh -> beginTransaction();

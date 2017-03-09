@@ -1,11 +1,7 @@
 <?php
 
-	$host = '127.0.0.1';
-	$database = 'sofia'; // sofia in scripts
-	$user = 'root';
-	$password = '';
-
-	$link = mysqli_connect($host, $user, $password, $database);
+	require '../config.php';
+	$link = $links['sofia']['mysql'];
 	mysqli_set_charset($link,'utf8');
 	if (!$link) { echo mysqli_connect_error(); exit;};
 
@@ -20,7 +16,7 @@
 		if(!$link)
 		{
 					fwrite($log, 'Reconnect.' . PHP_EOL);
-					$link = mysqli_connect($host, $user, $password, $database);
+					$link = open_connection($db, 'mysql', 'sofia');
 					mysqli_set_charset($link,'utf8');
 					if (!$link) { fwrite($log, 'prepare.sql, line ' . $counter . ';' . mysqli_connect_error()); };
 		}
