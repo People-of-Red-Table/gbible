@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	$auto_save = array('country', 'language', 'b_code', 'book_index', 'chapter_index', 'book', 'chapter');
+	$auto_save = array('country', 'language', 'b_code', 'book_index', 'chapter_index', 'verse_index', 'verse', 'book', 'chapter');
 
 	foreach ($auto_save as $item)
 	{
@@ -12,8 +12,14 @@
 	}
 
 	if(isset($chapter)) $chapter_index = $chapter;
-	if(isset($b_code) and isset($book))
+	if(isset($verse)) $verse_index = $verse;
+
+	if(isset($b_code) and isset($book) and is_numeric($book))
+		$book_index = $book;
+	elseif(isset($b_code) and isset($book) and !is_numeric($book))
 	{
+		$book_short_title = $book;
+
 		$statement_translation = $links['sofia']['pdo'] -> prepare(
 				'select table_name from b_shelf where b_code = :b_code'
 			);

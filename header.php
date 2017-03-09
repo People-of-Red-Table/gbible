@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="./jquery/jquery-ui.theme.min.css">
 		<script src="./jquery/jquery.min.js"></script>
+		<script src="./external/clipboard.min.js"></script>
 		<script src="./jquery/jquery-ui.min.js"></script>
 		<script src="./bootstrap/js/bootstrap.min.js"></script>
 		<!-- </prog-server> -->		

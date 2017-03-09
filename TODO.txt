@@ -10,9 +10,6 @@ for another country set current language if exists.
 
 Default languages and default Bibles.
 
-
-Search Engines won't find Bible texts through JS, need map of Bibles and books with HTTP links.
-
 Book titles in different languages [very possible that it will do PoRT]
 
 Sign Up, Sign In

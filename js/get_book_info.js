@@ -6,6 +6,7 @@ function get_book_info()
 		function (data)
 		{
 			$('#book-title').find('center').remove();
+			book_short_title = data['book'];
 			$('#book-title').append('<center><h4><a href="#" data-toggle="modal" ' + 
 				'data-target="#openBookDialog">' + data['book'] 
 				+ '</a> <span id="chapterNumber">' + chapter_index + '</span></h4></center>');

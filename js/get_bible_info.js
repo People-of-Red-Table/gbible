@@ -1,7 +1,8 @@
 function get_bible_info()
 {
+	b_code = document.getElementById('bible-selection').value;
 	$.getJSON(
-		"./ajax/get_bible_info.json.php?b_code=" + document.getElementById('bible-selection').value,
+		"./ajax/get_bible_info.json.php?b_code=" + b_code,
 		function (data)
 		{
 			//alert(JSON.stringify( data[0] ));
