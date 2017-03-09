@@ -2,6 +2,7 @@
 	require "../config.php";
 	if (!isset($_REQUEST['b_code'])) exit;
 	else $b_code = $_REQUEST['b_code'];
+	setcookie('b_code', $b_code, time() + 30 * 24 * 3600);
 	$statement = $links['sofia']['pdo'] -> prepare(
 							'select b_shelf.b_code, b_shelf.title, b_shelf.description, 
 								case when b_shelf.copyright is null 

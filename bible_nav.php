@@ -1,26 +1,21 @@
 <script>
-		var book_index = 1;
-		var chapter_index = 1;
 	<?php
-		/*if (isset($_REQUEST['book_index']))
+		foreach(array('book_index', 'chapter_index') as $item)
 		{
-			$book_index = $_REQUEST['book_index'];
-			echo "var book_index = $book_index";
+			if (!isset($$item))
+				echo "var $item = 1;";
+			else echo "var $item = " . $$item . ';';
 		}
-		else echo 'var book_index = 1;';
-
-		if (isset($_REQUEST['chapter_index']))
-		{
-			$b_code = $_REQUEST['chapter_index'];
-			echo "var chapter_index = $chapter_index";
-		}
-		else echo 'var chapter_index = 1;';
-
+		
 		if (isset($_REQUEST['b_code']))
 		{
 			$b_code = $_REQUEST['b_code'];
 			echo "var b_code = $b_code";
-		}*/
+		}
+		elseif (isset($b_code))
+		{
+			echo "var b_code = $b_code";
+		}
 	?>
 </script>
 
@@ -59,7 +54,7 @@
 										order by country');
 									if (!$result_countries)
 									{
-										echo "Whoops. We've got issue with MySQL connection... Sorry. Please contact support. "
+										echo "Whoops. We've got issue with MySQL connection... Sorry. Please contact support. " . mysqli_error($links['sofia']['mysql']);
 										;
 										//print_r($links['sofia']['mysql']);
 
@@ -72,7 +67,7 @@
 										if (!$result)
 										{
 											echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support.";
-											print_r($links['sofia']['pdo'] -> errorInfo());
+											print_r($statement_country -> errorInfo());
 										}
 										$country_row = $statement_country -> fetch();
 										$country_name = strtolower($country_row['country']);

@@ -1,0 +1,2 @@
+all *_vpl.zip from http://ebible.org/Scriptures/
+plus http://ebible.org/bible/ saved as info.html

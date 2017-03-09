@@ -1,6 +1,15 @@
 <?php
-	if(isset($_COOKIES['b_code']))
+	session_start();
+
+	$auto_save = array('country', 'language', 'b_code', 'book_index', 'chapter_index');
+
+	foreach ($auto_save as $item)
 	{
-		$b_code = $_COOKIES['b_code'];
+		if(isset($_COOKIE[$item]))
+		{
+			$$item = $_COOKIE[$item];
+		}
 	}
+
+
 ?>

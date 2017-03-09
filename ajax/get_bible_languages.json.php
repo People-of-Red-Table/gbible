@@ -1,6 +1,12 @@
 <?php
 	require "../config.php";
-	$country_name = $_GET['country'];
+	$country_name = $_REQUEST['country'];
+
+	$statement_country = $links['sofia']['pdo'] -> prepare('select country_code from iso_ms_languages where country_name = :country_name');
+	$statement_country -> execute(array('country_name' => $country_name));
+	$country_row = $statement_country -> fetch();
+
+	setcookie('country', $country_row['country_code'], time() + 30 * 24 * 3600);
 
 	$statement = $links['sofia']['pdo'] -> prepare(
 			'

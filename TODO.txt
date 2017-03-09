@@ -1,4 +1,8 @@
 
+anchors for verses
+
+fix languages with  with brackets, make just name.
+update b_shelf set language = 'German' where language like '%German%'
 
 fix alignment "Open Bible" must be on right side.
 
