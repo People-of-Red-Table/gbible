@@ -9,7 +9,7 @@
 
 		if (isset($b_code))
 		{
-			echo "var b_code = $b_code";
+			echo "var b_code = '$b_code';";
 		}
 	?>
 </script>
