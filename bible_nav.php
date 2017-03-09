@@ -6,13 +6,8 @@
 				echo "var $item = 1;";
 			else echo "var $item = " . $$item . ';';
 		}
-		
-		if (isset($_REQUEST['b_code']))
-		{
-			$b_code = $_REQUEST['b_code'];
-			echo "var b_code = $b_code";
-		}
-		elseif (isset($b_code))
+
+		if (isset($b_code))
 		{
 			echo "var b_code = $b_code";
 		}

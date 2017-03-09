@@ -12,6 +12,9 @@ php directory must be set in PATH variable [for Windows right click on your comp
 
 Download all *_vpl.zip files from http://ebible.org/Scriptures/. File `urls.txt` contains links for these VPL. You can use Internet Download Accelerator - Download Master. All archives must be unpacked in its own directory `./*_vpl/`. All scripts must be in directory with these VPL.
 
+Prepare Portuguese translation if you are deploying into public server. You can get text VPL on https://github.com/blivre/BibliaLivre/releases. Download there file `bliv-tr_vpl.txt`. And rename and put it to `pt_bliv_vpl`.
+Run `php -f make_sql.php pt_bliv_vpl`.
+
 1. To run it use this command: 
 php -f prepare.php
 If during these script you've got a "stop" at a VPL, possibly it's because there is no SQL file. Run `php -f make_sql.php %translation_name_vpl%`. This script will make `*_vpl.sql` file.

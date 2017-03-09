@@ -5,9 +5,9 @@
 
 	foreach ($auto_save as $item)
 	{
-		if(isset($_COOKIE[$item]))
+		if(isset($_REQUEST[$item]))
 		{
-			$$item = $_COOKIE[$item];
+			$$item = $_REQUEST[$item];
 		}
 	}
 
