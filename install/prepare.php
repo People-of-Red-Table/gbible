@@ -20,8 +20,22 @@
 
 	$log = fopen('log.txt', 'w');
 
-	$from_vpl = 'nhwBl_vpl';
+	$argv = $_SERVER['argv'];
+	$argc = $_SERVER['argc'];
+
 	$skip = false;
+	$from_vpl = 'nhwBl_vpl';
+
+	if ($argc > 1)
+	{
+		$from_vpl = $argv[1];
+		$skip = true;
+	}
+
+	if ($skip and stripos($from_vpl, '_vpl') === FALSE)
+  	{
+    	$from_vpl .= '_vpl';
+  	}
 
 	function replace_name($text)
 	{
