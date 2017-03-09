@@ -6,7 +6,7 @@
 	if(!isset($_REQUEST['chapter'])) $chapter = 1;
 	else $chapter = $_REQUEST['chapter'];
 
-	setcookie('chapter_index', $chapter, 30 * 24 * 3600); 
+	setcookie('chapter_index', $chapter, time() + 30 * 24 * 3600); 
 
 	$statement_table_name = $links['sofia']['pdo'] -> prepare(
 							'select table_name from b_shelf where b_code = :b_code');

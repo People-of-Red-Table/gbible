@@ -23,16 +23,16 @@
 	$argv = $_SERVER['argv'];
 	$argc = $_SERVER['argc'];
 
-	$skip = false;
-	$from_vpl = 'nhwBl_vpl';
+	$from_vpl = '_vpl';
 
 	if ($argc > 1)
 	{
 		$from_vpl = $argv[1];
-		$skip = true;
 	}
+	else
+		echo "You've got to add name of translation as argument: `php -f add.php translation_vpl`";
 
-	if ($skip and stripos($from_vpl, '_vpl') === FALSE)
+	if (stripos($from_vpl, '_vpl') === FALSE)
   	{
     	$from_vpl .= '_vpl';
   	}
@@ -76,35 +76,10 @@
 	mysqli_set_charset($link,'utf8');
 	if (!$link) { echo mysqli_connect_error(); exit;};
 
-	if(!$skip)
-	{
-		$result = mysqli_query($link, 'drop table if exists b_shelf;');
-		if (!$result) { echo mysqli_error($link); exit;}
-
-		$result = mysqli_query($link, 'create table b_shelf(
-						id int primary key auto_increment,
-						country varchar(100),
-						language varchar(200),
-						dialect varchar(200),
-						b_code varchar(20),
-						table_name varchar(20),
-						title varchar(500),
-						description varchar(1000),
-						translated_by varchar(200),
-						copyright varchar(1000),
-						license varchar(50)
-						);
-					');
-		if (!$result) { echo mysqli_error($link); exit;}
-	}
-
-	while ( ($file_dir = readdir($dh)) !== FALSE)
-	{
+	$file_dir = $from_vpl;
 		if(is_dir($file_dir) && strpos($file_dir, '_vpl') !== FALSE)
 		{
 			$counter++;
-			if (($skip === true) and ($file_dir == $from_vpl)) $skip = false;
-			if ($skip === true) continue;
 
 			$done = false;
 			while($done === false)
@@ -303,62 +278,15 @@
 			}
 		}
 
-		// Progress
-		echo 'Progress: ' . (integer)(($counter * 100) / $total_count) . '%' . PHP_EOL;
-	}
+		
 	closedir($dh);
-
-
-	echo 'Count: ' . $counter . PHP_EOL;
-	echo 'Share Licensed: ' . $licensed . PHP_EOL;
-
-	$queries = file('prepare.sql');
-	while ($done === false) 
-	{
-		if(!$link)
-		{
-					fwrite($log, 'Reconnect.' . PHP_EOL);
-					$link = mysqli_connect($host, $user, $password, $database);
-					mysqli_set_charset($link,'utf8');
-					if (!$link) { fwrite($log, mysqli_connect_error()); };
-		}
-		$result = true;
-		foreach ($queries as $query) 
-		{
-			if (strlen($query) > 5)
-			{
-				try 
-				{
-					$result = mysqli_query($link, $query);					
-				} 
-				catch (Exception $e) 
-				{
-					if (!$result) { fwrite($log, '`' . $query . '` ' . mysqli_error($link));}
-					$result = false;
-					break;					
-				}
-			}
-		}
-		if($result === true)
-			$done = true;
-	}
-
 
 	mysqli_close($link);
 
 	fclose($log);
 
 
-
-
-
-
-
-
-
-
-
-
+	echo 'script is executed.';
 
 
 ?>

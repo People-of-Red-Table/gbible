@@ -4,7 +4,7 @@
 	if(!isset($_REQUEST['book_index'])) $book_index = 1;
 	else $book_index = $_REQUEST['book_index'] - 1;
 
-	setcookie('book_index', $book_index, 30 * 24 * 3600); 
+	setcookie('book_index', $book_index, time() + 30 * 24 * 3600); 
 
 	$statement_table_name = $links['sofia']['pdo'] -> prepare(
 							'select table_name from b_shelf where b_code = :b_code');
