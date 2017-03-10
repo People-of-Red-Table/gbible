@@ -57,20 +57,21 @@
 										order by country');
 									if (!$result_countries)
 									{
-										echo "Whoops. We've got issue with MySQL connection... Sorry. Please contact support. " . mysqli_error($links['sofia']['mysql']);
-										;
+										log_msg(__FILE__ . ' ' . __LINE__ . ' ' . mysqli_error($links['sofia']['mysql']));
+										//echo "Whoops. We've got issue with MySQL connection... Sorry. Please contact support. " . mysqli_error($links['sofia']['mysql']);;
 										//print_r($links['sofia']['mysql']);
 
 									}
 									else
 									{
 										$statement_country = $links['sofia']['pdo'] -> prepare('select country_name `country` from iso_ms_languages where country_code = :country_code');
-										$result = $statement_country -> execute(array('country_code' => $country));
+										$result_country = $statement_country -> execute(array('country_code' => $country));
 										//print_r($statement_country);
-										if (!$result)
-										{
-											echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support.";
-											print_r($statement_country -> errorInfo());
+										if (!$result_country)
+										{	
+											log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_country -> errorInfo());
+											//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support.";
+											//print_r($statement_country -> errorInfo());
 										}
 										$country_row = $statement_country -> fetch();
 										$country_name = strtolower($country_row['country']);
@@ -97,7 +98,7 @@
 						<script src="./js/get_bible_titles.js"></script>
 						<select id="language-selection" onchange="get_bible_titles()" style="max-width: 20em">
 							<?php
-									$statement = $links['sofia']['pdo'] -> prepare(
+									$statement_languages = $links['sofia']['pdo'] -> prepare(
 											'
 												select distinct t.language_name, case when iso_ms.native_language_name is null then t.language_name else iso_ms.native_language_name end `native_language_name` from
 												(
@@ -115,13 +116,13 @@
 											left join iso_ms_languages iso_ms on t.language_name = iso_ms.language_name
 											order by native_language_name
 										');
-										$result_languages = $statement -> execute(array('country_name' => $country_name));
+										$result_languages = $statement_languages -> execute(array('country_name' => $country_name));
 
 									if (!$result_languages)
 									{
-										echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
-										;
-										print_r($links['sofia']['pdo']);
+										log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_languages -> errorInfo());
+										//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
+										//print_r($links['sofia']['pdo']);
 
 									}
 									else
@@ -137,7 +138,7 @@
 										$language_row = $statement_language -> fetch();
 										$language_name = strtolower($language_row['language_name']);
 										echo "<script>var language_name ='$language_name';</script>";
-										while ($row = $statement -> fetch()) 
+										while ($row = $statement_languages -> fetch()) 
 										{
 											$selected = '';
 											if ($language_name == strtolower($row['language_name']))
@@ -159,20 +160,20 @@
 					<div class="col-md-2">
 						<select id="bible-selection" style="max-width: 20em">
 							<?php
-									$statement = $links['sofia']['pdo'] -> prepare(
+									$statement_bibles = $links['sofia']['pdo'] -> prepare(
 											'select b_code, title from b_shelf where language = :language_name order by title');
-										$result_books = $statement -> execute(array('language_name' => $language_name));
+										$result_bibles = $statement_bibles -> execute(array('language_name' => $language_name));
 
-									if (!$result_books)
+									if (!$result_bibles)
 									{
-										echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
-										;
-										print_r($links['sofia']['pdo']);
+										log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_bibles -> errorInfo());
+										//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
+										//print_r($links['sofia']['pdo']);
 
 									}
 									else
 									{
-										while ($row = $statement -> fetch()) 
+										while ($row = $statement_bibles -> fetch()) 
 										{
 											$selected = '';
 											if (isset($b_code) and $b_code == strtolower($row['b_code']))

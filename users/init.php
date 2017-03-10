@@ -25,12 +25,16 @@
 			);
 
 		$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
+		if(!$result_translation)
+			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_translation -> errorInfo());
 		$info_row = $statement_translation -> fetch();
 		$table_name = $info_row['table_name'];
 		$statement_books = $links['sofia']['pdo'] -> prepare(
 				'select distinct book from ' . $table_name
 			);
-		$statement_books -> execute();
+		$result_books = $statement_books -> execute();
+		if(!$result_books)
+			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_books -> errorInfo());
 		$books_rows = $statement_books -> fetchAll();
 		$book_index = 0;
 		foreach ($books_rows as $book_row) 

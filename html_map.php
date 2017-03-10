@@ -11,8 +11,8 @@
 <h2>This page for Search Engine robots.</h2>
 <?php
 
+	require 'log.php';
 	require 'config.php';
-
 
 	if (isset($_REQUEST['b_code']) and !isset($_REQUEST['book']))
 		echo '<meta http-equiv="refresh" content="0; url=./?b_code=' . $_REQUEST['b_code'] . '" />';
@@ -28,6 +28,9 @@
 		$result = mysqli_query($links['sofia']['mysql'], 
 					'select b_code, table_name, title, country, language from b_shelf order by country, language, title');
 		echo '<table>';
+		if (!$result)
+			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . mysqli_error($links['sofia']['mysql']));
+
 		while ($shelf_row = mysqli_fetch_assoc($result))
 		{
 			echo '<tr><td>' . $shelf_row['country'] . '</td><td>' . $shelf_row['language'] . '</td><td><a href="./html_map.php?b_code=' . $shelf_row['b_code'] . '">' . $shelf_row['title'] . '</a></td></tr>';
@@ -45,6 +48,8 @@
 			);
 
 		$result_translation = $statement_translation -> execute(array('b_code' => $_REQUEST['b_code']));
+		if(!$result_translation)
+			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_translation -> errorInfo());
 		$info_row = $statement_translation -> fetch();
 
 		echo '
@@ -66,7 +71,9 @@
 			$statement_books = $links['sofia']['pdo'] -> prepare(
 								'select distinct book from ' . $table_name
 							);
-			$statement_books -> execute();
+			$result_books = $statement_books -> execute();
+			if(!$result_books)
+				log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_books -> errorInfo());
 			$books_rows = $statement_books -> fetchAll();
 
 			echo '<table>';
@@ -80,7 +87,11 @@
 									'select distinct chapter from ' . $table_name 
 									.' where book = :book'
 								);
-				$statement_chapters -> execute(array('book' => $book_row['book']));
+				$result_chapters = $statement_chapters -> execute(array('book' => $book_row['book']));
+
+				if(!$result_chapters)
+					log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_chapters -> errorInfo());
+
 				$chapters_rows = $statement_chapters -> fetchAll();
 
 				foreach ($chapters_rows as $chapter_row) 
@@ -100,7 +111,11 @@
 							'select distinct chapter from ' . $table_name 
 							.' where book = :book'
 						);
-		$statement_chapters -> execute(array('book' => $_REQUEST['book']));
+		$result_chapters = $statement_chapters -> execute(array('book' => $_REQUEST['book']));
+
+		if(!$result_chapters)
+			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_chapters -> errorInfo());
+
 		$chapters_rows = $statement_chapters -> fetchAll();
 
 		$chapter_links = '<h3>' . $_REQUEST['book'] . '</h3>';
@@ -116,7 +131,11 @@
 						'select startVerse, verseText from ' . $table_name .
 						' where book = :book and chapter = :chapter'
 				);
-			$statement_verses -> execute(array('book' => $_REQUEST['book'], 'chapter' => $_REQUEST['chapter']));
+			$result_verses = $statement_verses -> execute(array('book' => $_REQUEST['book'], 'chapter' => $_REQUEST['chapter']));
+
+			if(!$result_verses)
+				log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_verses -> errorInfo());
+
 			$verses_rows = $statement_verses -> fetchAll();
 
 			foreach ($verses_rows as $verse_row) 
