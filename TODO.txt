@@ -1,7 +1,5 @@
 
-make log messages by log_msg function
 
-function log_msg($message) - defined in `log.php`.
 
 
 anchors for verses
@@ -13,12 +11,13 @@ fix alignment "Open Bible" must be on right side.
 
 for another country set current language if exists.
 
-Default languages and default Bibles.
+Add languages for such countries as Cameroon, Angola [Portuguese], Burkina Faso [French], Guyana [English]
+to iso_ms_languages or expand by another table
+
 
 Book titles in different languages [very possible that it will do PoRT]
 
 Sign Up, Sign In
-
 
 Select Favorite Verses, Chapters, Books, Bibles
 

@@ -132,8 +132,9 @@
 										$result = $statement_language -> execute(array('language_code' => $language));
 										if (!$result)
 										{
-											echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support.";
-											print_r($links['sofia']['pdo'] -> errorInfo());
+											log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_language -> errorInfo());
+											//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support.";
+											//print_r($links['sofia']['pdo'] -> errorInfo());
 										}
 										$language_row = $statement_language -> fetch();
 										$language_name = strtolower($language_row['language_name']);
@@ -145,7 +146,7 @@
 											{
 												$selected = ' selected="selected"'; 
 											}
-											echo '<option name="' . $row['language_name'] . '"' . $selected . '>' . $row['native_language_name'] . '</option>';
+											echo '<option value="' . $row['language_name'] . '"' . $selected . '>' . $row['native_language_name'] . '</option>';
 										}
 									}			
 							?>			

@@ -36,9 +36,10 @@
 		<?php
 			}
 		?>
+		<script src="./js/onload.js"></script>
 		<link rel="stylesheet" href="./style.css">
 	</head>
-	<body>
+	<body onload="open_bible()">
 		<nav class="nav navbar-inverse">
 			<div class="container-fluid">
 

@@ -11,6 +11,28 @@
 		}
 	}
 
+	if (!isset($verse))
+		$verse = 0;
+
+	if (!isset($b_code))
+	{
+		$statement_bibles = $links['sofia']['pdo'] -> prepare(
+											'select b_code from b_shelf where language = :language
+											union select b_code from b_shelf where country = :country');
+		$result_bibles = $statement_bibles -> execute(array('language' => $language, 'country' => $country));
+
+		$bible_row = $statement_bibles -> fetch();
+		$b_code = $bible_row['b_code'];
+
+		if (!$result_bibles)
+		{
+			log_msg(__FILE__ . ':' . __LINE__ . ' PDO exception.');
+			//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
+			//print_r($links['sofia']['pdo']);
+
+		}
+	}
+
 	if(isset($chapter)) $chapter_index = $chapter;
 	if(isset($verse)) $verse_index = $verse;
 
