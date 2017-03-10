@@ -11,6 +11,7 @@
 	<div class="panel panel-primary">
 		<div class="panel-header">
 		<?php
+			//echo 'b_code = ' . $b_code;
 			$statement_translation = $links['sofia']['pdo'] -> prepare(
 					'select bh.table_name, bh.title, bh.description, bh.copyright, 
 					bh.license, l.link, country, language, dialect
@@ -53,7 +54,7 @@
 									'select distinct chapter from ' . $table_name 
 									.' where book = :book'
 								);
-				$result_chapters = $statement_chapters -> execute(array('book' => $book_row['book']));
+				$result_chapters = $statement_chapters -> execute(array('book' => $book));
 
 				if(!$result_chapters)
 					log_msg(__FILE__ . ':' . __LINE__ . ' PDO chapters query exception.');
@@ -84,13 +85,13 @@
 		</div>
 		<?php
 			$statement_verses = $links['sofia']['pdo'] -> prepare (
-						'select startVerse, verseText from ' . $table_name .
+						'select verseID, startVerse, verseText from ' . $table_name .
 						' where book = :book and chapter = :chapter'
 				);
 			$result_verses = $statement_verses -> execute(array('book' => $book, 'chapter' => $chapter));
 
 			if(!$result_verses)
-				log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_verses -> errorInfo());
+				log_msg(__FILE__ . ':' . __LINE__ . ' ' . ' PDO verses query exception.');
 
 			$verses_rows = $statement_verses -> fetchAll();
 			$verses = '';
@@ -108,9 +109,9 @@
 					$b_start = '';
 					$b_end = '';
 				}
-				$verses .= '<p onclick="clipboard.copy(window.location.origin + window.location.pathname + \'?b_code=' 
+				$verses .= '<p id="' . $verse_row['verseID'] . '" onclick="clipboard.copy(window.location.origin + window.location.pathname + \'?b_code=' 
 					. $b_code . '&book=' . $book . '&chapter=' . $chapter . 
-					'&verse=' . $verse_row['startVerse'] . '\')"><sup>' . $verse_row['startVerse'] . '</sup> ' . $b_start . $verse_row['verseText'] . $b_end . '</p>';
+					'&verse=' . $verse_row['startVerse'] . '#'. $verse_row['verseID'] . '\')"><sup>' . $verse_row['startVerse'] . '</sup> ' . $b_start . $verse_row['verseText'] . $b_end . '</p>';
 			}
 		?>
 		<div class="panel-body"><?=$verses;?></div>

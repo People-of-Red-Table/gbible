@@ -1,0 +1,2 @@
+
+During deploying watch changes at `git status` and copy these files to the server.

@@ -8,8 +8,8 @@
 	if (isset($_REQUEST['language']))
 	{
 		$language = $_REQUEST['language'];
-		log_msg(__FILE__ . ':' . __LINE__ . " \$country = $country");
-		log_msg(__FILE__ . ':' . __LINE__ . " \$language = $language");
+		//log_msg(__FILE__ . ':' . __LINE__ . " \$country = $country");
+		//log_msg(__FILE__ . ':' . __LINE__ . " \$language = $language");
 	}
 
 	if (isset($_REQUEST['language']) and 

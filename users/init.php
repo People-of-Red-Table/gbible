@@ -17,8 +17,30 @@
 	if (!isset($b_code))
 	{
 		$statement_bibles = $links['sofia']['pdo'] -> prepare(
-											'select b_code from b_shelf where language = :language
-											union select b_code from b_shelf where country = :country');
+											'select b_code from b_shelf where language in (
+											
+											select language_name from iso_ms_languages where lower(language_code) = :language and language_name in (select distinct language from b_shelf))
+
+											union
+											select b_code from b_shelf where language in (
+											select language_name from iso_ms_languages where language_name = :language and language_name in (select distinct language from b_shelf))
+
+											union
+											select b_code from b_shelf where language in (
+											select language_name from iso_ms_languages where country_name = :country  and language_name in (select distinct language from b_shelf))
+
+											union
+											select b_code from b_shelf where language in (
+											select language_name from iso_ms_languages where country_code = :country and language_name in (select distinct language from b_shelf))
+
+											union
+											select b_code from b_shelf where language in (
+											select language `language_name` from b_shelf where language = :language)
+
+											union
+											select b_code from b_shelf where language in (
+											select language `language_name` from b_shelf where country = :country)
+											');
 		$result_bibles = $statement_bibles -> execute(array('language' => $language, 'country' => $country));
 
 		$bible_row = $statement_bibles -> fetch();
@@ -48,7 +70,7 @@
 
 		$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
 		if(!$result_translation)
-			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_translation -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' ' . $statement_translation -> errorInfo());
 		$info_row = $statement_translation -> fetch();
 		$table_name = $info_row['table_name'];
 		$statement_books = $links['sofia']['pdo'] -> prepare(
@@ -56,7 +78,7 @@
 			);
 		$result_books = $statement_books -> execute();
 		if(!$result_books)
-			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_books -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' ' . $statement_books -> errorInfo());
 		$books_rows = $statement_books -> fetchAll();
 		$book_index = 0;
 		foreach ($books_rows as $book_row) 

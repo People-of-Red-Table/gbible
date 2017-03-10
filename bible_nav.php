@@ -118,7 +118,6 @@
 									}
 									else
 									{
-
 										$statement_language = $links['sofia']['pdo'] -> prepare('
 											select language_name from iso_ms_languages where lower(language_code) = :language and language_name in (select distinct language from b_shelf)
 											union
@@ -127,6 +126,8 @@
 											select language_name from iso_ms_languages where country_name = :country  and language_name in (select distinct language from b_shelf)
 											union
 											select language_name from iso_ms_languages where country_code = :country and language_name in (select distinct language from b_shelf)
+											union
+											select language `language_name` from b_shelf where language = :language
 											union
 											select language `language_name` from b_shelf where country = :country
 											');
