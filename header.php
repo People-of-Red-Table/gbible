@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="./jquery/jquery-ui.theme.min.css">
 		<script src="./jquery/jquery.min.js"></script>
-		<script src="./external/clipboard.min.js"></script>
 		<script src="./jquery/jquery-ui.min.js"></script>
 		<script src="./bootstrap/js/bootstrap.min.js"></script>
 		<!-- </prog-server> -->		
@@ -36,6 +35,7 @@
 		<?php
 			}
 		?>
+		<script src="./external/clipboard.min.js"></script>
 		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
@@ -48,7 +48,8 @@
 
 				<div class="navbar" id="nav">
 					<ul class="nav navbar-nav">
-						<li><a href="#" data-toggle="modal" data-target="#bibleSelectionDialog">Open</a></li>
+						<li><a href="./charity_links.php" target="_blank">Charity Organizations of the World</a></li>
+						<!--<li><a href="#" data-toggle="modal" data-target="#bibleSelectionDialog">Open</a></li>-->
 						<!--<li>
 							<a href="#">Top</a>
 						</li>
@@ -79,7 +80,7 @@
 			$charity_links = '<div class="row">';
 
 			$charity_links .= '<div class="col-md-2"><a href="http://redcross.org/" target="_blank">American Red Cross</a></div>';
-
+			
 			foreach ($charity as $item) 
 			{
 				if($item['Code'] == $language_country)

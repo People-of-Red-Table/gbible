@@ -109,6 +109,11 @@
 					$b_start = '';
 					$b_end = '';
 				}
+				if (strpos($verse_row['verseText'], '¶') !== FALSE)
+				{
+					$verses .= '<br />';
+					$verse_row['verseText'] = str_replace('¶', '', $verse_row['verseText']);
+				}
 				$verses .= '<p id="' . $verse_row['verseID'] . '" onclick="clipboard.copy(window.location.origin + window.location.pathname + \'?b_code=' 
 					. $b_code . '&book=' . $book . '&chapter=' . $chapter . 
 					'&verse=' . $verse_row['startVerse'] . '#'. $verse_row['verseID'] . '\')"><sup>' . $verse_row['startVerse'] . '</sup> ' . $b_start . $verse_row['verseText'] . $b_end . '</p>';

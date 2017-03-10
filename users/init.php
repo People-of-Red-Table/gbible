@@ -1,9 +1,19 @@
 <?php
 	session_start();
 
-	$auto_save = array('country', 'language', 'b_code', 'book_index', 'chapter_index', 'verse_index', 'verse', 'book', 'chapter');
+	$auto_save = array('country', 'language', 'b_code', 'book_index', 'chapter_index', 'book', 'chapter');
 
 	foreach ($auto_save as $item)
+	{
+		if(isset($_REQUEST[$item]))
+		{
+			$$item = $_REQUEST[$item];
+			setcookie($item, $_REQUEST[$item], time() + 30 * 24 * 3600);
+		}
+	}
+
+	
+	foreach (array('verse_index', 'verse') as $item)
 	{
 		if(isset($_REQUEST[$item]))
 		{

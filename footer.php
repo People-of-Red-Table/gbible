@@ -5,8 +5,9 @@
 			 <nav class="nav navbar-inverse">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
-						<li><a href="http://gold-bible.com/blacklist.html" target="_blank">Black List of Bible Site</a></li>
-						<li><a href="./html_map.php" target="_blank" title="Don't click it, it is for Search Engine Robors =]">Index Map for Robots</a></li>
+						<li><a href="./charity_links.php" target="_blank">Charity Organizations of the World</a></li>
+						<li><a href="./blacklist.html" target="_blank">Black List of Bible Site</a></li>
+						<!--<li><a href="./html_map.php" target="_blank" title="It is for Search Engine Robors =]">Index Map for Robots</a></li>-->
 						<!--<li><a href="#">About Us</a></li>
 						<li><a href="#">Project History</a></li>
 						<li><a href="#">Support</a></li>
