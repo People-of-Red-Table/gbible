@@ -10,9 +10,10 @@
 
 	if (!$result_table_name)
 	{
-		echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
-		;
-		print_r($links['sofia']['pdo']);
+		log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_table_name -> errorInfo());
+
+		//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
+		//print_r($links['sofia']['pdo']);
 
 	}
 	else
@@ -25,6 +26,10 @@
 					'select distinct book from ' . $table_name
 														);
 		$result_books = $statement_books ->	execute();
+
+		if(!$result_books)
+			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_books -> errorInfo());
+
 		$books_rows = $statement_books -> fetchAll();
 		$book_name = $books_rows[$book_index]['book'];
 
@@ -32,7 +37,11 @@
 					'select distinct chapter from ' . $table_name
 					. ' where book = "' . $book_name . '"'
 														);
-		$statement_chapters -> execute();
+		$result_chaters = $statement_chapters -> execute();
+
+		if(!$result_chaters)
+			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_chapters -> errorInfo());
+
 		$chapters_rows = $statement_chapters -> fetchAll();
 
 		echo json_encode( $chapters_rows );

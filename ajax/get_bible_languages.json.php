@@ -32,9 +32,10 @@
 
 	if (!$result_languages)
 	{
-		echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
+		log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement -> errorInfo());
+		//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
 		;
-		print_r($links['sofia']['pdo']);
+		//print_r($links['sofia']['pdo']);
 
 	}
 	else

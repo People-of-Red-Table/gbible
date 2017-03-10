@@ -1,4 +1,7 @@
 <?php
+
+	// Super log for the site
+	// use it everywhere =]
 	
 	$datetime = new Datetime();
 
