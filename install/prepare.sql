@@ -1154,8 +1154,10 @@ update iso_ms_languages set iso_language_code 	= substring(language_code from 1 
 alter table iso_ms_languages add column native_language_name varchar(50);
 update iso_ms_languages iso_ms set iso_ms.native_language_name = (select native_name from iso_639_1_languages where language_code = iso_ms.iso_language_code);
 
-update b_shelf set language = 'French' where language like '%French%';
+update b_shelf set language = 'German' where language like '%German%';
 
+update b_shelf set language = substring(language from position('[' in language) + 1 for position(']' in language) - position('[' in language) - 1) where language like '%[%]%';
+update b_shelf set translated_by = '<a href="http://openenglishbible.org" target="_blank">OpenEglishBible.org</a>' where title like '%Open English Bible%';
 drop table if exists licenses;
 create table licenses(id int auto_increment primary key,license varchar(50),link varchar(100));
 
