@@ -1,4 +1,9 @@
 
+make log messages by log_msg function
+
+function log_msg($message) - defined in `log.php`.
+
+
 anchors for verses
 
 fix languages with  with brackets, make just name.

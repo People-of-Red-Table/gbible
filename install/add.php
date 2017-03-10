@@ -122,6 +122,8 @@
 					$row['license'] = 'Creative Commons 3.0';
 				elseif (strpos(strtolower($string), 'creativecommons.org/licenses/by-nd/3.0') !== FALSE)
 					$row['license'] = 'Creative Commons ND 3.0';
+				elseif (strpos(strtolower($string), 'creativecommons.org/licenses/by-sa/3.0') !== FALSE)
+					$row['license'] = 'Creative Commons SA 3.0';
 				elseif (strpos(strtolower($string), 'http://creativecommons.org/licenses/by-nc-nd/3.0/') !== FALSE)
 					$row['license'] = 'Creative Commons NC ND 3.0';
 				elseif (strpos(strtolower($string), 'Creative Commons') !== FALSE)

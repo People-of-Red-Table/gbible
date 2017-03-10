@@ -1,6 +1,12 @@
 <?php
-	require "../config.php";
-	if (!isset($_REQUEST['b_code'])) exit;
+	require '../log.php';
+	require '../config.php';
+	if (!isset($_REQUEST['b_code']))
+	{ 
+		slog_msg('Hack attempted. ' . __FILE__ . ', call without `b_code`');
+		exit;
+	}
+
 	else $b_code = $_REQUEST['b_code'];
 	setcookie('b_code', $b_code, time() + 30 * 24 * 3600);
 	$statement = $links['sofia']['pdo'] -> prepare(
@@ -13,14 +19,12 @@
                             from b_shelf 
 							join licenses on b_shelf.license = licenses.license
                             where b_code = :b_code');
-						$result_info = $statement -> execute(array('b_code' => $b_code));
+	$result_info = $statement -> execute(array('b_code' => $b_code));
 
 	if (!$result_info)
 	{
-		echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
+		log_msg("Whoops. We've got issue with PDO connection... Sorry. Please contact support. " . $statement -> errorInfo());
 		;
-		print_r($links['sofia']['pdo']);
-
 	}
 	else
 	{

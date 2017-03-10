@@ -961,6 +961,7 @@ alter table iso_ms_languages add column country_code varchar(10);
 update iso_ms_languages set country_code = substring(language_code from position('-' in language_code) + 1);
 update b_shelf set language = 'Russian' where language like '%Russian%';
 
+drop table if exists iso_639_1_languages;
 create table iso_639_1_languages (id int primary key auto_increment, language_name varchar(100), native_name varchar(100), language_code varchar(10));
 insert into iso_639_1_languages (language_name, native_name, language_code) values ("Abkhaz", "аҧсуа бызшәа, аҧсшәа", "ab");
 insert into iso_639_1_languages (language_name, native_name, language_code) values ("Afar", "Afaraf", "aa");
@@ -1155,9 +1156,10 @@ update iso_ms_languages iso_ms set iso_ms.native_language_name = (select native_
 
 update b_shelf set language = 'French' where language like '%French%';
 
+drop table if exists licenses;
 create table licenses(id int auto_increment primary key,license varchar(50),link varchar(100));
 
-insert into licenses (license, link) values ('Creative Commons 3.0', 'http://creativecommons.org/licenses/by/3.0/'),('Creative Commons NC ND 3.0', 'http://http://creativecommons.org/licenses/by-nc-nd/3.0/'),('Creative Commons NC ND 4.0', 'http://creativecommons.org/licenses/by-nc-nd/4.0/'),('Creative Commons ND 4.0', 'http://creativecommons.org/licenses/by-nd/4.0/'),('Public Domain', 'http://www.wikiwand.com/en/Public_domain');
+insert into licenses (license, link) values ('Creative Commons 3.0', 'http://creativecommons.org/licenses/by/3.0/'),('Creative Commons ND 3.0', 'http://creativecommons.org/licenses/by-nd/3.0/'),('Creative Commons SA 3.0', 'http://creativecommons.org/licenses/by-sa/3.0/'),('Creative Commons NC ND 3.0', 'http://http://creativecommons.org/licenses/by-nc-nd/3.0/'),('Creative Commons NC ND 4.0', 'http://creativecommons.org/licenses/by-nc-nd/4.0/'),('Creative Commons ND 4.0', 'http://creativecommons.org/licenses/by-nd/4.0/'),('Public Domain', 'http://www.wikiwand.com/en/Public_domain');
 
 
 
