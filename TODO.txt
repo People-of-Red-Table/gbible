@@ -1,9 +1,7 @@
 
 Reset Password!! Check on the hosting. [127.0.0.1 has no "sendmail"].
 
-Select Favorite Verses, Chapters, Books, Bibles
-
-Tweet verse
+Select Favorite Verses, Chapters, Books, Bibles; delete from Favorites.
 
 Show Top Verses, Chapter, Books and Bibles
 
@@ -18,14 +16,9 @@ if $language contains "-" split it to $language and $country. Fix showing John H
 Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
 Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
 
-
-Tweet verse. Tooltip.
-
 Feedback page.
 
 div class="alert alert-success" alert-info alert-warning alert-danger - set these classes for system messages.
-
-anchors for verses
 
 fix alignment "Open Bible" must be on right side.
 

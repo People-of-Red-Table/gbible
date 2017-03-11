@@ -1,4 +1,18 @@
 
 If it is your first deploy read INSTALL.txt for instructions.
+
 During deploying watch changes at `git status` and copy these files to the server [if you didn't commit yet].
+Use `git add .` and deploy.
+Files in caps [Caps Lock] must not go to the web server.
+
+Be sure that you updated `config.php` on remote server if it was changed [This file is untracked, for repository there is `config.sample.php`].
+
+You can warn users about maintenance work.
+
 Be sure that new tables are created on the remote database server.
+
+Check changes before deploy. Check the site after deploy. Is it working?
+Current server is on free [!] hosting, so, it is not so fast and sometimes web server gives its errors.
+
+But "we" PoRT [or me =] are grateful, cause it is not easy to find good free hosting with PHP and SQL.
+http://hostinger.co.uk/
