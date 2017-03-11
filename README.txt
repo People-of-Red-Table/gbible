@@ -6,4 +6,6 @@ Project of Charity Support Community PoRT [http://charity-port.16mb.com/].
 
 Site with charity links [Red Cross and others] for many countries.
 
-Twitter accounts: @ihaveabiblesite, @goldenbible_org.
+Twitter accounts: 
+@ihaveabiblesite [https://twitter.com/ihaveabiblesite], 
+@goldenbible_org [https://twitter.com/goldenbible_org].
