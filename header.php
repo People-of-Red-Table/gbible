@@ -36,6 +36,7 @@
 			}
 		?>
 		<script src="./external/clipboard.min.js"></script>
+		<script type="text/javascript" src="./js/lib.js"></script>
 		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>

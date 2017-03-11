@@ -8,7 +8,11 @@
 		if(isset($_REQUEST[$item]))
 		{
 			$$item = $_REQUEST[$item];
-			setcookie($item, $_REQUEST[$item], time() + 30 * 24 * 3600);
+			if (isset($_GET[$item]))
+				setcookie($item, $_GET[$item], time() + 30 * 24 * 3600);
+			if (isset($_POST[$item]))
+				setcookie($item, $_POST[$item], time() + 30 * 24 * 3600);
+
 		}
 	}
 
@@ -68,9 +72,9 @@
 	if(isset($chapter)) $chapter_index = $chapter;
 	if(isset($verse)) $verse_index = $verse;
 
-	if(isset($b_code) and isset($book) and is_numeric($book))
+	if(isset($b_code) and isset($book) and is_numeric($book) and stripos($b_code, '_http') === FALSE)
 		$book_index = $book;
-	elseif(isset($b_code) and isset($book) and !is_numeric($book))
+	elseif(isset($b_code) and isset($book) and !is_numeric($book) and stripos($b_code, '_http') === FALSE)
 	{
 		$book_short_title = $book;
 
@@ -88,7 +92,7 @@
 			);
 		$result_books = $statement_books -> execute();
 		if(!$result_books)
-			log_msg(__FILE__ . ':' . __LINE__ . ' ' . $statement_books -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' ' . 'PDO books` query exception.');
 		$books_rows = $statement_books -> fetchAll();
 		$book_index = 0;
 		foreach ($books_rows as $book_row) 

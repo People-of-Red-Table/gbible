@@ -1,15 +1,15 @@
 
 
 
+Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
+Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
+
+
+Tweet verse. Tooltip.
 
 anchors for verses
 
-fix languages with  with brackets, make just name.
-update b_shelf set language = 'German' where language like '%German%'
-
 fix alignment "Open Bible" must be on right side.
-
-for another country set current language if exists.
 
 Add languages for such countries as Cameroon, Angola [Portuguese], Burkina Faso [French], Guyana [English]
 to iso_ms_languages or expand by another table
@@ -24,3 +24,5 @@ Select Favorite Verses, Chapters, Books, Bibles
 Show Top Verses, Chapter, Books and Bibles
 
 Social things
+
+Make redirect from HTML pages of "external" Bibles to the page of the Bible.

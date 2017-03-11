@@ -14,7 +14,7 @@
 			//echo 'b_code = ' . $b_code;
 			$statement_translation = $links['sofia']['pdo'] -> prepare(
 					'select bh.table_name, bh.title, bh.description, bh.copyright, 
-					bh.license, l.link, country, language, dialect
+					bh.license, l.link, bh.http_link, country, language, dialect
 					from b_shelf bh 
 					join licenses l on l.license = bh.license
 					where b_code = :b_code'
@@ -27,6 +27,9 @@
 			$info_row = $statement_translation -> fetch();
 			$bible_title = $info_row['title'];
 			$bible_description = $info_row['description'];
+
+		if (stripos($b_code, '_http') === FALSE)
+		{
 			$table_name = $info_row['table_name'];
 
 			$statement_books = $links['sofia']['pdo'] -> prepare('
@@ -125,9 +128,24 @@
 	<nav class="gb-pagination"><?=$chapters_links;?></nav><br />
 	<nav class="gb-books-nav"><?=$books_nav;?></nav>
 
+	<?php
+		}
+		else
+		{
+	?>	
+		<script type="text/javascript">$(document).ready(function (){resize();});</script>
+		</div><div class="panel-body"><center><iframe src="<?=$info_row['http_link'];?>" width="80%" id="BibleFrame" name="BibleFrame" onresize="alert('resize');resize();"></iframe></center></div>
+	<?php
+		}
+	?>
+
+
 		<div class="panel-footer"><center><h5><b><?=$info_row['title'];?></b></h5><br /><?=$info_row['copyright'];?><br />Published under <a href="<?=$info_row['link'];?>" target="_blank"><?=$info_row['license'];?></a></center></div>
 	</div>
-
+	<?php
+		if (stripos($b_code, '_http') === FALSE)
+			echo '<p style="font-size: 0.75em">Click on the verse is copying link to the verse to your clipboard, use it to share verses.</p>';
+	?>
 </div>
 <br />
 <!-- </content> -->
