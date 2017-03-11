@@ -1,9 +1,6 @@
 <?php
 	// type your settings and rename this file to 'config.php'
 	// or just copy to  'config.php' and edit that file.
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
 
 
 	if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1')
@@ -22,6 +19,10 @@
 		$db['port']['name'] = 'port';
 		$db['port']['user'] = 'root';
 		$db['port']['password'] = '';
+		ini_set('display_errors', 1);
+		ini_set('html_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
 	}
 	else
 	{
@@ -39,6 +40,10 @@
 		$db['port']['name'] = 'port';
 		$db['port']['user'] = 'root';
 		$db['port']['password'] = '';
+
+		ini_set('display_errors', 0);
+		ini_set('display_startup_errors', 0);
+		error_reporting(0);
 	}
 
 	function open_connection($db, $type, $base)

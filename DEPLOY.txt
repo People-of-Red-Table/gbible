@@ -1,2 +1,4 @@
 
-During deploying watch changes at `git status` and copy these files to the server.
+If it is your first deploy read INSTALL.txt for instructions.
+During deploying watch changes at `git status` and copy these files to the server [if you didn't commit yet].
+Be sure that new tables are created on the remote database server.

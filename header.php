@@ -49,7 +49,20 @@
 
 				<div class="navbar" id="nav">
 					<ul class="nav navbar-nav">
-						<li><a href="./charity_links.php" target="_blank">Charity Organizations of the World</a></li>
+						<li><a href="./?menu=bible">Open</a></li>
+						<li><a href="./?menu=topVerses">Top Verses</a></li>
+
+					<?php
+						if ($_SESSION['uid'] > -1)
+						{
+					?>
+						<li><a href="./?menu=users_myFavoriteVerses">Favorite Verses</a></li>
+					<?php
+						}
+					?>
+
+						<li><a href="./?menu=charityLinks">Charity Organizations of the World</a></li>
+
 						<!--<li><a href="#" data-toggle="modal" data-target="#bibleSelectionDialog">Open</a></li>-->
 						<!--<li>
 							<a href="#">Top</a>
@@ -64,16 +77,36 @@
 
 					<ul class="nav navbar-nav navbar-right">
 						<!--<li><a href="#">Contact Us</a></li>-->
-						<li><a href="https://twitter.com/goldenbible_org" target="_blank">Twitter @GoldenBible_org</a></li>
-						<li><a href="https://twitter.com/ihaveabiblesite" target="_blank">Twitter @ihaveabiblesite</a></li>
-						<li><a href="https://plus.google.com/115380489639432555966" target="_blank">Google+</a></li>
-						<li><a href="https://www.youtube.com/channel/UCCWrFOJPlLyW85xf40afNJg" target="_blank">YouTube</a></li>
+
+					<?php
+						if ($_SESSION['uid'] > -1)
+						{
+					?>
+						<li><a href="./?menu=users_settings">Settings</a></li>
+						<li><a href="./?menu=sign_out">Sign Out</a></li>
+						<li><a href="./?menu=users_profile&id=<?=$_SESSION['uid'];?>"><b><?=$_SESSION['nickname'];?></b></a></li>
+					<?php
+						}
+						else 
+						{
+					?>
+						<li><a href="./?menu=users_signUp">Sign Up</a></li>
+						<li><a href="./?menu=users_signIn">Sign In</a></li>
+					<?php
+						}
+					?>
+
 					</ul>
 				</div>
 
 			</div>
 		</nav>
-
+		<!--
+		<li><a href="https://twitter.com/goldenbible_org" target="_blank">Twitter @GoldenBible_org</a></li>
+						<li><a href="https://twitter.com/ihaveabiblesite" target="_blank">Twitter @ihaveabiblesite</a></li>
+						<li><a href="https://plus.google.com/115380489639432555966" target="_blank">Google+</a></li>
+						<li><a href="https://www.youtube.com/channel/UCCWrFOJPlLyW85xf40afNJg" target="_blank">YouTube</a></li>
+		-->
 
 		<br />
 		<div class="container" id='top-anchor'>
@@ -84,7 +117,7 @@
 			
 			foreach ($charity as $item) 
 			{
-				if($item['Code'] == $language_country)
+				if($item['Code'] == $hal_language_country)
 				{
 					if ($item['CharityType'] == 'Charity')
 						$text = 'Charity for ';
@@ -105,6 +138,11 @@
 			
 			echo $charity_links . '<br />';
 		?>
-		</div>
 
-		<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<center><a href="http://www.israelgives.org/" target="_blank">Israel Gives</a></center>
+			</div>
+		</div><br />
+	</div>
+

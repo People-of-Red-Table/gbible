@@ -24,17 +24,18 @@
 		$country = $_COOKIES['country'];
 		$language_country = $language . '-' . $country;
 	}*/
-	if (!isset($country) or !isset($language) or !isset($language_country))
-	{
-		$array = explode(';', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-		$array = explode(',', $array[0]);
-		if (!isset($language))
-			$language = strtolower($array[1]);
-		if (!isset($language_country))
-			$language_country = strtolower($array[0]);
-		if (!isset($country))
-			$country = explode('-', $language_country)[1];
-	}
+	$array = explode(';', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+	$array = explode(',', $array[0]);
+	if (!isset($language))
+		$language = strtolower($array[1]);
+	if (!isset($language_country))
+		$language_country = strtolower($array[0]);
+	if (!isset($country))
+		$country = explode('-', $language_country)[1];
+
+	$hal_country = explode('-', $language_country)[1];;
+	$hal_language = strtolower($array[1]);
+	$hal_language_country = $language_country;
 
 	if (strlen($country) > 2)
 	{

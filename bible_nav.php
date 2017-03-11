@@ -22,7 +22,7 @@
 	?>
 </script>
 
-				<form method="post" name="countrySelectionForm">
+				<form method="post" name="countrySelectionForm" action="./">
 				<div class="row">
 					<div class="col-md-2">
 					<p>Country</p>
@@ -80,7 +80,7 @@
 				</div>
 				</form>
 
-				<form method="post" name="languageSelectionForm">
+				<form method="post" name="languageSelectionForm" action="./">
 					<input type="hidden" name="country" value="<?=$country;?>" id="countryOfLanguageSelectionForm" />
 				<div class="row">
 					<div class="col-md-2">
@@ -170,7 +170,7 @@
 				</div> <!-- row -->
 				</form>
 
-				<form method="post" name="bibleSelectionForm">
+				<form method="post" name="bibleSelectionForm" action="./">
 				<div class="row">
 					<div class="col-md-2">
 						<p>Bible</p>

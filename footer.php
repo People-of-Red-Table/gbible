@@ -1,5 +1,12 @@
-	</div><br/>
+
 	<div class="container">
+
+	<div class="row">
+		<div class="col-md-12">
+			<center><a href="http://www.israelgives.org/" target="_blank">Israel Gives</a></center>
+		</div>
+	</div><br />
+
 		<?=$charity_links;?>
 		<div class="footer">
 			 <nav class="nav navbar-inverse">

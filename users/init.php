@@ -1,6 +1,11 @@
 <?php
 	session_start();
+	setcookie(session_name(), session_id(), time() + 30 * 24 * 3600);
 
+	require 'auth.php';
+	
+
+	// !! 'country', 'language', user settings? 
 	$auto_save = array('country', 'language', 'b_code', 'book_index', 'chapter_index', 'book', 'chapter');
 
 	foreach ($auto_save as $item)
@@ -16,7 +21,13 @@
 		}
 	}
 
-	
+	if (stripos( $language, '-' ) !== FALSE)
+	{
+		$array = explode('-', $language);
+		$country = $array[1];
+		$language = $array[0];
+	}
+
 	foreach (array('verse_index', 'verse') as $item)
 	{
 		if(isset($_REQUEST[$item]))

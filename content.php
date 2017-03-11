@@ -1,158 +1,39 @@
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<center><a href="http://www.israelgives.org/" target="_blank">Israel Gives</a></center>
-		</div>
-	</div>
-</div>
-<br />
+
 <!-- <content> -->
 <div class="container" id="content">
-	<div class="panel panel-primary">
-		<div class="panel-header">
-		<?php
-			//echo 'b_code = ' . $b_code;
-			$statement_translation = $links['sofia']['pdo'] -> prepare(
-					'select bh.table_name, bh.title, bh.description, bh.copyright, 
-					bh.license, l.link, bh.http_link, country, language, dialect
-					from b_shelf bh 
-					join licenses l on l.license = bh.license
-					where b_code = :b_code'
-				);
 
+<?php
 
-			$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
-			if(!$result_translation)
-				log_msg(__FILE__ . ':' . __LINE__ . ' PDO translations query exception.');
-			$info_row = $statement_translation -> fetch();
-			$bible_title = $info_row['title'];
-			$bible_description = $info_row['description'];
+	$menu_items = array('bible', 'charityLinks',
 
-		if (stripos($b_code, '_http') === FALSE)
-		{
-			$table_name = $info_row['table_name'];
+		// User "Sign Up", "Sign In"
+		'users_signUp', 'users_registration', 'users_signIn', 'users_signingIn',  'users_settings', 
 
-			$statement_books = $links['sofia']['pdo'] -> prepare('
-								select distinct book from ' . $table_name
-							);
-			$books_result = $statement_books -> execute();
-			$books_rows = $statement_books -> fetchAll();
-			$books_nav = '<div width="80%" align="center">';
-			foreach ($books_rows as $row) 
-			{
-				$books_nav .=  '<a href="./?b_code=' . $b_code . '&book=' . $row['book'] . '">' . $row['book'] . '</a> ';
-			}
-				$books_nav .= '</div>';
-		?>
-			<div><center><h2 id="bibleTitle" title="<?=$bible_description;?>"><?=$bible_title;?></h2></center></div>
-			<nav class="gb-books-nav"><?=$books_nav;?></nav>
-		<?php
-			if (!isset($book))
-				$book = $books_rows[0]['book'];
+		'users_saveSettings', 
 
-			if (!isset($chapter))
-				$chapter = 1;
+		// Password reset
+		'users_resetPassword', 'users_passwordResetting', 'users_secretAnswerChecking', 
+		'users_resetPasswordByEMail',
 
-			$statement_chapters = $links['sofia']['pdo'] -> prepare (
-									'select distinct chapter from ' . $table_name 
-									.' where book = :book'
-								);
-				$result_chapters = $statement_chapters -> execute(array('book' => $book));
+		// Favorites
+		'users_addVerseToFavorites',
+		'users_myFavoriteVerses',
+		'topVerses',
 
-				if(!$result_chapters)
-					log_msg(__FILE__ . ':' . __LINE__ . ' PDO chapters query exception.');
+		// tweet
+		'tweetVerse'
 
-				$chapters_rows = $statement_chapters -> fetchAll();
-				$chapters_links = '<div width="80%" align="center">';
-				$chapter_count=0;
-				foreach ($chapters_rows as $chapter_row) 
-				{
-					$chapter_count++;
-					$chapters_links .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter_row['chapter'] . '">[' . $chapter_row['chapter'] . ']</a> ';
-				}
-				$chapters_links .= '</div>';
+		);
 
-				$chapter_nav = '<table width="100%"><tr><td width="50%">';
-				if ($chapter > 1)
-					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter - 1) . '">Previous Chapter</a>';
-				$chapter_nav .= '</td><td width="50%" align="right">';
-				if ($chapter < $chapter_count)
-					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter + 1) . '">Next Chapter</a>';
-				$chapter_nav .= '</td></tr></table>'; 
+	if(in_array($menu, $menu_items))
+	{
+		$menu = str_replace('_', '/', $menu);
+		require "./$menu.php";
+	}
+	else
+		require 'bible.php';
 
-		?>
-			<div id="book-title"><center><h3><?=$book;?> <?=$chapter;?></h3></center></div>
-			<nav class="gb-pagination"><?=$chapters_links;?></nav>
-			<nav class="gb-chapter-nav"><?=$chapter_nav;?></nav>
-
-		</div>
-		<?php
-			$statement_verses = $links['sofia']['pdo'] -> prepare (
-						'select verseID, startVerse, verseText from ' . $table_name .
-						' where book = :book and chapter = :chapter'
-				);
-			$result_verses = $statement_verses -> execute(array('book' => $book, 'chapter' => $chapter));
-
-			if(!$result_verses)
-				log_msg(__FILE__ . ':' . __LINE__ . ' ' . ' PDO verses query exception.');
-
-			$verses_rows = $statement_verses -> fetchAll();
-			$verses = '';
-			$b_start = '';
-			$b_end = '';
-			foreach ($verses_rows as $verse_row) 
-			{
-				if ($verse_row['startVerse'] == $verse)
-				{
-					$b_start = '<b>';
-					$b_end = '</b>';
-				}
-				else
-				{
-					$b_start = '';
-					$b_end = '';
-				}
-				if (strpos($verse_row['verseText'], '¶') !== FALSE)
-				{
-					$verses .= '<br />';
-					$verse_row['verseText'] = str_replace('¶', '', $verse_row['verseText']);
-				}
-				$verses .= '<p id="' . $verse_row['verseID'] . '" onclick="clipboard.copy(window.location.origin + window.location.pathname + \'?b_code=' 
-					. $b_code . '&book=' . $book . '&chapter=' . $chapter . 
-					'&verse=' . $verse_row['startVerse'] . '#'. $verse_row['verseID'] . '\')"><sup>' . $verse_row['startVerse'] . '</sup> ' . $b_start . $verse_row['verseText'] . $b_end . '</p>';
-			}
-		?>
-		<div class="panel-body"><?=$verses;?></div>
-
-	<nav class="gb-chapter-nav"><?=$chapter_nav;?></nav><br />
-	<nav class="gb-pagination"><?=$chapters_links;?></nav><br />
-	<nav class="gb-books-nav"><?=$books_nav;?></nav>
-
-	<?php
-		}
-		else
-		{
-	?>	
-		<script type="text/javascript">$(document).ready(function (){resize();});</script>
-		</div><div class="panel-body"><center><iframe src="<?=$info_row['http_link'];?>" width="80%" id="BibleFrame" name="BibleFrame" onresize="alert('resize');resize();"></iframe></center></div>
-	<?php
-		}
-	?>
-
-
-		<div class="panel-footer"><center><h5><b><?=$info_row['title'];?></b></h5><br /><?=$info_row['copyright'];?><br />Published under <a href="<?=$info_row['link'];?>" target="_blank"><?=$info_row['license'];?></a></center></div>
-	</div>
-	<?php
-		if (stripos($b_code, '_http') === FALSE)
-			echo '<p style="font-size: 0.75em">Click on the verse is copying link to the verse to your clipboard, use it to share verses.</p>';
-	?>
+?>
 </div>
 <br />
 <!-- </content> -->
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<center><a href="http://www.israelgives.org/" target="_blank">Israel Gives</a></center>
-		</div>
-	</div>
-</div>

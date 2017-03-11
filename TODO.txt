@@ -1,11 +1,29 @@
 
+Reset Password!! Check on the hosting. [127.0.0.1 has no "sendmail"].
 
+Select Favorite Verses, Chapters, Books, Bibles
+
+Tweet verse
+
+Show Top Verses, Chapter, Books and Bibles
+
+Top Verses and "My Favorite Verses" on favorite Bible [or for guests it is Bible of chosen language or something else...]
+
+Favorite Bible which will be opened after sign in.
+
+Take settings of user country and language. [mixing with POST, GET, COOKIES makes it...]
+
+if $language contains "-" split it to $language and $country. Fix showing John Hurt's Bibles in this case.
 
 Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
 Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
 
 
 Tweet verse. Tooltip.
+
+Feedback page.
+
+div class="alert alert-success" alert-info alert-warning alert-danger - set these classes for system messages.
 
 anchors for verses
 
@@ -17,11 +35,6 @@ to iso_ms_languages or expand by another table
 
 Book titles in different languages [very possible that it will do PoRT]
 
-Sign Up, Sign In
-
-Select Favorite Verses, Chapters, Books, Bibles
-
-Show Top Verses, Chapter, Books and Bibles
 
 Social things
 
