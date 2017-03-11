@@ -23,7 +23,7 @@
 
 			$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
 			if(!$result_translation)
-				log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_translation -> errorInfo());
+				log_msg(__FILE__ . ':' . __LINE__ . ' PDO translations query exception.');
 			$info_row = $statement_translation -> fetch();
 			$bible_title = $info_row['title'];
 			$bible_description = $info_row['description'];
