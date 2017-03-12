@@ -42,3 +42,20 @@ create table tweeted_verses
 	verseID varchar(16),
 	times_tweeted int
 );
+
+create table shared_verses
+(
+	id int auto_increment primary key,
+	sn_id int,
+	verseID varchar(16),
+);
+
+
+create table social_networks
+(
+	id int auto_increment primary key,
+	network_name varchar(50),
+	base_url varchar(50)
+);
+
+insert into social_networks (network_name, base_url) values ('Facebook', 'https://www.facebook.com/'), ('Google+', 'https://plus.google.com/'), ('Vkontakte', 'https://vk.com/'), ('Twitter', 'https://www.twitter.com/');

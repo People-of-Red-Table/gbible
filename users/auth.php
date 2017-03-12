@@ -9,7 +9,15 @@
 	{
 		$params = array('email' => $_POST['email'], 'password' => $_POST['password']);
 		$statement = $links['sofia']['pdo'] -> prepare('select * from users where email = :email and password = md5(:password)');
-		$statement -> execute($params);
+		$result_user = $statement -> execute($params);
+
+		if(!$result_user)
+		{
+			$message = "Whoops, we've got issue with \"Sign In\" . Please, contact support.";
+			$msg_type = 'danger';
+			log_msg(__FILE__ . ':' . __LINE__ . ' Selecting user durig `Sign In` exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+		}
+
 		$row = $statement -> fetch();
 		if ($row['email'] === $_POST['email'])
 		{
@@ -19,6 +27,7 @@
 		else
 		{
 			$menu = 'users_signingIn';
+			$msg_type = 'danger';
 			$message = 'Authentification information is incorrect.';
 			$reset_email = $_POST['email'];
 		}
@@ -36,23 +45,31 @@
 	else
 	{
 		$result = mysqli_query($links['sofia']['mysql'], 'update users set last_hit = now(), remote_addr = "' . $_SERVER['REMOTE_ADDR'] . '" where id = ' . $_SESSION['uid']);
+		if (!$result)
+			log_msg(__FILE__ . ':' . __LINE__ . ' Update user\'s `last_hit` durig `Sign In` exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	}
 
 
 	if ($_SESSION['uid'] > 0)
 	{
-		$statement = $links['sofia']['pdo'] -> prepare('select * from users');
-		$statement -> execute(array('id' => $_SESSION['uid']));
-		$row = $statement -> fetch();
-		$_SESSION['nickname'] = $row['nickname'];
-		$_SESSION['email'] = $row['email'];
-		//$_SESSION['role_id'] = $row['role_id'];
-		//$_SESSION['role'] = $row['name'];
-		$_SESSION['timezone'] = $row['timezone'];
+		$statement = $links['sofia']['pdo'] -> prepare('select * from users where id = :id');
+		$result = $statement -> execute(array('id' => $_SESSION['uid']));
 
-		$_SESSION['topics_per_page'] = (empty($row['topics_per_page'])) ? 25 : $row['topics_per_page'];
-		$_SESSION['posts_per_page'] = (empty($row['posts_per_page'])) ? 25 : $row['posts_per_page'];
-		$_SESSION['messages_per_page'] = (empty($row['messages_per_page'])) ? 25 : $row['messages_per_page'];
+		if (!$result)
+			log_msg(__FILE__ . ':' . __LINE__ . ' Selecting signed in user exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+		else
+		{
+			$row = $statement -> fetch();
+			$_SESSION['nickname'] = $row['nickname'];
+			$_SESSION['email'] = $row['email'];
+			//$_SESSION['role_id'] = $row['role_id'];
+			//$_SESSION['role'] = $row['name'];
+			$_SESSION['timezone'] = $row['timezone'];
+
+			$_SESSION['topics_per_page'] = (empty($row['topics_per_page'])) ? 25 : $row['topics_per_page'];
+			$_SESSION['posts_per_page'] = (empty($row['posts_per_page'])) ? 25 : $row['posts_per_page'];
+			$_SESSION['messages_per_page'] = (empty($row['messages_per_page'])) ? 25 : $row['messages_per_page'];
+		}
 	}
 
 

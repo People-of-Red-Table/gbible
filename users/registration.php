@@ -22,11 +22,25 @@
 		$links['sofia']['pdo'] -> commit();
 
 		if ($result)
-		{ 
-			$message = "You are registered user now, please sign in. ";
+		{
+			$msg_type = 'success';
+			$message = 'You are registered user now, please <a href="./?menu=users_signIn" class="alert-link">Sign In</a>. ';
 		}
-		else $message = "Whoops. We've got issue. Sorry. Please, contact support.";
+		else 
+		{
+			$msg_type = 'danger';
+			$message = "Whoops. We've got issue. Sorry. Please, contact support.";
+			log_msg(__FILE__ . ':' . __LINE__ . ' Inserting new user exception. $_POST = {' . json_encode($_POST) . '}');
+		}
 	}
-	else $message = "You typed different passwords.";
+	else 
+	{
+		$msg_type = 'danger';
+		$message = "You typed different passwords.";
+	}
+
+	if (isset($message) and isset($msg_type))
+	{
+		echo "<div class='alert alert-$msg_type'>$message</div>";
+	}
 ?>
-	<p><?=$message;?></p>

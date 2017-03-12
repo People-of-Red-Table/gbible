@@ -103,7 +103,9 @@
 			);
 		$result_books = $statement_books -> execute();
 		if(!$result_books)
-			log_msg(__FILE__ . ':' . __LINE__ . ' ' . 'PDO books` query exception.');
+		{
+			log_msg(__FILE__ . ':' . __LINE__ . ' ' . 'PDO books` query exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+		}
 		$books_rows = $statement_books -> fetchAll();
 		$book_index = 0;
 		foreach ($books_rows as $book_row) 

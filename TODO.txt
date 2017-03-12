@@ -10,6 +10,9 @@ Select Favorite Verses, Chapters, Books, Bibles; delete from Favorites.
 
 Show Top Verses, Chapter, Books and Bibles
 
+facebook, VK - Share and Like buttons. Check. FB - waiting for ID check, VK - need phone number.
+Tweet button [not link?]
+
 Top Verses and "My Favorite Verses" on favorite Bible [or for guests it is Bible of chosen language or something else...]
 
 Favorite Bible which will be opened after sign in.
@@ -35,5 +38,7 @@ Book titles in different languages [very possible that it will do PoRT]
 
 
 Social things
+
+Output page obfuscation - traffic economy and security reason. Function obfuscate with double spaces by one space and deleting `\r\n` and `\n`.
 
 Make redirect from HTML pages of "external" Bibles to the page of the Bible.

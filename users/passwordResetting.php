@@ -7,17 +7,20 @@
 
 		if(!$result)
 		{
-			echo "<p>Whoops. We've got issue with password reset. Sorry. Please, contact support.</p>";
+			echo "<p class='alert alert-danger'>Whoops. We've got issue with password reset. Sorry. Please, contact support.</p>";
+			log_msg(__FILE__ . ':' . __LINE__ . ' Password update exception. $_POST = {' . json_encode($_POST) . '}.');
 		}
 		else
 		{
-			echo '<p>Password changed.</p> <p><a href="./?menu=users_signIn">Sign In.</a></p>';
+			echo '<p class="alert alert-danger">Password changed.</p> <p><a href="./?menu=users_signIn">Sign In</a></p>';
 		}
 	}
 	else
 	{
 		?>
-<p>You typed different passwords.</p>
+<p class="alert alert-danger">You typed different passwords.</p>
+
+
 <form method="post">
 	<div class="row">
 		<div class="col-md-2">

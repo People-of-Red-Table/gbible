@@ -30,8 +30,8 @@
 			else
 			{
 				$message = "Whoops, we've got issue with favorite verses. Please contact support.";
-				print_r($statement_fav_verse -> errorInfo());
 				$msg_type = "danger";
+				log_msg(__FILE__ . ':' . __LINE__ . ' Inserting favorite verse exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 		}
 		else

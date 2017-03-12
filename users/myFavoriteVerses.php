@@ -39,12 +39,14 @@
 			{
 				$message = "Whoops, we've got issue with favorite verses . Please, contact support.";
 				$msg_type = 'danger';
+				log_msg(__FILE__ . ':' . __LINE__ . ' Selecting favorite verses exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 		}
 		else
 		{
 			$message = "Whoops, we've got issue with favorite verses [choosing a Bible]. Please, contact support.";
 			$msg_type = 'danger';
+			log_msg(__FILE__ . ':' . __LINE__ . ' Bible choosing in favorite verses exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		}
 	}
 	if (isset($message) and isset($msg_type))

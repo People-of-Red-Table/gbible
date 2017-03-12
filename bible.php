@@ -7,7 +7,7 @@
 		<?php
 			//echo 'b_code = ' . $b_code;
 			$statement_translation = $links['sofia']['pdo'] -> prepare(
-					'select bh.table_name, bh.title, bh.description, bh.copyright, 
+					'select bh.b_code, bh.table_name, bh.title, bh.description, bh.copyright, 
 					bh.license, l.link, bh.http_link, country, language, dialect
 					from b_shelf bh 
 					join licenses l on l.license = bh.license
@@ -119,9 +119,33 @@
 
 					if ($_SESSION['uid'] > - 1)
 						 $verses .= '<li><a href="./?menu=users_addVerseToFavorites&b_code=' . $b_code . '&id=' . $verse_row['verseID'] . '" target="_blank"><span class="glyphicon glyphicon-heart"></span> Add To Favorites</a></li>';
-						// 
+
+						$array = explode('/', $_SERVER['SCRIPT_NAME']);
+						if (count($array) > 1)
+							$addition_url = '/' . $array[0];
+						$url = 'http://' . $_SERVER['HTTP_HOST'] . $addition_url . '/?b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verse=' . $verse_row['startVerse'] . '#' . $verse_row['verseID'];
+
+						// Facebook Share
+						$verses .= '<div class="fb-share-button" data-href="%SHARE_URL%" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url) . '&src=sdkpreparse">Share</a></div><br />';
+
+						// Facebook Like
+
+						$verses .= '<div class="fb-like" data-href="' . $url . '" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div><br />';
+
+						// VK Share https://vk.com/editapp?act=create
+						/*$verses .= '<a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank">Share in VK</a><br />';
+						*/
+						// VK Like https://vk.com/editapp?act=create
+						/*$verses .= '<div id="vk_like_' . $verse_row['verseID'] . '"></div>
+									<script type="text/javascript">
+									VK.init({apiId: 111, onlyWidgets: true});
+									 VK.Widgets.Like(\'vk_like_' . $verse_row['verseID'] . '\', {pageUrl: \'' . $url .'\', pageTitle: \'' . $bible_title . ' ' . $book . ' ' . $chapter . ':' . $verse_row['startVerse'] . '\'}, \'' . $b_code . $verse_row['verseID'] . '\');</script>';
+						*/
+									 
+						// Twitter 
 						$verses .= '<li><a href="./?menu=tweetVerse&id=' . $verse_row['verseID'] . '&b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verseNumber=' . $verse_row['startVerse'] . '&first_words=' . $first_words . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> Tweet</a></li>';
 
+	
 
 						$verses .= '<li><a onclick="clipboard.copy(window.location.origin + window.location.pathname + \'?b_code=' 
 					. $b_code . '&book=' . $book . '&chapter=' . $chapter . 

@@ -4,19 +4,25 @@
 	
 	<div class="row">
 		<div class="col-md-12">
-			<p><?php
+			<?php
 
 				$statement = $links['sofia']['pdo'] -> prepare('select secret_question from users where email = :email');
 				$statement -> execute(array('email' => $_GET['reset_email']));
 				if ($row = $statement -> fetch())
 				{
-					echo $row['secret_question'];
+					echo '<p>' . $row['secret_question'] '</p>';
 				}
 				else
 				{
-					echo 'Information for your email not found.';
+					$msg_type = 'danger';
+					$message = 'Information for your email was not found.';
 				}
-			?></p>			
+				
+				if (isset($message) and isset($msg_type))
+				{
+					echo "<div class='alert alert-$msg_type'>$message</div>";
+				}
+			?>	
 		</div>
 	</div>
 

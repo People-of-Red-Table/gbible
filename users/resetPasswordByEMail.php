@@ -7,6 +7,7 @@
 		$result_email = $statement_email -> execute(array('email' => $_REQUEST['reset_email']));
 		if (!$result_email)
 		{
+			$msg_type = 'danger';
 			$message = "Your e-mail was not found.";
 		}
 		else
@@ -18,7 +19,9 @@
 			$result_code = $statement_code -> execute(array('email' => $_REQUEST['reset_email'], 'verification_code' => $verification_code));
 			if (!$result_code)
 			{
+				$msg_type = 'danger';
 				$message = "Whoops, verification code wasn't set. Please, contact support.";
+				log_msg(__FILE__ . ':' . __LINE__ . ' Verification code wasn\'t set. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 			else
 			{
@@ -33,10 +36,16 @@
 					. 'Thank you.'
 				);
 				if ($result_mail_send)
-				$message = 'Letter to your email ' . $user_row['email'] . ' was sent. Please, check your inbox. If you didn\'t find it, check your "Spam" folder';
+				{
+					$msg_type = 'info';
+					$message = 'Letter to your email ' . $user_row['email'] . ' was sent. Please, check your inbox. If you didn\'t find it, check your "Spam" folder';
+				}
 				else
-				$message = "Whoops, mail to " . $user_row['email'] . " wasn't sent. Please, contact support.";
-
+				{
+					$msg_type = 'danger';
+					$message = "Whoops, mail to " . $user_row['email'] . " wasn't sent. Please, contact support.";
+					log_msg(__FILE__ . ':' . __LINE__ . ' Reset password letter wasn\'t sent. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+				}
 			}
 		}
 	}
@@ -97,12 +106,26 @@
 							'verification_code' => $_REQUEST['verification_code']
 													));
 			if ($result_pswd)
+			{
+				$msg_type = 'success';
 				$message = "Password was changed. <a href='./?menu=users_signIn'>Sign In</a><meta http-equiv='refresh' content='2; ./?menu=users_signIn'>";
-			else $message = "Whoops. We've got issue with resetting password. Please, contact support.";
+			}
+			else
+			{
+				$msg_type = 'danger';
+				$message = "Whoops. We've got issue with resetting password. Please, contact support.";
+				log_msg(__FILE__ . ':' . __LINE__ . ' Password wasn\'t updated. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+			}
 		}
-		else $message = "You typed different passwords.";
+		else 
+		{
+			$msg_type = 'danger';
+			$message = "You typed different passwords.";
+		}
+	}
+	
+	if (isset($message) and isset($msg_type))
+	{
+		echo "<div class='alert alert-$msg_type'>$message</div>";
 	}
 ?>
-<p><?php
-	if (isset($message)) echo $message;
-?></p>

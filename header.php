@@ -2,6 +2,7 @@
 <html lang="">
 	<head>
 		<title>Golden Bible</title>
+		<link rel="shortcut icon" href="./favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="charset" content="utf-8">
 		<?php
@@ -40,6 +41,10 @@
 		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
+	<!-- Facebook Share and Like-->
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js =  d.createElement(s); js.id = id; js.src = "//connect.facebook.net/<?=$fb_language_country;?>/sdk.js#xfbml=1&version=v2.8"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+
 		<nav class="nav navbar-inverse">
 			<div class="container-fluid">
 
@@ -117,7 +122,7 @@
 			
 			foreach ($charity as $item) 
 			{
-				if($item['Code'] == $hal_language_country)
+				if(strcasecmp($item['Code'], $hal_language_country) === 0)
 				{
 					if ($item['CharityType'] == 'Charity')
 						$text = 'Charity for ';

@@ -11,7 +11,7 @@ You can warn users about maintenance work.
 
 Be sure that new tables are created on the remote database server.
 
-Check changes before deploy. Check the site after deploy. Is it working?
+Check changes before deploy. Check the site after deploy. Is it working? If site is okay `git commit -m "%comment%"`
 Current server is on free [!] hosting, so, it is not so fast and sometimes web server gives its errors.
 
 But "we" PoRT [or me =] are grateful, cause it is not easy to find good free hosting with PHP and SQL.

@@ -1,11 +1,6 @@
 <h1>Settings</h1>
 <br />
 <?php
-	log_msg('inside of saveSettings.php');
-	if(isset($_POST['user_country']))
-		log_msg(__FILE__ . ':' . __LINE__ . ' user_country = ' . $_POST['user_country']);
-	if(isset($_POST['user_language']))
-		log_msg(__FILE__ . ':' . __LINE__ . ' user_language = ' . $_POST['user_language']);
 
 	$row = array(
 					'nickname' => $_POST['nickname'], 
@@ -32,7 +27,7 @@
 
 	$res = mysqli_query($links['sofia']['mysql'], 'select password from users where id = ' . $_SESSION['uid']);
 	$row = mysqli_fetch_assoc($res);
-	$message = '';
+	$messages = [];
 
 	if (!empty($_POST['current_password']))
 	{
@@ -43,28 +38,40 @@
 				$statement = $links['sofia']['pdo'] -> prepare('update users set password = md5(:password) where id = :id');
 				$res = $statement -> execute(array('id' => $_SESSION['uid'], 'password' => $_POST['password']));
 				if ($res)
-				{ 
-					$message = "Password saved. ";
+				{
+					$messages[] = ['type' => 'success', 'text' => 'Password saved. '];
 				}
 				else 
 				{
-					$message = "Whoops. We've got issue with password saving in settings. Sorry. Please, contact support. ";
+					$messages[] = ['type' => 'danger', 'text' => 'Whoops. We\'ve got issue with password saving in settings. Sorry. Please, contact support.'];
+					log_msg(__FILE__ . ':' . __LINE__ . ' Password update in settings. Exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 				}
 			}
-			else $message .= 'In fields "Password" and "Password Repeat" you typed different passwords. ';
+			else
+			{ 
+				$messages[] = ['type' => 'danger', 'text' => 'In fields "Password" and "Password Repeat" you typed different passwords.'];
+			}
 		}
 		else
 		{
-			$message .= 'You typed not your current password. ';
+			$messages[] = ['type' => 'danger', 'text' => 'You typed not your current password. Password wasn\'t changed.'];
 		}
 	}
 	if ($result)
 	{ 
-		$message .= "Settings saved. Hallelujah! " . '<meta http-equiv="refresh" content="2; ./?menu=bible">';
+		$messages[] = ['type' => 'success', 'text' => "Settings saved. " . '<meta http-equiv="refresh" content="2; ./?menu=bible">'];
 	}
 	else 
 	{
-		$message .= "Whoops. We've got issue with settings. Sorry. Please, contact support. ";
+			$messages[] = ['type' => 'danger', 'text' => 'Whoops. We\'ve got issue with settings saving. Sorry. Please, contact support.'];
+			log_msg(__FILE__ . ':' . __LINE__ . ' Settings saving. Exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+	}
+
+	if ((count($messages) == 1) and ($messages[0]['type'] === 'success'))
+		$messages[] = ['type' => 'success', 'text' => 'Hallelujah!'];	
+
+	foreach ($messages as $item) 
+	{
+		echo '<div class="alert alert-' . $item['type'] . '">' . $item['text'] . '</div>';
 	}
 ?>
-<p><?=$message;?></p>

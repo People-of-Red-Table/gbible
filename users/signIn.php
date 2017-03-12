@@ -3,7 +3,7 @@
 	if($_SESSION['uid'] > 1)
 	{
 		$message = 'What are you doing here, genius? You are already signed in...';
-		slog_msg('Signed up user tried to enter to "Sign In page", user ID = `' . $_SESSION['uid'] . '`.');
+		slog_msg('Signed up user tried to enter to "Sign In page", user ID = `' . $_SESSION['uid'] . '`. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	}
 ?>
 <form method="post">
