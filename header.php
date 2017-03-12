@@ -84,7 +84,7 @@
 					?>
 						<li><a href="./?menu=users_settings">Settings</a></li>
 						<li><a href="./?menu=sign_out">Sign Out</a></li>
-						<li><a href="./?menu=users_profile&id=<?=$_SESSION['uid'];?>"><b><?=$_SESSION['nickname'];?></b></a></li>
+						<li><a href="#"><b><?=$_SESSION['nickname'];?></b></a></li>
 					<?php
 						}
 						else 

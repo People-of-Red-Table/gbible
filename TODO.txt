@@ -1,5 +1,10 @@
 
+./?menu=users_profile&id=<?=$_SESSION['uid'];?>
+clear verification code...
+
 Reset Password!! Check on the hosting. [127.0.0.1 has no "sendmail"].
+Suddenly, mail was't sent. 
+
 
 Select Favorite Verses, Chapters, Books, Bibles; delete from Favorites.
 

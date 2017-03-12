@@ -1,6 +1,7 @@
 <?php
 	require 'bible_nav.php';
 ?>
+	<table width="100%"><tr><td align="right"><img border="0" src="https://s18.postimg.org/y2xld3cwp/verse_Context_Menu.png" /></td></tr></table><br />
 	<div class="panel panel-primary">
 		<div class="panel-header">
 		<?php
@@ -150,5 +151,10 @@
 	</div>
 	<?php
 		if (stripos($b_code, '_http') === FALSE)
-			echo '<p style="font-size: 0.75em">Click on the verse is copying link to the verse to your clipboard, use it to share verses.</p>';
+		{
+			echo '<p style="font-size: 0.75em">Click on the verse to tweet';
+			if ($_SESSION['uid'] > -1)
+				echo ', add to favorites';
+			echo ' or copy link to the verse to your clipboard, use it to share verses.</p>';
+		}
 	?>
