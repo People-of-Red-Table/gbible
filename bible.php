@@ -17,7 +17,7 @@
 
 			$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
 			if(!$result_translation)
-				log_msg(__FILE__ . ':' . __LINE__ . ' PDO translations query exception.');
+				log_msg(__FILE__ . ':' . __LINE__ . ' PDO translations query exception. Info = {' . json_encode($statement_translation -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}' );
 			$info_row = $statement_translation -> fetch();
 			$bible_title = $info_row['title'];
 			$bible_description = $info_row['description'];
@@ -54,7 +54,7 @@
 				$result_chapters = $statement_chapters -> execute(array('book' => $book));
 
 				if(!$result_chapters)
-					log_msg(__FILE__ . ':' . __LINE__ . ' PDO chapters query exception.');
+					log_msg(__FILE__ . ':' . __LINE__ . ' PDO chapters query exception. Info = {' . json_encode($statement_chapters -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}' );
 
 				$chapters_rows = $statement_chapters -> fetchAll();
 				$chapters_links = '<div width="80%" align="center">';
@@ -88,7 +88,7 @@
 			$result_verses = $statement_verses -> execute(array('book' => $book, 'chapter' => $chapter));
 
 			if(!$result_verses)
-				log_msg(__FILE__ . ':' . __LINE__ . ' ' . ' PDO verses query exception.');
+				log_msg(__FILE__ . ':' . __LINE__ . ' ' . ' PDO verses query exception. Info = {' . json_encode($statement_verses -> errorInfo())  . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 
 			$verses_rows = $statement_verses -> fetchAll();
 			$verses = '';
@@ -141,7 +141,7 @@
 									VK.init({apiId: 111, onlyWidgets: true});
 									 VK.Widgets.Like(\'vk_like_' . $verse_row['verseID'] . '\', {pageUrl: \'' . $url .'\', pageTitle: \'' . $bible_title . ' ' . $book . ' ' . $chapter . ':' . $verse_row['startVerse'] . '\'}, \'' . $b_code . $verse_row['verseID'] . '\');</script>';
 						*/
-									 
+
 						// Twitter 
 						$verses .= '<li><a href="./?menu=tweetVerse&id=' . $verse_row['verseID'] . '&b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verseNumber=' . $verse_row['startVerse'] . '&first_words=' . $first_words . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> Tweet</a></li>';
 

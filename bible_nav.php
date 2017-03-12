@@ -45,7 +45,8 @@
 										order by country');
 									if (!$result_countries)
 									{
-										log_msg(__FILE__ . ' ' . __LINE__ . ' ' . mysqli_error($links['sofia']['mysql']));
+										log_msg(__FILE__ . ':' . __LINE__ . ' 
+											Countries SQL exception. Info = {' . mysqli_error($links['sofia']['mysql']) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 										//echo "Whoops. We've got issue with MySQL connection... Sorry. Please contact support. " . mysqli_error($links['sofia']['mysql']);;
 										//print_r($links['sofia']['mysql']);
 
@@ -57,7 +58,7 @@
 										//print_r($statement_country);
 										if (!$result_country)
 										{	
-											log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_country -> errorInfo());
+											log_msg(__FILE__ . ':' . __LINE__ . ' Countries PDO query exception. Info = {' . json_encode($statement_country -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 											//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support.";
 											//print_r($statement_country -> errorInfo());
 										}
@@ -111,7 +112,7 @@
 
 									if (!$result_languages)
 									{
-										log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_languages -> errorInfo());
+										log_msg(__FILE__ . ':' . __LINE__ . ' Languages PDO query exception. Info = {' . json_encode($statement_languages -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 										//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
 										//print_r($links['sofia']['pdo']);
 
@@ -134,7 +135,7 @@
 										$result = $statement_language -> execute(array('language' => $language, 'country' => $country_name));
 										if (!$result)
 										{
-											log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_language -> errorInfo());
+											log_msg(__FILE__ . ':' . __LINE__ . ' Languages PDO query exception. Info = {' . json_encode($statement_language -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 											//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support.";
 											//print_r($links['sofia']['pdo'] -> errorInfo());
 										}
@@ -186,7 +187,7 @@
 
 									if (!$result_bibles)
 									{
-										log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_bibles -> errorInfo());
+										log_msg(__FILE__ . ':' . __LINE__ . ' Bibles PDO query exception. Info = {' . json_encode($statement_bibles -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 										//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
 										//print_r($links['sofia']['pdo']);
 

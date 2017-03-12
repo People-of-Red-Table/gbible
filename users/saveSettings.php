@@ -14,11 +14,11 @@
 					'language' => $_POST['user_language'],
 					'id' => $_SESSION['uid']
 				);
-	$command = $links['sofia']['pdo'] -> prepare('update users set nickname = :nickname, full_name = :full_name, email = :email, secret_question = :secret_question, secret_answer = :secret_answer, updated = now(), timezone = :timezone, country = :country, language = :language,
+	$statement_update_settings = $links['sofia']['pdo'] -> prepare('update users set nickname = :nickname, full_name = :full_name, email = :email, secret_question = :secret_question, secret_answer = :secret_answer, updated = now(), timezone = :timezone, country = :country, language = :language,
 		updated_by = :updated_by where id = :id;');
 	try
 	{
-		$result = $command -> execute($row);
+		$result = $statement_update_settings -> execute($row);
 	}
 	catch (PDOException $e)
 	{
@@ -44,7 +44,7 @@
 				else 
 				{
 					$messages[] = ['type' => 'danger', 'text' => 'Whoops. We\'ve got issue with password saving in settings. Sorry. Please, contact support.'];
-					log_msg(__FILE__ . ':' . __LINE__ . ' Password update in settings. Exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+					log_msg(__FILE__ . ':' . __LINE__ . ' Password update in settings. Exception. Info = {' . json_encode($statement -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 				}
 			}
 			else
@@ -64,7 +64,7 @@
 	else 
 	{
 			$messages[] = ['type' => 'danger', 'text' => 'Whoops. We\'ve got issue with settings saving. Sorry. Please, contact support.'];
-			log_msg(__FILE__ . ':' . __LINE__ . ' Settings saving. Exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+			log_msg(__FILE__ . ':' . __LINE__ . ' Settings saving. Exception. Info = {' . json_encode($statement_update_settings -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	}
 
 	if ((count($messages) == 1) and ($messages[0]['type'] === 'success'))

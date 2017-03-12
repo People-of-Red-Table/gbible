@@ -5,7 +5,7 @@
 	$statement_country = $links['sofia']['pdo'] -> prepare('select country_code from iso_ms_languages where country_name = :country_name');
 	$statement_country_result = $statement_country -> execute(array('country_name' => $country_name));
 	if (!$statement_country_result)
-		log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_country -> errorInfo());
+		log_msg(__FILE__ . ':' . __LINE__ . ' Country codes PDO exception. ' . json_encode($statement_country -> errorInfo()) . ', $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	$country_row = $statement_country -> fetch();
 
 	setcookie('country', $country_row['country_code'], time() + 30 * 24 * 3600);
@@ -32,7 +32,7 @@
 
 	if (!$result_languages)
 	{
-		log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement -> errorInfo());
+		log_msg(__FILE__ . ':' . __LINE__ . ' Languages PDO exception. ' . json_encode($statement -> errorInfo()) . ', $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
 		;
 		//print_r($links['sofia']['pdo']);

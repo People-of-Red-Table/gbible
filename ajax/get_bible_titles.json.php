@@ -6,7 +6,7 @@
 	$result_language = $statement_language -> execute(array('language_name' => $language_name));
 
 	if (!$result_language)
-		log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_language -> errorInfo());
+		log_msg(__FILE__ . ':' . __LINE__ . ' Languages PDO exception. ' . json_encode($statement_language -> errorInfo()) . ', $_REQUEST = {' . json_encode($_REQUEST) . '}');
 
 	$language_row = $statement_language -> fetch();
 
@@ -18,7 +18,7 @@
 
 	if (!$result_books)
 	{
-		log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement -> errorInfo());
+		log_msg(__FILE__ . ':' . __LINE__ . ' Bible PDO exception. ' . json_encode($statement -> errorInfo()) . ', $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
 		;
 		//print_r($links['sofia']['pdo']);

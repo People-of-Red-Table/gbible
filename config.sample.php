@@ -59,7 +59,7 @@
 			}
 			else
 			{
-				echo "Whoops. We've got issue with MySQL connection for `$base`.";
+				log_msg(__FILE__ . ':' . __LINE__ . " We've got issue with SQL connection for `$base`. Info = {" . json_encode(mysql_error()));
 				return false;
 			}
 		}
@@ -72,7 +72,7 @@
 				return $link;
 			else
 			{
-				echo "Whoops. We've got issue with PDO connection for `$base`.";
+				log_msg(__FILE__ . ':' . __LINE__ . " We've got issue with PDO connection for `$base`. Info = {" . json_encode($link -> errorInfo()));
 				return false;
 			}
 		}

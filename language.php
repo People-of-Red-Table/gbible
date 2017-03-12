@@ -46,7 +46,7 @@
 						');
 		$country_result = $statement_country -> execute(array('country_name' => $country));
 		if(!$country_result)
-			log_msg($statement_country -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' Countries PDO query exception. Info = {' . json_encode($statement_country -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 
 		$country_row = $statement_country -> fetch();
 

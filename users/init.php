@@ -73,7 +73,7 @@
 
 		if (!$result_bibles)
 		{
-			log_msg(__FILE__ . ':' . __LINE__ . ' PDO exception.');
+			log_msg(__FILE__ . ':' . __LINE__ . ' Bibles PDO query exception. Info = {' . json_encode($statement_bibles -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}' );
 			//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
 			//print_r($links['sofia']['pdo']);
 
@@ -95,7 +95,7 @@
 
 		$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
 		if(!$result_translation)
-			log_msg(__FILE__ . ':' . __LINE__ . ' ' . $statement_translation -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' Table name PDO query exception. Info = {' . json_encode($statement_translation -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		$info_row = $statement_translation -> fetch();
 		$table_name = $info_row['table_name'];
 		$statement_books = $links['sofia']['pdo'] -> prepare(
@@ -104,7 +104,7 @@
 		$result_books = $statement_books -> execute();
 		if(!$result_books)
 		{
-			log_msg(__FILE__ . ':' . __LINE__ . ' ' . 'PDO books` query exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+			log_msg(__FILE__ . ':' . __LINE__ . ' Books PDO queryexception. Info = {' . json_encode($statement_books -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		}
 		$books_rows = $statement_books -> fetchAll();
 		$book_index = 0;

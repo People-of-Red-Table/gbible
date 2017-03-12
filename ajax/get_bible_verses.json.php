@@ -14,7 +14,7 @@
 
 	if (!$result_table_name)
 	{
-		log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_table_name -> errorInfo());
+		log_msg(__FILE__ . ':' . __LINE__ . ' Table name PDO exception. ' . json_encode($statement_table_name -> errorInfo()) . ', $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. "
 		;
 		//print_r($links['sofia']['pdo']);
@@ -32,7 +32,7 @@
 		$result_books = $statement_books ->	execute();
 
 		if(!$result_books)
-			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_books -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' Books PDO exception. ' . json_encode($statement_books -> errorInfo()) . ', $_REQUEST = {' . json_encode($_REQUEST) . '}');
 
 
 		$books_rows = $statement_books -> fetchAll();
@@ -47,7 +47,7 @@
 			));
 
 		if(!$result_verses)
-			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_verses -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' Verses PDO exception. ' . $statement_verses -> errorInfo() . ', $_REQUEST = {' . json_encode($_REQUEST) . '}');
 
 		echo json_encode($statement_verses -> fetchAll());
 	}

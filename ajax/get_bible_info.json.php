@@ -23,7 +23,7 @@
 
 	if (!$result_info)
 	{
-		log_msg("Whoops. We've got issue with PDO connection... Sorry. Please contact support. " . $statement -> errorInfo());
+		log_msg(__FILE__ . ':' . __LINE__ . " We've got issue with PDO connection... Sorry. Please contact support. " . json_encode($statement -> errorInfo()) . ', $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		;
 	}
 	else

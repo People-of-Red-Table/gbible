@@ -10,7 +10,7 @@
 
 	if (!$result_table_name)
 	{
-		log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_table_name -> errorInfo());
+		log_msg(__FILE__ . ':' . __LINE__ . ' Table name PDO exception. Info = {' . json_encode($statement_table_name -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 
 		//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
 		//print_r($links['sofia']['pdo']);
@@ -28,7 +28,7 @@
 		$result_books = $statement_books ->	execute();
 
 		if(!$result_books)
-			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_books -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' Books PDO exception. Info = {' . json_encode($statement_books -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 
 		$books_rows = $statement_books -> fetchAll();
 		$book_name = $books_rows[$book_index]['book'];
@@ -40,7 +40,7 @@
 		$result_chaters = $statement_chapters -> execute();
 
 		if(!$result_chaters)
-			log_msg(__FILE__ . ' ' . __LINE__ . ' ' . $statement_chapters -> errorInfo());
+			log_msg(__FILE__ . ':' . __LINE__ . ' Chapters PDO query exception. Info = {' . $statement_chapters -> errorInfo() . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 
 		$chapters_rows = $statement_chapters -> fetchAll();
 
