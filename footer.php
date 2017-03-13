@@ -3,18 +3,19 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<center><a href="http://www.israelgives.org/" target="_blank">Israel Gives</a></center>
+			<center><a href="http://www.israelgives.org/" target="_blank"><?=$text['israel_gives'];?></a></center>
 		</div>
 	</div><br />
 
 		<?=$charity_links;?>
+		<br />
 		<div class="footer">
 			 <nav class="nav navbar-inverse">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
-						<li><a href="./?menu=charityLinks">Charity Organizations of the World</a></li>
-						<li><a href="./?menu=charityOrganizationsOf">Charity Organizations of Visitor's Country</a></li>
-						<li><a href="./blacklist.html" target="_blank">Black List of Bible Site</a></li>
+						<li><a href="./?menu=charityLinks"><?=$text['charity_of_world'];?></a></li>
+						<li><a href="./?menu=charityOrganizationsOf"><?=$text['charity_of_your_country'];?></a></li>
+						<li><a href="./blacklist.html" target="_blank"><?=$text['blacklist'];?></a></li>
 						<!--<li><a href="./html_map.php" target="_blank" title="It is for Search Engine Robors =]">Index Map for Robots</a></li>-->
 						<!--<li><a href="#">About Us</a></li>
 						<li><a href="#">Project History</a></li>
@@ -23,16 +24,16 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<!--<li><a href="#">Contact Us</a></li>-->
-						<li><a href="https://twitter.com/goldenbible_org" target="_blank">Twitter @GoldenBible_org</a></li>
-						<li><a href="https://twitter.com/ihaveabiblesite" target="_blank">Twitter @ihaveabiblesite</a></li>
-						<li><a href="https://plus.google.com/115380489639432555966" target="_blank">Google+</a></li>
+						<li><a href="https://twitter.com/goldenbible_org" target="_blank"><?=$text['twitter'];?> @GoldenBible_org</a></li>
+						<li><a href="https://twitter.com/ihaveabiblesite" target="_blank"><?=$text['twitter'];?> @ihaveabiblesite</a></li>
+						<li><a href="https://plus.google.com/115380489639432555966" target="_blank"><?=$text['google_plus'];?></a></li>
 						<li><a href="https://www.youtube.com/channel/UCCWrFOJPlLyW85xf40afNJg" target="_blank">YouTube</a></li>
 					</ul>
 			 	</div>		
 			 </nav>
 		</div>
 		<br />
-		<center>Powered by <a href="http://charity-port.16mb.com/" target="_blank">PoRT</a> <a href="https://plus.google.com/115380489639432555966" target="_blank">Stanislav Demchenko</a></p></center>
+		<center><?=$text['powered_by'];?> <a href="http://charity-port.16mb.com/" target="_blank">PoRT</a> <br /><a href="https://plus.google.com/115380489639432555966" target="_blank">Stanislav Demchenko</a></p></center>
 	</div>
 	</body>
 </html>

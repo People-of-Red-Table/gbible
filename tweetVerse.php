@@ -15,7 +15,7 @@
 
 			if(!$result_update)
 			{
-				$message = "Whoops, we've got issue with updating tweeted verse. Please, contact support.";
+				$message = $text['tweet_verse_exception'];
 				$msg_type = 'danger';
 			}
 		}
@@ -28,7 +28,7 @@
 
 			if(!$result_insert)
 			{
-				$message = "Whoops, we've got issue with inserting tweeted verse. Please, contact support.";
+				$message = $text['tweet_insert_exception'];
 				$msg_type = 'danger';
 			}
 		}
@@ -36,7 +36,7 @@
 	else
 	{
 		
-		$message = "Whoops, we've got issue with tweeted verse. Please, contact support.";
+		$message = $text['tweeted_verse_exception'];
 		$msg_type = 'danger';
 	}
 
@@ -45,7 +45,7 @@
 		urlencode(' [') . $_REQUEST['book'] . urlencode(' ') . $_REQUEST['chapter'] . urlencode(':') . $_REQUEST['verseNumber'] . urlencode('] #Bible')
 					. '&via=goldenbible_org';
 ?>
-<div class="alert alert-info">The verse is gonna be tweeted, please wait.</div>
+<div class="alert alert-info"><?=$text['wait_for_tweeting'];?></div>
 <meta http-equiv="refresh" content="1; <?=$url;?>">
 <?php
 	if (isset($message) and isset($msg_type))

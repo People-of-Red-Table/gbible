@@ -25,7 +25,7 @@
 				<form method="post" name="countrySelectionForm" action="./">
 				<div class="row">
 					<div class="col-md-2">
-					<p>Country</p>
+					<p><?=$text['country'];?></p>
 					</div>
 					<div class="col-md-2">
 
@@ -79,12 +79,12 @@
 					</div>
 				</div>
 				</form>
-
+				<br />
 				<form method="post" name="languageSelectionForm" action="./">
 					<input type="hidden" name="country" value="<?=$country;?>" id="countryOfLanguageSelectionForm" />
 				<div class="row">
 					<div class="col-md-2">
-						<p>Language</p>
+						<p><?=$text['language'];?></p>
 					</div>
 					<div class="col-md-2">
 						<select id="languageOfLanguageSelectionForm" style="max-width: 20em" name="language" onchange="document.languageSelectionForm.country.value = document.countrySelectionForm.country.value; document.languageSelectionForm.submit();">
@@ -169,11 +169,11 @@
 					</div>
 				</div> <!-- row -->
 				</form>
-
+				<br />
 				<form method="post" name="bibleSelectionForm" action="./">
 				<div class="row">
 					<div class="col-md-2">
-						<p>Bible</p>
+						<p><?=$text['bible'];?></p>
 					</div>
 					<div class="col-md-2">
 						<input type="hidden" name="country" value="<?=$country;?>" />
@@ -207,19 +207,10 @@
 						</select>
 					</div>
 				</div> <!-- row -->
-
+				<br />
 				<div class="row">
 					<div class="col-md-12">
-						<p align="right"><button class="btn btn-primary" onclick="">Open Bible</button></p>
+						<p align="right"><button class="btn btn-primary" onclick=""><?=$text['open_bible'];?></button></p>
 					</div>
 				</div>
 				</form>
-
-
-
-
-
-
-
-
-

@@ -24,19 +24,19 @@
 
 			if ($result_fav_verse)
 			{
-				$message = "Verse was added to favorites.";
+				$message = $test['verse_added_to_favorites'];
 				$msg_type = 'success';
 			}
 			else
 			{
-				$message = "Whoops, we've got issue with favorite verses. Please contact support.";
+				$message = $text['favorite_verses_exception'] . ' ' . $text['please_contact_support'];
 				$msg_type = "danger";
 				log_msg(__FILE__ . ':' . __LINE__ . ' Inserting favorite verse exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 		}
 		else
 		{
-			$message = "Verse is already in favorites.";
+			$message = $text['verse_already_in_fav'];
 			$msg_type = 'info';
 		}
 	}

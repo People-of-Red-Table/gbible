@@ -83,10 +83,10 @@
 
 			if (stripos($b_code, '_http') === FALSE)
 			{
-				$verse_paragraph_title = 'Click on the verse to tweet, share [in facebook or VK]';
+				$verse_paragraph_title = $text['click_to_share'];
 				if ($_SESSION['uid'] > -1)
-					$verse_paragraph_title .= ', add to favorites';
-				$verse_paragraph_title .= ' or copy link to the verse to your clipboard';
+					$verse_paragraph_title .= $text['add_to_fav_addition'];
+				$verse_paragraph_title .= $text['copy_link_to_verse'] . '.';
 			}
 
 			$statement_verses = $links['sofia']['pdo'] -> prepare (
@@ -142,7 +142,7 @@
 
 						// VK Share Link
 
-						$verses .= '<li><a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> Share in VK</a></li>';
+						$verses .= '<li><a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> ' . $text['share_in_vk'] . '</a></li>';
 
 						// VK Share https://vk.com/editapp?act=create
 						/*$verses .= '<a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank">Share in VK</a><br />';
@@ -155,13 +155,13 @@
 						*/
 
 						// Twitter 
-						$verses .= '<li><a href="./?menu=tweetVerse&id=' . $verse_row['verseID'] . '&b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verseNumber=' . $verse_row['startVerse'] . '&first_words=' . $first_words . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> Tweet</a></li>';
+						$verses .= '<li><a href="./?menu=tweetVerse&id=' . $verse_row['verseID'] . '&b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verseNumber=' . $verse_row['startVerse'] . '&first_words=' . $first_words . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> ' . $text['tweet'] . '</a></li>';
 
 	
 
 						$verses .= '<li><a onclick="clipboard.copy(window.location.origin + window.location.pathname + \'?b_code=' 
 					. $b_code . '&book=' . $book . '&chapter=' . $chapter . 
-					'&verse=' . $verse_row['startVerse'] . '#'. $verse_row['verseID'] . '\')"><span class="glyphicon glyphicon-copy"></span> Copy link to the verse</a></li>'
+					'&verse=' . $verse_row['startVerse'] . '#'. $verse_row['verseID'] . '\')"><span class="glyphicon glyphicon-copy"></span> ' . $text['copy_link_to_the_verse'] . '</a></li>'
 						. '</ul></div>' . PHP_EOL;
 			}
 		?>
@@ -183,7 +183,7 @@
 	?>
 
 
-		<div class="panel-footer"><center><h5><b><?=$info_row['title'];?></b></h5><br /><?=$info_row['copyright'];?><br />Published under <a href="<?=$info_row['link'];?>" target="_blank"><?=$info_row['license'];?></a></center></div>
+		<div class="panel-footer"><center><h5><b><?=$info_row['title'];?></b></h5><br /><?=$info_row['copyright'];?><br /><?=$text['published_under'];?> <a href="<?=$info_row['link'];?>" target="_blank"><?=$info_row['license'];?></a></center></div>
 	</div>
 	<?php
 		if (stripos($b_code, '_http') === FALSE)

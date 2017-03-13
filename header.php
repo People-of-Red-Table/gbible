@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="">
 	<head>
-		<title>Golden Bible</title>
+		<title><?=$text['golden_bible'];?></title>
 		<link rel="shortcut icon" href="./favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="charset" content="utf-8">
@@ -49,32 +49,32 @@
 			<div class="container-fluid">
 
 				<div class="navbar-header">
-					<a href="#" class="navbar-brand">Golden Bible</a>
+					<a href="#" class="navbar-brand"><?=$text['golden_bible'];?></a>
 				</div>
 
 				<div class="navbar" id="nav">
 					<ul class="nav navbar-nav">
-						<li><a href="./?menu=bible">Open</a></li>
-						<li><a href="./?menu=topVerses">Top Verses</a></li>
+						<li><a href="./?menu=bible"><?=$text['open'];?></a></li>
+						<li><a href="./?menu=topVerses"><?=$text['top_verses'];?></a></li>
 
 					<?php
 						if ($_SESSION['uid'] > -1)
 						{
 					?>
-						<li><a href="./?menu=users_myFavoriteVerses">Favorite Verses</a></li>
+						<li><a href="./?menu=users_myFavoriteVerses"><?=$text['favorite_verses'];?></a></li>
 					<?php
 						}
 					?>
 
-						<li><a href="./?menu=charityLinks">Charity Organizations of the World</a></li>
+						<li><a href="./?menu=charityLinks"><?=$text['charity_of_world'];?></a></li>
+						<li><a href="http://charity-port.16mb.com/" title="<?=$text['port_title'];?>" target="_blank"><?=$text['community'];?></a></li>
 
 						<!--<li><a href="#" data-toggle="modal" data-target="#bibleSelectionDialog">Open</a></li>-->
 						<!--<li>
 							<a href="#">Top</a>
 						</li>
 						<li><a href="#">Bookshelf</a></li>
-						<li><a href="http://charity-port.16mb.com/" target="_blank">Community</a></li>-->
-					</ul>
+					</ul>-->
 
 					<!--<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">Sign In</a></li>
@@ -87,16 +87,16 @@
 						if ($_SESSION['uid'] > -1)
 						{
 					?>
-						<li><a href="./?menu=users_settings">Settings</a></li>
-						<li><a href="./?menu=sign_out">Sign Out</a></li>
+						<li><a href="./?menu=users_settings"><?=$text['settings'];?></a></li>
+						<li><a href="./?menu=sign_out"><?=$text['sign_out'];?></a></li>
 						<li><a href="#"><b><?=$_SESSION['nickname'];?></b></a></li>
 					<?php
 						}
 						else 
 						{
 					?>
-						<li><a href="./?menu=users_signUp">Sign Up</a></li>
-						<li><a href="./?menu=users_signIn">Sign In</a></li>
+						<li><a href="./?menu=users_signUp"><?=$text['sign_up'];?></a></li>
+						<li><a href="./?menu=users_signIn"><?=$text['sign_in'];?></a></li>
 					<?php
 						}
 					?>
@@ -106,19 +106,13 @@
 
 			</div>
 		</nav>
-		<!--
-		<li><a href="https://twitter.com/goldenbible_org" target="_blank">Twitter @GoldenBible_org</a></li>
-						<li><a href="https://twitter.com/ihaveabiblesite" target="_blank">Twitter @ihaveabiblesite</a></li>
-						<li><a href="https://plus.google.com/115380489639432555966" target="_blank">Google+</a></li>
-						<li><a href="https://www.youtube.com/channel/UCCWrFOJPlLyW85xf40afNJg" target="_blank">YouTube</a></li>
-		-->
 
 		<br />
 		<div class="container" id='top-anchor'>
 		<?php
 			$charity_links = '<div class="row">';
 
-			$charity_links .= '<div class="col-md-2"><a href="http://redcross.org/" target="_blank">American Red Cross</a></div>';
+			$charity_links .= '<div class="col-md-2"><a href="http://redcross.org/" target="_blank">' . $text['american_red_cross'] . '</a></div>';
 			
 			$charity_link_found = FALSE;
 			foreach ($charity as $item) 
@@ -127,22 +121,22 @@
 				{
 					$charity_link_found = true;
 					if ($item['CharityType'] == 'Charity')
-						$text = 'Charity for ';
-					else $text = $item['CharityType'] . ' of ';
-					$charity_links .= '<div class="col-md-2"><a href="' . $item['CharityLink'] . '" target="_blank">' . $text . $item['Country'] . '</a></div>';
+						$charity_title = 'Charity for ';
+					else $charity_title = $item['CharityType'] . ' of ';
+					$charity_links .= '<div class="col-md-2"><a href="' . $item['CharityLink'] . '" target="_blank">' . $charity_title . $item['Country'] . '</a></div>';
 				}
 			}
 
 			if ($charity_link_found === FALSE)
 				log_msg(__FILE__ . ':' . __LINE__ . ' Charity link not found for visitor`s country. \$hal_language_country = `' . $hal_language_country . '`.');
 
-			$charity_links .=  '<div class="col-md-2"><a href="http://www.evansnyc.com/charity/" target="_blank">Charity for Russia</a></div>';
+			$charity_links .=  '<div class="col-md-2"><a href="http://www.evansnyc.com/charity/" target="_blank">' . $text['charity_for_russia'] . '</a></div>';
 
-			$charity_links .= '<div class="col-md-2"><a href="http://cvbsp.org.br/redcross/index.php?p=pages/home" target="_blank">Brazilian Red Cross</a></div>';
+			$charity_links .= '<div class="col-md-2"><a href="http://cvbsp.org.br/redcross/index.php?p=pages/home" target="_blank">' . $text['brazilian_red_cross'] . '</a></div>';
 
-			$charity_links .= '<div class="col-md-2"><a href="http://redcross.org.uk/" target="_blank">British Red Cross</a></div>';
+			$charity_links .= '<div class="col-md-2"><a href="http://redcross.org.uk/" target="_blank">' . $text['british_red_cross'] . '</a></div>';
 	
-			$charity_links .= '<div class="col-md-2"><a href="http://icrc.org/" target="_blank">Intern. Committee of Red Cross</a></div>';
+			$charity_links .= '<div class="col-md-2"><a href="http://icrc.org/" target="_blank">' . $text['icrc'] . '</a></div>';
 
 			$charity_links .= '</div>';
 			
@@ -151,13 +145,13 @@
 		
 		<div class="row">
 			<div class="col-md-12">
-				<center><a href="./?menu=charityOrganizationsOf" target="_blank">Charity Organizations of Your Country</a></center>
+				<center><a href="./?menu=charityOrganizationsOf" target="_blank"><?=$text['charity_of_your_country'];?></a></center>
 			</div>
 		</div><br />
 
 		<div class="row">
 			<div class="col-md-12">
-				<center><a href="http://www.israelgives.org/" target="_blank">Israel Gives</a></center>
+				<center><a href="http://www.israelgives.org/" target="_blank"><?=$text['israel_gives'];?></a></center>
 			</div>
 		</div><br />
 	</div>

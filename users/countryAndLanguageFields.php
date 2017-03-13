@@ -1,6 +1,7 @@
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Country</p>
+			<p><?=$text['country'];?></p>
 		</div>
 		<div class="col-md-2">
 			<select name="user_country">
@@ -27,10 +28,10 @@
 			</select>
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Language</p>
+			<p><?=$text['language'];?></p>
 		</div>
 		<div class="col-md-2">
 			<select name="user_language">

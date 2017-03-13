@@ -1,4 +1,4 @@
-<h1>Reset Password</h1>
+<h1><?=$text['reset_password'];?></h1>
 <br />
 <form method="post">
 	
@@ -10,12 +10,12 @@
 				$statement -> execute(array('email' => $_GET['reset_email']));
 				if ($row = $statement -> fetch())
 				{
-					echo '<p>Secret Question: ' . $row['secret_question'] '</p>';
+					echo '<p>' . $text['secret_question'] . ': ' . $row['secret_question'] '</p>';
 				}
 				else
 				{
 					$msg_type = 'danger';
-					$message = 'Information for your email was not found.';
+					$message = $text['mail_not_found'];
 				}
 				
 				if (isset($message) and isset($msg_type))
@@ -25,10 +25,10 @@
 			?>	
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Secret Answer</p>
+			<p><?=$text['secret_answer'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="secret_answer">
@@ -40,7 +40,7 @@
 			<input type="hidden" name="reset_email" value="<?=$_GET['reset_email'];?>">
 			<input type="hidden" name="menu" value="users_secretAnswerChecking">
 			<!-- TO DO: check email by pattern-->
-			<p align="center"><input type="submit" name="submit" value="Reset" /></p>
+			<p align="center"><input type="submit" name="submit" value="<?=$text['reset'];?>" /></p>
 		</div>
 	</div>
 

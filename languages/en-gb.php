@@ -1,17 +1,16 @@
 <?php
-
 	$text['golden_bible'] = 'Golden Bible';
-	$text['verse_added_to_favorites'] = 'Verse was added to favorites.';
+	$text['verse_added_to_favorites'] = 'Verse was added to favourites.';
 	$text['please_contact_support'] = 'Please contact support.';
-	$text['favorite_verses_exception'] = 'We\'ve got issue with favorite verses.';
-	$text['verse_already_in_fav'] = 'Verse is already in favorites.';
+	$text['favorite_verses_exception'] = 'We\'ve got issue with favourite verses.';
+	$text['verse_already_in_fav'] = 'Verse is already in favourites.';
 	$text['sign_in_exception'] = 'Whoops, we\'ve got issue with \"Sign In\" .';
 	$text['incorrect_auth_info'] = 'Authentification information is incorrect.';
 	$text['country'] = 'Country';
 	$text['language'] = 'Language';
-	$text['my_favorite_verses'] = 'My Favorite Verses';
-	$text['my_favorite_verses_exception'] = 'We\'ve got issue with \"My Favorite Verses\".';
-	$text['mfv_bible_exception'] = 'We\'ve got issue with favorite verses [choosing a Bible].';
+	$text['my_favorite_verses'] = 'My Favourite Verses';
+	$text['my_favorite_verses_exception'] = 'We\'ve got issue with \"My Favourite Verses\".';
+	$text['mfv_bible_exception'] = 'We\'ve got issue with favourite verses [choosing a Bible].';
 	$text['password_reset_exception'] = 'We\'ve got issue with password reset.';
 	$text['password_changed'] = 'Password changed.';
 	$text['sign_in'] = 'Sign In';
@@ -67,7 +66,7 @@
 
 	$text['sign_up'] = 'Sign Up';
 	$text['click_to_share'] = 'Click on the verse to tweet, share [in facebook or VK]';
-	$text['add_to_fav_addition'] = ', add to favorites';
+	$text['add_to_fav_addition'] = ', add to favourites';
 	$text['copy_link_to_verse'] = ' or copy link to the verse to your clipboard';
 	$text['share_in_vk'] = 'Share in VK';
 	$text['tweet'] = 'Tweet';
@@ -93,7 +92,7 @@
 	$text['powered_by'] = 'Powered by ';
 	$text['open'] = 'Open';
 	$text['top_verses'] = 'Top Verses';
-	$text['favorite_verses'] = 'Favorite Verses';
+	$text['favorite_verses'] = 'Favourite Verses';
 	$text['community'] = 'Community';
 	$text['port_title'] = 'Charity support community PoRT [ English ]';
 	$text['sign_out'] = 'Sign Out';
@@ -104,7 +103,7 @@
 	$text['british_red_cross'] = 'British Red Cross';
 	$text['icrc'] = 'International Committee of Red Cross';
 	$text['top_verses_exception'] = 'We\'ve got issue with top verses.' . $text['please_contact_support'];
-	$text['top_verses_exception_bible'] = 'We\'ve got issue with favorite verses [choosing a Bible].' . $text['please_contact_support'];
+	$text['top_verses_exception_bible'] = 'We\'ve got issue with favourite verses [choosing a Bible].' . $text['please_contact_support'];
 
 	$text['tweet_verse_exception'] = 'We\'ve got issue with updating tweeted verse. ' . $text['please_contact_support'];
 	$text['tweet_insert_exception'] = 'We\'ve got issue with inserting tweeted verse. ' . $text['please_contact_support'];

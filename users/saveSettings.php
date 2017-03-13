@@ -1,4 +1,4 @@
-<h1>Settings</h1>
+<h1><?=$text['settings'];?></h1>
 <br />
 <?php
 
@@ -43,32 +43,32 @@
 				}
 				else 
 				{
-					$messages[] = ['type' => 'danger', 'text' => 'Whoops. We\'ve got issue with password saving in settings. Sorry. Please, contact support.'];
+					$messages[] = ['type' => 'danger', 'text' => $text['password_saving_exception'] . $text['please_contact_support']];
 					log_msg(__FILE__ . ':' . __LINE__ . ' Password update in settings. Exception. Info = {' . json_encode($statement -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 				}
 			}
 			else
 			{ 
-				$messages[] = ['type' => 'danger', 'text' => 'In fields "Password" and "Password Repeat" you typed different passwords.'];
+				$messages[] = ['type' => 'danger', 'text' => $text['different_passwords']];
 			}
 		}
 		else
 		{
-			$messages[] = ['type' => 'danger', 'text' => 'You typed not your current password. Password wasn\'t changed.'];
+			$messages[] = ['type' => 'danger', 'text' => $text['settings_incorrect_password']];
 		}
 	}
 	if ($result)
 	{ 
-		$messages[] = ['type' => 'success', 'text' => "Settings saved. " . '<meta http-equiv="refresh" content="2; ./?menu=bible">'];
+		$messages[] = ['type' => 'success', 'text' => $text['settings_saved'] . '<meta http-equiv="refresh" content="2; ./?menu=bible">'];
 	}
 	else 
 	{
-			$messages[] = ['type' => 'danger', 'text' => 'Whoops. We\'ve got issue with settings saving. Sorry. Please, contact support.'];
+			$messages[] = ['type' => 'danger', 'text' => $text['saving_settings_exception'] . $text['please_contact_support']];
 			log_msg(__FILE__ . ':' . __LINE__ . ' Settings saving. Exception. Info = {' . json_encode($statement_update_settings -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	}
 
 	if ((count($messages) == 1) and ($messages[0]['type'] === 'success'))
-		$messages[] = ['type' => 'success', 'text' => 'Hallelujah!'];	
+		$messages[] = ['type' => 'success', 'text' => $text['hallelujah']];	
 
 	foreach ($messages as $item) 
 	{

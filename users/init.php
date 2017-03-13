@@ -3,7 +3,6 @@
 	setcookie(session_name(), session_id(), time() + 30 * 24 * 3600);
 
 	require 'auth.php';
-	
 
 	// !! 'country', 'language', user settings? 
 	$auto_save = array('country', 'language', 'b_code', 'book_index', 'chapter_index', 'book', 'chapter');

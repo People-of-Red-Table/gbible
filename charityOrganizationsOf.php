@@ -1,10 +1,10 @@
 <?php
-	$statement_country_name = $links['sofia']['pdo'] -> prepare('select name from countries where code = :code');
+	$statement_country_name = $links['sofia']['pdo'] -> prepare('select native from countries where code = :code');
 	$result_country_name = $statement_country_name -> execute(['code' => $charity_country]);
 	$country_row = $statement_country_name -> fetch();
 ?>
 
-<h1>Charity Organizations. <?=$country_row['name'];?>.</h1>
+<h1><?=$text['charity_organizations_of'];?> <?=$country_row['native'];?>.</h1>
 <div class="container">
 <?php
 
@@ -20,6 +20,8 @@
 	$result_charities = $statement_charities -> execute(['code' => $charity_country]);
 	if (!$result_charities)
 	{
+		$msg_type = 'danger';
+		$message = $text['charity_organizations_exception'];
 		log_msg(__FILE__ . ':' . __LINE__ . ' Charities PDO query exception. Info = {' . json_encode($statement_charities -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	}
 	else
@@ -36,9 +38,14 @@
 		}
 		else
 		{
-			echo '<p>Website didn\'t find charity organizations for your country.</p>';
+			$msg_type = 'info';
+			$message = $text['charity_not_found'];
 		}
 	}
-	
+
+	if (isset($msg_type) and isset($message))
+	{
+		echo '<div class="alert alert-' . $msg_type . '">' . $message . '</div>';
+	}
 ?>
 </div>

@@ -1,27 +1,27 @@
-<h1>Sign Up</h1>
+<h1><?=$text['sign_up'];?></h1>
 <br />
 <form method="post">
 	<div class="row">
 		<div class="col-md-2">
-			<p>Nickname</p>
+			<p><?=$text['nickname'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="nickname">
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Full Name</p>
+			<p><?=$text['full_name'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="full_name">
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Timezone</p>
+			<p><?=$text['timezone'];?></p>
 		</div>
 		<div class="col-md-2">
 			<select name="timezone">
@@ -38,37 +38,37 @@
 			</select>
 		</div>
 	</div>	
-	
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>E-Mail</p>
+			<p><?=$text['email'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="email">
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Password</p>
+			<p><?=$text['password'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="password" maxlength="16">
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Repeat Password</p>
+			<p><?=$text['repeat_password'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="password_repeat" maxlength="16">
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Secret Question</p>
+			<p><?=$text['secret_question'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="secret_question">
@@ -77,7 +77,7 @@
 
 	<div class="row">
 		<div class="col-md-2">
-			<p>Secret Answer</p>
+			<p><?=$text['secret_answer'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="secret_answer">
@@ -89,12 +89,12 @@
 		$cmp_language = $hal_language;
 		require 'countryAndLanguageFields.php';
 	?>
-
+	<br />
 	<div class="row">
 		<div class="col-md-12">
 			<input type="hidden" name="menu" value="users_registration">
 			<!-- TO DO: check email by pattern-->
-			<input type="submit" name="submit" value="Sign Up" />
+			<input type="submit" name="submit" value="<?=$text['sign_up'];?>" />
 		</div>
 	</div>
 

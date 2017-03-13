@@ -1,5 +1,5 @@
-<h1>Charity Organizations of the World</h1>
-<p>Choose a country to look at charity organizations.</p>
+<h1><?=$text['charity_of_world'];?></h1>
+<p><?=$text['choose_a_country'];?>.</p>
 <?php
 
 	$query = 'select cnt.name `country`, lower(cnt.code) `country_code`, cont.name `continent` from countries cnt
@@ -30,7 +30,7 @@
 	}
 	else
 	{
-		echo '<div class="alert alert-danget">We\'ve got issue with charity links for country of the world. Please contact support.</div>';
+		echo '<div class="alert alert-danget">' . $text['charity_of_world_exception'] . '</div>';
 		log_msg(__FILE__ . ':' . __LINE__ . ' Countries PDO query exception. Info = {' . json_encode($statement_countries -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	}
 	

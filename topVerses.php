@@ -1,4 +1,4 @@
-<h2>Top Verses</h2>
+<h2><?=$text['top_verses'];?></h2>
 <?php
 	// it is program code =] for web page of top verses...
 
@@ -35,13 +35,13 @@
 			}
 			else
 			{
-				$message = "Whoops, we've got issue with favorite verses . Please, contact support.";
+				$message = $text['top_verses_exception'];
 				$msg_type = 'danger';
 			}
 		}
 		else
 		{
-			$message = "Whoops, we've got issue with favorite verses [choosing a Bible]. Please, contact support.";
+			$message = $text['top_verses_exception_bible'];
 			$msg_type = 'danger';
 		}
 	}

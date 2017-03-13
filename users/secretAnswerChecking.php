@@ -1,4 +1,4 @@
-<h1>Reset Password</h1>
+<h1><?=$text['reset_password'];?></h1>
 <?php
 	$statement = $links['sofia']['pdo'] -> prepare('select secret_answer from users where email = :email');
 	$statement -> execute(array('email' => $_POST['reset_email']));
@@ -12,7 +12,7 @@
 			
 			if(!$result)
 			{
-				echo '<p class="alert alert-danger">Whoops. We\'ve got issue with password reset. Sorry. Please, contact support.</p>';
+				echo '<p class="alert alert-danger">' . $text['reset_password_exception_vcode'] . $text['please_contact_support'] . '</p>';
 				log_msg(__FILE__ . ':' . __LINE__ . ' Verification code update exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 			else
@@ -20,27 +20,27 @@
 					$html_form = '<form method="post">
 				<div class="row">
 					<div class="col-md-2">
-						<p>Password</p>
+						<p>' . $text['password'] . '</p>
 					</div>
 					<div class="col-md-2">
 						<input type="password" name="password" maxlength="16">
 					</div>
 				</div>
-
+				<br />
 				<div class="row">
 					<div class="col-md-2">
-						<p>Repeat Password</p>
+						<p>' . $text['repeat_password'] . '</p>
 					</div>
 					<div class="col-md-2">
 						<input type="password" name="password_repeat" maxlength="16">
 					</div>
 				</div>
-
+				<br />
 				<div class="row">
 					<div class="col-md-12">
 						<input type="hidden" name="verification_code" value="<?=$verification_code;?>">
 						<input type="hidden" name="menu" value="users_passwordResetting">
-						<p align="center"><input type="submit" name="submit" value="Reset" /></p>
+						<p align="center"><input type="submit" name="submit" value="' . $text['reset'] . '" /></p>
 					</div>
 				</div>
 			</form>';
@@ -49,11 +49,11 @@
 		}
 		else
 		{
-			echo '<p class="alert alert-danger">Secret answer is incorrect.</p>';
+			echo '<p class="alert alert-danger">' . $text['incorrect_secret_answer']  . '</p>';
 		}
 	}
 	else
 	{
-		echo '<p class="alert alert-danger">Information for your email not found.</p>';
+		echo '<p class="alert alert-danger">' . $text['mail_not_found'] . '</p>';
 	}	
 ?>

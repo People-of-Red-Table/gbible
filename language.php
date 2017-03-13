@@ -1,5 +1,7 @@
 <?php
 
+	$languages = ['en-us', 'en-gb', 'en', 'pt-br', 'pt', 'es'];
+
 	if (isset($_REQUEST['country']))
 	{
 		$country = $_REQUEST['country'];
@@ -37,6 +39,11 @@
 	$hal_country = explode('-', $hal_language_country)[1];
 	$hal_language = strtolower($array[1]);
 	$fb_language_country = str_replace('-', '_', $hal_language_country);
+
+	if (file_exists('./languages/' . strtolower($hal_language_country) . '.php')
+		and in_array($hal_language_country, $languages))
+		require './languages/' . strtolower($hal_language_country) . '.php';
+
 
 	$charity_country = $hal_country;
 

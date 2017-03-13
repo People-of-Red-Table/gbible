@@ -2,17 +2,18 @@ DROP TABLE IF EXISTS `continents`;
 CREATE TABLE `continents` (
   `code` VARCHAR(2)  NOT NULL DEFAULT '',
   `name` VARCHAR(15) NOT NULL DEFAULT '',
+  `sort` int NOT NULL,
   UNIQUE KEY `code` (`code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `continents` (`code`, `name`) VALUES
-  ('AF', 'Africa'),
-  ('AN', 'Antarctica'),
-  ('AS', 'Asia'),
-  ('EU', 'Europe'),
-  ('NA', 'North America'),
-  ('OC', 'Oceania'),
-  ('SA', 'South America');
+  ('AF', 'Africa', 6),
+  ('AN', 'Antarctica', 7),
+  ('AS', 'Asia', 5),
+  ('EU', 'Europe', 4),
+  ('NA', 'North America', 1),
+  ('OC', 'Oceania', 3),
+  ('SA', 'South America', 2);
 
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE `countries` (

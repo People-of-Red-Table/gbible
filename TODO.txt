@@ -1,10 +1,7 @@
+Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
+Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
 
-
-
-Edit charity list [stopped on 8th page]. Add condition for country if _GET...
-charityLinks.php make there links to ?menu=charityOrganizationsOf&charity_country=%country_code%
-
-Clear countries and languages select boxes from "nut shells"... There are countries which don't have a Bible translations... And with strange [for users] codes "0x"...
+set keywords.
 
 Add social things for charity links in "Visitor's organizations list"
 ./?menu=users_profile&id=<?=$_SESSION['uid'];?>
@@ -13,15 +10,16 @@ clear verification code...
 Reset Password!! Check on the hosting. [127.0.0.1 has no "sendmail"].
 Suddenly, mail was't sent. 
 
+Select Favorite Verses [+], Chapters, Books, Bibles; delete from Favorites.
 
-Select Favorite Verses, Chapters, Books, Bibles; delete from Favorites.
+Show Top Verses[+], Chapter, Books and Bibles
 
-Show Top Verses, Chapter, Books and Bibles
-
-facebook, VK - Share and Like buttons. Check. FB - waiting for ID check, VK - need phone number.
+facebook, VK - Share and Like buttons. Check. FB - waiting for ID check, VK - need phone number [for Like].
 Tweet button [not link?]
 
-Top Verses and "My Favorite Verses" on favorite Bible [or for guests it is Bible of chosen language or something else...]
+HTML map for search engine robots: add John Hurt's Bibles.
+
+Top Verses [+], Bibles, books, chapter and "My Favorite Verses" on favorite Bible [or for guests it is Bible of chosen language or something else...]
 
 Favorite Bible which will be opened after sign in.
 
@@ -29,23 +27,16 @@ Take settings of user country and language. [mixing with POST, GET, COOKIES make
 
 if $language contains "-" split it to $language and $country. Fix showing John Hurt's Bibles in this case.
 
-Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
-Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
-
 Feedback page
-
-div class="alert alert-success" alert-info alert-warning alert-danger - set these classes for system messages.
-
-fix alignment "Open Bible" must be on right side.
 
 Add languages for such countries as Cameroon, Angola [Portuguese], Burkina Faso [French], Guyana [English]
 to iso_ms_languages or expand by another table
 
-
 Book titles in different languages [very possible that it will do PoRT]
 
-
 Social things
+
+Make Installation checker, script helper during installation which will say what system needs else.
 
 Output page obfuscation - traffic economy and security reason. Function obfuscate with double spaces by one space and deleting `\r\n` and `\n`.
 

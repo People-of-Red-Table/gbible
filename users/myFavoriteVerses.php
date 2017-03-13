@@ -1,4 +1,4 @@
-<h2>My Favorite Verses</h2>
+<h2><?php=$text['my_favorite_verses'];?></h2>
 <?php
 	// it is program code =] for web page of favorite verses...
 
@@ -37,14 +37,14 @@
 			}
 			else
 			{
-				$message = "Whoops, we've got issue with favorite verses . Please, contact support.";
+				$message = $text['my_favorite_verses_exception'] . ' ' . $text['please_contact_support'];
 				$msg_type = 'danger';
 				log_msg(__FILE__ . ':' . __LINE__ . ' Selecting favorite verses exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 		}
 		else
 		{
-			$message = "Whoops, we've got issue with favorite verses [choosing a Bible]. Please, contact support.";
+			$message = $text['MFV_bible_exception'] . $text['please_contact_support'];
 			$msg_type = 'danger';
 			log_msg(__FILE__ . ':' . __LINE__ . ' Bible choosing in favorite verses exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		}

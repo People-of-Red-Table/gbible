@@ -1,5 +1,6 @@
 <?php
 
+	$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
 	require '../config.php';
 	$link = $links['sofia']['mysql'];
 	mysqli_set_charset($link,'utf8');

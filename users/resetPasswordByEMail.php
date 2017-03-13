@@ -1,4 +1,4 @@
-<h1>Reset Password</h1>
+<h1><?=$text['reset_password'];?></h1>
 <?php
 	//$messages = [];
 	if (!isset($_REQUEST['verification_code'])
@@ -10,7 +10,7 @@
 		{
 			//$message[] = ['type' => 'danger'];
 			$msg_type = 'danger';
-			$message = "Your e-mail was not found.";
+			$message = $text['mail_not_found'];
 		}
 		else
 		{
@@ -22,30 +22,29 @@
 			if (!$result_code)
 			{
 				$msg_type = 'danger';
-				$message = "Whoops, verification code wasn't set. Please, contact support.";
+				$message = $text['verification_code_exception'] . ' ' . $text['please_contact_support'];
 				log_msg(__FILE__ . ':' . __LINE__ . ' Verification code wasn\'t set. Info = {' . json_encode($statement_code -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 			else
 			{
-				$result_mail_send = mail($user_row['email'], 'Golden Bible - Reset Password', 
-					'Greetings, ' . $user_row['full_name'] . '.' . PHP_EOL
-					. 'For your account on Bible Site http://' . $_SERVER['HTTP_HOST'] 
-					. ' was requested resetting of password. ' . PHP_EOL
-					. ' If you want to reset your password, please, click this link: ' . PHP_EOL
-					. 'http://' . $_SERVER['HTTP_HOST'] . '/?menu=users_resetPasswordByEMail&verification_code='
-					. $verification_code .'&reset_email=' . $user_row['email'] . PHP_EOL . PHP_EOL . PHP_EOL
-					. "If you didn't request this operation, just ignore this letter." . PHP_EOL . PHP_EOL
-					. 'Thank you.'
-				);
+				$email_text = $text['reset_password_mail'];
+
+				$email_text = str_replace('%user_name%', $user_row['full_name'], $email_text);
+				$email_text = str_replace('%http_host%', $_SERVER['HTTP_HOST'], $email_text);
+				$email_text = str_replace('%verification_code%', $verification_code, $email_text);
+				$email_text = str_replace('%user_email%', $user_row['email'], $email_text);
+
+				$result_mail_send = mail($user_row['email'], $text['golden_bible'] . ' - ' . $text['reset_password'], $email_text);
+
 				if ($result_mail_send)
 				{
 					$msg_type = 'info';
-					$message = 'Letter to your email ' . $user_row['email'] . ' was sent. Please, check your inbox. If you didn\'t find it, check your "Spam" folder';
+					$message = str_replace('%user_email%', $user_row['email'], $text['reset_mail_sent']);
 				}
 				else
 				{
 					$msg_type = 'danger';
-					$message = "Whoops, mail to " . $user_row['email'] . " wasn't sent. Please, contact support.";
+					$message = str_replace('%user_email%', $user_row['email'], $text['reset_mail_sent_not']) . ' ' . $text['please_contact_support'];
 					log_msg(__FILE__ . ':' . __LINE__ . ' Reset password letter wasn\'t sent. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 				}
 			}
@@ -63,16 +62,16 @@
 <form method="post">
 	<div class="row">
 		<div class="col-md-2">
-			<p>Password</p>
+			<p><?=$text['password'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="password" maxlength="16">
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p>Repeat Password</p>
+			<p><?=$text['repeat_password'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="password_repeat" maxlength="16">
@@ -84,7 +83,7 @@
 			<input type="hidden" name="verification_code" value="<?=$verification_code;?>">
 			<input type="hidden" name="email" value="<?=$_REQUEST['reset_email'];?>">
 			<input type="hidden" name="menu" value="users_resetPasswordByEMail">
-			<p align="center"><input type="submit" name="submit" value="Reset" /></p>
+			<p align="center"><input type="submit" name="submit" value="<?=$text['reset'];?>" /></p>
 		</div>
 	</div>
 </form>
@@ -110,19 +109,19 @@
 			if ($result_pswd)
 			{
 				$msg_type = 'success';
-				$message = "Password was changed. <a href='./?menu=users_signIn'>Sign In</a><meta http-equiv='refresh' content='2; ./?menu=users_signIn'>";
+				$message =  $text['password_changed'] . ' <a href="./?menu=users_signIn">' . $text['sign_in'] . '</a><meta http-equiv="refresh" content="2; ./?menu=users_signIn">';
 			}
 			else
 			{
 				$msg_type = 'danger';
-				$message = "Whoops. We've got issue with resetting password. Please, contact support.";
+				$message = $text['reset_password_exception'] . $text['please_contact_support'];
 				log_msg(__FILE__ . ':' . __LINE__ . ' Password wasn\'t updated. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 		}
 		else 
 		{
 			$msg_type = 'danger';
-			$message = "You typed different passwords.";
+			$message = $text['different_passwords'];
 		}
 	}
 	

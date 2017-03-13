@@ -1,10 +1,12 @@
 ﻿Sources of the system under license MIT with conditions:
 	- Charity links must be displayed on the page 
 	- Code of the system only for non-commercial use only
+	- Derivative works can be distibuted only under the same license with the same restrictions
 In case you delete or edit this code to break charity links, this license agreement is NOT applied to you.
 
 
-The MIT License 
+
+The MIT License [With restrictions]
 Copyright © 2017 Stanislav Demchenko
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:

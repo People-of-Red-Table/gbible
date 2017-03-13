@@ -13,7 +13,7 @@
 
 		if(!$result_user)
 		{
-			$message = "Whoops, we've got issue with \"Sign In\" . Please, contact support.";
+			$message = $text['sign_in_exception'] . ' ' . $text['please_contact_support'];
 			$msg_type = 'danger';
 			log_msg(__FILE__ . ':' . __LINE__ . ' Selecting user durig `Sign In` exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		}
@@ -28,7 +28,7 @@
 		{
 			$menu = 'users_signingIn';
 			$msg_type = 'danger';
-			$message = 'Authentification information is incorrect.';
+			$message = $text['incorrect_auth_info'];
 			$reset_email = $_POST['email'];
 		}
 	}
@@ -66,6 +66,12 @@
 			//$_SESSION['role_id'] = $row['role_id'];
 			//$_SESSION['role'] = $row['name'];
 			$_SESSION['timezone'] = $row['timezone'];
+
+			// to do: include user's language
+			if (file_exists('../languages/' . strtolower($hal_language_country) . '.php')
+				and in_array($hal_language_country, $languages))
+				require '../languages/' . strtolower($hal_language_country) . '.php';
+			
 
 			$_SESSION['topics_per_page'] = (empty($row['topics_per_page'])) ? 25 : $row['topics_per_page'];
 			$_SESSION['posts_per_page'] = (empty($row['posts_per_page'])) ? 25 : $row['posts_per_page'];
