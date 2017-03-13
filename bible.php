@@ -1,7 +1,6 @@
 <?php
 	require 'bible_nav.php';
 ?>
-	<table width="100%"><tr><td align="right"><img border="0" src="https://s18.postimg.org/y2xld3cwp/verse_Context_Menu.png" /></td></tr></table><br />
 	<div class="panel panel-primary">
 		<div class="panel-header">
 		<?php
@@ -54,7 +53,7 @@
 				$result_chapters = $statement_chapters -> execute(array('book' => $book));
 
 				if(!$result_chapters)
-					log_msg(__FILE__ . ':' . __LINE__ . ' PDO chapters query exception. Info = {' . json_encode($statement_chapters -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}' );
+					log_msg(__FILE__ . ':' . __LINE__ . ' PDO chapters query exception. Info = {' . json_encode($statement_chapters -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}, \$table_name = `' . $table_name . '`.' );
 
 				$chapters_rows = $statement_chapters -> fetchAll();
 				$chapters_links = '<div width="80%" align="center">';
@@ -76,11 +75,20 @@
 
 		?>
 			<div id="book-title"><center><h3><?=$book;?> <?=$chapter;?></h3></center></div>
-			<nav class="gb-pagination"><?=$chapters_links;?></nav>
+			<nav class="gb-pagination"><?=$chapters_links;?></nav><br />
 			<nav class="gb-chapter-nav"><?=$chapter_nav;?></nav>
 
 		</div>
 		<?php
+
+			if (stripos($b_code, '_http') === FALSE)
+			{
+				$verse_paragraph_title = 'Click on the verse to tweet, share [in facebook or VK]';
+				if ($_SESSION['uid'] > -1)
+					$verse_paragraph_title .= ', add to favorites';
+				$verse_paragraph_title .= ' or copy link to the verse to your clipboard';
+			}
+
 			$statement_verses = $links['sofia']['pdo'] -> prepare (
 						'select verseID, startVerse, verseText from ' . $table_name .
 						' where book = :book and chapter = :chapter'
@@ -88,7 +96,7 @@
 			$result_verses = $statement_verses -> execute(array('book' => $book, 'chapter' => $chapter));
 
 			if(!$result_verses)
-				log_msg(__FILE__ . ':' . __LINE__ . ' ' . ' PDO verses query exception. Info = {' . json_encode($statement_verses -> errorInfo())  . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
+				log_msg(__FILE__ . ':' . __LINE__ . ' ' . ' PDO verses query exception. Info = {' . json_encode($statement_verses -> errorInfo())  . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}, \$table_name = `' . $table_name . '`.');
 
 			$verses_rows = $statement_verses -> fetchAll();
 			$verses = '';
@@ -115,7 +123,7 @@
 				$first_words = substr($verse_row['verseText'], 0, 90) ;
 				if (strlen($verse_row['verseText']) > 90) $first_words .= '...';
 
-				$verses .= '<div class="dropdown"><p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="' . $verse_row['verseID'] . '"><sup>' . $verse_row['startVerse'] . '</sup> ' . $b_start . $verse_row['verseText'] . $b_end . '</p><ul class="dropdown-menu" aria-labelledby="' . $verse_row['verseID'] . '">';
+				$verses .= '<div class="dropdown"><p class="dropdown-toggle" title="' . $verse_paragraph_title . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="' . $verse_row['verseID'] . '"><sup>' . $verse_row['startVerse'] . '</sup> ' . $b_start . $verse_row['verseText'] . $b_end . '</p><ul class="dropdown-menu" aria-labelledby="' . $verse_row['verseID'] . '">';
 
 					if ($_SESSION['uid'] > - 1)
 						 $verses .= '<li><a href="./?menu=users_addVerseToFavorites&b_code=' . $b_code . '&id=' . $verse_row['verseID'] . '" target="_blank"><span class="glyphicon glyphicon-heart"></span> Add To Favorites</a></li>';
@@ -126,11 +134,15 @@
 						$url = 'http://' . $_SERVER['HTTP_HOST'] . $addition_url . '/?b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verse=' . $verse_row['startVerse'] . '#' . $verse_row['verseID'];
 
 						// Facebook Share
-						$verses .= '<div class="fb-share-button" data-href="%SHARE_URL%" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url) . '&src=sdkpreparse">Share</a></div><br />';
+						$verses .= '<li><div class="fb-share-button" data-href="%SHARE_URL%" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url) . '&src=sdkpreparse">Share</a></div></li>';
 
 						// Facebook Like
 
-						$verses .= '<div class="fb-like" data-href="' . $url . '" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div><br />';
+						$verses .= '<li><div class="fb-like" data-href="' . $url . '" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div></li>';
+
+						// VK Share Link
+
+						$verses .= '<li><a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> Share in VK</a></li>';
 
 						// VK Share https://vk.com/editapp?act=create
 						/*$verses .= '<a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank">Share in VK</a><br />';
@@ -175,10 +187,7 @@
 	</div>
 	<?php
 		if (stripos($b_code, '_http') === FALSE)
-		{
-			echo '<p style="font-size: 0.75em">Click on the verse to tweet';
-			if ($_SESSION['uid'] > -1)
-				echo ', add to favorites';
-			echo ' or copy link to the verse to your clipboard, use it to share verses.</p>';
+		{	
+			echo '<p style="font-size: 0.75em">' . $verse_paragraph_title . '</p>';
 		}
 	?>

@@ -7,4 +7,5 @@
 	require 'header.php';
 	require 'content.php';
 	require 'footer.php';
+	require 'free.php';
 ?>

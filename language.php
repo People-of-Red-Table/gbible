@@ -33,9 +33,9 @@
 	if (!isset($country))
 		$country = explode('-', $language_country)[1];
 
-	$hal_country = explode('-', $language_country)[1];;
+	$hal_language_country = strtolower($array[0]);
+	$hal_country = explode('-', $hal_language_country)[1];
 	$hal_language = strtolower($array[1]);
-	$hal_language_country = $language_country;
 	$fb_language_country = str_replace('-', '_', $hal_language_country);
 
 	if (strlen($country) > 2)

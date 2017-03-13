@@ -78,8 +78,8 @@
 		}
 	}
 
-	$links['gbible']['pdo'] = open_connection($db, 'pdo', 'gbible');
-	$links['gbible']['mysql'] = open_connection($db, 'mysql', 'gbible');
+	//$links['gbible']['pdo'] = open_connection($db, 'pdo', 'gbible');
+	//$links['gbible']['mysql'] = open_connection($db, 'mysql', 'gbible');
 	$links['sofia']['pdo'] = open_connection($db, 'pdo', 'sofia');	
 	$links['sofia']['mysql'] = open_connection($db, 'mysql', 'sofia');
 

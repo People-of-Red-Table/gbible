@@ -1,5 +1,6 @@
 <h1>Reset Password</h1>
 <?php
+	//$messages = [];
 	if (!isset($_REQUEST['verification_code'])
 		and isset($_REQUEST['reset_email']))
 	{
@@ -7,6 +8,7 @@
 		$result_email = $statement_email -> execute(array('email' => $_REQUEST['reset_email']));
 		if (!$result_email)
 		{
+			//$message[] = ['type' => 'danger'];
 			$msg_type = 'danger';
 			$message = "Your e-mail was not found.";
 		}
@@ -21,7 +23,7 @@
 			{
 				$msg_type = 'danger';
 				$message = "Whoops, verification code wasn't set. Please, contact support.";
-				log_msg(__FILE__ . ':' . __LINE__ . ' Verification code wasn\'t set. $_REQUEST = {' . json_encode($_REQUEST) . '}');
+				log_msg(__FILE__ . ':' . __LINE__ . ' Verification code wasn\'t set. Info = {' . json_encode($statement_code -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 			else
 			{

@@ -10,7 +10,7 @@
 				$statement -> execute(array('email' => $_GET['reset_email']));
 				if ($row = $statement -> fetch())
 				{
-					echo '<p>' . $row['secret_question'] '</p>';
+					echo '<p>Secret Question: ' . $row['secret_question'] '</p>';
 				}
 				else
 				{

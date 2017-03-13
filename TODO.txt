@@ -1,4 +1,4 @@
-
+Add social things for charity links in "Visitor's organizations list"
 ./?menu=users_profile&id=<?=$_SESSION['uid'];?>
 clear verification code...
 

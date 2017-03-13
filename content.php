@@ -4,7 +4,7 @@
 
 <?php
 
-	$menu_items = array('bible', 'charityLinks',
+	$menu_items = array('bible', 
 
 		// User "Sign Up", "Sign In"
 		'users_signUp', 'users_registration', 'users_signIn', 'users_signingIn',  'users_settings', 
@@ -21,7 +21,10 @@
 		'topVerses',
 
 		// tweet
-		'tweetVerse'
+		'tweetVerse',
+
+		// Charity
+		'charityLinks', 'charityOrganizationsOf'
 
 		);
 

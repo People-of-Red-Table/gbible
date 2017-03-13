@@ -120,16 +120,21 @@
 
 			$charity_links .= '<div class="col-md-2"><a href="http://redcross.org/" target="_blank">American Red Cross</a></div>';
 			
+			$charity_link_found = FALSE;
 			foreach ($charity as $item) 
 			{
 				if(strcasecmp($item['Code'], $hal_language_country) === 0)
 				{
+					$charity_link_found = true;
 					if ($item['CharityType'] == 'Charity')
 						$text = 'Charity for ';
 					else $text = $item['CharityType'] . ' of ';
 					$charity_links .= '<div class="col-md-2"><a href="' . $item['CharityLink'] . '" target="_blank">' . $text . $item['Country'] . '</a></div>';
 				}
 			}
+
+			if ($charity_link_found === FALSE)
+				log_msg(__FILE__ . ':' . __LINE__ . ' Charity link not found for visitor`s country. \$hal_language_country = `' . $hal_language_country . '`.');
 
 			$charity_links .=  '<div class="col-md-2"><a href="http://www.evansnyc.com/charity/" target="_blank">Charity for Russia</a></div>';
 
@@ -143,6 +148,12 @@
 			
 			echo $charity_links . '<br />';
 		?>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<center><a href="./?menu=charityOrganizationsOf" target="_blank">Charity Organizations of Your Country</a></center>
+			</div>
+		</div><br />
 
 		<div class="row">
 			<div class="col-md-12">
