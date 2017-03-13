@@ -38,6 +38,8 @@
 	$hal_language = strtolower($array[1]);
 	$fb_language_country = str_replace('-', '_', $hal_language_country);
 
+	$charity_country = $hal_country;
+
 	if (strlen($country) > 2)
 	{
 		$statement_country = $links['sofia']['pdo'] -> prepare('

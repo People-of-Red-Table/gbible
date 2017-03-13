@@ -21,6 +21,9 @@
 		}
 	}
 
+	if (isset($_REQUEST['charity_country']))
+		$charity_country = $_REQUEST['charity_country'];
+
 	if (stripos( $language, '-' ) !== FALSE)
 	{
 		$array = explode('-', $language);

@@ -52,7 +52,7 @@
 
 	if ($_SESSION['uid'] > 0)
 	{
-		$statement = $links['sofia']['pdo'] -> prepare('select * from users where id = :id');
+		$statement = $links['sofia']['pdo'] -> prepare('select * from users join countries cnt on users.country = cnt.name where id = :id');
 		$result = $statement -> execute(array('id' => $_SESSION['uid']));
 
 		if (!$result)
@@ -60,6 +60,7 @@
 		else
 		{
 			$row = $statement -> fetch();
+			$charity_country = $row['code'];
 			$_SESSION['nickname'] = $row['nickname'];
 			$_SESSION['email'] = $row['email'];
 			//$_SESSION['role_id'] = $row['role_id'];

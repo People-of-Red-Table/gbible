@@ -1,3 +1,11 @@
+
+
+
+Edit charity list [stopped on 8th page]. Add condition for country if _GET...
+charityLinks.php make there links to ?menu=charityOrganizationsOf&charity_country=%country_code%
+
+Clear countries and languages select boxes from "nut shells"... There are countries which don't have a Bible translations... And with strange [for users] codes "0x"...
+
 Add social things for charity links in "Visitor's organizations list"
 ./?menu=users_profile&id=<?=$_SESSION['uid'];?>
 clear verification code...
@@ -24,7 +32,7 @@ if $language contains "-" split it to $language and $country. Fix showing John H
 Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
 Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
 
-Feedback page.
+Feedback page
 
 div class="alert alert-success" alert-info alert-warning alert-danger - set these classes for system messages.
 

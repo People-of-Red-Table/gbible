@@ -1,6 +1,6 @@
 <?php
 	$statement_country_name = $links['sofia']['pdo'] -> prepare('select name from countries where code = :code');
-	$result_country_name = $statement_country_name -> execute(['code' => $country]);
+	$result_country_name = $statement_country_name -> execute(['code' => $charity_country]);
 	$country_row = $statement_country_name -> fetch();
 ?>
 
@@ -17,7 +17,7 @@
 								join charity_organization_types cot on co.charity_organization_type_id = cot.id
 								where country_code = :code
 					');
-	$result_charities = $statement_charities -> execute(['code' => $country]);
+	$result_charities = $statement_charities -> execute(['code' => $charity_country]);
 	if (!$result_charities)
 	{
 		log_msg(__FILE__ . ':' . __LINE__ . ' Charities PDO query exception. Info = {' . json_encode($statement_charities -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
@@ -36,7 +36,7 @@
 		}
 		else
 		{
-			echo '<p>Website didn\'t find charity organozations for your country.</p>';
+			echo '<p>Website didn\'t find charity organizations for your country.</p>';
 		}
 	}
 	
