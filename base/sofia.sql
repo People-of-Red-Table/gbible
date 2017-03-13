@@ -340,4 +340,4 @@ INSERT INTO `charity_organizations` (`id`, `country_code`, `english_name`, `nati
 (284, 'km', 'Charity for Comoros', '', NULL, 'http://www.comoroscharity.org/', 3),
 (285, 'mr', 'Charity for Mauritania', '', NULL, 'https://goo.gl/XK81gO', 3),
 (286, 'so', 'Charity for Somalia', '', NULL, 'https://goo.gl/1Bn35T', 3),
-(287, 'vt', 'Catholic Parents Online', NULL, NULL, 'http://www.catholicparents.org/', 3);
+(287, 'va', 'Catholic Parents Online', NULL, NULL, 'http://www.catholicparents.org/', 3);

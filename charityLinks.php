@@ -1,236 +1,37 @@
+<h1>Charity Organizations of the World</h1>
+<p>Choose a country to look at charity organizations.</p>
 <?php
 
-$charity = array(
-'United States' => 'http://redcross.org/',
-'Brazil' => 'https://goo.gl/cX7xcr',
-'Mexico' => 'http://cruzrojamexicana.org.mx/',
-'Philippines' => 'http://redcross.org.ph/',
-'Nigeria' => 'http://redcrossnigeria.org/',
-'Russia' => 'http://www.evansnyc.com/charity/',
-'Congo, Democratic Republic of' => 'http://congohelpinghands.org/',
-'Italy' => 'http://cri.it/',
-'Europe' => 'http://redcross.eu/',
-'Ethiopia' => 'http://redcrosseth.org/',
-'Germany' => 'http://www.drk.de/',
-'Colombia' => 'http://www.cruzrojacolombiana.org/',
-'South Africa' => 'http://yfc.org.za/',
-'Argentina' => 'http://www.cruzroja.org.ar/',
-'France' => 'http://www.croix-rouge.fr/',
-'Poland' => 'http://www.pck.pl/index.php?lang=en',
-'Kenya' => 'http://www.kenyaredcross.org/',
-'United Kingdom' => 'http://redcross.org.uk/',
-'Spain' => 'http://www.cruzroja.es/',
-'Tanzania' => 'http://www.trcs.or.tz/',
-'People\'s Republic of China' => 'http://www.redcross.org.cn/',
-'Uganda' => 'http://www.redcrossug.org/',
-'India' => 'http://indianredcross.org/',
-'Venezuela' => 'http://www.cruzrojavenezolana.org/',
-'Peru' => 'http://www.cruzroja.org.pe/',
-'Indonesia' => 'http://www.pmi.or.id/',
-'Canada' => 'http://www.redcross.ca/donate',
-'Ghana' => 'http://www.redcrossghana.org/',
-'Romania' => 'http://www.crucearosie.ro/',
-'Angola' => 'http://www.cruzvermelha.og.ao/',
-'Ukraine' => 'https://goo.gl/niAr27',
-'Korea, South' => 'https://www.redcross.or.kr/eng/eng_main/main.do',
-'Ecuador' => 'http://www.cruzroja.org.ec/',
-'Guatemala' => 'http://www.cruzroja.gt/',
-'Australia' => 'http://www.redcross.org.au/donate.aspx',
-'Cameroon' => 'http://www.idealist.org/view/org/8WbKBhBbx874/',
-'Mozambique' => 'https://goo.gl/SqMbSU',
-'Zambia' => 'https://goo.gl/L6mt1K',
-'Malawi' => 'https://goo.gl/ouh5qK',
-'Zimbabwe' => 'https://goo.gl/bmDftq',
-'Greece' => 'http://www.redcross.gr/',
-'Portugal' => 'http://www.cruzvermelha.pt/',
-'Chile' => 'http://www.cruzroja.cl/',
-'Dominican Republic' => 'https://goo.gl/vzjjpR',
-'Bolivia' => 'http://www.ayuda.org/',
-'Rwanda' => 'http://www.rwandaredcross.org/',
-'Haiti' => 'http://www.croixrouge.ht/',
-'Egypt' => 'http://egyptianrc.org/',
-'Madagascar' => 'http://helpmg.org/',
-'Burundi' => 'http://www.croixrougeburundi.org/',
-'Serbia' => 'http://www.redcross.org.rs/',
-'Côte d\'Ivoire' => 'http://www.icmrt.org',
-'Vietnam' => 'http://redcross.org.vn/',
-'Belgium' => 'http://www.redcross.be/',
-'Papua New Guinea' => 'https://goo.gl/Gx0a0n',
-'Cuba' => 'http://www.sld.cu/sitios/cruzroja',
-'Honduras' => 'http://www.cruzroja.org.hn/',
-'Bulgaria' => 'http://en.redcross.bg/',
-'Sweden' => 'http://www.redcross.se/',
-'Paraguay' => 'http://www.cruzroja.org.py/',
-'Austria' => 'http://www.charity-charities.org/Austria-charities/Vienna.html',
-'South Sudan' => 'http://southsudanredcross.org/',
-'Netherlands' => 'http://www.rodekruis.nl/',
+	$query = 'select cnt.name `country`, lower(cnt.code) `country_code`, cont.name `continent` from countries cnt
+			join continents cont on cnt.continent = cont.code
+			where cnt.code in (select distinct country_code from charity_organizations)
+			order by cnt.continent desc, cnt.name asc
+	';
+
+	$statement_countries = $links['sofia']['pdo'] -> prepare($query);
+
+	$result_countries = $statement_countries -> execute();
+	$counter = 0;
+	if ($result_countries)
+	{
+	$countries_rows = $statement_countries -> fetchAll();
+
+		$continent = '';
+		foreach ($countries_rows as $country_row) 
+		{
+			if ($continent !== $country_row['continent'])
+			{
+				$continent = $country_row['continent'];
+				echo '<h2>' . $continent . '</h2><br />';
+			}
+			echo '<a href="./?menu=charityOrganizationsOf&charity_country=' . $country_row['country_code'] . '">' . $country_row['country'] . '</a><br />';
+		}
+		$counter++;
+	}
+	else
+	{
+		echo '<div class="alert alert-danget">We\'ve got issue with charity links for country of the world. Please contact support.</div>';
+		log_msg(__FILE__ . ':' . __LINE__ . ' Countries PDO query exception. Info = {' . json_encode($statement_countries -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
+	}
 	
-// first in order, cause origin of Red Cross
-' Switzerland' => 'http://www.redcross.ch/',
-'Latvia' => 'http://www.redcross.lv/en/',
-'Belarus' => 'http://redcross.by/',
-'Hungary' => 'http://www.voroskereszt.hu/',
-'Nicaragua' => 'http://cruzrojanicaraguense.org/',
-'El Salvador' => 'http://www.cruzrojasal.org.sv/',
-'Slovakia' => 'http://www.redcross.sk/',
-'Denmark' => 'http://www.rodekors.dk/',
-'Chad' => 'http://www.chadnow.com/chad_links/chad_aid_links.php',
-'Kazakhstan' => 'http://www.redcrescent.kz/',
-'Finland' => 'http://www.redcross.fi/',
-'Croatia' => 'http://www.hck.hr/',
-'Ireland' => 'http://www.redcross.ie/',
-'Benin' => 'http://croixrougebenin.afredis.com/',
-'Georgia' => 'http://redcross.ge/',
-'Costa Rica' => 'http://www.cruzroja.or.cr/',
-'Norway' => 'http://www.rodekors.no/',
-'Myanmar' => 'http://www.redcross.org.mm/',
-'Burkina Faso' => 'http://www.croixrougebf.org/',
-'Moldova' => 'http://redcross.md/',
-'Panama' => 'http://www.cruzroja.org.pa/',
-'Japan' => 'http://www.jrc.or.jp/',
-'Eritrea' => 'http://www.era-uk.org/',
-'Lithuania' => 'http://www.redcross.lt/',
-'Armenia' => 'http://redcross.am/',
-'Malaysia' => 'http://www.malaysiancare.org/',
-'Pakistan' => 'http://www.prcs.org.pk/',
-'Central African Republic' => 'https://goo.gl/HucaYG',
-'Namibia' => 'http://www.redcross.org.na',
-'Togo' => 'http://www.croixrouge-togo.org/',
-'Uruguay' => 'http://www.cruzrojauruguaya.org/',
-'Lesotho' => 'http://www.redcross.org.ls/',
-'New Zealand' => 'http://www.redcross.org.nz/',
-'Syria' => 'http://www.sarc.sy/',
-'Jamaica' => 'http://jamaicaredcross.org/',
-'Bosnia and Herzegovina' => 'http:///www.rcsbh.org/',
-'Slovenia' => 'http://www.rks.si/',
-'Lebanon' => 'http://www.lccm.us/',
-'Latvia' => 'http://www.redcross.lv/en/',
-'Sri Lanka' => 'http://www.redcross.lk/',
-'Saudi Arabia' => 'http://saudiredcrescent.com/',
-'Botswana' => 'http://bocaip.org.bw/',
-'Liberia' => 'http://liftingliberia.org/',
-'Macedonia, Republic of' => 'http://www.ckrm.org.mk/',
-'Czech Republic' => 'http://www.cervenykriz.eu/',
-'East Timor' => 'http://www.redcross.tl/',
-'Gabon' => 'http://croixrouge-gabon.org/',
-'Guinea' => 'https://goo.gl/4CQyx8',
-'Swaziland' => 'https://goo.gl/6QVFBL',
-'Iraq' => 'http://www.ircs.org.iq/',
-'United Arab Emirates' => 'http://www.rcuae.ae/',
-'Singapore' => 'https://www.redcross.sg/',
-'Cyprus' => 'http://www.redcross.org.cy/en/home',
-'Hong Kong' => 'http://redcross.org.hk',
-'Thailand' => 'https://english.redcross.or.th',
-'Trinidad and Tobago' => 'https://goo.gl/l57Ue1',
-'Uzbekistan' => 'http://redcrescent.uz/',
-'Equatorial Guinea' => 'https://goo.gl/ZGXcEv',
-'Sierra Leone' => 'http://www.sierraleoneredcross.net/',
-'Kyrgyzstan' => 'http://www.redcrescent.kg/',
-'Albania' => 'http://www.kksh.org.al/',
-'Senegal' => 'http://www.croixrougesenegal.com/',
-'Fiji' => 'http://www.redcross.com.fj',
-'Sudan' => 'http://srcs.sd/',
-'Montenegro' => 'http://www.ckcg.co.me/',
-'Cape Verde' => 'https://goo.gl/5DbtM6',
-'Turkmenistan' => 'https://goo.gl/Zhsvsc',
-'Kuwait' => 'http://krcs.org.kw/',
-'Guyana' => 'http://guyanaredcross.org.gy/',
-'Bangladesh' => 'http://www.bdrcs.org/',
-'Mauritius' => 'http://www.mauritiusredcross.org/',
-'Korea, North' => 'http://www.helpinghandskorea.org/',
-'Malta' => 'http://www.redcross.org.mt',
-'Jordan' => 'http://www.jnrcs.org/',
-'Algeria' => 'http://www.cra-algerie.org/',
-'Iran' => 'http://www.rcs.ir/',
-'Luxembourg' => 'http://www.croix-rouge.lu/en/',
-'Mali' => 'http://www.croixrouge-mali.org/',
-'Morocco' => 'http://www.croissant-rouge.ma/',
-'Estonia' => 'http://www.redcross.ee/',
-'Azerbaijan' => 'http://www.redcrescent.az/',
-'Iceland' => 'http://www.redcross.is/',
-'Bahamas' => 'http://www.bahamasredcross.com',
-'Nepal' => 'http://www.nrcs.org/',
-'Qatar' => 'http://www.qrcs.org.qa/',
-'Suriname' => 'https://goo.gl/BPsz9U',
-'Belize' => 'https://goo.gl/ILXLDt',
-'Barbados' => 'http://www.barbadosyp.com/Barbados/Charitable-Organisations',
-'Bahrain' => 'http://www.rcsbahrain.org/',
-'Oman' => 'https://goo.gl/P9hqeW',
-'Libya' => 'https://www.libyahumanaid.org/',
-'Guinea-Bissau' => 'https://goo.gl/JrWyk6',
-'Cambodia' => 'http://www.redcross.org.kh/index.php?lang=en',
-'Laos' => 'http://www.laoredcross.org.la/en/',
-'Turkey' => 'http://www.kizilay.org.tr/',
-'Tajikistan' => 'http://www.redcrescent.tj/',
-'Micronesia, Federated States of' => 'http://www.habele.org/',
-'Grenada' => 'http://www.grenadaredcross.org/',
-'Aruba' => 'http://redcrossaruba.com/',
-'Niger' => 'https://goo.gl/QNi7hC',
-'Tonga' => 'http://www.tongaredcross.com/',
-'Seychelles' => 'http://www.seychellesredcross.sc/',
-'Gambia' => 'http://www.redcross.gm',
-'Andorra' => 'http://www.creuroja.ad/',
-'American Samoa' => 'https://redcross.wordpress.com/tag/american-samoa/',
-'Antigua and Barbuda' => 'https://goo.gl/eeNFnN',
-'Dominica' => 'https://goo.gl/yJBRvc',
-'Mongolia' => 'http://www.redcross.mn/',
-'Greenland' => 'https://goo.gl/J5pnNU',
-'Djibouti' => 'http://www.redcrescent-dj.org/',
-'Brunei' => 'https://goo.gl/P7ccRU',
-'Bermuda' => 'http://www.bermudaredcross.com/',
-'Cayman Islands' => 'http://www.redcross.org.ky/',
-//'Faroe Islands' => '',
-'Liechtenstein' => 'http://www.roteskreuz.li/',
-'Monaco' => 'http://www.croix-rouge.mc/',
-'Tunisia' => 'https://goo.gl/MMS1Fd',
-'Yemen' => 'http://www.zakat.org/country/yemen/',
-'British Virgin Islands' => 'https://goo.gl/0pRJVN',
-'Cook Islands' => 'http://cookfoundation.org/',
-'Palau' => 'https://goo.gl/Id7lKD',
-'Anguilla' => 'https://charitylook.org/city/anguilla/',
-'Comoros' => 'http://www.comoroscharity.org/',
-'Bhutan' => 'https://goo.gl/DRHEHH',
-'Afghanistan' => 'http://www.redcrescent.af/',
-'Mauritania' => 'https://goo.gl/XK81gO',
-'Falkland Islands' => 'http://www.falklandsconservation.com/',
-'Somalia' => 'https://goo.gl/1Bn35T',
-'Maldives' => 'https://redcrescent.org.mv/',
-'Taiwan' => 'http://www.redcross.org.tw/english/',
-'Vatican City' => 'http://www.catholicparents.org/',
-'Israel' => 'http://www.israelgives.org/'
-				);
-
-$a_charity = $charity;
-ksort($a_charity);
-$r_charity = array_reverse($charity);
-
-echo "<table width='100%'><tr><th>Christianity Count Order</th><th>Order</th><th>Reverse Order</th></tr><tr><td width='30%'>";
-	foreach ($charity as $key => $value)
-	{
-		$key = trim(str_replace('( details)', '', $key));
-		if (strpos($value, 'http') != 0) $value = 'http://' . $value;
-		echo "<a href='" . $value . "' target='_blank'>" . $key . "</a><br />";
-	}
-	echo "</td>";
-
-echo "<td width='30%'>";
-	foreach ($a_charity as $key => $value)
-	{
-		$key = trim(str_replace('( details)', '', $key));
-		if (strpos($value, 'http') != 0) $value = 'http://' . $value;
-		echo "<a href='" . $value . "' target='_blank'>" . $key . "</a><br />";
-	}
-
-	echo "</td>";
-echo "<td>";
-	foreach ($r_charity as $key => $value)
-	{
-		$key = trim(str_replace('( details)', '', $key));
-		if (strpos($value, 'http') != 0) $value = 'http://' . $value;
-		echo "<a href='" . $value . "' target='_blank'>" . $key . "</a><br />";
-	}
-echo "</td></tr></table>";
-
-
-
 ?>

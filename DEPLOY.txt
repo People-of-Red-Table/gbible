@@ -16,7 +16,7 @@ Be sure that new tables are created on the remote database server.
 
 Check changes before deploy. Check the site after deploy. Is it working?
 
-Current server is on free [!] hosting, so, it is not so fast and sometimes web server gives its errors.
+Current server is on free [!] hosting, so, it is not so fast and sometimes web server gives its "500"... And speed of copying is not much, cause project is on Free account [FTP and Web].
 
 But "we" PoRT [or me =] are grateful, cause it is not easy to find good free hosting with PHP and SQL.
 http://hostinger.co.uk/

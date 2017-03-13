@@ -1165,9 +1165,14 @@ insert into licenses (license, link) values ('Creative Commons 3.0', 'http://cre
 
 
 
+update b_shelf set country = 'Papua New Guinea' where b_code in ('yrb', 'yon', 'mpx', 'mmx', 'ipi');
+update b_shelf set country = 'Ethiopia' where b_code = 'wal';
+update b_shelf set country = 'Brazil' where b_code = 'pt_bliv';
+update b_shelf set country = 'Somalia' where b_code = 'som';
 
-
-
+update iso_ms_languages set country_name = 'China' where language_code = 'zh-CHS';
+update iso_ms_languages set country_name = 'Taiwan' where language_code = 'zh-CHT';
+update iso_ms_languages set country_name = 'Macedonia' where language_code = 'mk-MK';
 
 
 

@@ -13,10 +13,11 @@
 		if(isset($_REQUEST[$item]))
 		{
 			$$item = $_REQUEST[$item];
-			if (isset($_GET[$item]))
+			/*if (isset($_GET[$item]))
 				setcookie($item, $_GET[$item], time() + 30 * 24 * 3600);
 			if (isset($_POST[$item]))
 				setcookie($item, $_POST[$item], time() + 30 * 24 * 3600);
+			*/
 
 		}
 	}

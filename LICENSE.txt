@@ -1,3 +1,9 @@
+﻿Sources of the system under license MIT with conditions:
+	- Charity links must be displayed on the page 
+	- Code of the system only for non-commercial use only
+In case you delete or edit this code to break charity links, this license agreement is NOT applied to you.
+
+
 The MIT License 
 Copyright © 2017 Stanislav Demchenko
 

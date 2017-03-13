@@ -31,10 +31,8 @@
 
 						<select id="country-selection" class="bible-nav-select" style="max-width: 20em" name="country" onchange="document.countrySelectionForm.submit();" id="countryOfCountrySelectionForm">
 							<?php
-									
-									$result_countries = mysqli_query($links['sofia']['mysql'], '
-										select distinct country `country_name`, 
-										case when cnt.native is null then t.country else cnt.native end `country`
+									$query = 'select distinct country `country_name`, 
+												case when cnt.native is null then t.country else cnt.native end `country`
 										from
 										(select country from b_shelf 
 										union all
@@ -42,7 +40,8 @@
 												where language_name in (select language_name from b_shelf)
 										) as t
 										left join countries cnt on t.country = cnt.name
-										order by country');
+										order by country';
+									$result_countries = mysqli_query($links['sofia']['mysql'], $query);
 									if (!$result_countries)
 									{
 										log_msg(__FILE__ . ':' . __LINE__ . ' 
