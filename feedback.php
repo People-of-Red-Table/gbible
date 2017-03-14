@@ -40,6 +40,8 @@
 
 ?>
 <br />
+<div class="alert alert-info"><?=$text['fb_pre_message'];?></div>
+<br />
 <form method="post">
 	<div class="row">
 		<div class="col-md-2">

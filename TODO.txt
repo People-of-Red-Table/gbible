@@ -1,4 +1,6 @@
 
+Deploy translations and feedback page. Push it to Git.
+
 Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
 Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
 

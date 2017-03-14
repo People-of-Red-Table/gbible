@@ -26,7 +26,7 @@
 		// Charity
 		'charityLinks', 'charityOrganizationsOf',
 
-		'feedback'
+		'feedback', 'changeLanguage'
 
 		);
 

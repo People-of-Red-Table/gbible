@@ -73,8 +73,8 @@
 						<!--<li>
 							<a href="#">Top</a>
 						</li>
-						<li><a href="#">Bookshelf</a></li>
-					</ul>-->
+						<li><a href="#">Bookshelf</a></li>-->
+					</ul>
 
 					<!--<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">Sign In</a></li>
@@ -95,6 +95,7 @@
 						else 
 						{
 					?>
+						<li><a href="./?menu=changeLanguage"><?=$text['text_languages'];?></a></li>
 						<li><a href="./?menu=users_signUp"><?=$text['sign_up'];?></a></li>
 						<li><a href="./?menu=users_signIn"><?=$text['sign_in'];?></a></li>
 					<?php

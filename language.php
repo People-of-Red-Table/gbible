@@ -41,13 +41,38 @@
 	$fb_language_country = str_replace('-', '_', $hal_language_country);
 
 	require './languages/en.php';
-	if (file_exists('./languages/' . strtolower($hal_language_country) . '.php')
-		and in_array($hal_language_country, $languages))
-		require './languages/' . strtolower($hal_language_country) . '.php';
-	elseif (file_exists('./languages/' . strtolower($hal_language) . '.php')
-		and in_array($hal_language, $languages))
-		require './languages/' . strtolower($hal_language) . '.php';
 
+	$interface_language = strtolower($hal_language_country);
+
+
+	if (isset($_SESSION['interface_language']))
+	{
+		$interface_language = $_SESSION['interface_language'];
+	}
+
+	if (isset($_REQUEST['interface_language']))
+	{
+		$interface_language = $_REQUEST['interface_language'];
+		setcookie('interface_language', $_REQUEST['interface_language'], 30 * 24 * 3600);
+		$_SESSION['interface_language'] = $_REQUEST['interface_language'];
+	}
+
+	$lang_path = './languages/' . $interface_language . '.php';
+
+	if (file_exists($lang_path)
+		and in_array($interface_language, $languages))
+		require $lang_path;
+	else
+	{
+		if (stripos($interface_language, '-') !== FALSE)
+		{
+			$interface_language = explode('-', $interface_language)[0];
+			$lang_path = './languages/' . $interface_language . '.php';					
+			if (file_exists($lang_path)
+			and in_array($interface_language, $languages))
+			require $lang_path;
+		}
+	}
 
 	$charity_country = $hal_country;
 

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require 'log.php';
 	require 'config.php';
 	require 'language.php';

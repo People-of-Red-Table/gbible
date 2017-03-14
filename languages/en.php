@@ -120,9 +120,12 @@
 	$text['text_subject'] = 'Subject';
 	$text['text_message'] = 'Message';
 	$text['text_send'] = 'Send';
+	$text['fb_pre_message'] = 'We value your feedback and it will be really nice of you if you will write it in English. Thank you.';
 	$text['fb_message_sent'] = 'Your message was sent. Thank you.';
 	$text['fb_message_was_not_sent'] = 'Your message was not sent. ' . $text['please_contact_support'];
 
-
+	$text['text_languages'] = 'Languages';
+	$text['text_int_languages'] = 'Interface Languages';
+	$text['choose_language'] = 'Choose Language';
 
 ?>

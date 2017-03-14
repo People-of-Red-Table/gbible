@@ -108,7 +108,7 @@
 	<br />
 	<div class="row">
 		<div class="col-md-12">
-			<input type="hidden" name="menu" value="users_saveSettings">
+			<input type="hidden" name="menu" value="changeLanguage">
 			<!-- TO DO: check email by pattern-->
 			<p align="center"><input type="submit" name="submit" value="<?=$text['text_save'];?>" /></p>
 		</div>
