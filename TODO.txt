@@ -1,14 +1,14 @@
+
 Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
 Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
 
-set keywords.
+Set keywords.
 
-Add social things for charity links in "Visitor's organizations list"
+Add social things for charity links in visitor's charity organizations list
 ./?menu=users_profile&id=<?=$_SESSION['uid'];?>
 clear verification code...
 
 Reset Password!! Check on the hosting. [127.0.0.1 has no "sendmail"].
-Suddenly, mail was't sent. 
 
 Select Favorite Verses [+], Chapters, Books, Bibles; delete from Favorites.
 
@@ -17,7 +17,7 @@ Show Top Verses[+], Chapter, Books and Bibles
 facebook, VK - Share and Like buttons. Check. FB - waiting for ID check, VK - need phone number [for Like].
 Tweet button [not link?]
 
-HTML map for search engine robots: add John Hurt's Bibles.
+HTML map for search engine robots: add John Hurt's Bibles, for languages.
 
 Top Verses [+], Bibles, books, chapter and "My Favorite Verses" on favorite Bible [or for guests it is Bible of chosen language or something else...]
 
@@ -27,7 +27,6 @@ Take settings of user country and language. [mixing with POST, GET, COOKIES make
 
 if $language contains "-" split it to $language and $country. Fix showing John Hurt's Bibles in this case.
 
-Feedback page
 
 Add languages for such countries as Cameroon, Angola [Portuguese], Burkina Faso [French], Guyana [English]
 to iso_ms_languages or expand by another table

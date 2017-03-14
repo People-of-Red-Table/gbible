@@ -29,22 +29,22 @@
 			{
 				$email_text = $text['reset_password_mail'];
 
-				$email_text = str_replace('%user_name%', $user_row['full_name'], $email_text);
-				$email_text = str_replace('%http_host%', $_SERVER['HTTP_HOST'], $email_text);
-				$email_text = str_replace('%verification_code%', $verification_code, $email_text);
-				$email_text = str_replace('%user_email%', $user_row['email'], $email_text);
+				$email_text = str_ireplace('%user_name%', $user_row['full_name'], $email_text);
+				$email_text = str_ireplace('%http_host%', $_SERVER['HTTP_HOST'], $email_text);
+				$email_text = str_ireplace('%verification_code%', $verification_code, $email_text);
+				$email_text = str_ireplace('%user_email%', $user_row['email'], $email_text);
 
 				$result_mail_send = mail($user_row['email'], $text['golden_bible'] . ' - ' . $text['reset_password'], $email_text);
 
 				if ($result_mail_send)
 				{
 					$msg_type = 'info';
-					$message = str_replace('%user_email%', $user_row['email'], $text['reset_mail_sent']);
+					$message = str_ireplace('%user_email%', $user_row['email'], $text['reset_mail_sent']);
 				}
 				else
 				{
 					$msg_type = 'danger';
-					$message = str_replace('%user_email%', $user_row['email'], $text['reset_mail_sent_not']) . ' ' . $text['please_contact_support'];
+					$message = str_ireplace('%user_email%', $user_row['email'], $text['reset_mail_sent_not']) . ' ' . $text['please_contact_support'];
 					log_msg(__FILE__ . ':' . __LINE__ . ' Reset password letter wasn\'t sent. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 				}
 			}
@@ -62,7 +62,7 @@
 <form method="post">
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['password'];?></p>
+			<p><?=$text['text_password'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="password" maxlength="16">
@@ -83,7 +83,7 @@
 			<input type="hidden" name="verification_code" value="<?=$verification_code;?>">
 			<input type="hidden" name="email" value="<?=$_REQUEST['reset_email'];?>">
 			<input type="hidden" name="menu" value="users_resetPasswordByEMail">
-			<p align="center"><input type="submit" name="submit" value="<?=$text['reset'];?>" /></p>
+			<p align="center"><input type="submit" name="submit" value="<?=$text['text_reset'];?>" /></p>
 		</div>
 	</div>
 </form>

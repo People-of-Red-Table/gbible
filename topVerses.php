@@ -4,6 +4,15 @@
 
 	if (isset($b_code))
 	{
+		$b_code_changed = FALSE;
+		$changed_b_code = $b_code;
+		if (stripos($b_code, 'http') !== FALSE)
+		{
+
+			$b_code = 'eng-asv';
+			$b_code_changed = true;
+		}
+
 		$statement_bible = $links['sofia']['pdo']
 		 -> prepare('select sh.b_code, sh.title, sh.license, l.link, sh.table_name from b_shelf sh
 		 	join licenses l on sh.license = l.license
@@ -43,6 +52,12 @@
 		{
 			$message = $text['top_verses_exception_bible'];
 			$msg_type = 'danger';
+		}
+
+		if ($b_code_changed)
+		{
+			$b_code = $changed_b_code;
+			$b_code_changed = FALSE;
 		}
 	}
 	if (isset($message) and isset($msg_type))

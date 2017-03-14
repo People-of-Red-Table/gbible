@@ -54,7 +54,7 @@
 
 				<div class="navbar" id="nav">
 					<ul class="nav navbar-nav">
-						<li><a href="./?menu=bible"><?=$text['open'];?></a></li>
+						<li><a href="./?menu=bible"><?=$text['text_open'];?></a></li>
 						<li><a href="./?menu=topVerses"><?=$text['top_verses'];?></a></li>
 
 					<?php
@@ -67,7 +67,7 @@
 					?>
 
 						<li><a href="./?menu=charityLinks"><?=$text['charity_of_world'];?></a></li>
-						<li><a href="http://charity-port.16mb.com/" title="<?=$text['port_title'];?>" target="_blank"><?=$text['community'];?></a></li>
+						<li><a href="http://charity-port.16mb.com/" title="<?=$text['port_title'];?>" target="_blank"><?=$text['text_community'];?></a></li>
 
 						<!--<li><a href="#" data-toggle="modal" data-target="#bibleSelectionDialog">Open</a></li>-->
 						<!--<li>
@@ -87,7 +87,7 @@
 						if ($_SESSION['uid'] > -1)
 						{
 					?>
-						<li><a href="./?menu=users_settings"><?=$text['settings'];?></a></li>
+						<li><a href="./?menu=users_settings"><?=$text['text_settings'];?></a></li>
 						<li><a href="./?menu=sign_out"><?=$text['sign_out'];?></a></li>
 						<li><a href="#"><b><?=$_SESSION['nickname'];?></b></a></li>
 					<?php
@@ -136,16 +136,19 @@
 
 			$charity_links .= '<div class="col-md-2"><a href="http://redcross.org.uk/" target="_blank">' . $text['british_red_cross'] . '</a></div>';
 	
-			$charity_links .= '<div class="col-md-2"><a href="http://icrc.org/" target="_blank">' . $text['icrc'] . '</a></div>';
+			$charity_links .= '<div class="col-md-2"><a href="http://icrc.org/" target="_blank">' . $text['text_icrc'] . '</a></div>';
 
 			$charity_links .= '</div>';
 			
 			echo $charity_links . '<br />';
-		?>
 		
+			$statement_country_name = $links['sofia']['pdo'] -> prepare('select native from countries where code = :code');
+			$result_country_name = $statement_country_name -> execute(['code' => $charity_country]);
+			$country_row = $statement_country_name -> fetch();
+		?>
 		<div class="row">
 			<div class="col-md-12">
-				<center><a href="./?menu=charityOrganizationsOf" target="_blank"><?=$text['charity_of_your_country'];?></a></center>
+				<center><a href="./?menu=charityOrganizationsOf" target="_blank"><?=$text['charity_of_your_country'];?> <?=$country_row['native'];?></a></center>
 			</div>
 		</div><br />
 

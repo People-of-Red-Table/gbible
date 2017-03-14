@@ -66,6 +66,17 @@ create table charity_organization_types
     name varchar(20)
 );
 
+create table feedback
+  (
+    id int primary key auto_increment,
+    user_id int NULL,
+    email varchar(100),
+    full_name varchar(50),
+    subject varchar(100),
+    message varchar(5000),
+    inserted datetime
+  );
+
 create table charity_organizations
 (
     id int primary key auto_increment,

@@ -3,51 +3,51 @@
 	$text['golden_bible'] = 'Golden Bible';
 	$text['verse_added_to_favorites'] = 'Verse was added to favorites.';
 	$text['please_contact_support'] = 'Please contact support.';
-	$text['favorite_verses_exception'] = 'We\'ve got issue with favorite verses.';
+	$text['favorite_verses_exception'] = 'We have got issue with favorite verses.';
 	$text['verse_already_in_fav'] = 'Verse is already in favorites.';
-	$text['sign_in_exception'] = 'Whoops, we\'ve got issue with \"Sign In\" .';
-	$text['incorrect_auth_info'] = 'Atuhentification information is incorrect.';
+	$text['sign_in_exception'] = 'We have got issue with \"Sign In\" .';
+	$text['incorrect_auth_info'] = 'Authentification information is incorrect.';
 	$text['text_country'] = 'Country';
 	$text['text_language'] = 'Language';
 	$text['my_favorite_verses'] = 'My Favorite Verses';
-	$text['my_favorite_verses_exception'] = 'We\'ve got issue with \"My Favorite Verses\".';
-	$text['mfv_bible_exception'] = 'We\'ve got issue with favorite verses [choosing a Bible].';
-	$text['password_reset_exception'] = 'We\'ve got issue with password reset.';
+	$text['my_favorite_verses_exception'] = 'We have got issue with \"My Favorite Verses\".';
+	$text['mfv_bible_exception'] = 'We have got issue with favorite verses [choosing a Bible].';
+	$text['password_reset_exception'] = 'We have got issue with password reset.';
 	$text['password_changed'] = 'Password changed.';
 	$text['sign_in'] = 'Sign In';
 	$text['different_passwords'] = 'You typed different passwords.';
 	$text['text_password'] = 'Password';
 	$text['repeat_password'] = 'Repeat Password';
 	$text['registered_sign_in'] = 'You are registered user now, please';
-	$text['registration_exception'] = 'We\'ve got issue with registration.';
+	$text['registration_exception'] = 'We have got issue with registration.';
 	$text['reset_password'] = 'Reset Password';
 	$text['mail_not_found'] = 'Information for your email not found.';
 	$text['secret_question'] = 'Secret Question';
 	$text['secret_answer'] = 'Secret Answer';
-	$text['verification_code_exception'] = 'Verification code wasn\'t set.';
+	$text['verification_code_exception'] = 'Verification code was not set.';
 	
 	$text['text_greetings'] = 'Greetings';
 	$text['reset_password_mail'] = 'Greetings, %user_name%. ' . PHP_EOL
 					. 'For your account on Bible Site http://%http_host%'
 					. ' was requested resetting of password. ' . PHP_EOL
 					. ' If you want to reset your password, please, click this link: ' . PHP_EOL
-					. 'http://%http_host%/?menu=users_resetPasswordByEMail' 
+					. ' http://%http_host%/?menu=users_resetPasswordByEMail' 
 					. '&verification_code=%verification_code%'
 					. '&reset_email=%user_email% ' . PHP_EOL . PHP_EOL . PHP_EOL
-					. 'If you didn\'t request this operation, just ignore this letter.'
+					. 'If you did not request this operation, just ignore this letter.'
 					. 'Thank you.';
-	$text['reset_mail_sent'] = 'Letter to your email `%user_email%` was sent. Please, check your inbox. If you didn\'t find it, check your "Spam" folder';
-	$text['reset_mail_sent_not'] = 'Mail to `%user_email%` wasn\'t sent.';
-	$text['reset_password_exception'] = 'We\'ve got issue with resetting password. ';
+	$text['reset_mail_sent'] = 'Letter to your email `%user_email%` was sent. Please, check your inbox. If you did not find it, check your "Spam" folder';
+	$text['reset_mail_sent_not'] = 'Mail to `%user_email%` was not sent.';
+	$text['reset_password_exception'] = 'We have got issue with resetting password. ';
 	$text['thank_you'] = 'Thank you';
 
 	$text['text_settings'] = 'Settings';
-	$text['password_saving_exception'] = 'We\'ve got issue with password saving in settings. ';
-	$text['settings_incorrect_password'] = 'You typed not your current password. Password wasn\'t changed.';
+	$text['password_saving_exception'] = 'We have got issue with password saving in settings. ';
+	$text['settings_incorrect_password'] = 'You typed not your current password. Password was not changed.';
 	$text['settings_saved'] = 'Settings saved.';
-	$text['settings_saving_exception'] = 'We\'ve got issue with settings saving.';
+	$text['settings_saving_exception'] = 'We have got issue with settings saving.';
 	$text['text_hallelujah'] = 'Hallelujah!';
-	$text['reset_password_exception_vcode'] =  $text['reset_password_exception'] . 'Verification code wasn\'t set. ';
+	$text['reset_password_exception_vcode'] =  $text['reset_password_exception'] . 'Verification code was not set. ';
 	$text['incorrect_secret_answer'] = 'Secret answer is incorrect.';
 
 	$text['text_nickname'] = 'Nickname';
@@ -79,11 +79,11 @@
 
 	$text['charity_of_world'] = 'Charity Organizations of the World';
 	$text['choose_a_country'] = 'Choose a country to look at charity organizations';
-	$text['charity_of_world_exception'] = 'We\'ve got issue with charity links for country of the world. ' . $text['please_contact_support'] ;
+	$text['charity_of_world_exception'] = 'We have got issue with charity links for country of the world. ' . $text['please_contact_support'] ;
 
 	$text['charity_organizations_of'] = 'Charity Organizations of ';
-	$text['charity_organizations_exception'] = 'We\'ve got issue with charity organizations. ' . $text['please_contact_support'];
-	$text['charity_not_found'] = 'Website didn\'t find charity organizations for your country. Maybe you know them? Please, send us links.';
+	$text['charity_organizations_exception'] = 'We have got issue with charity organizations. ' . $text['please_contact_support'];
+	$text['charity_not_found'] = 'Website did not find charity organizations for your country. Maybe you know them? Please, send us links.';
 
 	$text['israel_gives'] = 'Israel Gives';
 	$text['charity_of_your_country'] = 'Charity Organizations of ';
@@ -95,7 +95,7 @@
 	$text['top_verses'] = 'Top Verses';
 	$text['favorite_verses'] = 'Favorite Verses';
 	$text['text_community'] = 'Community';
-	$text['port_title'] = 'Charity support community PoRT [ English ]';
+	$text['port_title'] = 'Charity Support Community - PoRT [English]';
 	$text['sign_out'] = 'Sign Out';
 
 	$text['charity_for_russia'] = 'Charity for Russia';
@@ -103,12 +103,26 @@
 	$text['american_red_cross'] = 'American Red Cross';
 	$text['british_red_cross'] = 'British Red Cross';
 	$text['text_icrc'] = 'International Committee of Red Cross';
-	$text['top_verses_exception'] = 'We\'ve got issue with top verses.' . $text['please_contact_support'];
-	$text['top_verses_exception_bible'] = 'We\'ve got issue with favorite verses [choosing a Bible].' . $text['please_contact_support'];
+	$text['top_verses_exception'] = 'We have got issue with top verses.' . $text['please_contact_support'];
+	$text['top_verses_exception_bible'] = 'We have got issue with favorite verses [choosing a Bible].' . $text['please_contact_support'];
 
-	$text['tweet_verse_exception'] = 'We\'ve got issue with updating tweeted verse. ' . $text['please_contact_support'];
-	$text['tweet_insert_exception'] = 'We\'ve got issue with inserting tweeted verse. ' . $text['please_contact_support'];
-	$text['tweeted_verse_exception'] = 'We\'ve got issue with tweeted verse.';
+	$text['tweet_verse_exception'] = 'We have got issue with updating tweeted verse. ' . $text['please_contact_support'];
+	$text['tweet_insert_exception'] = 'We have got issue with inserting tweeted verse. ' . $text['please_contact_support'];
+	$text['tweeted_verse_exception'] = 'We have got issue with tweeted verse.';
 	$text['wait_for_tweeting'] = 'The verse is gonna be tweeted, please wait.';
+
+
+	/*
+		Feedback Page
+	*/
+
+	$text['text_feedback'] = 'Feedback';
+	$text['text_subject'] = 'Subject';
+	$text['text_message'] = 'Message';
+	$text['text_send'] = 'Send';
+	$text['fb_message_sent'] = 'Your message was sent. Thank you.';
+	$text['fb_message_was_not_sent'] = 'Your message was not sent. ' . $text['please_contact_support'];
+
+
 
 ?>

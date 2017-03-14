@@ -24,7 +24,9 @@
 		'tweetVerse',
 
 		// Charity
-		'charityLinks', 'charityOrganizationsOf'
+		'charityLinks', 'charityOrganizationsOf',
+
+		'feedback'
 
 		);
 

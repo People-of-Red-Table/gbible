@@ -7,8 +7,8 @@
 	$text['verse_already_in_fav'] = 'Стих уже в избранном.';
 	$text['sign_in_exception'] = 'У нас проблема с \ "Войти \".';
 	$text['incorrect_ИСТОЧЕНЬ_info'] = 'Сведения об аутентификации неверны.';
-	$text['country'] = 'Страна';
-	$text['language'] = 'Язык';
+	$text['text_country'] = 'Страна';
+	$text['text_language'] = 'Язык';
 	$text['my_favorite_verses'] = 'Мои любимые стихи';
 	$text['my_favorite_verses_exception'] = 'У нас проблема с «Моими любимыми стихами».';
 	$text['mfv_bible_exception'] = 'У нас возникла проблема с любимыми стихами [выбор Библии].';
@@ -16,7 +16,7 @@
 	$text['password_changed'] = 'Пароль изменен.';
 	$text['sign_in'] = 'Войти';
 	$text['different_passwords'] = 'Вы ввели разные пароли.';
-	$text['password'] = 'Пароль';
+	$text['text_password'] = 'Пароль';
 	$text['repeat_password'] = 'Повторить пароль';
 	$text['registered_sign_in'] = 'Вы зарегистрированы сейчас, пожалуйста';
 	$text['registration_exception'] = 'У нас проблема с регистрацией.';
@@ -26,7 +26,7 @@
 	$text['secret_answer'] = 'Секретный ответ';
 	$text['verification_code_exception'] = 'Код проверки wasn \' t установлен. ';
 
-	$text['greetings'] = 'Приветствия';
+	$text['text_greetings'] = 'Приветствия';
 	$text['reset_password_mail'] = 'Приветствия, %user_name%. '. PHP_EOL
 	. 'Для вашей учетной записи на Библейском сайте http://%http_host%'
 	. 'Был запрошен сброс пароля. '. PHP_EOL
@@ -41,7 +41,7 @@
 	$text['reset_password_exception'] = 'У нас проблема с сбросом пароля. ';
 	$text['thank_you'] = 'Спасибо';
 
-	$text['settings'] = 'Настройки';
+	$text['text_settings'] = 'Настройки';
 	$text['password_saving_exception'] = 'У нас проблема с сохранением пароля в настройках. ';
 	$text['settings_incorrect_password'] = 'Вы ввели не текущий пароль. Пароль не был изменен. ';
 	$text['settings_saved'] = 'Настройки сохранены.';
@@ -50,14 +50,14 @@
 	$text['reset_password_exception_vcode'] = $text['reset_password_exception']. 'Код подтверждения не был установлен. ';
 	$text['incorrect_RECTION'] = 'Секретный ответ неверен.';
 
-	$text['nickname'] = 'Никнейм';
+	$text['text_nickname'] = 'Никнейм';
 	$text['full_name'] = 'Полное имя';
-	$text['timezone'] = 'Часовой пояс';
-	$text['email'] = 'E-Mail';
+	$text['text_timezone'] = 'Часовой пояс';
+	$text['text_email'] = 'E-Mail';
 	$text['current_password'] = 'Текущий пароль';
 	$text['fill_current_password'] = 'Заполните это поле, если вы хотите изменить свой пароль';
-	$text['save'] = 'Сохранить';
-	$text['reset'] = 'Сброс';
+	$text['text_save'] = 'Сохранить';
+	$text['text_reset'] = 'Сброс';
 
 	$text['what_are_you_doing_here'] = 'Что вы здесь делаете, гений?';
 	$text['already_signed_in'] = $text['what_are_you_doing_here']. ''. 'Вы уже вошли ...';
@@ -70,11 +70,11 @@
 	$text['add_to_fav_addition'] = ', добавить в избранное';
 	$text['copy_link_to_verse'] = 'или скопировать ссылку на стих в буфер обмена';
 	$text['share_in_vk'] = 'Share in VK';
-	$text['tweet'] = 'Tweet';
+	$text['text_tweet'] = 'Tweet';
 	$text['copy_link_to_the_verse'] = 'Скопировать ссылку на стих';
 	$text['published_under'] = 'Опубликовано под';
 
-	$text['bible'] = 'Библия';
+	$text['text_bible'] = 'Библия';
 	$text['open_bible'] = 'Открыть Библию';
 
 	$text['charity_of_world'] = 'Благотворительные организации мира';
@@ -86,15 +86,15 @@
 	$text['charity_not_found'] = 'Веб-сайт не нашел благотворительные организации для вашей страны. Может быть, вы их знаете? Пожалуйста, пришлите нам ссылки. ';
 
 	$text['israel_gives'] = 'Израиль Дает';
-	$text['charity_of_your_country'] = 'Благотворительные организации вашей страны';
-	$text['черный список'] = 'Черный список сайта Библии';
-	$text['twitter'] = 'Twitter';
+	$text['charity_of_your_country'] = 'Благотворительные организации. ';
+	$text['blacklist'] = 'Черный список сайта Библии';
+	$text['text_twitter'] = 'Twitter';
 	$text['google_plus'] = 'Google+';
 	$text['powered_by'] = 'Работает';
-	$text['open'] = 'Открыть';
+	$text['text_open'] = 'Открыть';
 	$text['top_verses'] = 'Лучшие стихи';
 	$text['favorite_verses'] = 'Любимые стихи';
-	$text['community'] = 'Сообщество';
+	$text['text_community'] = 'Сообщество';
 	$text['port_title'] = 'Сообщество поддержки благотворительности PoRT [Английский]';
 	$text['sign_out'] = 'Выйти';
 
@@ -102,7 +102,7 @@
 	$text['brazilian_red_cross'] = 'Бразильский Красный Крест';
 	$text['american_red_cross'] = 'Американский Красный Крест';
 	$text['british_red_cross'] = 'Британский Красный Крест';
-	$text['icrc'] = 'Международный Комитет Красного Креста';
+	$text['text_icrc'] = 'Международный Комитет Красного Креста';
 	$text['top_verses_exception'] = 'У нас проблема с верхними стихами' . $text['please_contact_support'];
 	$text['top_verses_exception_bible'] = 'У нас есть проблема с любимыми стихами [выбор Библии]' . $text['please_contact_support'];
 

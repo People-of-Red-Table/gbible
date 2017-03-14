@@ -20,7 +20,7 @@
 					$html_form = '<form method="post">
 				<div class="row">
 					<div class="col-md-2">
-						<p>' . $text['password'] . '</p>
+						<p>' . $text['text_password'] . '</p>
 					</div>
 					<div class="col-md-2">
 						<input type="password" name="password" maxlength="16">
@@ -40,7 +40,7 @@
 					<div class="col-md-12">
 						<input type="hidden" name="verification_code" value="<?=$verification_code;?>">
 						<input type="hidden" name="menu" value="users_passwordResetting">
-						<p align="center"><input type="submit" name="submit" value="' . $text['reset'] . '" /></p>
+						<p align="center"><input type="submit" name="submit" value="' . $text['text_reset'] . '" /></p>
 					</div>
 				</div>
 			</form>';

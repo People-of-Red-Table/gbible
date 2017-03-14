@@ -6,8 +6,8 @@
 	$text['verse_already_in_fav'] = 'O verso já está nos favoritos.';
 	$text['sign_in_exception'] = 'Ops, temos problemas com \ "Iniciar sessão \".';
 	$text['incorrect_auth_info'] = 'As informações de autenticação estão incorretas.';
-	$text['country'] = 'País';
-	$text['language'] = 'Idioma';
+	$text['text_country'] = 'País';
+	$text['text_language'] = 'Idioma';
 	$text['my_favorite_verses'] = 'Meus Versículos Favoritos';
 	$text['my_favorite_verses_exception'] = 'Nós temos problemas com \ "Meus Versículos Favoritos \".';
 	$text['mfv_bible_exception'] = 'Nós temos problemas com versículos favoritos [escolhendo uma Bíblia].';
@@ -15,7 +15,7 @@
 	$text['password_changed'] = 'Senha alterada.';
 	$text['sign_in'] = 'Iniciar sessão';
 	$text['different_passwords'] = 'Você digitou senhas diferentes.';
-	$text['password'] = 'Senha';
+	$text['text_password'] = 'Senha';
 	$text['repeat_password'] = 'Repetir Senha';
 	$text['registered_sign_in'] = 'Você é um usuário registrado agora, por favor';
 	$text['registration_exception'] = 'Nós temos problemas com o registro.';
@@ -25,7 +25,7 @@
 	$text['secret_answer'] = 'Resposta secreta';
 	$text['verification_code_exception'] = 'O código de verificação não foi definido.';
 
-	$text['greetings'] = 'Saudações';
+	$text['text_greetings'] = 'Saudações';
 	$text['reset_password_mail'] = 'Saudações, %user_name%. '. PHP_EOL
 	. 'Para sua conta no Site da Bíblia http://%http_host%'
 	. 'Foi solicitado a redefinição da senha. '. PHP_EOL
@@ -40,23 +40,23 @@
 	$text['reset_password_exception'] = 'Temos problemas com a redefinição da senha. ';
 	$text['thank_you'] = 'Obrigado';
 
-	$text['settings'] = 'Definições';
+	$text['text_settings'] = 'Definições';
 	$text['password_saving_exception'] = 'Temos problemas com a salvaguarda de senhas nas configurações. ';
 	$text['settings_incorrect_password'] = 'Você não digitou sua senha atual. A senha não foi alterada. ';
 	$text['settings_saved'] = 'Configurações salvas.';
 	$text['settings_saving_exception'] = 'Temos problemas com as configurações de salvamento.';
-	$text['hallelujah'] = 'Aleluia!';
+	$text['text_hallelujah'] = 'Aleluia!';
 	$text['reset_password_exception_vcode'] = $text['reset_password_exception']. 'Código de verificação não foi definido. ';
 	$text['incorrect_secret_answer'] = 'A resposta secreta está incorreta.';
 
-	$text['nickname'] = 'Apelido';
+	$text['text_nickname'] = 'Apelido';
 	$text['full_name'] = 'Nome completo';
-	$text['timezone'] = 'Fuso horário';
-	$text['email'] = 'E-Mail';
+	$text['text_timezone'] = 'Fuso horário';
+	$text['text_email'] = 'E-Mail';
 	$text['current_password'] = 'Senha atual';
 	$text['fill_current_password'] = 'Preencha este campo se quiser alterar sua senha';
-	$text['save'] = 'Guardar';
-	$text['reset'] = 'Reset';
+	$text['text_save'] = 'Guardar';
+	$text['text_reset'] = 'Reset';
 
 	$text['what_are_you_doing_here'] = 'O que você está fazendo aqui, gênio?';
 	$text['already_signed_in'] = $text['what_are_you_doing_here']. ''. 'Você já está inscrito...';
@@ -69,11 +69,11 @@
 	$text['add_to_fav_addition'] = ', adicionar aos favoritos';
 	$text['copy_link_to_verse'] = 'ou copie o link para o verso para a sua área de transferência';
 	$text['share_in_vk'] = 'Compartilhar em VK';
-	$text['tweet'] = 'Tweet';
+	$text['text_tweet'] = 'Tweet';
 	$text['copy_link_to_the_verse'] = 'Copiar link para o verso';
 	$text['published_under'] = 'Publicado em';
 
-	$text['bible'] = 'Bíblia';
+	$text['text_bible'] = 'Bíblia';
 	$text['open_bible'] = 'Abra a Bíblia';
 
 	$text['charity_of_world'] = 'Organizações de Caridade do Mundo';
@@ -85,16 +85,16 @@
 	$text['charity_not_found'] = 'O site não encontrou organizações de caridade para o seu país. Talvez você os conheça? Por favor, envie-nos links. ';
 
 	$text['israel_gives'] = 'Israel dá';
-	$text['charity_of_your_country'] = 'Organizações de caridade do seu país';
-	$text['blacklist'] = 'Lista Negra do Site da Bíblia';
-	$text['twitter'] = 'Twitter';
+	$text['charity_of_your_country'] = 'Organizações de caridade do ';
+	$text['text_blacklist'] = 'Lista Negra do Site da Bíblia';
+	$text['text_twitter'] = 'Twitter';
 	$text['google_plus'] = 'Google+';
 
 	$text['powered_by'] = 'Ativado por';
-	$text['open'] = 'Abrir';
+	$text['text_open'] = 'Abrir';
 	$text['top_verses'] = 'Top Versos';
 	$text['favorite_verses'] = 'Versos Favoritos';
-	$text['community'] = 'Comunidade';
+	$text['text_community'] = 'Comunidade';
 	$text['port_title'] = 'Comunidade de apoio à caridade PoRT [Inglês]';
 	$text['sign_out'] = 'Sair';
 
@@ -102,7 +102,7 @@
 	$text['brazilian_red_cross'] = 'Cruz Vermelha Brasileira';
 	$text['american_red_cross'] = 'Cruz Vermelha Americana';
 	$text['british_red_cross'] = 'Cruz Vermelha Britânica';
-	$text['icrc'] = 'Comitê Internacional da Cruz Vermelha';
+	$text['text_icrc'] = 'Comitê Internacional da Cruz Vermelha';
 	$text['top_verses_exception'] = 'Nós temos problemas com os versos superiores'. $text['please_contact_support'];
 	$text['top_verses_exception_bible'] = 'Nós temos problemas com versículos favoritos [escolhendo uma Bíblia]' . $text['please_contact_support'];
 

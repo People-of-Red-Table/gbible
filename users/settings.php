@@ -3,12 +3,12 @@
 	$statement -> execute(array('id' => $_SESSION['uid']));
 	$user_row = $statement -> fetch();
 ?>
-<h1><?=$text['settings'];?></h1>
+<h1><?=$text['text_settings'];?></h1>
 <br />
 <form method="post">
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['nickname'];?></p>
+			<p><?=$text['text_nickname'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="nickname" value="<?=$user_row['nickname'];?>">
@@ -26,7 +26,7 @@
 
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['timezone'];?></p>
+			<p><?=$text['text_timezone'];?></p>
 		</div>
 		<div class="col-md-2">
 			<select name="timezone">
@@ -46,7 +46,7 @@
 	
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['email'];?></p>
+			<p><?=$text['text_email'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="email" value="<?=$user_row['email'];?>">
@@ -55,7 +55,7 @@
 
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['password'];?></p>
+			<p><?=$text['text_password'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="password" maxlength="16"  value="<?=$user_row['password'];?>">
@@ -74,7 +74,7 @@
 	<div class="row">
 		<div class="col-md-2">
 			<p><?=$text['current_password'];?> <sup>1</sup></p>
-			<p style="font-size: 0.75em"><sup>1</sup> - $text['fill_current_password'].</p>
+			<p style="font-size: 0.75em"><sup>1</sup> - <?=$text['fill_current_password'];?>.</p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="current_password" maxlength="16"  value="">
@@ -105,12 +105,12 @@
 		$cmp_language = $user_row['language'];
 		require 'countryAndLanguageFields.php'; 
 	?>
-
+	<br />
 	<div class="row">
 		<div class="col-md-12">
 			<input type="hidden" name="menu" value="users_saveSettings">
 			<!-- TO DO: check email by pattern-->
-			<p align="center"><input type="submit" name="submit" value="<?=$text['save'];?>" /></p>
+			<p align="center"><input type="submit" name="submit" value="<?=$text['text_save'];?>" /></p>
 		</div>
 	</div>
 

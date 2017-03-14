@@ -1,7 +1,7 @@
 	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['country'];?></p>
+			<p><?=$text['text_country'];?></p>
 		</div>
 		<div class="col-md-2">
 			<select name="user_country">
@@ -31,13 +31,15 @@
 	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['language'];?></p>
+			<p><?=$text['text_language'];?></p>
 		</div>
 		<div class="col-md-2">
 			<select name="user_language">
 				<?php
 					$result_languages = mysqli_query( $links['sofia']['mysql'],
-								'select language_name, native_name, language_code from iso_639_1_languages order by native_name');
+								'select language_name, native_name, language_code from iso_639_1_languages
+								where language_code in ("' . implode('", "', $languages) . '")
+								 order by native_name');
 
 						//	log_msg(__FILE__ .':' . __LINE__ . ' cmp language = ' . $cmp_language);
 					if (!$result_languages)

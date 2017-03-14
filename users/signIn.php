@@ -9,7 +9,7 @@
 <form method="post">
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['email'];?></p>
+			<p><?=$text['text_email'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="email">
@@ -18,13 +18,13 @@
 	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['password'];?></p>
+			<p><?=$text['text_password'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="password" maxlength="16">
 		</div>
 	</div>
-
+	<br />
 	<div class="row">
 		<div class="col-md-12">
 			<input type="hidden" name="menu" value="users_signingIn">

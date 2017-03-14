@@ -3,7 +3,7 @@
 <form method="post">
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['nickname'];?></p>
+			<p><?=$text['text_nickname'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="nickname">
@@ -21,7 +21,7 @@
 	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['timezone'];?></p>
+			<p><?=$text['text_timezone'];?></p>
 		</div>
 		<div class="col-md-2">
 			<select name="timezone">
@@ -41,7 +41,7 @@
 	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['email'];?></p>
+			<p><?=$text['text_email'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="text" name="email">
@@ -50,7 +50,7 @@
 	<br />
 	<div class="row">
 		<div class="col-md-2">
-			<p><?=$text['password'];?></p>
+			<p><?=$text['text_password'];?></p>
 		</div>
 		<div class="col-md-2">
 			<input type="password" name="password" maxlength="16">

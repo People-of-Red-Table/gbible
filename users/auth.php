@@ -62,15 +62,37 @@
 			$row = $statement -> fetch();
 			$charity_country = $row['code'];
 			$_SESSION['nickname'] = $row['nickname'];
+			$_SESSION['full_name'] = $row['full_name'];
 			$_SESSION['email'] = $row['email'];
 			//$_SESSION['role_id'] = $row['role_id'];
 			//$_SESSION['role'] = $row['name'];
 			$_SESSION['timezone'] = $row['timezone'];
 
-			// to do: include user's language
-			if (file_exists('../languages/' . strtolower($hal_language_country) . '.php')
-				and in_array($hal_language_country, $languages))
-				require '../languages/' . strtolower($hal_language_country) . '.php';
+
+			$result_language = mysqli_query($links['sofia']['mysql'],'select code from iso_639_languages where language_name = "' . $row['language'] . '" union select code from iso_639_languages where code = "' . $row['language'] . '"');
+			$language_row = mysqli_fetch_assoc($result_language);
+			$user_language = $language_row['code'];
+
+			log_msg(__FILE__ . ':' . __LINE__ . ' $user_language = `' . $user_language . '`');
+
+			$lang_path = './languages/' . strtolower($user_language) . '.php';
+
+			if (file_exists($lang_path)
+				and in_array($user_language, $languages))
+			{
+				require $lang_path;
+			}
+			else
+			{
+				if (stripos($user_language, '-') !== FALSE)
+				{
+					$user_language = explode('-', $user_language)[0];
+					$lang_path = './languages/' . strtolower($user_language) . '.php';					
+					if (file_exists($lang_path)
+					and in_array($user_language, $languages))
+					require $lang_path;
+				}
+			}
 			
 
 			$_SESSION['topics_per_page'] = (empty($row['topics_per_page'])) ? 25 : $row['topics_per_page'];

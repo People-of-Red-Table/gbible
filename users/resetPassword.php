@@ -40,7 +40,7 @@
 			<input type="hidden" name="reset_email" value="<?=$_GET['reset_email'];?>">
 			<input type="hidden" name="menu" value="users_secretAnswerChecking">
 			<!-- TO DO: check email by pattern-->
-			<p align="center"><input type="submit" name="submit" value="<?=$text['reset'];?>" /></p>
+			<p align="center"><input type="submit" name="submit" value="<?=$text['text_reset'];?>" /></p>
 		</div>
 	</div>
 

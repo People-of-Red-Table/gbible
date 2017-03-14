@@ -1,4 +1,4 @@
-<h1><?=$text['settings'];?></h1>
+<h1><?=$text['text_settings'];?></h1>
 <br />
 <?php
 
@@ -68,7 +68,7 @@
 	}
 
 	if ((count($messages) == 1) and ($messages[0]['type'] === 'success'))
-		$messages[] = ['type' => 'success', 'text' => $text['hallelujah']];	
+		$messages[] = ['type' => 'success', 'text' => $text['text_hallelujah']];	
 
 	foreach ($messages as $item) 
 	{

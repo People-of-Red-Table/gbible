@@ -15,7 +15,8 @@
 					<ul class="nav navbar-nav">
 						<li><a href="./?menu=charityLinks"><?=$text['charity_of_world'];?></a></li>
 						<li><a href="./?menu=charityOrganizationsOf"><?=$text['charity_of_your_country'];?></a></li>
-						<li><a href="./blacklist.html" target="_blank"><?=$text['blacklist'];?></a></li>
+						<li><a href="./blacklist.html" target="_blank"><?=$text['text_blacklist'];?></a></li>
+						<li><a href="./?menu=feedback"><?=$text['text_feedback'];?></a></li>
 						<!--<li><a href="./html_map.php" target="_blank" title="It is for Search Engine Robors =]">Index Map for Robots</a></li>-->
 						<!--<li><a href="#">About Us</a></li>
 						<li><a href="#">Project History</a></li>
@@ -24,8 +25,8 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<!--<li><a href="#">Contact Us</a></li>-->
-						<li><a href="https://twitter.com/goldenbible_org" target="_blank"><?=$text['twitter'];?> @GoldenBible_org</a></li>
-						<li><a href="https://twitter.com/ihaveabiblesite" target="_blank"><?=$text['twitter'];?> @ihaveabiblesite</a></li>
+						<li><a href="https://twitter.com/goldenbible_org" target="_blank"><?=$text['text_twitter'];?> @GoldenBible_org</a></li>
+						<li><a href="https://twitter.com/ihaveabiblesite" target="_blank"><?=$text['text_twitter'];?> @ihaveabiblesite</a></li>
 						<li><a href="https://plus.google.com/115380489639432555966" target="_blank"><?=$text['google_plus'];?></a></li>
 						<li><a href="https://www.youtube.com/channel/UCCWrFOJPlLyW85xf40afNJg" target="_blank">YouTube</a></li>
 					</ul>
