@@ -1,5 +1,11 @@
 <?php
 	require 'bible_nav.php';
+
+	// just interesting random =] 1 to 1000 that you will get 'Hallelujah!' text =]
+	$random = rand(1, 1000);
+	if ($random === 1000)
+		echo '<p class="alert alert-success">' . $text['hallelujah'] . '</p>';
+
 ?>
 	<div class="panel panel-primary">
 		<div class="panel-header">
