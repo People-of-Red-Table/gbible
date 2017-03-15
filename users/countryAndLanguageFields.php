@@ -24,7 +24,7 @@
 			</select>
 	</div>
 	<div class="form-group">
-			<label id="userLanguageField"><?=$text['text_language'];?></label>
+			<label for="userLanguageField"><?=$text['text_language'];?></label>
 			<select name="user_language" class="form-control" id="userLanguageField">
 				<?php
 					$result_languages = mysqli_query( $links['sofia']['mysql'],
