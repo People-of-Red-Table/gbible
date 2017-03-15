@@ -46,14 +46,19 @@
 	<div id="fb-root"></div>
 <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js =  d.createElement(s); js.id = id; js.src = "//connect.facebook.net/<?=$fb_language_country;?>/sdk.js#xfbml=1&version=v2.8"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
 
-		<nav class="nav navbar-inverse">
+		<nav class="nav navbar-inverse" navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 
 				<div class="navbar-header">
-					<a href="#" class="navbar-brand"><?=$text['golden_bible'];?></a>
+					<a href="./" class="navbar-brand navbar-link" title="<?=$text['golden_bible'];?>"><?=$text['golden_bible'];?></a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-bar-gbible">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 				</div>
 
-				<div class="navbar" id="nav">
+				<div class="collapse navbar-collapse" id="nav-bar-gbible">
 					<ul class="nav navbar-nav">
 						<li><a href="./?menu=bible"><?=$text['text_open'];?></a></li>
 						<li><a href="./?menu=topVerses"><?=$text['top_verses'];?></a></li>
