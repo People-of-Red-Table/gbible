@@ -1,5 +1,5 @@
 <?php
-	setcookie(session_name(), session_id(), time() + 30 * 24 * 3600);
+	setcookie(session_name(), session_id());
 
 	require 'auth.php';
 

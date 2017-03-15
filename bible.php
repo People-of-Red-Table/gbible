@@ -67,10 +67,10 @@
 
 				$chapter_nav = '<table width="100%"><tr><td width="50%">';
 				if ($chapter > 1)
-					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter - 1) . '">Previous Chapter</a>';
+					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter - 1) . '#top-anchor"><button class="btn btn-default">Previous Chapter</button></a>';
 				$chapter_nav .= '</td><td width="50%" align="right">';
 				if ($chapter < $chapter_count)
-					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter + 1) . '">Next Chapter</a>';
+					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter + 1) . '#top-anchor"><button class="btn btn-default">Next Chapter</button></a>';
 				$chapter_nav .= '</td></tr></table>'; 
 
 		?>
@@ -177,13 +177,15 @@
 		{
 	?>	
 		<script type="text/javascript">$(document).ready(function (){resize();});</script>
-		</div><div class="panel-body"><center><iframe src="<?=$info_row['http_link'];?>" width="80%" id="BibleFrame" name="BibleFrame" onresize="alert('resize');resize();"></iframe></center></div>
+		<div class="panel-body"><center><iframe src="<?=$info_row['http_link'];?>" width="80%" id="BibleFrame" name="BibleFrame" onresize="alert('resize');resize();"></iframe></center></div>
 	<?php
 		}
 	?>
 
 
-		<div class="panel-footer"><center><h5><b><?=$info_row['title'];?></b></h5><br /><?=$info_row['copyright'];?><br /><?=$text['published_under'];?> <a href="<?=$info_row['link'];?>" target="_blank"><?=$info_row['license'];?></a></center></div>
+		<div class="panel-footer">
+			<center><h5><b><?=$info_row['title'];?></b></h5><br /><?=$info_row['copyright'];?><br /><?=$text['published_under'];?> <a href="<?=$info_row['link'];?>" target="_blank"><?=$info_row['license'];?></a></center>
+		</div>
 	</div>
 	<?php
 		if (stripos($b_code, '_http') === FALSE)

@@ -5,6 +5,7 @@
 		<link rel="shortcut icon" href="./favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="charset" content="utf-8">
+		<meta name="yandex-verification" content="f03375f944df60ab" />
 		<?php
 			if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1')
 			{

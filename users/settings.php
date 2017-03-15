@@ -6,30 +6,19 @@
 <h1><?=$text['text_settings'];?></h1>
 <br />
 <form method="post">
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_nickname'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="text" name="nickname" value="<?=$user_row['nickname'];?>">
-		</div>
+	<div class="form-group">
+			<label for="settingsNickname"><?=$text['text_nickname'];?></label>
+			<input type="text" class="form-control" name="nickname" value="<?=$user_row['nickname'];?>" id="settingsNickname">
 	</div>
 
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['full_name'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="text" name="full_name" value="<?=$user_row['full_name'];?>">
-		</div>
+	<div class="form-group">
+			<label for="settingsFullName"><?=$text['full_name'];?></label>
+			<input type="text" class="form-control" name="full_name" value="<?=$user_row['full_name'];?>" id="settingsFullName">
 	</div>
 
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_timezone'];?></p>
-		</div>
-		<div class="col-md-2">
-			<select name="timezone">
+	<div class="form-group">
+			<label for="settingsTimezone"><?=$text['text_timezone'];?></label>
+			<select class="form-control" name="timezone" class="form-control" id="settingsTimezone">
 				<?php
 					$timezones = DateTimezone::listIdentifiers();
 					foreach ($timezones as $item) 
@@ -41,62 +30,45 @@
 					}
 				?>
 			</select>
-		</div>
 	</div>	
 	
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_email'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="text" name="email" value="<?=$user_row['email'];?>">
-		</div>
+	<div class="form-group">
+			<label for="settingsEmail"><?=$text['text_email'];?></label>
+			<input type="text" class="form-control" name="email" value="<?=$user_row['email'];?>" id="settingsEmail">
 	</div>
 
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_password'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="password" name="password" maxlength="16"  value="<?=$user_row['password'];?>">
-		</div>
+	<div class="form-group">
+			<label for="settingsPassword"><?=$text['text_password'];?></label>
+			<input type="password" class="form-control" name="password" maxlength="16"  value="<?=$user_row['password'];?>" id="settingsPassword">
 	</div>
 
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['repeat_password'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="password" name="password_repeat" maxlength="16" value="<?=$user_row['password'];?>">
-		</div>
+	<div class="form-group">
+			<label for="settingsRepeatPassword"><?=$text['repeat_password'];?></label>
+			<input type="password" class="form-control" name="password_repeat" maxlength="16" value="<?=$user_row['password'];?>" id="settingsRepeatPassword">
 	</div>
 
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['current_password'];?> <sup>1</sup></p>
-			<p style="font-size: 0.75em"><sup>1</sup> - <?=$text['fill_current_password'];?>.</p>
-		</div>
-		<div class="col-md-2">
-			<input type="password" name="current_password" maxlength="16"  value="">
-		</div>
+	<div class="form-group">
+			<label for="settingsCurrentPassword"><?=$text['current_password'];?> <sup>1</sup></label>
+			<p style="font-size: 0.75em"><sup>1</sup> - <?=$text['fill_current_password'];?>.</label>
+			<input type="password" class="form-control" name="current_password" maxlength="16"  value="" id="settingsCurrentPassword" />
 	</div>
 
 
-	<div class="row">
+	<div class="form-group">
 		<div class="col-md-2">
-			<p><?=$text['secret_question'];?></p>
+			<label for=""><?=$text['secret_question'];?></label>
 		</div>
 		<div class="col-md-2">
-			<input type="text" name="secret_question" value="<?=$user_row['secret_question'];?>">
+			<input type="text" class="form-control" name="secret_question" value="<?=$user_row['secret_question'];?>">
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<div class="col-md-2">
-			<p><?=$text['secret_answer'];?></p>
+			<label for=""><?=$text['secret_answer'];?></label>
 		</div>
 		<div class="col-md-2">
-			<input type="text" name="secret_answer" value="<?=$user_row['secret_answer'];?>">
+			<input type="text" class="form-control" name="secret_answer" value="<?=$user_row['secret_answer'];?>">
 		</div>
 	</div>
 
@@ -106,11 +78,11 @@
 		require 'countryAndLanguageFields.php'; 
 	?>
 	<br />
-	<div class="row">
+	<div class="form-group">
 		<div class="col-md-12">
 			<input type="hidden" name="menu" value="changeLanguage">
 			<!-- TO DO: check email by pattern-->
-			<p align="center"><input type="submit" name="submit" value="<?=$text['text_save'];?>" /></p>
+			<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['text_save'];?>" />
 		</div>
 	</div>
 

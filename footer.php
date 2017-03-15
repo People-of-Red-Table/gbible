@@ -16,6 +16,8 @@
 						<li><a href="./?menu=charityLinks"><?=$text['charity_of_world'];?></a></li>
 						<li><a href="./?menu=charityOrganizationsOf"><?=$text['charity_of_your_country'];?></a></li>
 						<li><a href="./blacklist.html" target="_blank"><?=$text['text_blacklist'];?></a></li>
+						<li><a href="./?menu=thankYouNotes"><?=$text['thank_you_notes'];?></a></li>
+						<li><a href="./?menu=history"><?=$text['text_history'];?></a></li>
 						<li><a href="./?menu=feedback"><?=$text['text_feedback'];?></a></li>
 						<!--<li><a href="./html_map.php" target="_blank" title="It is for Search Engine Robors =]">Index Map for Robots</a></li>-->
 						<!--<li><a href="#">About Us</a></li>

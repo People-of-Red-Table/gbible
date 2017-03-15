@@ -120,7 +120,7 @@
 	$text['text_subject'] = 'Subject';
 	$text['text_message'] = 'Message';
 	$text['text_send'] = 'Send';
-	$text['fb_pre_message'] = 'We value your feedback and it will be really nice of you if you will write it in English. Thank you.';
+	$text['fb_pre_message'] = 'We value your feedback and it will be really nice of you if you will write it in English. Thank you. <br />If you wanna join Charity Support Community PoRT [People of Red Table] and help to enhance Bible Site or suggest something, please, <a href="http://charity-port.16mb.com/" target="_blank">visit this page</a>.';
 	$text['fb_message_sent'] = 'Your message was sent. Thank you.';
 	$text['fb_message_was_not_sent'] = 'Your message was not sent. ' . $text['please_contact_support'];
 
@@ -128,4 +128,24 @@
 	$text['text_int_languages'] = 'Interface Languages';
 	$text['choose_language'] = 'Choose Language';
 
+
+	$text['use_ctrl_s'] = 'You can save these top verses on your computer - use <kbd>Ctrl+S</kbd> for it.';
+	$text['remember_me'] = 'Remember Me';
+
+
+
+	$text['text_history'] = 'History';
+	$text['history_2013'] = 'After reading of %bibledotcom% and visiting of church services - first Bible site, just in Russian language.';
+	$text['history_2014'] = 'First English version of site with American Standard Version.';
+	$text['history_2015'] = 'In February American Red Cross were "fighting" with Ebola and %blizzarddotcom% was helping to Red Cross. Here I have got idea to support charity. On first sites appearing banners and links to Red Cross and charity organizations.';
+	$text['history_2016'] = 'Twitter bot starts to tweet charity organizations. ';
+	$text['history_2017'] = 'Twitter bot is tweeting charity organizations for around 175 countries.';
+
+
+	$text['thank_you_notes'] = 'Thank You Notes';
+	$text['thank_you_note_01'] = 'Thank you %bibledotcom% for your good Bibles on your site.';
+	$text['thank_you_note_02'] = 'Thank you Victor Guryev that you paid for very first year of %golddashbibledotcom%.';
+	$text['thank_you_note_03'] = 'Thank you %blizzarddotcom% for idea support Red Cross and charity organizations.';
+	$text['thank_you_note_04'] = 'Thank you, %JimmyFallonShow% for "Thak You Notes".';
+	
 ?>

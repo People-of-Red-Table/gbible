@@ -23,13 +23,9 @@
 </script>
 
 				<form method="post" name="countrySelectionForm" action="./">
-				<div class="row">
-					<div class="col-md-2">
-					<p><?=$text['text_country'];?></p>
-					</div>
-					<div class="col-md-2">
-
-						<select id="country-selection" class="bible-nav-select" style="max-width: 20em" name="country" onchange="document.countrySelectionForm.submit();" id="countryOfCountrySelectionForm">
+				<div class="form-group">
+					<label for="countryOfCountrySelectionForm"><?=$text['text_country'];?></label>
+					<select id="country-selection" class="bible-nav-select form-control" name="country" onchange="document.countrySelectionForm.submit();" id="countryOfCountrySelectionForm">
 							<?php
 									$query = 'select distinct country `country_name`, 
 												case when cnt.native is null then t.country else cnt.native end `country`
@@ -76,18 +72,14 @@
 									}
 							?>
 						</select>
-					</div>
 				</div>
 				</form>
-				<br />
+
 				<form method="post" name="languageSelectionForm" action="./">
 					<input type="hidden" name="country" value="<?=$country;?>" id="countryOfLanguageSelectionForm" />
-				<div class="row">
-					<div class="col-md-2">
-						<p><?=$text['text_language'];?></p>
-					</div>
-					<div class="col-md-2">
-						<select id="languageOfLanguageSelectionForm" style="max-width: 20em" name="language" onchange="document.languageSelectionForm.country.value = document.countrySelectionForm.country.value; document.languageSelectionForm.submit();">
+				<div class="form-group">
+						<label for="languageOfLanguageSelectionForm"><?=$text['text_language'];?></label>
+						<select id="languageOfLanguageSelectionForm" class="form-control" name="language" onchange="document.languageSelectionForm.country.value = document.countrySelectionForm.country.value; document.languageSelectionForm.submit();">
 							<?php
 									$statement_languages = $links['sofia']['pdo'] -> prepare(
 											'
@@ -166,19 +158,15 @@
 									}			
 							?>			
 						</select>
-					</div>
 				</div> <!-- row -->
 				</form>
-				<br />
+
 				<form method="post" name="bibleSelectionForm" action="./">
-				<div class="row">
-					<div class="col-md-2">
-						<p><?=$text['text_bible'];?></p>
-					</div>
-					<div class="col-md-2">
+				<div class="form-group">
+						<label for="bible-selection"><?=$text['text_bible'];?></label>
 						<input type="hidden" name="country" value="<?=$country;?>" />
 						<input type="hidden" name="language" value="<?=$language;?>" />
-						<select id="bible-selection" style="max-width: 20em" name="b_code" onchange="document.bibleSelectionForm.country.value = document.countrySelectionForm.country.value; bibleSelectionForm.language.value = document.languageSelectionForm.language.value; document.bibleSelectionForm.submit();">
+						<select id="bible-selection" class="form-control" name="b_code" onchange="document.bibleSelectionForm.country.value = document.countrySelectionForm.country.value; bibleSelectionForm.language.value = document.languageSelectionForm.language.value; document.bibleSelectionForm.submit();">
 							<?php
 									$statement_bibles = $links['sofia']['pdo'] -> prepare(
 											'select b_code, title from b_shelf where language = :language_name order by title');
@@ -205,12 +193,8 @@
 									}			
 							?>
 						</select>
-					</div>
 				</div> <!-- row -->
-				<br />
-				<div class="row">
-					<div class="col-md-12">
-						<p align="right"><button class="btn btn-primary" onclick=""><?=$text['open_bible'];?></button></p>
-					</div>
-				</div>
-				</form>
+
+				<button class="form-control btn btn-primary" onclick=""><?=$text['open_bible'];?></button>
+			</form>
+		<br />

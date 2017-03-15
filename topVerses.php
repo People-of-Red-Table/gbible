@@ -41,6 +41,7 @@
 						. ':' . $fav_verse_row['startVerse'] . ' ' . $bible_row['title'] .' <a href="' . $bible_row['link'] . '">' . $bible_row['license'] . '</a></footer>
 						</blockquote><br />';
 				}
+				echo '<br /><br /><br /><p>' . $text['use_ctrl_s'] . '</p>';
 			}
 			else
 			{

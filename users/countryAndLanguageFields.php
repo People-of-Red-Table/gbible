@@ -1,10 +1,6 @@
-	<br />
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_country'];?></p>
-		</div>
-		<div class="col-md-2">
-			<select name="user_country">
+	<div class="form-group">
+			<label for="userCountryField"><?=$text['text_country'];?></label>
+			<select name="user_country" class="form-control" id="userCountryField">
 				<?php
 					$result_countries = mysqli_query( $links['sofia']['mysql'],
 								'select code, name, native from countries order by native');
@@ -26,15 +22,10 @@
 					}
 				?>
 			</select>
-		</div>
 	</div>
-	<br />
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_language'];?></p>
-		</div>
-		<div class="col-md-2">
-			<select name="user_language">
+	<div class="form-group">
+			<label id="userLanguageField"><?=$text['text_language'];?></label>
+			<select name="user_language" class="form-control" id="userLanguageField">
 				<?php
 					$result_languages = mysqli_query( $links['sofia']['mysql'],
 								'select language_name, native_name, language_code from iso_639_1_languages
@@ -58,5 +49,4 @@
 					}
 				?>
 			</select>
-		</div>
 	</div>

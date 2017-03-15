@@ -6,31 +6,26 @@
 		slog_msg('Signed up user tried to enter to "Sign In page", user ID = `' . $_SESSION['uid'] . '`. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	}
 ?>
+<br />
 <form method="post">
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_email'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="text" name="email">
-		</div>
+	<div class="form-group">
+			<label for="signInEmailField"><?=$text['text_email'];?></label>
+			<input type="text" class="form-control" name="email" id="signInEmailField">
 	</div>
 	<br />
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_password'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="password" name="password" maxlength="16">
-		</div>
+	<div class="form-group">
+			<label for="signInPassword"><?=$text['text_password'];?></label>
+			<input type="password" class="form-control" name="password" maxlength="16" id="signInPassword">
 	</div>
 	<br />
-	<div class="row">
-		<div class="col-md-12">
-			<input type="hidden" name="menu" value="users_signingIn">
-			<!-- TO DO: check email by pattern-->
-			<p align="center"><input type="submit" name="submit" value="<?=$text['sign_in'];?>" /></p>
-		</div>
-	</div>
+	<!-- // Code will come out with new translation pack...
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" name="remember_me" /><?=$text['remember_me'];?>
+		</label>
+	</div>-->
+	<input type="hidden" name="menu" value="users_signingIn">
+	<!-- TO DO: check email by pattern-->
+	<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['sign_in'];?>" />
 
 </form>

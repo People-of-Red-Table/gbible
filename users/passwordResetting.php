@@ -12,7 +12,7 @@
 		}
 		else
 		{
-			echo '<p class="alert alert-danger">' . $text['password_changed'] . '</p> <p><a href="./?menu=users_signIn">' . $text['sign_in'] . '</a></p>';
+			echo '<p class="alert alert-success">' . $text['password_changed'] . '</p> <p><a href="./?menu=users_signIn">' . $text['sign_in'] . '</a></p>';
 		}
 	}
 	else
@@ -22,32 +22,20 @@
 
 
 <form method="post">
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['text_password'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="password" name="password" maxlength="16">
-		</div>
+	<div class="form-group">
+			<label for="passwordResetPasswordField"><?=$text['text_password'];?></label>
+			<input type="password" class="form-control" name="password" maxlength="16" id="passwordResetPasswordField">
 	</div>
 
-	<div class="row">
-		<div class="col-md-2">
-			<p><?=$text['repeat_password'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="password" name="password_repeat" maxlength="16">
-		</div>
+	<div class=form-group>
+			<label for="passwordResetRepeatPasswordField"><?=$text['repeat_password'];?></label>
+			<input type="password" class="form-control" name="password_repeat" maxlength="16" id="passwordResetRepeatPasswordField">
 	</div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<input type="hidden" name="verification_code" value="<?=$_POST['verification_code'];?>">
-			<input type="hidden" name="menu" value="auth_passwordResetting">
-			<p align="center"><input type="submit" name="submit" value="<?=$text['text_reset'];?>" /></p>
-		</div>
-	</div>
+	<input type="hidden" name="verification_code" value="<?=$_POST['verification_code'];?>">
+	<input type="hidden" name="menu" value="auth_passwordResetting">
+	<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['text_reset'];?>" />
 </form>
 <?php
-	}
+}
 ?>
