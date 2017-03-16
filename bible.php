@@ -51,14 +51,27 @@
 			$books_result = $statement_books -> execute();
 			$books_rows = $statement_books -> fetchAll();
 			$books_nav = '<div width="80%" align="center">';
+			$books_form = '<form method="post" name="bookSelectionFormFromChosenBible">
+							<input type="hidden" name="b_code" value="' . $b_code . '">
+							<select name="book" class="form-control" onchange="bookSelectionFormFromChosenBible.submit()">
+							'
+							;
+
+
 			foreach ($books_rows as $row) 
 			{
 				$books_nav .=  '<a href="./?b_code=' . $b_code . '&book=' . $row['book'] . '">' . $row['book'] . '</a> ';
+				$selected = '';
+				if ($book === $row['book'])
+					$selected = ' selected="selected"';
+				$books_form .= '<option value="' . $row['book'] . '"' . $selected . '>' . $row['book'] . '</option>';
 			}
+				$books_form .= '</select></form>';
 				$books_nav .= '</div>';
+
 		?>
 			<div><center><h2 id="bibleTitle" title="<?=$bible_description;?>"><?=$bible_title;?></h2></center></div>
-			<nav class="gb-books-nav"><?=$books_nav;?></nav>
+			<nav class="gb-books-nav"><?=$books_nav.'<br/>'.$books_form;?></nav>
 		<?php
 			if (!isset($book))
 				$book = $books_rows[0]['book'];
@@ -78,24 +91,37 @@
 				$chapters_rows = $statement_chapters -> fetchAll();
 				$chapters_links = '<div width="80%" align="center">';
 				$chapter_count=0;
+
+				$chapters_form = '<form method="post" name="chapterSelectionFormFromChosenBible">
+							<input type="hidden" name="b_code" value="' . $b_code . '">
+							<input type="hidden" name="book" value="' . $book . '">
+							<select name="chapter" class="form-control" onchange="chapterSelectionFormFromChosenBible.submit()">
+							'
+							;
+
 				foreach ($chapters_rows as $chapter_row) 
 				{
 					$chapter_count++;
 					$chapters_links .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter_row['chapter'] . '">[' . $chapter_row['chapter'] . ']</a> ';
+					$selected = '';
+					if ($chapter == $chapter_row['chapter'])
+						$selected = ' selected="selected"';
+					$chapters_form .= '<option value="' . $chapter_row['chapter'] . '"' . $selected . '>' . $chapter_row['chapter'] . '</option>';
 				}
 				$chapters_links .= '</div>';
+				$chapters_form .= '</select></form>';
 
 				$chapter_nav = '<table width="100%"><tr><td width="50%">';
 				if ($chapter > 1)
-					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter - 1) . '#top-anchor"><button class="btn btn-default">Previous Chapter</button></a>';
+					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter - 1) . '#top-anchor"><button class="btn btn-default">' . $text['previous_chapter'] . '</button></a>';
 				$chapter_nav .= '</td><td width="50%" align="right">';
 				if ($chapter < $chapter_count)
-					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter + 1) . '#top-anchor"><button class="btn btn-default">Next Chapter</button></a>';
+					$chapter_nav .= '<a href="./?b_code=' . $b_code . '&book=' . $book . '&chapter=' . ($chapter + 1) . '#top-anchor"><button class="btn btn-default">' . $text['next_chapter'] . '</button></a>';
 				$chapter_nav .= '</td></tr></table>'; 
 
 		?>
 			<div id="book-title"><center><h3><?=$book;?> <?=$chapter;?></h3></center></div>
-			<nav class="gb-pagination"><?=$chapters_links;?></nav><br />
+			<nav class="gb-pagination"><?=$chapters_links.'<br/>'.$chapters_form;?></nav><br />
 			<nav class="gb-chapter-nav"><?=$chapter_nav;?></nav>
 
 		</div>

@@ -87,7 +87,33 @@
 
 	if(isset($b_code) and isset($book) and is_numeric($book) and stripos($b_code, '_http') === FALSE)
 		$book_index = $book;
-	elseif(isset($b_code) and isset($book) and !is_numeric($book) and stripos($b_code, '_http') === FALSE)
+
+
+	if (!isset($book) and (stripos($b_code, 'http') === FALSE))
+	{
+		$statement_translation = $links['sofia']['pdo'] -> prepare(
+				'select table_name from b_shelf where b_code = :b_code'
+			);
+
+		$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
+		if(!$result_translation)
+			log_msg(__FILE__ . ':' . __LINE__ . ' Table name PDO query exception. Info = {' . json_encode($statement_translation -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
+		$info_row = $statement_translation -> fetch();
+		$table_name = $info_row['table_name'];
+		$statement_books = $links['sofia']['pdo'] -> prepare(
+				'select distinct book from ' . $table_name
+			);
+		$result_books = $statement_books -> execute();
+		if(!$result_books)
+		{
+			log_msg(__FILE__ . ':' . __LINE__ . ' Books PDO queryexception. Info = {' . json_encode($statement_books -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
+		}
+		$books_rows = $statement_books -> fetchAll();
+		
+		$book = $books_rows[0]['book'];	
+	}
+
+	if(isset($b_code) and isset($book) and !is_numeric($book) and stripos($b_code, '_http') === FALSE)
 	{
 		$book_short_title = $book;
 

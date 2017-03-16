@@ -153,4 +153,7 @@
 
 	$text['text_search'] = 'Search';
 	$text['search_in'] = 'Search in' ;
+
+	$text['next_chapter'] = 'Next Chapter';
+	$text['previous_chapter'] = 'Previous Chapter';
 ?>

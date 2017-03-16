@@ -153,4 +153,7 @@
 	$text['text_search'] = 'Buscar';
 	$text['search_in'] = 'Buscar en ';
 
+	$text['next_chapter'] = 'Siguiente Capítulo';
+	$text['previous_chapter'] = 'Capítulo Anterior';
+
 ?>
