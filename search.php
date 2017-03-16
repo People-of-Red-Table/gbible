@@ -67,13 +67,13 @@
 				else
 				{
 					$msg_type = 'info';
-					$message = ' ';
+					$message = $text['repharase_search'];
 				}
 			}
 			else
 			{
 				$msg_type = 'danger';
-				$message = ' ';
+				$message = $text['search_exception'];
 			}
 		}
 	}

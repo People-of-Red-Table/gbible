@@ -156,4 +156,7 @@
 
 	$text['next_chapter'] = 'Next Chapter';
 	$text['previous_chapter'] = 'Previous Chapter';
+
+	$text['repharase_search'] = 'No matches found. Try to use exact phrase and avoid special characters. ';
+	$text['search_exception'] = 'We\'ve got issue with search. ' . $text['please_contact_support'];
 ?>

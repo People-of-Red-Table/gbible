@@ -156,4 +156,7 @@
 	$text['next_chapter'] = 'Siguiente Capítulo';
 	$text['previous_chapter'] = 'Capítulo Anterior';
 
+	$text['repharase_search'] = 'No se encontraron coincidencias. Trate de usar la frase exacta y evitar caracteres especiales. ';
+	$text['search_exception'] = 'Tenemos problemas con la búsqueda. '. $text['please_contact_support'];
+
 ?>
