@@ -1,3 +1,6 @@
+Make .has-success .has-feedback etc things for controls during content checking.
+
+links for the chapters and books looks too small on the phone: in addition, add selects for it.
 
 Deploy translations and feedback page. Push it to Git.
 

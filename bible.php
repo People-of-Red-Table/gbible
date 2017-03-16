@@ -6,26 +6,40 @@
 	if ($random === 1000)
 		echo '<p class="alert alert-success">' . $text['hallelujah'] . '</p>';
 
+	$statement_translation = $links['sofia']['pdo'] -> prepare(
+			'select bh.b_code, bh.table_name, bh.title, bh.description, bh.copyright, 
+			bh.license, l.link, bh.http_link, country, language, dialect
+			from b_shelf bh 
+			join licenses l on l.license = bh.license
+			where b_code = :b_code'
+		);
+
+
+	$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
+	if(!$result_translation)
+		log_msg(__FILE__ . ':' . __LINE__ . ' PDO translations query exception. Info = {' . json_encode($statement_translation -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}' );
+	$info_row = $statement_translation -> fetch();
+	$bible_title = $info_row['title'];
+	$bible_description = $info_row['description'];
+
+	if (stripos($b_code, 'http') === FALSE)
+	{
+?>
+<form method="post">
+	<input type="hidden" name="menu" value="search" />
+	<input type="hidden" name="search_in" value="<?=$b_code;?>" />
+	<div class="input-group input-group-sm">
+		<input type="text" class="form-control" name="search_query" placeholder="<?=$text['search_in'].$info_row['title'];?>" />
+		<span class="input-group-btn"><input type="submit" class="btn btn-default" name="submit" value="<?=$text['text_search'];?>"></span>
+	</div>
+</form>
+<br />
+<?php
+	}
 ?>
 	<div class="panel panel-primary">
 		<div class="panel-header">
 		<?php
-			//echo 'b_code = ' . $b_code;
-			$statement_translation = $links['sofia']['pdo'] -> prepare(
-					'select bh.b_code, bh.table_name, bh.title, bh.description, bh.copyright, 
-					bh.license, l.link, bh.http_link, country, language, dialect
-					from b_shelf bh 
-					join licenses l on l.license = bh.license
-					where b_code = :b_code'
-				);
-
-
-			$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
-			if(!$result_translation)
-				log_msg(__FILE__ . ':' . __LINE__ . ' PDO translations query exception. Info = {' . json_encode($statement_translation -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}' );
-			$info_row = $statement_translation -> fetch();
-			$bible_title = $info_row['title'];
-			$bible_description = $info_row['description'];
 
 		if (stripos($b_code, '_http') === FALSE)
 		{
@@ -148,7 +162,7 @@
 
 						// VK Share Link
 
-						$verses .= '<li><a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> ' . $text['share_in_vk'] . '</a></li>';
+						$verses .= '<li><a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank"><span class="glyphicon glyphicon-share"></span> ' . $text['share_in_vk'] . '</a></li>';
 
 						// VK Share https://vk.com/editapp?act=create
 						/*$verses .= '<a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank">Share in VK</a><br />';

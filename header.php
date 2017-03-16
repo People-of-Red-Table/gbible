@@ -95,7 +95,7 @@
 					?>
 						<li><a href="./?menu=users_settings"><?=$text['text_settings'];?></a></li>
 						<li><a href="./?menu=sign_out"><?=$text['sign_out'];?></a></li>
-						<li><a href="#"><b><?=$_SESSION['nickname'];?></b></a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> <b><?=$_SESSION['nickname'];?></b></a></li>
 					<?php
 						}
 						else 

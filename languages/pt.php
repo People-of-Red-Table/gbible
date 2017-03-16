@@ -111,4 +111,45 @@
 	$text['tweeted_verse_exception'] = 'Nós temos problemas com o verso do twitt.';
 	$text['wait_for_tweeting'] = 'O verso vai ser tweeted, por favor aguarde.';
 
+
+
+	/* Feedback */
+
+	$text['text_feedback'] = 'Feedback';
+	$text['text_subject'] = 'Assunto';
+	$text['text_message'] = 'Mensagem';
+	$text['text_send'] = 'Enviar';
+	$text['fb_pre_message'] = 'Valorizamos seu feedback e será muito legal se você escrever em inglês. Obrigado. <br /> Se você quer se juntar à Comunidade de Apoio à Comunidade de Caridade PoRT [Pessoas da Mesa Vermelha] e ajudar a melhorar o Site da Bíblia ou sugerir algo, por favor, <a href="http://charity-port.16mb.com/" target="_blank"> visite esta página </a>. ';
+	$text['fb_message_sent'] = 'Sua mensagem foi enviada. Obrigado.';
+	$text['fb_message_was_not_sent'] = 'A sua mensagem não foi enviada. '. $text['please_contact_support'];
+
+	$text['text_languages'] = 'Idiomas';
+	$text['text_int_languages'] = 'Idiomas da Interface';
+	$text['choose_language'] = 'Escolher Idioma';
+
+
+	$text['use_ctrl_s'] = 'Você pode salvar esses versículos no seu computador - use <kbd>Ctrl + S</ kbd> para ele.';
+	$text['remember_me'] = 'Lembre-se de mim';
+
+
+	$text['text_history'] = 'Histórico';
+	$text['history_2013'] = 'Depois de ler %bibledotcom% e visitar os serviços da igreja - primeiro site bíblico, apenas em idioma russo.';
+	$text['history_2014'] = 'Primeira versão em inglês do site com a American Standard Version.';
+	$text['history_2015'] = 'Em fevereiro, a Cruz Vermelha Americana estava lutando com Ebola e %blizzarddotcom% estava ajudando a Cruz Vermelha. Aqui eu tenho idéia para apoiar a caridade. Em primeiros sites aparecem banners e links para Cruz Vermelha e organizações de caridade. ';
+	$text['history_2016'] = 'Twitter bot começa a tweet organizações de caridade. ';
+	$text['history_2017'] = 'O Twitter bot está tweetando organizações de caridade por cerca de 175 países.';
+
+
+	$text['thank_you_notes'] = 'Obrigado Notas';
+	$text['thank_you_note_01'] = 'Obrigado %bibledotcom% por suas boas Bíblias em seu site.';
+	$text['thank_you_note_02'] = 'Obrigado Victor Guryev que você pagou pelo primeiro ano de %golddashbibledotcom%.';
+	$text['thank_you_note_03'] = 'Obrigado %blizzarddotcom% pela ajuda da ideia Cruz Vermelha e organizações de caridade.';
+	$text['thank_you_note_04'] = 'Obrigado, %JimmyFallonShow% por "Thank You Notes".';
+	$text['thank_you_note_05'] = 'Obrigado, por internet gratuito à agência de viagens "PAULLY", agência de ônibus "ASATUR" e família "Benevides" da Boa Vista do Brasil, que educadamente me deu para trabalhar no site da Bíblia. ';
+
+	$text['thank_you_note_06'] = 'Obrigado, %hostingercouk% por hospedagem gratuita onde é agora Site da Bíblia. ';
+
+	$text['text_search'] = 'Pesquisar';
+	$text['search_in'] = 'Pesquisar em ';	
+
 ?>

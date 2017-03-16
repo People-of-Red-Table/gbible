@@ -10,12 +10,14 @@
 
 	$statement_charities = $links['sofia']['pdo'] -> prepare('
 								select 
-										case when co.native_name is null then co.english_name
+										case when (length(co.native_name) < 2) or (co.native_name is null) then co.english_name
 										else co.native_name 
 										end `name`, 
-										co.description, co.http_link, cot.name `type` from charity_organizations co
+										co.description, co.http_link, cot.name `type` 
+								from charity_organizations co
 								join charity_organization_types cot on co.charity_organization_type_id = cot.id
-								where country_code = :code
+								where country_code = :code 
+								order by co.charity_organization_type_id asc
 					');
 	$result_charities = $statement_charities -> execute(['code' => $charity_country]);
 	if (!$result_charities)

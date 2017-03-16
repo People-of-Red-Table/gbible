@@ -4,7 +4,7 @@
 
 <?php
 
-	$menu_items = array('bible', 
+	$menu_items = ['bible', 
 
 		// User "Sign Up", "Sign In"
 		'users_signUp', 'users_registration', 'users_signIn', 'users_signingIn',  'users_settings', 
@@ -26,9 +26,11 @@
 		// Charity
 		'charityLinks', 'charityOrganizationsOf',
 
-		'feedback', 'changeLanguage', 'history', 'thankYouNotes'
+		'feedback', 'changeLanguage', 'history', 'thankYouNotes',
 
-		);
+		'search'
+
+		];
 
 	if(in_array($menu, $menu_items))
 	{

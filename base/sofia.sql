@@ -467,7 +467,7 @@ INSERT INTO `charity_organizations` (`id`, `country_code`, `english_name`, `nati
 (114, 'es', 'Spanish Red Cross', 'Cruz Roja Española', NULL, 'http://www.cruzroja.es/', 1),
 (115, 'jp', 'Japanese Red Cross', '', NULL, 'http://www.jrc.or.jp/', 1),
 (116, 'eg', 'Egyptian Red Crescent', '', NULL, 'http://egyptianrc.org/', 2),
-(117, 'br', 'Brazilian Red Cross', '', NULL, 'https://goo.gl/cX7xcr', 3),
+(117, 'br', 'Brazilian Red Cross', 'Cruz Vermelha Brasileira', NULL, 'https://goo.gl/cX7xcr', 3),
 (118, 'ph', 'Philippine Red Cross', 'Philippine Red Cross', NULL, 'http://redcross.org.ph/', 1),
 (119, 'ng', 'Nigerian Red Cross Society', NULL, NULL, 'http://redcrossnigeria.org/', 1),
 (120, 'mx', 'Mexican Red Cross', 'Cruz Roja Mexicana', NULL, 'http://cruzrojamexicana.org.mx/', 1),

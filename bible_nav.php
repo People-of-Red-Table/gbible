@@ -21,7 +21,7 @@
 		}
 	?>
 </script>
-
+			<div class="hidden-print">
 				<form method="post" name="countrySelectionForm" action="./">
 				<div class="form-group">
 					<label for="countryOfCountrySelectionForm"><?=$text['text_country'];?></label>
@@ -197,4 +197,5 @@
 
 				<button class="form-control btn btn-primary" onclick=""><?=$text['open_bible'];?></button>
 			</form>
+		</div>
 		<br />

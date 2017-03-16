@@ -6,7 +6,7 @@
 	$text['favorite_verses_exception'] = 'We\'ve got issue with favorite verses.';
 	$text['verse_already_in_fav'] = 'Verse is already in favorites.';
 	$text['sign_in_exception'] = 'Whoops, we\'ve got issue with \"Sign In\" .';
-	$text['incorrect_auth_info'] = 'Atuhentification information is incorrect.';
+	$text['incorrect_auth_info'] = 'Authentification information is incorrect.';
 	$text['text_country'] = 'Country';
 	$text['text_language'] = 'Language';
 	$text['my_favorite_verses'] = 'My Favorite Verses';
