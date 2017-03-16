@@ -152,7 +152,7 @@
 	$text['thank_you_note_06'] = 'Thank you, %hostingercouk% for free hosting where is now Bible Site. ';
 
 	$text['text_search'] = 'Search';
-	$text['search_in'] = 'Search in' ;
+	$text['search_in'] = 'Search in ' ;
 
 	$text['next_chapter'] = 'Next Chapter';
 	$text['previous_chapter'] = 'Previous Chapter';
