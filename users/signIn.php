@@ -7,10 +7,11 @@
 	}
 ?>
 <br />
-<form method="post">
-	<div class="form-group">
+<form method="post" name="signInForm">
+	<input type="hidden" name="formIsCorrect" id="signInFormIsCorrect" value="true" />
+	<div class="form-group" id="emailFormGroup">
 			<label for="signInEmailField"><?=$text['text_email'];?></label>
-			<input type="text" class="form-control" name="email" id="signInEmailField">
+			<input type="text" class="form-control" name="email" id="signInEmailField" value="" onchange="test_email(this.id, 'emailFormGroup', 'signInForm')">
 	</div>
 	<br />
 	<div class="form-group">

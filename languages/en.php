@@ -147,7 +147,7 @@
 	$text['thank_you_note_02'] = 'Thank you Victor Guryev that you paid for very first year of %golddashbibledotcom%.';
 	$text['thank_you_note_03'] = 'Thank you %blizzarddotcom% for idea support Red Cross and charity organizations.';
 	$text['thank_you_note_04'] = 'Thank you, %JimmyFallonShow% for "Thak You Notes".';
-	$text['thank_you_note_05'] = 'Thank you, for free internet to travel agency "PAULLY", bus agency "ASATUR" and family "Benevides" from Boa Vista of Brazil, who politely gave me to work on Bible Site. ';
+	$text['thank_you_note_05'] = 'Thank you, for free internet to travel agency "PAULLY", bus agency "ASATUR" and family "Benevides", family of Jaime and Celestia [with her grandmother Maria Jose Gomes] from Boa Vista of Brazil, who politely gave me to work on Bible Site. ';
 	
 	$text['thank_you_note_06'] = 'Thank you, %hostingercouk% for free hosting where is now Bible Site. ';
 
@@ -159,4 +159,13 @@
 
 	$text['repharase_search'] = 'No matches found. Try to use exact phrase and avoid special characters. ';
 	$text['search_exception'] = 'We\'ve got issue with search. ' . $text['please_contact_support'];
+
+	$text['text_keywords'] = 'Bible, Holy Bible, Gold Bible, Golden Bible, Old Testament, New Testament, Gospel, Revelation, God, Jesus Christ, Jesus, Bible Search';
+
+	$text['bibles_by_countries'] = 'Bibles by Countries';
+	$text['parallel_bibles'] = 'Parallel Bibles';
+	$text['bible_a'] = 'Bible A';
+	$text['bible_b'] = 'Bible B';
+	$text['choose_parallel_bibles'] = 'Not every Bible is available for parallel reading. You have to choose Bibles without \'[H]\' in its title.';
+
 ?>

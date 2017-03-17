@@ -158,5 +158,8 @@
 	$text['repharase_search'] = 'Nenhuma correspondência encontrada. Tente usar a frase exata e evitar caracteres especiais. ';
 	$text['search_exception'] = 'Temos problemas com a pesquisa. '. $text['please_contact_support'];
 
+	$text['text_keywords'] = 'A Bíblia, a Bíblia Sagrada, a Bíblia em Ouro, a Bíblia Dourada, o Velho Testamento, o Novo Testamento, o Evangelho, o Apocalipse, Deus, Jesus Cristo, Jesus, Busca Bíblica';
+
+	$text['bibles_by_countries'] = 'Bíblias por Países';
 
 ?>

@@ -1,12 +1,20 @@
 <!doctype html>
-<html lang="">
+<html lang="<?=$interface_language;?>">
 	<head>
 		<title><?=$text['golden_bible'];?></title>
 		<link rel="shortcut icon" href="./favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="charset" content="utf-8">
-		<meta name="yandex-verification" content="f03375f944df60ab" />
+		<meta name="keywords" content="<?php
+			echo $text['text_keywords'];
+			if (isset($bible))
+			{
+				echo ', ' . $bible['title'];
+			}
+		?>">
 		<?php
+			if (isset($bible))
+				echo '<meta name="description" content="' . $bible['description'] . '">';
 			if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1')
 			{
 		?>
@@ -61,6 +69,7 @@
 				<div class="collapse navbar-collapse" id="nav-bar-gbible">
 					<ul class="nav navbar-nav">
 						<li><a href="./?menu=bible"><?=$text['text_open'];?></a></li>
+						<li><a href="./?menu=parallelBibles"><?=$text['parallel_bibles'];?></a></li>
 						<li><a href="./?menu=topVerses"><?=$text['top_verses'];?></a></li>
 
 					<?php
@@ -152,10 +161,11 @@
 			$statement_country_name = $links['sofia']['pdo'] -> prepare('select native from countries where code = :code');
 			$result_country_name = $statement_country_name -> execute(['code' => $charity_country]);
 			$country_row = $statement_country_name -> fetch();
+			$charity_country_native = $country_row['native'];
 		?>
 		<div class="row">
 			<div class="col-md-12">
-				<center><a href="./?menu=charityOrganizationsOf" target="_blank"><?=$text['charity_of_your_country'];?> <?=$country_row['native'];?></a></center>
+				<center><a href="./?menu=charityOrganizationsOf" target="_blank"><?=$text['charity_of_your_country'];?> <?=$charity_country_native;?></a></center>
 			</div>
 		</div><br />
 

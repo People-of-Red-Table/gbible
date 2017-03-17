@@ -2,6 +2,7 @@
 	require 'bible_nav.php';
 
 	// just interesting random =] 1 to 1000 that you will get 'Hallelujah!' text =]
+	$b_code = $userBible -> b_code;
 	$random = rand(1, 1000);
 	if ($random === 1000)
 		echo '<p class="alert alert-success">' . $text['hallelujah'] . '</p>';
@@ -38,7 +39,7 @@
 	}
 ?>
 	<div class="panel panel-primary">
-		<div class="panel-header">
+		<div>
 		<?php
 
 		if (stripos($b_code, '_http') === FALSE)
@@ -58,14 +59,20 @@
 							;
 
 
+			$found_book = FALSE;
 			foreach ($books_rows as $row) 
 			{
 				$books_nav .=  '<a href="./?b_code=' . $b_code . '&book=' . $row['book'] . '">' . $row['book'] . '</a> ';
 				$selected = '';
-				if ($book === $row['book'])
+				if (!$found_book and ($book === $row['book']))
+				{
 					$selected = ' selected="selected"';
+					$found_book = true;
+				}
 				$books_form .= '<option value="' . $row['book'] . '"' . $selected . '>' . $row['book'] . '</option>';
 			}
+				$book = $books_rows[0]['book'];
+
 				$books_form .= '</select></form>';
 				$books_nav .= '</div>';
 
@@ -174,10 +181,7 @@
 					if ($_SESSION['uid'] > - 1)
 						 $verses .= '<li><a href="./?menu=users_addVerseToFavorites&b_code=' . $b_code . '&id=' . $verse_row['verseID'] . '" target="_blank"><span class="glyphicon glyphicon-heart"></span> Add To Favorites</a></li>';
 
-						$array = explode('/', $_SERVER['SCRIPT_NAME']);
-						if (count($array) > 1)
-							$addition_url = '/' . $array[0];
-						$url = 'http://' . $_SERVER['HTTP_HOST'] . $addition_url . '/?b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verse=' . $verse_row['startVerse'] . '#' . $verse_row['verseID'];
+						$url = $base_url . '?b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verse=' . $verse_row['startVerse'] . '#' . $verse_row['verseID'];
 
 						// Facebook Share
 						$verses .= '<li><div class="fb-share-button" data-href="%SHARE_URL%" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url) . '&src=sdkpreparse">Share</a></div></li>';

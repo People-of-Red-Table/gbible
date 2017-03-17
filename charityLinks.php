@@ -2,10 +2,10 @@
 <p><?=$text['choose_a_country'];?>.</p>
 <?php
 
-	$query = 'select cnt.name `country`, lower(cnt.code) `country_code`, cont.name `continent` from countries cnt
+	$query = 'select cnt.name `country`, lower(cnt.code) `country_code`, cont.name `continent`, cont.sort from countries cnt
 			join continents cont on cnt.continent = cont.code
 			where cnt.code in (select distinct country_code from charity_organizations)
-			order by cnt.continent desc, cnt.name asc
+			order by cont.sort, cnt.name asc
 	';
 
 	$statement_countries = $links['sofia']['pdo'] -> prepare($query);
@@ -22,7 +22,7 @@
 			if ($continent !== $country_row['continent'])
 			{
 				$continent = $country_row['continent'];
-				echo '<h2>' . $continent . '</h2><br />';
+				echo '<h3>' . $continent . '</h3><br />';
 			}
 			echo '<a href="./?menu=charityOrganizationsOf&charity_country=' . $country_row['country_code'] . '">' . $country_row['country'] . '</a><br />';
 		}

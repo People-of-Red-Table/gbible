@@ -159,4 +159,8 @@
 	$text['repharase_search'] = 'No se encontraron coincidencias. Trate de usar la frase exacta y evitar caracteres especiales. ';
 	$text['search_exception'] = 'Tenemos problemas con la búsqueda. '. $text['please_contact_support'];
 
+$text['text_keywords'] = 'Biblia, Sagrada Biblia, Biblia de Oro, Biblia de Oro, Antiguo Testamento, Nuevo Testamento, Evangelio, Revelación, Dios, Jesucristo, Jesús, Búsqueda de la Biblia';
+
+$text['bibles_by_countries'] = 'Biblias por países';
+
 ?>

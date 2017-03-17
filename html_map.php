@@ -14,6 +14,9 @@
 	require 'log.php';
 	require 'config.php';
 
+	if (isset($_REQUEST['b_code']))
+		$b_code = $_REQUEST['b_code'];
+
 	if (isset($_REQUEST['b_code']) and !isset($_REQUEST['book']))
 		echo '<meta http-equiv="refresh" content="0; url=./?b_code=' . $_REQUEST['b_code'] . '" />';
 	elseif (isset($_REQUEST['b_code']) and isset($_REQUEST['book']) and !isset($_REQUEST['chapter']))
@@ -37,7 +40,7 @@
 		}
 		echo '</table>';
 	}
-	elseif( isset($_REQUEST['b_code']))
+	elseif( isset($_REQUEST['b_code']) and (stripos($b_code, 'http')))
 	{
 		$statement_translation = $links['sofia']['pdo'] -> prepare(
 				'select bh.table_name, bh.title, bh.description, bh.copyright, 

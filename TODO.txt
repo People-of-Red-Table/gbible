@@ -1,19 +1,19 @@
-links for the chapters and books looks too small on the phone: in addition, add selects for it.
 
-Translate chapter navigation.
 
-colon and semi-colon in search :[]
-
+[!]
+When will be internet:
+change links for bibles to gold-bible.16mb.com/bibles/
+there must be many unpacked Bibles
+Run HTTrack to download rest of Bibles of John Hurt
+and upload them to ./bibles/
+Check which are not in ./bibles/, e.g. Dutch Bible.
+This is very need for Search Engines to make them think that Bibles are in gold-bible.16mb.com.
+[!]
 
 Make .has-success .has-feedback etc things for controls during content checking.
 
-
-Deploy translations and feedback page. Push it to Git.
-
 Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
 Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
-
-Set keywords.
 
 Add social things for charity links in visitor's charity organizations list
 ./?menu=users_profile&id=<?=$_SESSION['uid'];?>
@@ -28,11 +28,11 @@ Show Top Verses[+], Chapter, Books and Bibles
 facebook, VK - Share and Like buttons. Check. FB - waiting for ID check, VK - need phone number [for Like].
 Tweet button [not link?]
 
-HTML map for search engine robots: add John Hurt's Bibles, for languages.
-
 Top Verses [+], Bibles, books, chapter and "My Favorite Verses" on favorite Bible [or for guests it is Bible of chosen language or something else...]
 
 Favorite Bible which will be opened after sign in.
+
+html_map.php is deprecated.
 
 Take settings of user country and language. [mixing with POST, GET, COOKIES makes it...]
 
@@ -44,7 +44,7 @@ to iso_ms_languages or expand by another table
 
 Book titles in different languages [very possible that it will do PoRT]
 
-Social things
+Social things: for chapters, books and bibles. Share, tweet or copy link to the chapter, book or Bible.
 
 Make Installation checker, script helper during installation which will say what system needs else.
 

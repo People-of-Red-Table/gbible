@@ -49,7 +49,7 @@
 									else
 									{
 										$statement_country = $links['sofia']['pdo'] -> prepare('select country_name `country` from iso_ms_languages where country_code = :country or country_name = :country');
-										$result_country = $statement_country -> execute(array('country' => $country));
+										$result_country = $statement_country -> execute(array('country' => $userBible -> country));
 										//print_r($statement_country);
 										if (!$result_country)
 										{	
@@ -63,7 +63,7 @@
 										{
 											$selected = '';
 											//echo "<!-- `$country_name` ?= `" . strtolower($row['country']) . "` for `$country` -->";
-											if ($country_name == strtolower($row['country_name']))
+											if (strcasecmp($country_name, $row['country_name']) === 0)
 											{
 												$selected = ' selected'; 
 											}
@@ -99,7 +99,7 @@
 											left join iso_ms_languages iso_ms on t.language_name = iso_ms.language_name
 											order by native_language_name
 										');
-										$result_languages = $statement_languages -> execute(array('country_name' => $country_name));
+										$result_languages = $statement_languages -> execute(array('country_name' => $userBible -> country));
 
 									if (!$result_languages)
 									{
@@ -123,7 +123,7 @@
 											union
 											select language `language_name` from b_shelf where country = :country
 											');
-										$result = $statement_language -> execute(array('language' => $language, 'country' => $country_name));
+										$result = $statement_language -> execute(array('language' => $userBible -> language, 'country' => $userBible -> $country));
 										if (!$result)
 										{
 											log_msg(__FILE__ . ':' . __LINE__ . ' Languages PDO query exception. Info = {' . json_encode($statement_language -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
@@ -134,19 +134,18 @@
 										$language_name = '';
 										foreach ($language_rows as $item) 
 										{
-											if ($item['language_name'] == $language)
+											if (strcasecmp($item['language_name'], $userBible -> language) === 0)
 												$language_name = strtolower($item['language_name']);
 										}
 										if (empty($language_name))
 											$language_name = strtolower($language_rows[0]['language_name']);
 
-										//log_msg(__FILE__ . ':' . __LINE__ . " \$language_name = `$language_name`");
 										echo "<script>var language_name ='$language_name';</script>";
 										$found_language = FALSE;
 										while ($row = $statement_languages -> fetch()) 
 										{
 											$selected = '';
-											if ($language_name == strtolower($row['language_name']))
+											if (strcasecmp($language_name,  $row['language_name']) === 0)
 											{
 												$selected = ' selected="selected"';
 												$found_language = true;
@@ -170,7 +169,7 @@
 							<?php
 									$statement_bibles = $links['sofia']['pdo'] -> prepare(
 											'select b_code, title from b_shelf where language = :language_name order by title');
-										$result_bibles = $statement_bibles -> execute(array('language_name' => $language_name));
+										$result_bibles = $statement_bibles -> execute(array('language_name' => $userBible -> language));
 
 									if (!$result_bibles)
 									{
@@ -184,7 +183,7 @@
 										while ($row = $statement_bibles -> fetch()) 
 										{
 											$selected = '';
-											if (isset($b_code) and $b_code == strtolower($row['b_code']))
+											if (isset($b_code) and (strcasecmp($b_code, $row['b_code']) === 0) )
 											{
 												$selected = ' selected="selected"'; 
 											}

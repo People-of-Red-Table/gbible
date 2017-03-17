@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require './obj/objects.php';
 	require 'log.php';
 	require 'config.php';
 	require 'language.php';

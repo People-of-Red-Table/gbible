@@ -60,6 +60,10 @@
 					echo '<table class="table table-striped">';
 					while($row = mysqli_fetch_assoc($search_result))
 					{
+						if (strpos($row['verseText'], '¶') !== FALSE)
+						{
+							$row['verseText'] = str_replace('¶', '', $row['verseText']);
+						}
 						echo '<tr><td><a href="./?b_code=' . $info_row['b_code'] . '&book=' . $row['book'] . '&chapter=' . $row['chapter'] . '&verse=' . $row['startVerse'] . '"><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['startVerse'] . '</b></a><br /><br />' . $row['verseText'] . '</td></tr>';
 					}
 					echo '</table>';

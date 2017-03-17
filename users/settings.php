@@ -70,7 +70,7 @@
 		require 'countryAndLanguageFields.php'; 
 	?>
 	<br />
-	<input type="hidden" name="menu" value="changeLanguage">
+	<input type="hidden" name="menu" value="users_saveSettings">
 	<!-- TO DO: check email by pattern-->
 	<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['text_save'];?>" />
 

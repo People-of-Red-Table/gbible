@@ -75,8 +75,6 @@
 			$language_row = mysqli_fetch_assoc($result_language);
 			$user_language = $language_row['code'];
 
-			log_msg(__FILE__ . ':' . __LINE__ . ' $user_language = `' . $user_language . '`');
-
 			$lang_path = './languages/' . strtolower($user_language) . '.php';
 
 			if (file_exists($lang_path)

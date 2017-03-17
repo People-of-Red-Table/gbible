@@ -28,8 +28,8 @@
 
 		'feedback', 'changeLanguage', 'history', 'thankYouNotes',
 
-		'search'
-
+		'search', 'biblesByCountries', 'parallelBibles'
+ 
 		];
 
 	if(in_array($menu, $menu_items))

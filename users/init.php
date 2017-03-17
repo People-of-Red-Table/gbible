@@ -1,24 +1,124 @@
 <?php
-	setcookie(session_name(), session_id());
+	setcookie(session_name(), session_id(), time() + 30 * 24 * 3600);
 
 	require 'auth.php';
 
-	// !! 'country', 'language', user settings? 
-	$auto_save = array('country', 'language', 'b_code', 'book_index', 'chapter_index', 'book', 'chapter');
+	$auto_save = [	'country', 'language', 'b_code', 'book_index', 'chapter_index', 'book', 'chapter',
+					'b_code1', 'b_code2', 'country1', 'language1', 'country2', 'language2'];
+
+	foreach ($auto_save as $item)
+	{
+		if(isset($_SESSION[$item]))
+		{
+			$$item = $_SESSION[$item];
+		}
+	}
 
 	foreach ($auto_save as $item)
 	{
 		if(isset($_REQUEST[$item]))
 		{
 			$$item = $_REQUEST[$item];
-			/*if (isset($_GET[$item]))
-				setcookie($item, $_GET[$item], time() + 30 * 24 * 3600);
-			if (isset($_POST[$item]))
-				setcookie($item, $_POST[$item], time() + 30 * 24 * 3600);
-			*/
-
+			$_SESSION[$item] = $_REQUEST[$item];
 		}
 	}
+
+	$userBible = new UserBible($pdo, $mysql);
+	$userBible -> setCountry($country);
+	$userBible -> setLanguage($language);
+
+	if (isset($b_code))
+		$userBible -> setBCode($b_code);
+	else 
+	{
+		$userBible -> setBCode('=]');
+		$b_code = $userBible -> b_code;
+	}
+
+	if ($menu === 'parallelBibles')
+	{
+		if (!isset($language1))
+			$language1 = $language;
+		if (!isset($country1))
+			$country1 = $country;
+		if (!isset($language2))
+			$language2 = $language;
+		if (!isset($country2))
+			$country2 = $country;
+	
+		$userBibleA = new UserBible($pdo, $mysql);
+		$userBibleA -> setCountry($country1);
+		$userBibleA -> setLanguage($language1);
+		if (isset($b_code1))
+			$userBibleA -> setBCode($b_code1);
+		else
+			$userBibleA -> setBCode('=]');
+		$userBibleB = new UserBible($pdo, $mysql);
+		$userBibleB -> setCountry($country2);
+		$userBibleB -> setLanguage($language2);
+		if (isset($b_code2))
+			$userBibleB -> setBCode($b_code2);
+		else
+			$userBibleB -> setBCode('=]');
+	}
+
+	/*$check_array = [
+						['country', 'language', 'b_code'],
+						['country1', 'language1', 'b_code1'],
+						['country2', 'language2', 'b_code2'],
+					];
+	$counter = 1;
+	foreach ($check_array as list($country_var, $language_var, $b_code_var)) 
+	{
+		if ($counter === 2 and $menu !== 'parallelBibles')
+			break;
+
+		$statement_languages = $pdo -> prepare('
+											select language `language_name` from b_shelf where language = :language
+											union
+											select language_name from iso_ms_languages where lower(language_code) = :language and language_name in (select distinct language from b_shelf)
+											union
+											select language_name from iso_ms_languages where language_name = :language and language_name in (select distinct language from b_shelf)
+											union
+											select language_name from iso_ms_languages where country_name = :country  and language_name in (select distinct language from b_shelf)
+											union
+											select language_name from iso_ms_languages where country_code = :country and language_name in (select distinct language from b_shelf)
+											union
+											select language `language_name` from b_shelf where country = :country
+											');
+		$statement_languages -> execute(['country' => $$country_var, 'language' => $$language_var]);
+		$languages_rows = $statement_languages -> fetchAll();
+		$language_found = FALSE;
+		foreach ($languages_rows as $row) 
+		{
+			if ($$language_var === $row['language_name'])
+			{
+				$language_found = true;
+				break;
+			}
+		}
+		if (!$language_found)
+			$$language_var = $languages_rows[0]['language_name'];
+
+		$statement_bibles = $links['sofia']['pdo'] -> prepare(
+											'select b_code, title from b_shelf where language = :language_name');
+		$statement_bibles -> execute(['language_name' => $$language_var]);
+
+		$bibles_rows = $statement_bibles -> fetchAll();
+
+		$b_code_found = FALSE;
+		foreach ($bibles_rows as $row) 
+		{
+			if (isset($$b_code_var) and ($$b_code_var === $row['b_code']))
+			{
+				$b_code_found = true;
+				break;
+			}
+		}
+		if (!$b_code_found)
+			$$b_code_var = $bibles_rows[0]['b_code'];
+		$counter++;
+	}*/
 
 	if (isset($_REQUEST['charity_country']))
 		$charity_country = $_REQUEST['charity_country'];
@@ -41,7 +141,7 @@
 	if (!isset($verse))
 		$verse = 0;
 
-	if (!isset($b_code))
+	/*if (!isset($b_code))
 	{
 		$statement_bibles = $links['sofia']['pdo'] -> prepare(
 											'select b_code from b_shelf where language in (
@@ -82,6 +182,101 @@
 		}
 	}
 
+	if ($menu === 'parallelBibles')
+	{
+		if (!isset($language1))
+			$language1 = $language;
+		if (!isset($country1))
+			$country1 = $country;
+		if (!isset($language2))
+			$language2 = $language;
+		if (!isset($country2))
+			$country2 = $country;
+
+		if (!isset($b_code1))
+		{
+			$statement_bibles = $links['sofia']['pdo'] -> prepare(
+												'select b_code from b_shelf where language in (
+												
+												select language_name from iso_ms_languages where lower(language_code) = :language and language_name in (select distinct language from b_shelf))
+
+												union
+												select b_code from b_shelf where language in (
+												select language_name from iso_ms_languages where language_name = :language and language_name in (select distinct language from b_shelf))
+
+												union
+												select b_code from b_shelf where language in (
+												select language_name from iso_ms_languages where country_name = :country  and language_name in (select distinct language from b_shelf))
+
+												union
+												select b_code from b_shelf where language in (
+												select language_name from iso_ms_languages where country_code = :country and language_name in (select distinct language from b_shelf))
+
+												union
+												select b_code from b_shelf where language in (
+												select language `language_name` from b_shelf where language = :language)
+
+												union
+												select b_code from b_shelf where language in (
+												select language `language_name` from b_shelf where country = :country)
+												');
+			$result_bibles = $statement_bibles -> execute(array('language' => $language1, 'country' => $country1));
+
+			$bible_row = $statement_bibles -> fetch();
+			$b_code1 = $bible_row['b_code'];
+
+			if (!$result_bibles)
+			{
+				log_msg(__FILE__ . ':' . __LINE__ . ' Bibles PDO query exception. Info = {' . json_encode($statement_bibles -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}' );
+				//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
+				//print_r($links['sofia']['pdo']);
+
+			}
+		}
+
+		if (!isset($b_code2))
+		{
+			$statement_bibles = $links['sofia']['pdo'] -> prepare(
+												'select b_code from b_shelf where language in (
+												
+												select language_name from iso_ms_languages where lower(language_code) = :language and language_name in (select distinct language from b_shelf))
+
+												union
+												select b_code from b_shelf where language in (
+												select language_name from iso_ms_languages where language_name = :language and language_name in (select distinct language from b_shelf))
+
+												union
+												select b_code from b_shelf where language in (
+												select language_name from iso_ms_languages where country_name = :country  and language_name in (select distinct language from b_shelf))
+
+												union
+												select b_code from b_shelf where language in (
+												select language_name from iso_ms_languages where country_code = :country and language_name in (select distinct language from b_shelf))
+
+												union
+												select b_code from b_shelf where language in (
+												select language `language_name` from b_shelf where language = :language)
+
+												union
+												select b_code from b_shelf where language in (
+												select language `language_name` from b_shelf where country = :country)
+												');
+			$result_bibles = $statement_bibles -> execute(array('language' => $language2, 'country' => $country2));
+
+			$bible_row = $statement_bibles -> fetch();
+			$b_code2 = $bible_row['b_code'];
+
+			if (!$result_bibles)
+			{
+				log_msg(__FILE__ . ':' . __LINE__ . ' Bibles PDO query exception. Info = {' . json_encode($statement_bibles -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}' );
+				//echo "Whoops. We've got issue with PDO connection... Sorry. Please contact support. ";
+				//print_r($links['sofia']['pdo']);
+
+			}
+		}
+		log_msg(__FILE__ . ':' . __LINE__ . ' $b_code1 = `' . $b_code1 . '`, $b_code2 = `' . $b_code2 . '`');
+	}*/
+
 	if(isset($chapter)) $chapter_index = $chapter;
 	if(isset($verse)) $verse_index = $verse;
 
@@ -92,13 +287,16 @@
 	if (!isset($book) and (stripos($b_code, 'http') === FALSE))
 	{
 		$statement_translation = $links['sofia']['pdo'] -> prepare(
-				'select table_name from b_shelf where b_code = :b_code'
+				'select table_name, title, description from b_shelf where b_code = :b_code'
 			);
 
 		$result_translation = $statement_translation -> execute(array('b_code' => $b_code));
 		if(!$result_translation)
 			log_msg(__FILE__ . ':' . __LINE__ . ' Table name PDO query exception. Info = {' . json_encode($statement_translation -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');
 		$info_row = $statement_translation -> fetch();
+		$bible = ['title' => '', 'description' => ''];
+		$bible['title'] = $info_row['title'];
+		$bible['description'] = $info_row['description'];
 		$table_name = $info_row['table_name'];
 		$statement_books = $links['sofia']['pdo'] -> prepare(
 				'select distinct book from ' . $table_name
