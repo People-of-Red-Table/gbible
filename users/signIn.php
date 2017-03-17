@@ -8,10 +8,10 @@
 ?>
 <br />
 <form method="post" name="signInForm">
-	<input type="hidden" name="formIsCorrect" id="signInFormIsCorrect" value="true" />
+	<input type="hidden" name="formIsCorrect" id="signInFormIsCorrect" value="false" />
 	<div class="form-group" id="emailFormGroup">
 			<label for="signInEmailField"><?=$text['text_email'];?></label>
-			<input type="text" class="form-control" name="email" id="signInEmailField" value="" onchange="test_email(this.id, 'emailFormGroup', 'signInForm')">
+			<input type="email" class="form-control" name="email" id="signInEmailField" value="" onchange="test_email(this.id, 'emailFormGroup', 'signInForm')">
 	</div>
 	<br />
 	<div class="form-group">
@@ -19,12 +19,12 @@
 			<input type="password" class="form-control" name="password" maxlength="16" id="signInPassword">
 	</div>
 	<br />
-	<!-- // Code will come out with new translation pack...
+	
 	<div class="checkbox">
 		<label>
 			<input type="checkbox" name="remember_me" /><?=$text['remember_me'];?>
 		</label>
-	</div>-->
+	</div>
 	<input type="hidden" name="menu" value="users_signingIn">
 	<!-- TO DO: check email by pattern-->
 	<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['sign_in'];?>" />

@@ -27,7 +27,7 @@
 	</div>	
 	<div class="form-group">
 			<label for="signUpEMail"><?=$text['text_email'];?></label>
-			<input type="text" class="form-control" name="email" id="signUpEMail">
+			<input type="email" class="form-control" name="email" id="signUpEMail">
 	</div>
 	<div class="form-group">
 			<label for="signUpPassword"><?=$text['text_password'];?></label>

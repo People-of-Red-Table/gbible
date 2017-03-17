@@ -129,7 +129,7 @@
 
 
 	$text['use_ctrl_s'] = 'Você pode salvar esses versículos no seu computador - use <kbd>Ctrl + S</ kbd> para ele.';
-	$text['remember_me'] = 'Lembre-se de mim';
+	$text['remember_me'] = 'Me Lembre';
 
 
 	$text['text_history'] = 'Histórico';

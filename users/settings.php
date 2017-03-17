@@ -34,7 +34,7 @@
 	
 	<div class="form-group">
 			<label for="settingsEmail"><?=$text['text_email'];?></label>
-			<input type="text" class="form-control" name="email" value="<?=$user_row['email'];?>" id="settingsEmail">
+			<input type="email" class="form-control" name="email" value="<?=$user_row['email'];?>" id="settingsEmail">
 	</div>
 
 	<div class="form-group">

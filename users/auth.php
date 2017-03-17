@@ -23,8 +23,10 @@
 		{
 			$_SESSION['uid'] = $row['id'];
 			$menu = 'bible';
-			if(isset($_REQUEST['remember_me']))
+			if(isset($_REQUEST['remember_me']) && ($_REQUEST['remember_me'] == true))
 				setcookie(session_name(), session_id(), time() + 30 * 24 * 3600);
+			else
+				setcookie(session_name(), session_id());
 		}
 		else
 		{
