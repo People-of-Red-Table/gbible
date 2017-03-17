@@ -168,4 +168,5 @@
 	$text['bible_b'] = 'Bible B';
 	$text['choose_parallel_bibles'] = 'Not every Bible is available for parallel reading. You have to choose Bibles without \'[H]\' in its title.';
 
+	$text['reset_by_email_warning'] = 'You are not able to reset password by email now. Be sure that you filled and remembered "Secret Question" and "Secret Answer" fields.';
 ?>

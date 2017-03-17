@@ -53,6 +53,7 @@
 			<input type="password" class="form-control" name="current_password" maxlength="16"  value="" id="settingsCurrentPassword" />
 	</div>
 
+	<p class="alert alert-warning"><?=$text['reset_by_email_warning'];?></p>
 
 	<div class="form-group">
 			<label for="secretQuestionField"><?=$text['secret_question'];?></label>

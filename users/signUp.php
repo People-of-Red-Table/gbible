@@ -37,6 +37,9 @@
 			<label for="signUpRepeatPassword"><?=$text['repeat_password'];?></label>
 			<input type="password" class="form-control" name="password_repeat" maxlength="16" id="signUpRepeatPassword">
 	</div>
+
+	<p class="alert alert-warning"><?=$text['reset_by_email_warning'];?></p>
+
 	<div class="form-group">
 			<!-- for next lang-pack add title="" -->
 			<label for="signUpSecretQuestion"><?=$text['secret_question'];?></label>
