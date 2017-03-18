@@ -1,4 +1,11 @@
+fix language changing. Add languages for Guyana, Nigeria, Burkina Faso, Angola, Mozambique etc.
+For this run script `./install/add_languages.php` on the server.
 
+Change the book to the same.
+
+Change the font for tilde? "ã"
+
+branch test.
 
 [!]
 When will be internet:

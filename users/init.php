@@ -3,9 +3,12 @@
 
 	require 'auth.php';
 
-	$auto_save = [	'country', 'language', 'b_code', 'book_index', 'chapter_index', 'book', 'chapter',
-					'b_code1', 'b_code2', 'country1', 'language1', 'country2', 'language2'];
+	$auto_save = [	'book_index', 'chapter_index', 'book', 'chapter',
+					 'b_code', 'country', 'language', 
+					'b_code1', 'country1', 'language1',
+					 'b_code2', 'country2', 'language2'];
 
+	// load variables
 	foreach ($auto_save as $item)
 	{
 		if(isset($_SESSION[$item]))
@@ -14,12 +17,13 @@
 		}
 	}
 
+	// get variables from request
 	foreach ($auto_save as $item)
 	{
 		if(isset($_REQUEST[$item]))
 		{
 			$$item = $_REQUEST[$item];
-			$_SESSION[$item] = $_REQUEST[$item];
+			$_SESSION[$item] = $$item;
 		}
 	}
 
@@ -52,14 +56,21 @@
 		if (isset($b_code1))
 			$userBibleA -> setBCode($b_code1);
 		else
+		{
 			$userBibleA -> setBCode('=]');
+			$b_code1 = $userBibleA -> b_code;
+		}
+
 		$userBibleB = new UserBible($pdo, $mysql);
 		$userBibleB -> setCountry($country2);
 		$userBibleB -> setLanguage($language2);
 		if (isset($b_code2))
 			$userBibleB -> setBCode($b_code2);
 		else
+		{
 			$userBibleB -> setBCode('=]');
+			$b_code2 = $userBibleB -> b_code;
+		}
 	}
 
 	/*$check_array = [

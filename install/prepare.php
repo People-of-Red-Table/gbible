@@ -348,6 +348,8 @@
 	}
 
 
+	require './add_languages.php';
+
 	mysqli_close($link);
 
 	fclose($log);

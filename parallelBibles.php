@@ -290,10 +290,14 @@
 
 
 		<div class="panel-footer">
-			<center>
-					<?=$text['bible_a'];?>: <h5><b><?=$info_row1['title'];?></b></h5><br /><?=$info_row1['copyright'];?><br /><?=$text['published_under'];?> <a href="<?=$info_row1['link'];?>" target="_blank"><?=$info_row1['license'];?></a><br /><br />
+			<div class="row">
+				<div class="col-md-6">
+					<?=$text['bible_a'];?>: <h5><b><?=$info_row1['title'];?></b></h5><br /><?=$info_row1['copyright'];?><br /><?=$text['published_under'];?> <a href="<?=$info_row1['link'];?>" target="_blank"><?=$info_row1['license'];?></a>
+				</div>
+				<div class="col-md-6">
 					<?=$text['bible_b'];?>: <h5><b><?=$info_row2['title'];?></b></h5><br /><?=$info_row2['copyright'];?><br /><?=$text['published_under'];?> <a href="<?=$info_row2['link'];?>" target="_blank"><?=$info_row2['license'];?></a>
-			</center>
+				</div>
+			</div>
 		</div>
 	</div>
 	<?php
