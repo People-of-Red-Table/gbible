@@ -48,7 +48,8 @@
 	}
 	else
 	{
-		$result = mysqli_query($links['sofia']['mysql'], 'update users set last_hit = now(), remote_addr = "' . $_SERVER['REMOTE_ADDR'] . '" where id = ' . $_SESSION['uid']);
+		$statement_lhit = $pdo -> prepare('update users set last_hit = now(), remote_addr = :remote_addr where id = :uid');
+		$result = $statement_lhit -> execute(['remote_addr' => $_SERVER['REMOTE_ADDR'], 'uid' => $_SESSION['uid'] ]);
 		if (!$result)
 			log_msg(__FILE__ . ':' . __LINE__ . ' Update user\'s `last_hit` durig `Sign In` exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
 	}

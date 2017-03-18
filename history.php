@@ -8,7 +8,7 @@
 	<dd><?=$text['history_2014'];?></dd>
 
 	<dt>2015</dt>
-	<dd><?=str_ireplace('%blizzarddotcom%', '<a href="http://www.bible.com" target="_blank">Blizzard Ent.</a>', $text['history_2015']);?></dd>
+	<dd><?=str_ireplace('%blizzarddotcom%', '<a href="http://www.blizzard.com" target="_blank">Blizzard Ent.</a>', $text['history_2015']);?></dd>
 
 	<dt>2016</dt>
 	<dd><?=$text['history_2016'];?></dd>

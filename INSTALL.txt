@@ -59,4 +59,4 @@ To continue on specific VPL type `php -f prepare.php name_vpl` and script will s
 3. Site shall be available at your address [http://127.0.0.1/ for local machine],
 if it doesn't show Bible texts - run directly update commands for Bible database:
 php -f just_prepare_sql.php
-
+If you have got issue with languages, for example, in Microsoft table of languages, there is no Angola with Portuguese. This function is doing `./install/add_languages.php`, it is already included to `./prepare.php`. If anyway you still having it, try to run this script.
