@@ -1,11 +1,27 @@
-fix language changing. Add languages for Guyana, Nigeria, Burkina Faso, Angola, Mozambique etc.
-For this run script `./install/add_languages.php` on the server.
 
-Change the book to the same.
+=======================
+Bible Reading Timetable
+=======================
 
-Change the font for tilde? "ã"
+time table: 
+Bible has around 1189 chapters, 
+which is three and quarter chapters per a day.
 
-branch test.
+For "Bible for a Year" timetable.
+User timetables like: one chapter per a day, or one[few] chapter[s] per Saturday/Sunday.
+
+
+Site's timetables "Bible for a Year"
+
+================
+Parallell Bibles
+================
+
+- In [Social Stuff]: make unified verse display function.
+
+==================================
+John Hurt's Bibles [HTMLBible.com]
+==================================
 
 [!]
 When will be internet:
@@ -17,44 +33,59 @@ Check which are not in ./bibles/, e.g. Dutch Bible.
 This is very need for Search Engines to make them think that Bibles are in gold-bible.16mb.com.
 [!]
 
-Make .has-success .has-feedback etc things for controls during content checking.
+- Make redirect from HTML pages of "external" Bibles to the page of the Bible.
 
-Merge Bibles with InScript and John Hurt's to display it in <iframe /> for such languages as Italian, Dutch etc.
-Because PoRT don't have these Bibles in SQL or VPL format... And there is no other way at that moment unless just show them in <iframe>... 
+=============
+Charity Links
+=============
 
-Add social things for charity links in visitor's charity organizations list
-./?menu=users_profile&id=<?=$_SESSION['uid'];?>
-clear verification code...
+- Add social things for charity links in visitor's charity organizations list
 
-Reset Password!! Check on the hosting. [127.0.0.1 has no "sendmail"].
+=================
+Top and Favorites
+=================
 
-Select Favorite Verses [+], Chapters, Books, Bibles; delete from Favorites.
+- Select Favorite Verses [+], Chapters, Books, Bibles; delete from Favorites.
 
-Show Top Verses[+], Chapter, Books and Bibles
+- Show Top Verses[+], Chapter, Books and Bibles
+
+- Favorite Bible which will be opened after sign in.
+
+============
+Social Stuff
+============
+
+- Make verse displaying function which will be used by Bible Reader, Parallel Bibles, Top, Favorites and others in future to display a verse with unified menu for sharing and "favoriting".
+
+- Social things: for chapters, books and bibles. Share, tweet or copy link to the chapter, book or Bible.
++ for verse
+	- Like in VK
 
 facebook, VK - Share and Like buttons. Check. FB - waiting for ID check, VK - need phone number [for Like].
 Tweet button [not link?]
 
-Top Verses [+], Bibles, books, chapter and "My Favorite Verses" on favorite Bible [or for guests it is Bible of chosen language or something else...]
 
-Favorite Bible which will be opened after sign in.
+========================
+Other Features and Fixes
+========================
 
-html_map.php is deprecated.
+- Change the font for tilde? "ã"
 
-Take settings of user country and language. [mixing with POST, GET, COOKIES makes it...]
+- Make .has-success .has-feedback etc things for controls during content checking.
 
-if $language contains "-" split it to $language and $country. Fix showing John Hurt's Bibles in this case.
+- ./?menu=users_profile&id=<?=$_SESSION['uid'];?>
 
+- clear verification code...
 
-Add languages for such countries as Cameroon, Angola [Portuguese], Burkina Faso [French], Guyana [English]
-to iso_ms_languages or expand by another table
+- Reset Password!! Check on the hosting. [127.0.0.1 has no "sendmail"].
 
-Book titles in different languages [very possible that it will do PoRT]
+! html_map.php is deprecated.
 
-Social things: for chapters, books and bibles. Share, tweet or copy link to the chapter, book or Bible.
+- if $language contains "-" split it to $language and $country. Fix showing John Hurt's Bibles in this case.
 
-Make Installation checker, script helper during installation which will say what system needs else.
+- Book titles in different languages [very possible that it will do PoRT]
 
-Output page obfuscation - traffic economy and security reason. Function obfuscate with double spaces by one space and deleting `\r\n` and `\n`.
+- Make Installation checker, script helper during installation which will say what system needs else.
 
-Make redirect from HTML pages of "external" Bibles to the page of the Bible.
+- Output page obfuscation - traffic economy and security reason. Function obfuscate with double spaces by one space and deleting `\r\n` and `\n`.
+

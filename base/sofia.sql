@@ -1,3 +1,18 @@
+/*
+
+-- VPL tables structure
+create table *_vpl 
+(
+  verseID VARCHAR(16) NOT NULL PRIMARY KEY,
+  canon_order VARCHAR(12) NOT NULL,
+  book VARCHAR(3) NOT NULL,
+  chapter VARCHAR(3) NOT NULL,
+  startVerse VARCHAR(3) NOT NULL,
+  endVerse VARCHAR(3) NOT NULL,
+  verseText TEXT CHARACTER SET UTF8 NOT NULL) 
+  ENGINE=MyISAM;
+*/
+
 create table users
 (
 	id int auto_increment primary key,
@@ -86,6 +101,22 @@ create table charity_organizations
     native_name varchar(200),
     description varchar(500),
     http_link varchar(200)
+);
+
+create table timetables
+(
+    id int primary key auto_increment,
+    user_id int,
+    title varchar(100)
+);
+
+create table schedules
+(
+    id int primary key auto_increment,
+    timetable_id int,
+    `when` date,
+    book varchar(3),
+    chapter int
 );
 
 DROP TABLE IF EXISTS `continents`;

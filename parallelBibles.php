@@ -49,7 +49,7 @@
 
 		if (stripos($b_code1, 'http') === FALSE and stripos($b_code2, 'http') === FALSE)
 		{
-
+			$books = [];
 			$statement_books = $links['sofia']['pdo'] -> prepare('
 								select distinct book from ' . $table_name1
 								.' where book in (select distinct book from ' . $table_name2 . ')'
@@ -66,6 +66,7 @@
 
 			foreach ($books_rows as $row) 
 			{
+				$books[] = $row['book'];
 				$books_nav .=  '<a href="./?menu=parallelBibles&book=' . $row['book'] . '">' . $row['book'] . '</a> ';
 				$selected = '';
 				if ($book === $row['book'])
@@ -89,7 +90,7 @@
 			</div>
 			<nav class="gb-books-nav"><?=$books_nav.'<br/>'.$books_form;?></nav>
 		<?php
-			if (!isset($book))
+			if (!isset($book) or !in_array($book, $books))
 				$book = $books_rows[0]['book'];
 
 			if (!isset($chapter))

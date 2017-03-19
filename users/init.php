@@ -27,6 +27,11 @@
 		}
 	}
 
+	if (isset($_REQUEST['book']) and !isset($_REQUEST['chapter']))
+	{
+		$chapter = 1;
+	}
+
 	$userBible = new UserBible($pdo, $mysql);
 	$userBible -> setCountry($country);
 	$userBible -> setLanguage($language);
