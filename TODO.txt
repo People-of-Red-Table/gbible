@@ -10,14 +10,10 @@ which is three and quarter chapters per a day.
 For "Bible for a Year" timetable.
 User timetables like: one chapter per a day, or one[few] chapter[s] per Saturday/Sunday.
 
+Site's timetables "Bible for a Year".
 
-Site's timetables "Bible for a Year"
+Bible for a Year timed to Holidays, e.g. first chapters of Gospel at the end of December, last chapters at Easter.
 
-================
-Parallell Bibles
-================
-
-- In [Social Stuff]: make unified verse display function.
 
 ==================================
 John Hurt's Bibles [HTMLBible.com]
@@ -55,7 +51,8 @@ Top and Favorites
 Social Stuff
 ============
 
-- Make verse displaying function which will be used by Bible Reader, Parallel Bibles, Top, Favorites and others in future to display a verse with unified menu for sharing and "favoriting".
+- Unified verse displaying function: fix anchoring.
+	Parallel Bibles - another function.
 
 - Social things: for chapters, books and bibles. Share, tweet or copy link to the chapter, book or Bible.
 + for verse

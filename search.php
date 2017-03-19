@@ -48,7 +48,7 @@
 			$search_query = htmlspecialchars($search_query);
 			$search_query = mysqli_real_escape_string($mysql, $search_query);
 
-			$query = 'select book, chapter, startVerse, verseText from ' . $info_row['table_name'] . ' where verseText like \'%' . $search_query . '%\'
+			$query = 'select * from ' . $info_row['table_name'] . ' where verseText like \'%' . $search_query . '%\'
 						
 				';
 			$search_result = mysqli_query($mysql, $query);
@@ -64,7 +64,7 @@
 						{
 							$row['verseText'] = str_replace('¶', '', $row['verseText']);
 						}
-						echo '<tr><td><a href="./?b_code=' . $info_row['b_code'] . '&book=' . $row['book'] . '&chapter=' . $row['chapter'] . '&verse=' . $row['startVerse'] . '"><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['startVerse'] . '</b></a><br /><br />' . $row['verseText'] . '</td></tr>';
+						echo '<tr><td><a href="./?b_code=' . $info_row['b_code'] . '&book=' . $row['book'] . '&chapter=' . $row['chapter'] . '&verse=' . $row['startVerse'] . '"><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['startVerse'] . '</b></a><br /><br />' . html_verse($row) . '</td></tr>';
 					}
 					echo '</table>';
 				}
