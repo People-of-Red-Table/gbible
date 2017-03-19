@@ -111,4 +111,63 @@ $text['tweet_insert_exception'] = 'Tá a fuair a eisiúint le chur isteach véar
 $text['tweeted_verse_exception'] = '. Táimid tar éis a fuair a eisiúint le véarsa tweeted';
 $text['wait_for_tweeting'] = 'Tá an véarsa a tweeted ag dul a, le do thoil fanacht. ';
 
+
+$text['text_feedback'] = 'Aiseolas';
+$text['text_subject'] = 'Ábhar';
+$text['text_message'] = 'Teachtaireacht';
+$text['text_send'] = 'Seol';
+$text['fb_pre_message'] = 'Is mór againn do chuid aiseolais agus beidh sé gur deas de tú má tá tú ag scríobh sé i mBéarla. Go raibh maith agat. <br /> Má tá tú ag iarraidh a bheith páirteach Carthanachta Tacaíochta Pobail Phort [Daoine Red Tábla] agus cabhrú chun feabhas a chur ar Bíobla Suíomh nó rud éigin, le do thoil, <a href = "http://charity-port.16mb.com/" target="_blank"> cuairt ar an leathanach</a>. ';
+$text['fb_message_sent'] = 'Cuireadh Do theachtaireacht. Go raibh maith agat.';
+$text['fb_message_was_not_sent'] = 'Do theachtaireacht nach raibh a sheoladh. '. $text['please_contact_support'];
+
+$text['text_languages'] = 'Teangacha';
+$text['text_int_languages'] = 'Comhéadan Teangacha';
+$text['choose_language'] = 'Roghnaigh Teanga';
+
+
+$text['use_ctrl_s'] = 'Is féidir leat a shábháil ar na véarsaí is fearr ar do ríomhaire - úsáid <KBD> Ctrl + S </ KBD> chun é.';
+$text['remember_me'] = 'An cuimhin leat Mise';
+
+
+
+$text['text_history'] = 'Stair';
+$text['history_2013'] = 'I ndiaidh léamh% bibledotcom% agus ag tabhairt cuairt ar sheirbhísí eaglais - chéad suíomh Bíobla, ar eagla na teanga Rúisis. ';
+$text['history_2014'] = 'An Chéad English Leagan den suíomh le Caighdeánach Meiriceánach Leagan. ';
+$text['history_2015'] = 'I mí Feabhra American Red Cross "troid" le Ebola agus%% blizzarddotcom bhí ag cuidiú le Croise Deirge. Anseo tá mé fuair smaoineamh chun tacú charthanacht. Ar láithreáin chéad meirgí agus naisc chuig Croise Deirge agus eagraíochtaí carthanachta feiceáil. ';
+$text['history_2016'] = 'Tosaíonn Twitter bot a tweet eagraíochtaí carthanachta. ';
+$text['history_2017'] = 'Tá Twitter bot tweeting eagraíochtaí carthanachta do thart 175 tír. ';
+
+
+$text['thank_you_notes'] = 'Go raibh maith Nótaí tú';
+$text['thank_you_note_01'] = 'Go raibh maith agat %bibledotcom% do Bíoblaí maith ar do shuíomh.';
+$text['thank_you_note_02'] = 'Go raibh maith agat Victor Guryev gur íoc tú as an-an chéad bhliain den %golddashbibledotcom%. ';
+$text['thank_you_note_03'] = 'Go raibh maith agat %blizzarddotcom% ar thacaíocht smaoineamh Croise Deirge agus eagraíochtaí carthanachta. ';
+$text['thank_you_note_04'] = 'Go raibh maith agat,% JimmyFallonShow% in ionad "Thak tú Nótaí".';
+$text['thank_you_note_05'] = 'Go raibh maith agat, saor in aisce idirlíon chun taisteal gníomhaireacht "PAULLY", gníomhaireacht bus "ASATUR" agus teaghlaigh "Benevides", theaghlach Jaime agus Celestia [lena seanmháthair Maria Jose Gomes] ó Boa Vista de Bhrasaíl, a thug go múinte dom a bheith ag obair ar Bible suíomh. ';
+
+$text['thank_you_note_06'] = 'Go raibh maith agat,% hostingercouk% le haghaidh óstáil saor in aisce i gcás ina bhfuil anois Bíobla Site. ';
+
+$text['text_search'] = 'Cuardaigh';
+$text['search_in'] = 'cuardaigh';
+
+$text['next_chapter'] = 'Ar Aghaidh Caibidil';
+$text['previous_chapter'] = 'Caibidil Roimhe Seo';
+
+$text['repharase_search'] = 'Níor aimsíodh aon matches. Déan iarracht úsáid a bhaint as abairt seo agus carachtair speisialta a sheachaint. ';
+$text['search_exception'] = 'Táimid \' ve cheist fuair le cuardaigh. '. $text['please_contact_support'];
+
+$text['text_keywords'] = 'Bíobla, Bíobla Naofa, Óir Bíobla, Golden Bíobla, Sean-Tiomna, Tiomna Nua, Soiscéal, Revelation, a Dhia, Íosa Críost, Íosa, Bible Search';
+
+$text['bibles_by_countries'] = 'Bíoblaí ag tíortha í';
+$text['parallel_bibles'] = 'Comhuaineach Bíoblaí';
+$text['bible_a'] = 'Bible A';
+$text['bible_b'] = 'Bible B';
+$text['choose_parallel_bibles'] = 'An bhfuil gach Bíobla ar fáil le haghaidh léamh comhthreomhar. Tá tú a Bíoblaí gan roghnaigh \'[H]\' sa teideal. ';
+
+$text['reset_by_email_warning'] = 'Níl tú in ann an focal faire a athshocrú trí ríomhphost anois. Bí cinnte go bhfuil a líonadh tú agus cuimhne "Rúnda Cheist" agus "Freagra Rúnda" réimsí ';
+
+$text['reset_password_email_vf_exception'] = 'Do r-phost Ní bhfuarthas nó cód fíorú mícheart. ';
+
+
+
 ?>

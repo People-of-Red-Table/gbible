@@ -64,13 +64,14 @@
 			{
 				$books_nav .=  '<a href="./?b_code=' . $b_code . '&book=' . $row['book'] . '">' . $row['book'] . '</a> ';
 				$selected = '';
-				if (!$found_book and ($book === $row['book']))
+				if (!$found_book and (strcasecmp($book, $row['book']) === 0) )
 				{
 					$selected = ' selected="selected"';
 					$found_book = true;
 				}
 				$books_form .= '<option value="' . $row['book'] . '"' . $selected . '>' . $row['book'] . '</option>';
 			}
+				if (!$found_book)
 				$book = $books_rows[0]['book'];
 
 				$books_form .= '</select></form>';

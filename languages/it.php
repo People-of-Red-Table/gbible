@@ -111,4 +111,61 @@ $text['tweet_insert_exception'] = 'Abbiamo avuto problema con l\'inserimento di 
 $text['tweeted_verse_exception'] = 'Vi abbiamo avuto problema con versi tweeted';
 $text['wait_for_tweeting'] = 'Il versetto sta andando essere twittato, si prega di attendere.';
 
+$text['text_feedback'] = 'Feedback';
+$text['text_subject'] = 'Soggetto';
+$text['text_message'] = 'Messaggio';
+$text['text_send'] = 'Invia';
+$text['fb_pre_message'] = 'Il tuo feedback e sarà veramente bello di voi, se si scrive in inglese. Grazie. <br /> Se vuoi aderire Carità comunitario di sostegno porta [popolo di Red Table] e contribuire a migliorare la Bibbia Sito o suggerire qualcosa, per favore, <a href = "http://charity-port.16mb.com/" target = "_blank"> visitare questa pagina </a>. ';
+$text['fb_message_sent'] = 'Il tuo messaggio è stato inviato. Grazie.';
+$text['fb_message_was_not_sent'] = 'Il tuo messaggio è stato inviato non. '. $text['please_contact_support'];
+
+$text['text_languages'] = 'lingue';
+$text['text_int_languages'] = 'Interfaccia Lingue ';
+$text['choose_language'] = 'Scegli la lingua';
+
+
+$text['use_ctrl_s'] = 'È possibile salvare questi primi versi sul computer - uso <kbd> Ctrl + S </ kbd> per esso.';
+$text['remember_me'] = 'Ricordati di me';
+
+
+
+$text['text_history'] = 'Storia';
+$text['history_2013'] = 'Dopo la lettura di% bibledotcom% e la visita dei servizi di chiesa - primo sito Bibbia, solo in lingua russa.';
+$text['history_2014'] = '. First English versione del sito con American Standard Version';
+$text['history_2015'] = 'Nel febbraio Croce Rossa americana sono stati "scontri" con Ebola e% blizzarddotcom% stava aiutando a Croce Rossa. Qui ho avuto idea di sostenere la carità. Su primi siti che appaiono banner e link a Croce Rossa e le organizzazioni di carità. ';
+$text['history_2016'] = 'Twitter bot comincia a twittare organizzazioni di carità. ';
+$text['history_2017'] = '. Twitter bot è tweeting organizzazioni di beneficenza per circa 175 paesi';
+
+
+$text['thank_you_notes'] = 'note di ringraziamento';
+$text['thank_you_note_01'] = 'Grazie %bibledotcom% per il tuo bene Bibbie sul tuo sito.';
+$text['thank_you_note_02'] = 'Grazie Victor Guryev che hai pagato per primo anno di %golddashbibledotcom%.';
+$text['thank_you_note_03'] = 'ti %blizzarddotcom% Grazie per il sostegno dell\'idea di Croce Rossa e organizzazioni di beneficenza.';
+$text['thank_you_note_04'] = 'Grazie, %JimmyFallonShow% per "Thank You Notes".';
+$text['thank_you_note_05'] = 'Grazie, per la connessione internet gratuita per viaggiare agenzia "PAULLY", agenzia di bus "Asatur" e la famiglia "Benevides", famiglia di Jaime e Celestia [con la nonna Maria Jose Gomes] da Boa Vista di Brasile, che gentilmente mi ha dato di lavorare sulla bibbia del sito. ';
+
+$text['thank_you_note_06'] = 'Grazie, %hostingercouk% per hosting gratuito in cui è ora bibbia del sito. ';
+
+$text['text_search'] = 'Cerca';
+$text['search_in'] = 'Cerca in';
+
+$text['next_chapter'] = 'Next Chapter';
+$text['previous_chapter'] = 'Capitolo precedente';
+
+$text['repharase_search'] = 'Nessuna corrispondenza trovata. Prova ad utilizzare frase esatta ed evitare caratteri speciali. ';
+$text['search_exception'] = 'Si \' ve problema avuto con la ricerca. '. $text['please_contact_support'];
+
+$text['text_keywords'] = 'Bibbia, Sacra Bibbia, oro Bibbia, Golden Bibbia, Antico Testamento, Nuovo Testamento, Vangelo, la Rivelazione, Dio, Gesù Cristo, Gesù, Bibbia Ricerca';
+
+$text['bibles_by_countries'] = 'Bibbie da Paesi';
+$text['parallel_bibles'] = 'Parallel Bibbie';
+$text['bible_a'] = 'Bibbia A';
+$text['bible_b'] = 'Bibbia B';
+$text['choose_parallel_bibles'] = 'Non tutti Bibbia è disponibile per la lettura in parallelo. Devi scegliere Bibbie senza \'[H]\' nel suo titolo. ';
+
+$text['reset_by_email_warning'] = 'Non sono in grado di reimpostare la password via e-mail ora. Assicurarsi che avete riempito e ricordato "domanda segreta" e campi "segreto risposta". ';
+
+$text['reset_password_email_vf_exception'] = 'Il tuo indirizzo email non trovato o codice di verifica corretto.';
+
+
 ?>

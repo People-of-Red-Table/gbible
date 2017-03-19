@@ -146,7 +146,7 @@
 	$text['thank_you_note_01'] = 'Thank you %bibledotcom% for your good Bibles on your site.';
 	$text['thank_you_note_02'] = 'Thank you Victor Guryev that you paid for very first year of %golddashbibledotcom%.';
 	$text['thank_you_note_03'] = 'Thank you %blizzarddotcom% for idea support Red Cross and charity organizations.';
-	$text['thank_you_note_04'] = 'Thank you, %JimmyFallonShow% for "Thak You Notes".';
+	$text['thank_you_note_04'] = 'Thank you, %JimmyFallonShow% for "Thank You Notes".';
 	$text['thank_you_note_05'] = 'Thank you, for free internet to travel agency "PAULLY", bus agency "ASATUR" and family "Benevides", family of Jaime and Celestia [with her grandmother Maria Jose Gomes] from Boa Vista of Brazil, who politely gave me to work on Bible Site. ';
 	
 	$text['thank_you_note_06'] = 'Thank you, %hostingercouk% for free hosting where is now Bible Site. ';

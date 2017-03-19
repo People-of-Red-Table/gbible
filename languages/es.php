@@ -159,8 +159,17 @@
 	$text['repharase_search'] = 'No se encontraron coincidencias. Trate de usar la frase exacta y evitar caracteres especiales. ';
 	$text['search_exception'] = 'Tenemos problemas con la búsqueda. '. $text['please_contact_support'];
 
-$text['text_keywords'] = 'Biblia, Sagrada Biblia, Biblia de Oro, Biblia de Oro, Antiguo Testamento, Nuevo Testamento, Evangelio, Revelación, Dios, Jesucristo, Jesús, Búsqueda de la Biblia';
+	$text['text_keywords'] = 'Biblia, Sagrada Biblia, Biblia de Oro, Biblia de Oro, Antiguo Testamento, Nuevo Testamento, Evangelio, Revelación, Dios, Jesucristo, Jesús, Búsqueda de la Biblia';
 
-$text['bibles_by_countries'] = 'Biblias por países';
+	$text['bibles_by_countries'] = 'Biblias por países';
+
+	$text['parallel_bibles'] = 'Biblias paralelas';
+	$text['bible_a'] = 'Biblia A';
+	$text['bible_b'] = 'Biblia B';
+	$text['choose_parallel_bibles'] = 'No todas las Biblias están disponibles para lectura paralela. Tienes que elegir Biblias sin \'[H]\' en su título. ';
+
+	$text['reset_by_email_warning'] = 'No puede restablecer la contraseña por correo electrónico ahora. Asegúrese de que llenó y recordó los campos "Pregunta secreta" y "Respuesta secreta". ';
+
+	$text['reset_password_email_vf_exception'] = 'Tu correo electrónico no encontrado o código de verificación incorrecto.';
 
 ?>

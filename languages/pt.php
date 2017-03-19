@@ -162,4 +162,13 @@
 
 	$text['bibles_by_countries'] = 'Bíblias por Países';
 
+	$text['parallel_bibles'] = 'Bíblias Paralelas';
+	$text['bible_a'] = 'Bíblia A';
+	$text['bible_b'] = 'Bíblia B';
+	$text['choose_parallel_bibles'] = 'Nem todas as Bíblias estão disponíveis para leitura paralela. Você tem que escolher Bíblias sem \'[H]\' no seu título. ';
+
+	$text['reset_by_email_warning'] = 'Não é possível redefinir a senha por e-mail agora. Certifique-se de preencher e se lembrar dos campos "Secret Question" e "Secret Answer". ';
+
+	$text['reset_password_email_vf_exception'] = 'Seu e-mail não foi encontrado ou código de verificação incorreto.';
+
 ?>

@@ -111,5 +111,60 @@
 	$text['tweeted_verse_exception'] = 'Wir haben eine Frage mit tweeted Vers.';
 	$text['wait_for_tweeting'] = 'Der Vers wird tweeted werden, bitte warte.';
 
+	$text['text_feedback'] = 'Feedback';
+	$text['text_subject'] = 'Betreff';
+	$text['text_message'] = 'Nachricht';
+	$text['text_send'] = 'Senden';
+	$text['fb_pre_message'] = 'Wir schätzen dein Feedback und es wird dir sehr nett sein wenn du es auf Englisch schreiben wirst. Vielen Dank. <br /> Wenn Sie Charity Support Community PoRT [People of Red Table] beitreten und helfen, Bible Site zu verbessern oder etwas vorzuschlagen, bitte, <a href = "http://charity-port.16mb.com/" target ="_blank"> diese Seite besuchen </a>. ';
+	$text['fb_message_sent'] = 'Ihre Nachricht wurde gesendet. Vielen Dank.';
+	$text['fb_message_was_not_sent'] = 'Ihre Nachricht wurde nicht gesendet. ' . $text['please_contact_support'];
+
+	$text['text_languages'] = 'Sprachen';
+	$text['text_int_languages'] = 'Schnittstellensprachen';
+	$text['select_language'] = 'Sprache wählen';
+
+
+	$text['use_ctrl_s'] = 'Sie können diese Top-Verse auf Ihrem Computer speichern - verwenden Sie <kbd>Ctrl+S</kbd> für sie.';
+	$text['remember_me'] = 'Remember Me';
+
+
+
+	$text['text_history'] = 'Geschichte';
+	$text['history_2013'] = 'Nach dem Lesen von %bibledotcom% und Besuch der Gottesdienste - erste Bibel-Website, nur in russischer Sprache.';
+	$text['history_2014'] = 'Erste deutsche Version der Website mit American Standard Version.';
+	$text['history_2015'] = 'Im Februar American Red Cross waren "kämpfen" mit Ebola und %blizzarddotcom% half dem Roten Kreuz. Hier habe ich die Idee, Wohltätigkeit zu unterstützen. Auf ersten Seiten erscheinen Banner und Links zu Roten Kreuz und Wohltätigkeitsorganisationen. ';
+	$text['history_2016'] = 'Twitter bot beginnt zu tweet Wohltätigkeit Organisationen. ';
+	$text['history_2017'] = 'Twitter bot ist Tweeting Wohltätigkeitsorganisationen für rund 175 Länder.';
+
+
+	$text['thank_you_notes'] = 'Thank You Notes';
+	$text['thank_you_note_01'] = 'Vielen Dank %bibledotcom% für deine guten Bibeln auf deiner Seite.';
+	$text['thank_you_note_02'] = 'Vielen Dank Victor Guryev, dass Sie für das erste Jahr der% Golddashbibledotcom% bezahlt haben.';
+	$text['thank_you_note_03'] = 'Vielen Dank %blizzarddotcom% für Idee Unterstützung Rote Kreuz und Wohltätigkeit Organisationen.';
+	$text['thank_you_note_04'] = 'Vielen Dank, %JimmyFallonShow% für "Thank You Notes".';
+	$text['thank_you_note_05'] = 'Danke, für freies Internet zum Reisebüro "PAULLY", Busagentur "ASATUR" und Familie "Benevides", Familie von Jaime und Celestia [mit ihrer Großmutter Maria Jose Gomes] von Boa Vista von Brasilien, der mich höflich auf die Bibelstelle verwandelte. ';
+
+	$text['thank_you_note_06'] = 'Vielen Dank, %hostingercouk% für freies Hosting wo ist jetzt Bible Site. ';
+
+	$text['text_search'] = 'Suchen';
+	$text['search_in'] = 'Suche in';
+
+	$text['next_chapter'] = 'nächstes Kapitel';
+	$text['previous_chapter'] = 'Vorheriges Kapitel';
+
+	$text['repharase_search'] = 'Keine Übereinstimmungen gefunden. Versuchen Sie, genaue Phrase zu verwenden und Sonderzeichen zu vermeiden. ';
+	$text['search_exception'] = 'Wir haben Probleme mit der Suche. ' . $text['please_contact_support'];
+
+	$text['text_keywords'] = 'Bibel, Heilige Bibel, Gold Bibel, Goldene Bibel, Altes Testament, Neues Testament, Evangelium, Offenbarung, Gott, Jesus Christus, Jesus, Bibel Suche';
+
+	$text['bibles_by_countries'] = 'Bibles by Countries';
+	$text['parallel_bibles'] = 'Parallel Bibles';
+	$text['bible_a'] = 'Bibel A';
+	$text['bible_b'] = 'Bibel B';
+	$text['select_parallel_bibles'] = 'Nicht jede Bibel steht für paralleles Lesen zur Verfügung. Du musst Bibeln ohne \'[H]\' in seinem Titel wählen. ';
+
+	$text['reset_by_email_warning'] = 'Du kannst das Passwort nicht per E-Mail jetzt zurücksetzen. Seien Sie sicher, dass Sie gefüllt und erinnerte sich an "Secret Question" und "Secret Answer" Felder. ';
+
+	$text['reset_password_email_vf_exception'] = 'Ihre E-Mail nicht gefunden oder falscher Bestätigungscode';
 
 ?>

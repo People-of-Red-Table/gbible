@@ -111,5 +111,60 @@
 	$text['tweeted_verse_exception'] = 'Nous avons eu problème avec le verset tweeté.';
 	$text['wait_for_tweeting'] = 'Le verset va être tweeté, s\'il vous plaît attendre.';
 
+	$text['text_feedback'] = 'Commentaires';
+	$text['text_subject'] = 'Sujet';
+	$text['text_message'] = 'Message';
+	$text['text_send'] = 'Envoyer';
+	$text['fb_pre_message'] = 'Nous apprécions vos commentaires et ce sera vraiment gentil de votre part si vous l\'écrivez en anglais. Je vous remercie. <br /> Si vous voulez vous joindre à la Charity Support Community PoRT [Personnes de la Table Rouge] et aider à améliorer Bible Site ou suggérer quelque chose, s\'il vous plaît, <a href = "http://charity-port.16mb.com/" target = "_blank"> visitez cette page </a>. ';
+	$text['fb_message_sent'] = 'Votre message a été envoyé. Je vous remercie.';
+	$text['fb_message_was_not_sent'] = 'Votre message n\'a pas été envoyé. '. $text['please_contact_support'];
+
+	$text['text_languages'] = 'Langues';
+	$text['text_int_languages'] = 'Langues d\'interface';
+	$text['choose_language'] = 'Choisissez la langue';
+
+
+	$text['use_ctrl_s'] = 'Vous pouvez enregistrer ces versets supérieurs sur votre ordinateur - utilisez <kbd> Ctrl + S </ kbd> pour cela.';
+	$text['remember_me'] = 'Se souvenir de moi';
+
+
+
+	$text['text_history'] = 'Historique';
+	$text['history_2013'] = 'Après avoir lu %bibledotcom% et visiter les services religieux - premier site biblique, en russe.';
+	$text['history_2014'] = 'Première version anglaise du site avec American Standard Version.';
+	$text['history_2015'] = 'En février, la Croix-Rouge américaine se battait avec Ebola et %blizzarddotcom% aidait la Croix-Rouge. Ici j\'ai l\'idée de soutenir la charité. Sur les premiers sites apparaissant des bannières et des liens vers la Croix-Rouge et les organisations caritatives. ';
+	$text['history_2016'] = 'Twitter bot commence à tweeter des organisations caritatives. ';
+	$text['history_2017'] = 'Twitter bot est tweetant des organisations caritatives pour environ 175 pays.';
+
+
+	$text['thank_you_notes'] = 'Notes de remerciement';
+	$text['thank_you_note_01'] = 'Merci %bibledotcom% pour vos bonnes bibles sur votre site.';
+	$text['thank_you_note_02'] = 'Merci Victor Guryev que vous avez payé pour la première année de %golddashbibledotcom%.';
+	$text['thank_you_note_03'] = 'Merci %blizzarddotcom% pour le support d\'idées Croix-Rouge et organismes de bienfaisance.';
+	$text['thank_you_note_04'] = 'Merci, %JimmyFallonShow% pour "Thank You Notes".';
+	$text['thank_you_note_05'] = 'Merci, pour internet gratuit agence de voyage "PAULLY", agence de bus ASATUR et famille "Benevides", famille de Jaime et Celestia [avec sa grand-mère María José Gomes] de Boa Vista de Brésil, qui poliment m\'a donné de travailler sur le site de la Bible. ';
+
+	$text['thank_you_note_06'] = 'Merci, %hostingercouk% pour l\'hébergement gratuit où est maintenant le Site de la Bible. ';
+
+	$text['text_search'] = 'Rechercher';
+	$text['search_in'] = 'Rechercher dans';
+
+	$text['next_chapter'] = 'Chapitre suivant';
+	$text['previous_chapter'] = 'Chapitre précédent';
+
+	$text['repharase_search'] = 'Aucune correspondance trouvée. Essayez d\'utiliser l\'expression exacte et évitez les caractères spéciaux. ';
+	$text['search_exception'] = 'Nous avons un problème avec la recherche. '. $text['please_contact_support'];
+
+	$text['text_keywords'] = 'Bible, Sainte Bible, Bible en Or, Bible Dorée, Ancien Testament, Nouveau Testament, Évangile, Révélation, Dieu, Jésus-Christ, Jésus, Bible Search';
+
+	$text['bibles_by_countries'] = 'Bibles par Pays';
+	$text['parallel_bibles'] = 'Bibles parallèles';
+	$text['bible_a'] = 'Bible A';
+	$text['bible_b'] = 'Bible B';
+	$text['choose_parallel_bibles'] = 'Toutes les Bible ne sont pas disponibles pour lecture parallèle. Vous devez choisir des Bibles sans \'[H]\' dans son titre. ';
+
+	$text['reset_by_email_warning'] = 'Vous ne pouvez pas réinitialiser le mot de passe par email maintenant. Assurez-vous d\'avoir rempli et gardé les champs «Question secrète» et «Réponse secrète». ';
+
+	$text['reset_password_email_vf_exception'] = 'Votre e-mail n\'a pas été trouvé ou est incorrect.';
 
 ?>
