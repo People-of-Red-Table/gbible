@@ -2,6 +2,7 @@
 
 	$text['golden_bible'] = 'Golden Bible';
 	$text['verse_added_to_favorites'] = 'Verse was added to favorites.';
+	$text['sorry'] = 'Sorry. ';
 	$text['please_contact_support'] = 'Please contact support.';
 	$text['favorite_verses_exception'] = 'We have got issue with favorite verses.';
 	$text['verse_already_in_fav'] = 'Verse is already in favorites.';
@@ -33,7 +34,7 @@
 					. ' If you want to reset your password, please, click this link: ' . PHP_EOL
 					. ' http://%http_host%/?menu=users_resetPasswordByEMail' 
 					. '&verification_code=%verification_code%'
-					. '&reset_email=%user_email% ' . PHP_EOL . PHP_EOL . PHP_EOL
+					. '&email=%user_email% ' . PHP_EOL . PHP_EOL . PHP_EOL
 					. 'If you did not request this operation, just ignore this letter.'
 					. 'Thank you.';
 	$text['reset_mail_sent'] = 'Letter to your email `%user_email%` was sent. Please, check your inbox. If you did not find it, check your "Spam" folder';
@@ -171,4 +172,39 @@
 	$text['reset_by_email_warning'] = 'You are not able to reset password by email now. Be sure that you filled and remembered "Secret Question" and "Secret Answer" fields.';
 
 	$text['reset_password_email_vf_exception'] = 'Your email not found or incorrect verification code.';
+	$text['text_date'] = 'Date';
+	$text['text_timetable'] = 'Timetable';
+	$text['timetable_exception'] = $text['sorry'] . ' Timetable is not opened. ' . $text['please_contact_support'];
+
+	$text['timetable_229'] = 'Today is 29th February, default timetable does not have a readings for today. ';
+	$text['schedule_have_no_reading_today'] = 'Timetable does not have a readings for today.';
+	$text['timetable_create_def_tt_exception'] = 'Timetable for this Bible was not created. ' . $text['please_contact_support'];
+
+	$text['choose_not_h_bibles'] = 'Not every Bible is available for timetable. You have to choose Bibles without \'[H]\' in its title.';
+	$text['bible_for_a_year'] = 'Bible for a Year';
+
+	$text['to_schedule'] = 'Schedule This Reading';
+	$text['to_unschedule'] = 'Unschedule This Reading';
+
+	$text['schedules_selection_exception'] = 'The system could not select schedules for your timetable. ' . $text['please_contact_support'];
+
+	$text['scheduling_exception'] = 'The system could not schedule the reading. ' . $text['please_contact_support'];
+	$text['tt_readings_exception'] = 'The system could not select your readings. ' . $text['please_contact_support'];
+	$text['tt_schedules_exception'] = 'The system could not select your schedules. ' . $text['please_contact_support'];
+	$text['tt_reading_update'] = 'The system could not update your reading for timetable. ' . $text['please_contact_support'];
+
+	$text['create_own_timetable'] = 'Create My Own Timetable';
+	$text['chapters_in'] = 'Chapters in ';
+	$text['text_monday'] = 'Monday';
+	$text['text_tuesday'] = 'Tuesday';
+	$text['text_wednesday'] = 'Wednesday';
+	$text['text_thursday'] = 'Thursday';
+	$text['text_friday'] = 'Friday';
+	$text['text_saturday'] = 'Saturday';
+	$text['text_sunday'] = 'Sunday';
+	$text['text_submit'] = 'Submit';
+	$text['choose_bible'] = 'Choose the Bible';
+	$text['from_date'] = 'From Date';
+	$text['text_title'] = 'Title';
+
 ?>

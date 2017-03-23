@@ -28,7 +28,9 @@
 
 		'feedback', 'changeLanguage', 'history', 'thankYouNotes',
 
-		'search', 'biblesByCountries', 'parallelBibles'
+		'search', 'biblesByCountries', 'parallelBibles',
+
+		'timetable'
  
 		];
 

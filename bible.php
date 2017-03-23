@@ -141,16 +141,70 @@
 				);
 			$result_verses = $statement_verses -> execute(array('book' => $book, 'chapter' => $chapter));
 
+			$verse_paragraph_title = $text['click_to_share'];
+			if ($_SESSION['uid'] > -1)
+				$verse_paragraph_title .= $text['add_to_fav_addition'];
+			$verse_paragraph_title .= $text['copy_link_to_verse'] . '.';		
+
 			if(!$result_verses)
 				log_msg(__FILE__ . ':' . __LINE__ . ' ' . ' PDO verses query exception. Info = {' . json_encode($statement_verses -> errorInfo())  . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}, \$table_name = `' . $table_name . '`.');
 
 			$verses_rows = $statement_verses -> fetchAll();
 			$verses = '';
-			$b_start = '';
-			$b_end = '';
 			foreach ($verses_rows as $verse_row) 
 			{
 				$verses .= html_verse($verse_row);
+			}
+
+			// set this chapter as read if scheduled
+			if ($_SESSION['uid'] > -1)
+			{
+
+				// Bibles for a year
+				$statement_schedule = $pdo -> prepare('select scheduled, id from bible_for_a_year_schedules bfys 
+														where user_id = :user_id and b_code = :b_code');
+				$result = $statement_schedule -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $b_code]);
+				$message = $messages[] = check_result($result, $statement_schedule, $text['tt_schedules_exception'], 'Schedule selection exception');
+				if ($result)
+				{
+					$schedule_row = $statement_schedule -> fetch();
+					if (!is_null($schedule_row['scheduled']))
+					{
+						$user_date = new DateTime();
+						$user_date = set_user_timezone($user_date);
+
+						$statement_timetable = $pdo -> prepare('select book, month, day from bible_for_a_year where b_code = :b_code and book = :book and chapter = :chapter and month = :month and day = :day');
+						$result = $statement_timetable -> execute(['b_code' => $b_code, 'book' => $book, 'chapter' => $chapter, 'month' => $user_date -> format('n'), 'day' => $user_date -> format('j')]);
+
+						check_result($result, $statement_timetable, $text['timetable_exception'], ' Timetable `bible_for_a_year` was not opened');
+
+						if ($result and ($statement_timetable -> rowCount() > 0))
+						{
+							$statement_reading = $pdo -> prepare('insert into bible_for_a_year_readings (schedule_id, book, chapter, `read`) values (:schedule_id, :book, :chapter, :date);');
+							$result = $statement_reading -> execute(['schedule_id' => $schedule_row['id'], 'book' => $book, 'chapter' => $chapter, 'date' => $user_date -> format('Y-m-d H:i:s')]);
+							$messages[] = check_result($result, $statement_reading, $text['tt_reading_update'], 'Timetable reading update');
+						}
+					}
+				}
+
+				// user's timetables
+
+				$timetables_statement = $pdo -> prepare('select id, b_code from timetables where user_id = :user_id and b_code = :b_code');
+				$result = $timetables_statement -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $b_code]);
+				$messages[] = check_result($result, $timetables_statement, $text['tt_schedules_exception'], 'Timetables select PDO query exception.');
+
+				if ($result)
+				{
+					$timetables_rows = $timetables_statement -> fetchAll();
+					foreach ($timetables_rows as $timetable_row)
+					{
+						// set book as read 
+						$update_query = 'update schedules set `read` = now() where timetable_id = :timetable_id and book = :book and chapter = :chapter';
+						$update_statement = $pdo -> prepare($update_query);
+						$result = $update_statement -> execute(['timetable_id' => $timetable_row['id'], 'book' => $book, 'chapter' => $chapter]);
+						$messages[] = check_result($result, $update_statement, $text['tt_reading_update'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');
+					}
+				}
 			}
 		?>
 		<div class="panel-body"><?=$verses;?></div>

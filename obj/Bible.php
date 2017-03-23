@@ -5,6 +5,8 @@
 		public $country;
 		public $language;
 		public $b_code;
+		public $table_name;
+		public $title;
 		public $pdo;
 		public $mysql;
 
@@ -142,7 +144,7 @@
 		function setBCode($b_code)
 		{
 			$statement_bibles = $this -> pdo -> prepare(
-					'select b_code from b_shelf where language = :language_name');
+					'select b_code, table_name, title from b_shelf where language = :language_name');
 				$result_bibles = $statement_bibles -> execute(array('language_name' => $this -> language));
 
 			if (!$result_bibles)
@@ -159,6 +161,8 @@
 					if (strcasecmp($b_code, $row['b_code']) === 0)
 					{
 						$this -> b_code = $row['b_code'];
+						$this -> table_name = $row['table_name'];
+						$this -> title = $row['title'];
 						$bible_found = true;
 						break;
 					}
@@ -166,6 +170,8 @@
 				if(!$bible_found)
 				{
 					$this -> b_code = $bibles_rows[0]['b_code'];
+					$this -> table_name = $bibles_rows[0]['table_name'];
+					$this -> title = $bibles_rows[0]['title'];
 				}
 			}		
 		} // function setBCode

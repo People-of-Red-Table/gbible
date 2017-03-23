@@ -77,7 +77,7 @@
 			<input type="password" class="form-control" name="password_repeat" maxlength="16" id="resetPasswordEMRepeatPasswordField">
 	</div>
 
-	<input type="hidden" name="verification_code" value="<?=$verification_code;?>">
+	<input type="hidden" name="verification_code" value="<?=$_REQUEST['verification_code'];?>">
 	<input type="hidden" name="email" value="<?=$_REQUEST['email'];?>">
 	<input type="hidden" name="menu" value="users_resetPasswordByEMail">
 	<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['text_reset'];?>" />

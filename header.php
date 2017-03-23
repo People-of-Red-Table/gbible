@@ -106,13 +106,14 @@
 					<ul class="nav navbar-nav navbar-right">
 						<!--<li><a href="#">Contact Us</a></li>-->
 
+						<li><a href="./?menu=timetable"><?=$text['text_timetable'];?></a></li>
 					<?php
 						if ($_SESSION['uid'] > -1)
 						{
 					?>
 						<li><a href="./?menu=users_settings"><?=$text['text_settings'];?></a></li>
 						<li><a href="./?menu=sign_out"><?=$text['sign_out'];?></a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span> <b><?=$_SESSION['nickname'];?></b></a></li>
+						<li><a href="#"><b><?=$_SESSION['nickname'];?></b></a></li>
 					<?php
 						}
 						else 
