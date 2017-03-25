@@ -9,7 +9,9 @@
 
 				$timetables_statement = $pdo -> prepare('select id, title, b_code, b_code2 from timetables where user_id = :user_id');
 				$result = $timetables_statement -> execute(['user_id' => $_SESSION['uid']]);
-				$messages[] = check_result($result, $timetables_statement, $text['tt_schedules_exception'], 'Timetables select PDO query exception.');
+				$message = check_result($result, $timetables_statement, $text['tt_schedules_exception'], 'Timetables select PDO query exception.');
+				if (!empty($message))
+					echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
 
 				if ($result)
 				{
@@ -23,7 +25,10 @@
 										and s.`when` = :date';
 						$select_readings_statement = $pdo -> prepare($select_query);
 						$result = $select_readings_statement -> execute(['timetable_id' => $timetable_row['id'], 'date' => $date -> format('Y-m-d')]);
-						$messages[] = check_result($result, $select_readings_statement, $text['tt_readings_exception'], 'Select readings for today exception.');
+						$message = check_result($result, $select_readings_statement, $text['tt_readings_exception'], 'Select readings for today exception.');
+						if (!empty($message))
+							echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+						
 						if ($result)
 						{
 							if ($select_readings_statement -> rowCount() === 0)
@@ -48,7 +53,7 @@
 								<input type="hidden" name="menu" value="timetable">
 								<input type="hidden" name="action" value="unschedule_timetable_of_user">
 								<input type="hidden" name="id" value="' . $timetable_row['id'] .'">
-								<input type="submit" class="btn btn-warning form-control" name="submit" value="' . $text['to_unschedule'] . '"></form>';
+								<input type="submit" class="btn btn-danger form-control" name="submit" value="' . $text['to_unschedule'] . '"></form>';
 					}
 				}
 				if($date -> format('md') != '0229')
@@ -68,7 +73,7 @@
 								<input type="hidden" name="menu" value="timetable">
 								<input type="hidden" name="action" value="unschedule">
 								<input type="hidden" name="bfy_b_code" value="' . $row['b_code'] .'">
-								<input type="submit" class="btn btn-warning form-control" name="submit" value="' . $text['to_unschedule'] . '"></form>';
+								<input type="submit" class="btn btn-danger form-control" name="submit" value="' . $text['to_unschedule'] . '"></form>';
 					}
 
 					if(stripos($tt_b_code, 'http') === FALSE)
@@ -103,5 +108,10 @@
 			<form method="post">
 				<input type="hidden" name="menu" value="timetable" />
 				<input type="hidden" name="action" value="create_own_timetable" />
-				<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['create_own_timetable'];?>">
+				<input type="submit" class="btn btn-default form-control" title="<?=$text['create_timetable_note'];?>" name="submit" value="<?=$text['create_own_timetable'];?>">
+			</form>
+			<br/><form method="post">
+				<input type="hidden" name="menu" value="timetable" />
+				<input type="hidden" name="action" value="show" />
+				<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['title_refresh'];?>">
 			</form>

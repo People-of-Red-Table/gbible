@@ -164,7 +164,10 @@
 				$statement_schedule = $pdo -> prepare('select scheduled, id from bible_for_a_year_schedules bfys 
 														where user_id = :user_id and b_code = :b_code');
 				$result = $statement_schedule -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $b_code]);
-				$message = $messages[] = check_result($result, $statement_schedule, $text['tt_schedules_exception'], 'Schedule selection exception');
+				$message = check_result($result, $statement_schedule, $text['tt_schedules_exception'], 'Schedule selection exception');
+				if (!empty($message))
+					echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+
 				if ($result)
 				{
 					$schedule_row = $statement_schedule -> fetch();
@@ -176,13 +179,17 @@
 						$statement_timetable = $pdo -> prepare('select book, month, day from bible_for_a_year where b_code = :b_code and book = :book and chapter = :chapter and month = :month and day = :day');
 						$result = $statement_timetable -> execute(['b_code' => $b_code, 'book' => $book, 'chapter' => $chapter, 'month' => $user_date -> format('n'), 'day' => $user_date -> format('j')]);
 
-						check_result($result, $statement_timetable, $text['timetable_exception'], ' Timetable `bible_for_a_year` was not opened');
+						$message = check_result($result, $statement_timetable, $text['timetable_exception'], ' Timetable `bible_for_a_year` was not opened');
+						if (!empty($message))
+							echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
 
 						if ($result and ($statement_timetable -> rowCount() > 0))
 						{
 							$statement_reading = $pdo -> prepare('insert into bible_for_a_year_readings (schedule_id, book, chapter, `read`) values (:schedule_id, :book, :chapter, :date);');
 							$result = $statement_reading -> execute(['schedule_id' => $schedule_row['id'], 'book' => $book, 'chapter' => $chapter, 'date' => $user_date -> format('Y-m-d H:i:s')]);
-							$messages[] = check_result($result, $statement_reading, $text['tt_reading_update'], 'Timetable reading update');
+							$message = check_result($result, $statement_reading, $text['tt_reading_update_exception'], 'Timetable reading update');
+							if (!empty($message))
+								echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
 						}
 					}
 				}
@@ -191,7 +198,9 @@
 
 				$timetables_statement = $pdo -> prepare('select id, b_code from timetables where user_id = :user_id and b_code = :b_code');
 				$result = $timetables_statement -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $b_code]);
-				$messages[] = check_result($result, $timetables_statement, $text['tt_schedules_exception'], 'Timetables select PDO query exception.');
+				$message = check_result($result, $timetables_statement, $text['tt_schedules_exception'], 'Timetables select PDO query exception.');
+				if (!empty($message))
+					echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
 
 				if ($result)
 				{
@@ -202,7 +211,9 @@
 						$update_query = 'update schedules set `read` = now() where timetable_id = :timetable_id and book = :book and chapter = :chapter';
 						$update_statement = $pdo -> prepare($update_query);
 						$result = $update_statement -> execute(['timetable_id' => $timetable_row['id'], 'book' => $book, 'chapter' => $chapter]);
-						$messages[] = check_result($result, $update_statement, $text['tt_reading_update'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');
+						$message = check_result($result, $update_statement, $text['tt_reading_update'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');
+						if (!empty($message))
+							echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
 					}
 				}
 			}

@@ -47,7 +47,7 @@ create table users
 	secret_answer varchar(50),
 	last_hit datetime,
 	timezone varchar(50),
-	inserted datetime,
+	inserted datetime DEFAULT CURRENT_TIMESTAMP,
 	updated datetime,
 	updated_by int,
 	deleted datetime,
@@ -57,6 +57,7 @@ create table users
 	remote_addr varchar(50),
 	topics_per_page int,
 	posts_per_page int,
+  tf_verses_per_page int DEFAULT 25,
 	messages_per_page int,
 
 	-- may be someday they will become normal =]

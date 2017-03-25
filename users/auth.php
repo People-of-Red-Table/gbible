@@ -44,6 +44,7 @@
 		$_SESSION['timezone'] = 'America/New_York';
 		$_SESSION['topics_per_page'] = 25;
 		$_SESSION['posts_per_page'] = 25;
+		$_SESSION['tf_verses_per_page'] = 25;
 		$_SESSION['messages_per_page'] = 25;
 	}
 	else
@@ -72,6 +73,7 @@
 			//$_SESSION['role_id'] = $row['role_id'];
 			//$_SESSION['role'] = $row['name'];
 			$_SESSION['timezone'] = $row['timezone'];
+			$_SESSION['tf_verses_per_page'] = $row['tf_verses_per_page'];
 
 
 			$result_language = mysqli_query($links['sofia']['mysql'],'select code from iso_639_languages where language_name = "' . $row['language'] . '" union select code from iso_639_languages where code = "' . $row['language'] . '"');

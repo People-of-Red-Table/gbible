@@ -43,54 +43,42 @@
 <div class="alert alert-info"><?=$text['fb_pre_message'];?></div>
 <br />
 <form method="post">
-	<div class="row">
-		<div class="col-md-2">
+	<div class="form-group">
+		<label for="fb_fullname">
 			<p><?=$text['full_name'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="text" maxlength="50" name="full_name" <?php 
+		</label>
+			<input type="text" class="form-control" maxlength="50" name="full_name" id="fb_fullname" <?php 
 				if (isset($_SESSION['full_name']))
 					echo ' value="' . $_SESSION['full_name'] . '"'
 			?>>
-		</div>
 	</div>
 	<br />
-	<div class="row">
-		<div class="col-md-2">
+	<div class="form-group">
+		<label for="fbEMail">
 			<p><?=$text['text_email'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="text"  maxlength="100" name="email"<?php 
+		</label>
+			<input type="text" class="form-control" maxlength="100" id="fbEMail" name="email"<?php 
 				if (isset($_SESSION['email']))
 					echo ' value="' . $_SESSION['email'] . '"'
 			?>>
-		</div>
 	</div>
 	<br />
-	<div class="row">
-		<div class="col-md-2">
+	<div class="form-group">
+		<label for="fbSubject">
 			<p><?=$text['text_subject'];?></p>
-		</div>
-		<div class="col-md-2">
-			<input type="text" name="subject" maxlength="100">
-		</div>
+		</label>
+			<input type="text" class="form-control" id="fbSubject" name="subject" maxlength="100">
 	</div>
 	<br />
-	<div class="row">
-		<div class="col-md-2">
+	<div class="form-group">
+		<label for="fbMessage">
 			<p><?=$text['text_message'];?></p>
-		</div>
-		<div class="col-md-2">
-			<textarea cols="30" rows="10" name="message" maxlength="5000"></textarea>
-		</div>
+		</label>
+			<textarea  class="form-control" cols="30" rows="10" id="fbMessage" name="message" maxlength="5000"></textarea>
 	</div>
 	<br />
 
-	<div class="row">
-		<div class="col-md-12">
-			<input type="hidden" name="menu" value="feedback">
-			<!-- TO DO: check email by pattern-->
-			<input type="submit" name="submit" value="<?=$text['text_send'];?>" />
-		</div>
-	</div>
+	<input type="hidden" name="menu" value="feedback">
+	<!-- TO DO: check email by pattern-->
+	<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['text_send'];?>" />
 </form>

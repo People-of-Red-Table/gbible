@@ -121,7 +121,7 @@
 	$text['text_subject'] = 'Subject';
 	$text['text_message'] = 'Message';
 	$text['text_send'] = 'Send';
-	$text['fb_pre_message'] = 'We value your feedback and it will be really nice of you if you will write it in English. Thank you. <br />If you wanna join Charity Support Community PoRT [People of Red Table] and help to enhance Bible Site or suggest something, please, <a href="http://charity-port.16mb.com/" target="_blank">visit this page</a>.';
+	$text['fb_pre_message'] = 'We value your feedback and it will be really nice of you if you will write it in English. Thank you. <br />If you wanna join Charity Support Community PoRT [People of Red Table] and help to enhance Bible Site or suggest something, please, <a href="http://charity-port.16mb.com/" target="_blank" class="alert-link">visit this page</a>.';
 	$text['fb_message_sent'] = 'Your message was sent. Thank you.';
 	$text['fb_message_was_not_sent'] = 'Your message was not sent. ' . $text['please_contact_support'];
 
@@ -192,7 +192,7 @@
 	$text['unscheduling_exception'] = 'The system could not unschedule the reading. ' . $text['please_contact_support'];
 	$text['tt_readings_exception'] = 'The system could not select your readings. ' . $text['please_contact_support'];
 	$text['tt_schedules_exception'] = 'The system could not select your schedules. ' . $text['please_contact_support'];
-	$text['tt_reading_update'] = 'The system could not update your reading for timetable. ' . $text['please_contact_support'];
+	$text['tt_reading_update_exception'] = 'The system could not update your reading for timetable. ' . $text['please_contact_support'];
 
 	$text['create_own_timetable'] = 'Create My Own Timetable';
 	$text['chapters_in'] = 'Chapters in ';
@@ -210,4 +210,11 @@
 
 	$text['parallel_bibles_scheduled'] = 'Parallel Bibles were scheduled.';
 	$text['text_and'] = 'and';
+
+	$text['first_page'] = 'First Page';
+	$text['last_page'] = 'Last Page';
+
+	$text['title_refresh'] = 'Refresh';
+
+	$text['create_timetable_note'] = 'Are you having too busy week days? Create your own timetable for Bible reading!';
 ?>

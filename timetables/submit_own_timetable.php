@@ -27,14 +27,20 @@
 	$insert_statement = $pdo -> prepare($insert_timetable_query);
 	$result = $insert_statement -> execute(['user_id' => $_SESSION['uid'], 'title' => $_REQUEST['timetable_title'], 'b_code' => $tt_b_code]);
 
-	$messages[] = check_result($result, $insert_statement, $text['scheduling_exception'], '`timetables` insert PDO query exception.');
+	$message = check_result($result, $insert_statement, $text['scheduling_exception'], '`timetables` insert PDO query exception.');
+
+	if (!empty($message))
+		echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+
 	if ($result)
 	{
 		$select_query = 'select max(id) from timetables where user_id = :user_id and b_code = :b_code';
 
 		$select_statement = $pdo -> prepare($select_query);
 		$result = $select_statement -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $tt_b_code]);
-		$messages[] = check_result($result, $insert_statement, $text['scheduling_exception'], '`timetables` select PDO query exception.');
+		$message = check_result($result, $insert_statement, $text['scheduling_exception'], '`timetables` select PDO query exception.');
+		if (!empty($message))
+			echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
 		if ($result)
 		{
 

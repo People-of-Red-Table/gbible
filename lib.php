@@ -172,7 +172,7 @@
 					$statement_schedule = $pdo -> prepare('select scheduled from bible_for_a_year_schedules bfys 
 															where user_id = :user_id and b_code = :b_code');
 					$result = $statement_schedule -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $bfy_b_code]);
-					$message = $messages[] = check_result($result, $statement_schedule, $text['tt_schedules_exception'], 'Schedule selection exception');
+					$messages[] = check_result($result, $statement_schedule, $text['tt_schedules_exception'], 'Schedule selection exception');
 					if ($result)
 					{
 						if ($statement_schedule -> rowCount() == 0)
@@ -191,7 +191,7 @@
 																where bfys.user_id = :user_id and book = :book and chapter = :chapter');
 						$result = $statement_schedule -> execute(['book' => $row['book'], 'chapter' => $row['chapter'], 'user_id' => $_SESSION['uid']]);
 						$message = $messages[] = check_result($result, $statement_schedule, $text['tt_readings_exception'], 'Readings selection exception');
-						if (empty($message))
+						if ($result)
 						{
 							$schedule_row = $statement_schedule -> fetch();
 							if ($statement_schedule -> rowCount() === 0)

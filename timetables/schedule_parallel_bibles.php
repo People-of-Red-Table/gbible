@@ -1,17 +1,4 @@
 <?php
-
-/*	$insert_query = 'insert into timetables (user_id, b_code, b_code2, title, scheduled) values (:uid, :b_code, b_code2, :title, now());';
-	$insert_statement = $pdo -> prepare($insert_query);
-
-	$result = $insert_statement -> execute(['uid' => $_SESSION['uid'], 'b_code' => $_REQUEST['tt_b_code1'], 'b_code2' => $_REQUEST['tt_b_code2'], 'title' => $_REQUEST['title']]);
-
-	$message = check_result($result, $insert_statement, $text['scheduling_exception'], __FILE__ . ':' . __LINE__ . ' Parallel Bibles scheduling exception.');
-	if ($result)
-		$message = ['type' => 'success', 'message' => $text['parallel_bibles_scheduled']];
-
-	if (!empty($message))
-		echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
-*/	
 	if ( (stripos($tt_b_code1, 'http') !== FALSE)
 		or (stripos($tt_b_code2, 'http') !== FALSE) )
 	{
@@ -41,14 +28,22 @@
 	$insert_statement = $pdo -> prepare($insert_timetable_query);
 	$result = $insert_statement -> execute(['user_id' => $_SESSION['uid'], 'title' => $_REQUEST['timetable_title'], 'b_code' => $tt_b_code1, 'b_code2' => $tt_b_code2]);
 
-	$messages[] = check_result($result, $insert_statement, $text['scheduling_exception'], '`timetables` insert PDO query exception.');
+	$message = check_result($result, $insert_statement, $text['scheduling_exception'], '`timetables` insert PDO query exception.');
+
+	if (!empty($message))
+		echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+
 	if ($result)
 	{
 		$select_query = 'select max(id) from timetables where user_id = :user_id and b_code = :b_code and b_code2 = :b_code2';
 
 		$select_statement = $pdo -> prepare($select_query);
 		$result = $select_statement -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $tt_b_code1, 'b_code2' => $tt_b_code2]);
-		$messages[] = check_result($result, $insert_statement, $text['scheduling_exception'], '`timetables` select PDO query exception.');
+		$message = check_result($result, $insert_statement, $text['scheduling_exception'], '`timetables` select PDO query exception.');
+
+		if (!empty($message))
+			echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+							
 		if ($result)
 		{
 

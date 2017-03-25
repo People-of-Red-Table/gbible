@@ -5,6 +5,10 @@ update for internet version:
 tables: 
 book_titles, timetables, schedules, bible_for_a_year, bible_for_a_year_schedules, bible_for_a_year_readings
 
+Add languages, finish downloading of external Bibles, add them too.
+
++ paged output for favorite and top verses.
+
 =======================
 Bible Reading Timetable
 =======================

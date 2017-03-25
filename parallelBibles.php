@@ -330,7 +330,10 @@
 				$update_query = 'update schedules set `read` = now() where timetable_id = :timetable_id and book = :book and chapter = :chapter';
 				$update_statement = $pdo -> prepare($update_query);
 				$result = $update_statement -> execute(['timetable_id' => $tt_row['id'], 'book' => $book, 'chapter' => $chapter]);
-				$messages[] = check_result($result, $update_statement, $text['tt_reading_update'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');				
+				$message = check_result($result, $update_statement, $text['tt_reading_update_exception'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');
+				
+				if (!empty($message))
+					echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
 			}
 		}
 

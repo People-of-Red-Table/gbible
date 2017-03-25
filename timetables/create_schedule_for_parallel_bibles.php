@@ -13,15 +13,19 @@
 			<input type="date" name="from_date" class="form-control" value="' . $date -> format('Y-m-d') . '" id="fromDateTimetable">
 		</div>
 		';
-		foreach (['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'] as $day_of_week) 
+		foreach ($week as $day_of_week) 
 		{
+			$chapters_amount = 1;
+			if ((strcasecmp('saturday', $day_of_week) === 0)
+				or (strcasecmp('sunday', $day_of_week) === 0))
+				$chapters_amount = 5;
 			echo '<div class="form-group">
 				<label for="' . $day_of_week . '_group">' . $text['chapters_in'] . $text['text_' . $day_of_week] . '</label>
 				<div class="input-group" id="' . $day_of_week . '_group">
 					<span class="input-group-addon">
 					<input type="checkbox" name="day_of_week[' . $day_of_week . ']" checked>
 					</span>
-					<input type="text" class="form-control" name="chapters_in[' . $day_of_week . ']" value="3" />
+					<input type="text" class="form-control" name="chapters_in[' . $day_of_week . ']" value="' . $chapters_amount . '" />
 				</div>
 			</div>';	
 		}

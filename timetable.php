@@ -1,4 +1,4 @@
-<h1><?=$text['text_timetable'];?></h1><br />
+<h1><a href="./?menu=timetable"><?=$text['text_timetable'];?></a></h1><br />
 <?php
 	if (!isset($_REQUEST['date']))
 	{
@@ -7,6 +7,7 @@
 	}
 	else $date = new DateTime($_REQUEST['date']);
 
+	$week = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 	$messages = [];
 
 	if(!isset($_REQUEST['action']))
@@ -31,4 +32,8 @@
 		require './timetables/' . $action . '.php';
 	else
 		require './timetables/show.php';
+
+	if (stripos($action, 'unschedule') !== FALSE) 
+		require './timetables/show.php';
+
 ?>
