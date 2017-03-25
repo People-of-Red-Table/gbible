@@ -24,7 +24,7 @@
 
 			if ($result_fav_verse)
 			{
-				$message = $test['verse_added_to_favorites'];
+				$message = $text['verse_added_to_favorites'];
 				$msg_type = 'success';
 			}
 			else

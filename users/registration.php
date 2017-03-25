@@ -24,7 +24,7 @@
 		if ($result)
 		{
 			$msg_type = 'success';
-			$message = $text['registered_sign_in'] ' <a href="./?menu=users_signIn" class="alert-link">' . $text['sign_in'] . '</a>. ';
+			$message = $text['registered_sign_in'] . ' <a href="./?menu=users_signIn" class="alert-link">' . $text['sign_in'] . '</a>. ';
 		}
 		else 
 		{

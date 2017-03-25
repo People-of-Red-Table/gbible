@@ -6,7 +6,7 @@
 	else
 		$page =$_REQUEST['page'];
 
-	$page_nav = '<br />';
+	$page_nav = '<br /><ul class="pagination">';
 
 	$select_count_query = 'select count(verseID) from fav_verses';
 	$select_count_statement = $pdo -> prepare($select_count_query);
@@ -22,22 +22,22 @@
 	if ($page_count > 1)
 	{
 		if ($page != 1)
-			$page_nav .= '<a href="./?menu=topVerses&page=1">[' . $text['first_page'] . ']</a> ';
+			$page_nav .= '<li><a href="./?menu=topVerses&page=1">' . $text['first_page'] . '</a></li>';
 		else
-			$page_nav .= '<b>[' . $text['first_page'] . ']</b> ';
+			$page_nav .= '<li><a><b>' . $text['first_page'] . '</b></a></li>';
 
 		for ($i=1; $i <= $page_count; $i++)
 		{
 			if ($page != $i)
-				$page_nav .= '<a href="./?menu=topVerses&page=' . $i . '">[' . $i . ']</a> ';
+				$page_nav .= '<li><a href="./?menu=topVerses&page=' . $i . '">' . $i . '</a></li>';
 			else
-				$page_nav .= '<b>[' . $i . ']</b> ';
+				$page_nav .= '<li><a><b>' . $i . '</b></a></li>';
 		}
 		if ($page != $page_count)
-			$page_nav .= '<a href="./?menu=topVerses&page=' . $page_count . '">[' . $text['last_page'] . ']</a> ';
+			$page_nav .= '<li><a href="./?menu=topVerses&page=' . $page_count . '">' . $text['last_page'] . '</a></li>';
 		else
-			$page_nav .= '<b>[' . $text['last_page'] . ']</b>';
-		$page_nav .= '<br /><br />';
+			$page_nav .= '<li><a><b>' . $text['last_page'] . '</b></a></li>';
+		$page_nav .= '</ul><br /><br />';
 	}
 
 	// it is program code =] for web page of top verses...

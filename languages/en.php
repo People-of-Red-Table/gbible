@@ -2,8 +2,8 @@
 
 	$text['golden_bible'] = 'Golden Bible';
 	$text['verse_added_to_favorites'] = 'Verse was added to favorites.';
-	$text['sorry'] = 'Sorry. ';
-	$text['please_contact_support'] = 'Please contact support.';
+	$text['text_sorry'] = 'Sorry. ';
+	$text['please_contact_support'] = $text['text_sorry'] . 'Please contact support.';
 	$text['favorite_verses_exception'] = 'We have got issue with favorite verses.';
 	$text['verse_already_in_fav'] = 'Verse is already in favorites.';
 	$text['sign_in_exception'] = 'We have got issue with \"Sign In\" .';
@@ -174,7 +174,7 @@
 	$text['reset_password_email_vf_exception'] = 'Your email not found or incorrect verification code.';
 	$text['text_date'] = 'Date';
 	$text['text_timetable'] = 'Timetable';
-	$text['timetable_exception'] = $text['sorry'] . ' Timetable is not opened. ' . $text['please_contact_support'];
+	$text['timetable_exception'] = $text['text_sorry'] . ' Timetable is not opened. ' . $text['please_contact_support'];
 
 	$text['timetable_229'] = 'Today is 29th February, default timetable does not have a readings for today. ';
 	$text['schedule_have_no_reading_today'] = 'Timetable does not have a readings for today.';
@@ -217,4 +217,7 @@
 	$text['title_refresh'] = 'Refresh';
 
 	$text['create_timetable_note'] = 'Are you having too busy week days? Create your own timetable for Bible reading!';
+	$text['text_delete'] = 'Delete';
+	$text['fv_deleting_exception'] = 'The system could not delete the verse from favorites. ' . $text['please_contact_support'];
+	$text['fv_deleted'] = 'The verse was deleted from favorites.';
 ?>
