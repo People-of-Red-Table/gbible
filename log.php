@@ -24,4 +24,14 @@
 		global $datetime;
 		fwrite($slog_file, $datetime -> format('H:i:s') . ' ' . $_SERVER['REMOTE_ADDR'] . ' ' . $_SERVER['HTTP_USER_AGENT'] . ' ' . $message . PHP_EOL);
 	}
+
+	function check_result($result, $statement, $user_message, $log_message)
+	{
+		if (!$result)
+		{
+			log_msg($log_message . '. $statement = ' . json_encode($statement) . ', info = ' . json_encode($statement -> errorInfo()) . ', $_REQUEST = ' . json_encode($_REQUEST));
+			return ['type' => 'danger', 'message' => $user_message];
+		}
+		else return [];
+	}
 ?>

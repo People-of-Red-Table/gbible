@@ -1,11 +1,11 @@
 <?php
 
-	if(isset($_GET['menu']) && $_GET['menu'] === 'sign_out')
+	if(isset($_REQUEST['menu']) && $_REQUEST['menu'] === 'sign_out')
 	{
 		session_unset(session_id());
 	}
 
-	if(isset($_POST['menu']) && $_POST['menu'] === 'users_signingIn')
+	if(isset($_REQUEST['menu']) && $_REQUEST['menu'] === 'users_signingIn')
 	{
 		$params = array('email' => $_POST['email'], 'password' => $_POST['password']);
 		$statement = $links['sofia']['pdo'] -> prepare('select * from users where email = :email and password = md5(:password)');
@@ -44,6 +44,7 @@
 		$_SESSION['timezone'] = 'America/New_York';
 		$_SESSION['topics_per_page'] = 25;
 		$_SESSION['posts_per_page'] = 25;
+		$_SESSION['tf_verses_per_page'] = 25;
 		$_SESSION['messages_per_page'] = 25;
 	}
 	else
@@ -72,6 +73,7 @@
 			//$_SESSION['role_id'] = $row['role_id'];
 			//$_SESSION['role'] = $row['name'];
 			$_SESSION['timezone'] = $row['timezone'];
+			$_SESSION['tf_verses_per_page'] = $row['tf_verses_per_page'];
 
 
 			$result_language = mysqli_query($links['sofia']['mysql'],'select code from iso_639_languages where language_name = "' . $row['language'] . '" union select code from iso_639_languages where code = "' . $row['language'] . '"');

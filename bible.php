@@ -135,85 +135,87 @@
 		</div>
 		<?php
 
-			if (stripos($b_code, '_http') === FALSE)
-			{
-				$verse_paragraph_title = $text['click_to_share'];
-				if ($_SESSION['uid'] > -1)
-					$verse_paragraph_title .= $text['add_to_fav_addition'];
-				$verse_paragraph_title .= $text['copy_link_to_verse'] . '.';
-			}
-
 			$statement_verses = $links['sofia']['pdo'] -> prepare (
-						'select verseID, startVerse, verseText from ' . $table_name .
+						'select * from ' . $table_name .
 						' where book = :book and chapter = :chapter'
 				);
 			$result_verses = $statement_verses -> execute(array('book' => $book, 'chapter' => $chapter));
+
+			$verse_paragraph_title = $text['click_to_share'];
+			if ($_SESSION['uid'] > -1)
+				$verse_paragraph_title .= $text['add_to_fav_addition'];
+			$verse_paragraph_title .= $text['copy_link_to_verse'] . '.';		
 
 			if(!$result_verses)
 				log_msg(__FILE__ . ':' . __LINE__ . ' ' . ' PDO verses query exception. Info = {' . json_encode($statement_verses -> errorInfo())  . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}, \$table_name = `' . $table_name . '`.');
 
 			$verses_rows = $statement_verses -> fetchAll();
 			$verses = '';
-			$b_start = '';
-			$b_end = '';
 			foreach ($verses_rows as $verse_row) 
 			{
-				if ($verse_row['startVerse'] == $verse)
+				$verses .= html_verse($verse_row);
+			}
+
+			// set this chapter as read if scheduled
+			if ($_SESSION['uid'] > -1)
+			{
+
+				// Bibles for a year
+				$statement_schedule = $pdo -> prepare('select scheduled, id from bible_for_a_year_schedules bfys 
+														where user_id = :user_id and b_code = :b_code');
+				$result = $statement_schedule -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $b_code]);
+				$message = check_result($result, $statement_schedule, $text['tt_schedules_exception'], 'Schedule selection exception');
+				if (!empty($message))
+					echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+
+				if ($result)
 				{
-					$b_start = '<b>';
-					$b_end = '</b>';
+					$schedule_row = $statement_schedule -> fetch();
+					if (!is_null($schedule_row['scheduled']))
+					{
+						$user_date = new DateTime();
+						$user_date = set_user_timezone($user_date);
+
+						$statement_timetable = $pdo -> prepare('select book, month, day from bible_for_a_year where b_code = :b_code and book = :book and chapter = :chapter and month = :month and day = :day');
+						$result = $statement_timetable -> execute(['b_code' => $b_code, 'book' => $book, 'chapter' => $chapter, 'month' => $user_date -> format('n'), 'day' => $user_date -> format('j')]);
+
+						$message = check_result($result, $statement_timetable, $text['timetable_exception'], ' Timetable `bible_for_a_year` was not opened');
+						if (!empty($message))
+							echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+
+						if ($result and ($statement_timetable -> rowCount() > 0))
+						{
+							$statement_reading = $pdo -> prepare('insert into bible_for_a_year_readings (schedule_id, book, chapter, `read`) values (:schedule_id, :book, :chapter, :date);');
+							$result = $statement_reading -> execute(['schedule_id' => $schedule_row['id'], 'book' => $book, 'chapter' => $chapter, 'date' => $user_date -> format('Y-m-d H:i:s')]);
+							$message = check_result($result, $statement_reading, $text['tt_reading_update_exception'], 'Timetable reading update');
+							if (!empty($message))
+								echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+						}
+					}
 				}
-				else
+
+				// user's timetables
+
+				$timetables_statement = $pdo -> prepare('select id, b_code from timetables where user_id = :user_id and b_code = :b_code');
+				$result = $timetables_statement -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $b_code]);
+				$message = check_result($result, $timetables_statement, $text['tt_schedules_exception'], 'Timetables select PDO query exception.');
+				if (!empty($message))
+					echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+
+				if ($result)
 				{
-					$b_start = '';
-					$b_end = '';
+					$timetables_rows = $timetables_statement -> fetchAll();
+					foreach ($timetables_rows as $timetable_row)
+					{
+						// set book as read 
+						$update_query = 'update schedules set `read` = now() where timetable_id = :timetable_id and book = :book and chapter = :chapter';
+						$update_statement = $pdo -> prepare($update_query);
+						$result = $update_statement -> execute(['timetable_id' => $timetable_row['id'], 'book' => $book, 'chapter' => $chapter]);
+						$message = check_result($result, $update_statement, $text['tt_reading_update'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');
+						if (!empty($message))
+							echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
+					}
 				}
-				if (strpos($verse_row['verseText'], '¶') !== FALSE)
-				{
-					$verses .= '<br />';
-					$verse_row['verseText'] = str_replace('¶', '', $verse_row['verseText']);
-				}
-				// fav = glyphicon glyphicon-heart
-				$first_words = substr($verse_row['verseText'], 0, 90) ;
-				if (strlen($verse_row['verseText']) > 90) $first_words .= '...';
-
-				$verses .= '<div class="dropdown"><p class="dropdown-toggle" title="' . $verse_paragraph_title . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="' . $verse_row['verseID'] . '"><sup>' . $verse_row['startVerse'] . '</sup> ' . $b_start . $verse_row['verseText'] . $b_end . '</p><ul class="dropdown-menu" aria-labelledby="' . $verse_row['verseID'] . '">';
-
-					if ($_SESSION['uid'] > - 1)
-						 $verses .= '<li><a href="./?menu=users_addVerseToFavorites&b_code=' . $b_code . '&id=' . $verse_row['verseID'] . '" target="_blank"><span class="glyphicon glyphicon-heart"></span> Add To Favorites</a></li>';
-
-						$url = $base_url . '?b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verse=' . $verse_row['startVerse'] . '#' . $verse_row['verseID'];
-
-						// Facebook Share
-						$verses .= '<li><div class="fb-share-button" data-href="%SHARE_URL%" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url) . '&src=sdkpreparse">Share</a></div></li>';
-
-						// Facebook Like
-
-						$verses .= '<li><div class="fb-like" data-href="' . $url . '" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div></li>';
-
-						// VK Share Link
-
-						$verses .= '<li><a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank"><span class="glyphicon glyphicon-share"></span> ' . $text['share_in_vk'] . '</a></li>';
-
-						// VK Share https://vk.com/editapp?act=create
-						/*$verses .= '<a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank">Share in VK</a><br />';
-						*/
-						// VK Like https://vk.com/editapp?act=create
-						/*$verses .= '<div id="vk_like_' . $verse_row['verseID'] . '"></div>
-									<script type="text/javascript">
-									VK.init({apiId: 111, onlyWidgets: true});
-									 VK.Widgets.Like(\'vk_like_' . $verse_row['verseID'] . '\', {pageUrl: \'' . $url .'\', pageTitle: \'' . $bible_title . ' ' . $book . ' ' . $chapter . ':' . $verse_row['startVerse'] . '\'}, \'' . $b_code . $verse_row['verseID'] . '\');</script>';
-						*/
-
-						// Twitter 
-						$verses .= '<li><a href="./?menu=tweetVerse&id=' . $verse_row['verseID'] . '&b_code=' . $b_code . '&book=' . $book . '&chapter=' . $chapter . '&verseNumber=' . $verse_row['startVerse'] . '&first_words=' . $first_words . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> ' . $text['text_tweet'] . '</a></li>';
-
-	
-
-						$verses .= '<li><a onclick="clipboard.copy(window.location.origin + window.location.pathname + \'?b_code=' 
-					. $b_code . '&book=' . $book . '&chapter=' . $chapter . 
-					'&verse=' . $verse_row['startVerse'] . '#'. $verse_row['verseID'] . '\')"><span class="glyphicon glyphicon-copy"></span> ' . $text['copy_link_to_the_verse'] . '</a></li>'
-						. '</ul></div>' . PHP_EOL;
 			}
 		?>
 		<div class="panel-body"><?=$verses;?></div>
@@ -243,4 +245,28 @@
 		{	
 			echo '<p style="font-size: 0.75em">' . $verse_paragraph_title . '</p>';
 		}
+
+		$bfy_scheduled = FALSE;
+
+
+		$statement_schedules = $pdo -> prepare('select user_id, b_code, scheduled from bible_for_a_year_schedules where user_id = :user_id and scheduled is not null');
+		$statement_schedules -> execute(['user_id' => $_SESSION['uid']]);
+		$schedules_rows = $statement_schedules -> fetchAll();
+
+		foreach ($schedules_rows as $schedule_row) 
+		{
+			if (strcasecmp($schedule_row['b_code'], $b_code) === 0)
+			{
+				$bfy_scheduled = true;
+				break;
+			}
+		}
+
+		if (!$bfy_scheduled)
+			echo '<form method="post">
+						<input type="hidden" name="menu" value="timetable">
+						<input type="hidden" name="action" value="schedule">
+						<input type="submit" class="btn btn-default form-control" name="submit" value="' . $text['to_schedule'] . '"></form>';
+		else
+			echo '<a href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
 	?>

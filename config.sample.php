@@ -83,4 +83,10 @@
 	$pdo = $links['sofia']['pdo'] = open_connection($db, 'pdo', 'sofia');	
 	$mysql = $links['sofia']['mysql'] = open_connection($db, 'mysql', 'sofia');
 
+	$array = explode('/', $_SERVER['SCRIPT_NAME']);
+	if (count($array) > 1)
+		$addition_url = '/' . $array[0];
+	$base_url = 'http://' . $_SERVER['HTTP_HOST'] . $addition_url . '/';
+
+
 ?>

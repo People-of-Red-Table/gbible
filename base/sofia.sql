@@ -1,17 +1,40 @@
 /*
 
--- VPL tables structure
-create table *_vpl 
-(
-  verseID VARCHAR(16) NOT NULL PRIMARY KEY,
-  canon_order VARCHAR(12) NOT NULL,
-  book VARCHAR(3) NOT NULL,
-  chapter VARCHAR(3) NOT NULL,
-  startVerse VARCHAR(3) NOT NULL,
-  endVerse VARCHAR(3) NOT NULL,
-  verseText TEXT CHARACTER SET UTF8 NOT NULL) 
-  ENGINE=MyISAM;
+  -- VPL tables structure
+  create table *_vpl (
+    verseID VARCHAR(16) NOT NULL PRIMARY KEY,
+    canon_order VARCHAR(12) NOT NULL,
+    book VARCHAR(3) NOT NULL,
+    chapter VARCHAR(3) NOT NULL,
+    startVerse VARCHAR(3) NOT NULL,
+    endVerse VARCHAR(3) NOT NULL,
+    verseText TEXT CHARACTER SET UTF8 NOT NULL) 
+    ENGINE=MyISAM;
+  
+  -- book shelf structure
+  create table b_shelf (
+    id int primary key auto_increment,
+    country varchar(100),
+    language varchar(200),
+    dialect varchar(200),
+    b_code varchar(20),
+    table_name varchar(20),
+    title varchar(500),
+    description varchar(1000),
+    translated_by varchar(200),
+    copyright varchar(1000),
+    license varchar(50)
+    );
 */
+
+create table book_titles
+(
+  id int auto_increment primary key,
+  language_code varchar(10),
+  book varchar(3),
+  title varchar(20),
+  shorttitle varchar(20)
+);
 
 create table users
 (
@@ -24,7 +47,7 @@ create table users
 	secret_answer varchar(50),
 	last_hit datetime,
 	timezone varchar(50),
-	inserted datetime,
+	inserted datetime DEFAULT CURRENT_TIMESTAMP,
 	updated datetime,
 	updated_by int,
 	deleted datetime,
@@ -34,6 +57,7 @@ create table users
 	remote_addr varchar(50),
 	topics_per_page int,
 	posts_per_page int,
+  tf_verses_per_page int DEFAULT 25,
 	messages_per_page int,
 
 	-- may be someday they will become normal =]
@@ -107,7 +131,10 @@ create table timetables
 (
     id int primary key auto_increment,
     user_id int,
-    title varchar(100)
+    title varchar(100),
+    b_code varchar(20),
+    b_code2 varchar(20),
+    scheduled date
 );
 
 create table schedules
@@ -115,8 +142,36 @@ create table schedules
     id int primary key auto_increment,
     timetable_id int,
     `when` date,
+    `read` date,
     book varchar(3),
     chapter int
+);
+
+create table bible_for_a_year
+(
+    id int primary key auto_increment,
+    b_code varchar(20),
+    month int,
+    day int,
+    book varchar(3),
+    chapter int
+);
+
+create table bible_for_a_year_schedules
+(
+    id int primary key auto_increment,
+    user_id int,
+    b_code varchar(20),
+    scheduled datetime
+);
+
+create table bible_for_a_year_readings
+(
+    id int primary key auto_increment,
+    schedule_id int,
+    book varchar(3),
+    chapter int,
+    read datetime
 );
 
 DROP TABLE IF EXISTS `continents`;
