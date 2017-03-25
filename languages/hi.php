@@ -33,7 +33,7 @@
 	. 'यदि आप अपना पासवर्ड रीसेट करना चाहते हैं, तो कृपया, इस लिंक पर क्लिक करें:'. PHP_EOL
 	. 'http://%http_host%/?menu=users_resetPasswordByEmail'
 	. '&verification_code=%verification_code%'
-	. '&reset_email=%user_email%' . PHP_EOL . PHP_EOL . PHP_EOL
+	. '&email=%user_email%' . PHP_EOL . PHP_EOL . PHP_EOL
 	. 'अगर आपने इस ऑपरेशन का अनुरोध नहीं किया है, तो इस पत्र को अनदेखा करें.'
 	. 'धन्यवाद.';
 	$text['reset_mail_sent'] = 'आपके ईमेल का पत्र `%user_email%` भेजा गया था कृपया, अपने इनबॉक्स की जांच करें यदि आपको यह नहीं मिला, तो अपना "स्पैम" फ़ोल्डर देखें';

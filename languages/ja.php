@@ -33,7 +33,7 @@ $text['reset_password_mail'] = 'ご挨拶、%user_name%. '. PHP_EOL
 . 'パスワードをリセットしたい場合は、このリンクをクリックしてください.' . PHP_EOL
 . 'http：//%http_host%/?menu=users_resetPasswordByEMail'
 . '&verification_code=%verification_code%'
-. '&reset_email=%user_email%' .PHP_EOL. PHP_EOL. PHP_EOL
+. '&email=%user_email%' .PHP_EOL. PHP_EOL. PHP_EOL
 . 'この操作を要求しなかった場合は、この文字を無視してください.'
 . 'ありがとうございました.';
 $text['reset_mail_sent'] = 'あなたのメールへの手紙 `%user_email%` が送られました.あなたの受信箱をチェックしてください.あなたがそれを見つけられなかったなら、あなたの "迷惑メール"フォルダをチェックしてください.';

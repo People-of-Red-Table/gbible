@@ -33,7 +33,7 @@
 	. 'Jika Anda ingin mereset password Anda, silahkan, klik link ini:'. PHP_EOL
 	. 'http://%http_host%/?menu=users_resetPasswordByEMail'
 	. '&verification_code=%verification_code%'
-	. '&reset_email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
+	. '&email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
 	. "Jika Anda tidak meminta operasi ini, abaikan saja surat ini."
 	. 'Terima kasih.';
 	$text['reset_mail_sent'] = 'Surat untuk email Anda `%user_email%` dikirim. Silakan, periksa kotak masuk Anda. Jika Anda tidak menemukan itu, periksa "Spam" folder ';

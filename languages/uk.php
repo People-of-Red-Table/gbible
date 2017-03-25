@@ -33,7 +33,7 @@
 	. 'Якщо ви хочете скинути свій пароль, будь ласка, натисніть на це посилання: '. PHP_EOL
 	. 'http://%http_host%/?menu=users_resetPasswordByEMail'
 	. '&verification_code=%verification_code%'
-	. '&reset_email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
+	. '&email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
 	. 'Якщо ви не замовляли цю операцію, просто проігнорувати цей лист.'
 	. 'Дякую.';
 	$text['reset_mail_sent'] = 'Лист до вашої електронної пошти `%user_email%` був відправлений. Будь ласка, перевірте свою поштову скриньку. Якщо ви не знайшли його, перевірте "спам" папку ';

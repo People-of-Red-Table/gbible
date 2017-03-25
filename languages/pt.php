@@ -32,7 +32,7 @@
 	. 'Se você quiser redefinir sua senha, por favor, clique neste link:'. PHP_EOL
 	. 'http://%http_host%/?menu=users_resetPasswordByEMail'
 	. '&verification_code=%verification_code%'
-	. '&reset_email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
+	. '&email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
 	. 'Se você não pediu esta operação, apenas ignore esta letra.'
 	. 'Obrigado.';
 	$text['reset_mail_sent'] = 'Foi enviada uma carta para o seu e-mail `%user_email%`. Por favor, verifique sua caixa de entrada. Se você não encontrou, verifique sua pasta "Spam"';

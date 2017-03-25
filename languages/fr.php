@@ -5,12 +5,12 @@
 	$text['please_contact_support'] = 'Veuillez contacter le support.';
 	$text['favorite_verses_exception'] = 'Nous avons eu problème avec les versets préférés.';
 	$text['verse_already_in_fav'] = 'Le verset est déjà dans les favoris.';
-	$text['sign_in_exception'] = 'Nous avons eu un problème avec \ "Se connecter \".';
+	$text['sign_in_exception'] = 'Nous avons eu un problème avec \ "Se connecter\".';
 	$text['incorrect_auth_info'] = 'Les informations d\'authentification sont incorrectes.';
 	$text['text_country'] = 'Pays';
 	$text['text_language'] = 'Langue';
 	$text['my_favorite_verses'] = 'Mes Versets Favoris';
-	$text['my_favorite_verses_exception'] = 'Nous avons des problèmes avec \ "My Favorite Verses \".';
+	$text['my_favorite_verses_exception'] = 'Nous avons des problèmes avec \"Mes Versets Favoris\".';
 	$text['mfv_bible_exception'] = 'Nous avons un problème avec les versets préférés [choisir une Bible].';
 	$text['password_reset_exception'] = 'Nous avons eu un problème avec la réinitialisation du mot de passe.';
 	$text['password_changed'] = 'Mot de passe changé.';
@@ -33,7 +33,7 @@
 	. 'Si vous souhaitez réinitialiser votre mot de passe, cliquez sur ce lien:'. PHP_EOL
 	. 'http://%http_host%/?menu=users_resetPasswordByEMail'
 	. '&verification_code=%verification_code%'
-	. '&reset_email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
+	. '&email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
 	. 'Si vous n\'avez pas demandé cette opération, ignorez cette lettre.'
 	. 'Je vous remercie.';
 	$text['reset_mail_sent'] = 'Une lettre destinée à votre courrier électronique `%user_email%` a été envoyée. Veuillez vérifier votre boîte de réception. Si vous ne l\'avez pas trouvé, vérifiez votre dossier "Spam"';
@@ -139,10 +139,11 @@
 
 	$text['thank_you_notes'] = 'Notes de remerciement';
 	$text['thank_you_note_01'] = 'Merci %bibledotcom% pour vos bonnes bibles sur votre site.';
-	$text['thank_you_note_02'] = 'Merci Victor Guryev que vous avez payé pour la première année de %golddashbibledotcom%.';
-	$text['thank_you_note_03'] = 'Merci %blizzarddotcom% pour le support d\'idées Croix-Rouge et organismes de bienfaisance.';
-	$text['thank_you_note_04'] = 'Merci, %JimmyFallonShow% pour "Thank You Notes".';
-	$text['thank_you_note_05'] = 'Merci, pour internet gratuit agence de voyage "PAULLY", agence de bus ASATUR et famille "Benevides", famille de Jaime et Celestia [avec sa grand-mère María José Gomes] de Boa Vista de Brésil, qui poliment m\'a donné de travailler sur le site de la Bible. ';
+	$text['thank_you_note_02'] = 'Merci Victor Guryev de <a href="./?menu=charityOrganizationsOf&charity_country=nl" target="_blank"> Pays-Bas </a> que vous avez payé pour la première année de %golddashbibledotcom% . ';
+	$text['thank_you_note_03'] = 'Merci %blizzarddotcom% pour le support d\'idées <a href="redcross.org" target="_blank"> Croix-Rouge américaine </a> et les organisations caritatives.';
+	$text['thank_you_note_04'] = 'Merci, %JimmyFallonShow% pour les "Notes de remerciement".';
+	$text['thank_you_note_05'] = 'Merci, pour internet gratuit agence de voyage "PAULLY", agence de bus ASATUR et famille "Benevides", famille de Jaime et Celestia [avec sa grand-mère María José Gomes] de Boa Vista de <a href="./?menu=charityOrganizationsOf&charity_country=br" target="_blank"> Brésil </a>, qui poliment m\'a donné de travailler sur le site de la Bible. ';
+	$text['thank_you_note_05dot1'] = 'Merci, Angy et Lin de <a href="./?menu=charityOrganizationsOf&charity_country=gy" target="_blank"> Guyana </a> que tu me laisses vivre en maison avec toi À Boa Vista. ';
 
 	$text['thank_you_note_06'] = 'Merci, %hostingercouk% pour l\'hébergement gratuit où est maintenant le Site de la Bible. ';
 
@@ -166,5 +167,56 @@
 	$text['reset_by_email_warning'] = 'Vous ne pouvez pas réinitialiser le mot de passe par email maintenant. Assurez-vous d\'avoir rempli et gardé les champs «Question secrète» et «Réponse secrète». ';
 
 	$text['reset_password_email_vf_exception'] = 'Votre e-mail n\'a pas été trouvé ou est incorrect.';
+
+	$text['text_date'] = 'Date';
+	$text['text_timetable'] = 'Calendrier';
+	$text['timetable_exception'] = $text['text_sorry']. 'Le calendrier n\'est pas ouvert. '. $text['please_contact_support'];
+
+	$text['timetable_229'] = 'Aujourd\'hui, 29 février, l\'horaire par défaut n\'a pas de lectures pour aujourd\'hui. ';
+	$text['schedule_have_no_reading_today'] = 'Le calendrier n\'a pas de lectures pour aujourd\'hui.';
+	$text['timetable_create_def_tt_exception'] = 'Le calendrier de cette Bible n\'a pas été créé. '. $text['please_contact_support'];
+
+	$text['choose_not_h_bibles'] = 'Pas toutes les bibles sont disponibles pour le calendrier. Vous devez choisir des Bibles sans \'[H]\' dans son titre. ';
+	$text['bible_for_a_year'] = 'Bible pour une année';
+
+	$text['to_schedule'] = 'Planifier cette lecture';
+	$text['to_unschedule'] = 'Unschedule Cette Lecture';
+
+	$text['schedules_selection_exception'] = 'Le système n\'a pas pu sélectionner les horaires pour votre horaire. '. $text['please_contact_support'];
+
+	$text['scheduling_exception'] = 'Le système n\'a pas pu programmer la lecture. '. $text['please_contact_support'];
+	$text['unscheduling_exception'] = 'Le système n\'a pas pu désélectionner la lecture. '. $text['please_contact_support'];
+	$text['tt_readings_exception'] = 'Le système n\'a pas pu sélectionner vos lectures. '. $text['please_contact_support'];
+	$text['tt_schedules_exception'] = 'Le système n\'a pas pu sélectionner vos horaires. '. $text['please_contact_support'];
+	$text['tt_reading_update_exception'] = 'Le système n\'a pas pu mettre à jour votre lecture pour le calendrier. '. $text['please_contact_support'];
+
+	$text['create_own_timetable'] = 'Créer mon propre horaire';
+	$text['chapters_in'] = 'Chapitres dans';
+	$text['text_monday'] = 'Lundi';
+	$text['text_tuesday'] = 'Mardi';
+	$text['text_wednesday'] = 'Mercredi';
+	$text['text_thursday'] = 'Jeudi';
+	$text['text_friday'] = 'Vendredi';
+	$text['text_saturday'] = 'Samedi';
+	$text['text_sunday'] = 'Sunday';
+	$text['text_submit'] = 'Soumettre';
+	$text['choose_bible'] = 'Choisir la Bible';
+	$text['from_date'] = 'À partir de la date';
+	$text['text_title'] = 'Titre';
+
+	$text['parallel_bibles_scheduled'] = 'Les Bibles parallèles étaient prévues.';
+	$text['text_and'] = 'et';
+
+	$text['first_page'] = 'Première page';
+	$text['last_page'] = 'Dernière page';
+
+	$text['title_refresh'] = 'Rafraîchir';
+
+	$text['create_timetable_note'] = 'Avez-vous des jours de semaine trop occupés? Créez votre propre horaire pour la lecture de la Bible! ';
+	$text['text_delete'] = 'Supprimer';
+	$text['fv_deleting_exception'] = 'Le système n\'a pas pu supprimer le verset des favoris. '. $text['please_contact_support'];
+	$text['fv_deleted'] = 'Le verset a été supprimé des favoris.';
+
+	$text['schedule_ok'] = 'La lecture de la Bible a été programmée.';
 
 ?>

@@ -150,6 +150,7 @@
 	$text['thank_you_note_04'] = 'Thank you, %JimmyFallonShow% for "Thank You Notes".';
 	$text['thank_you_note_05'] = 'Thank you, for free internet to travel agency "PAULLY", bus agency "ASATUR" and family "Benevides", family of Jaime and Celestia [with her grandmother Maria Jose Gomes] from Boa Vista of <a href="./?menu=charityOrganizationsOf&charity_country=br" target="_blank">Brazil</a>, who politely gave me to work on Bible Site. ';
 	$text['thank_you_note_05dot1'] = 'Thank You, Angy and Lin from <a href="./?menu=charityOrganizationsOf&charity_country=gy" target="_blank">Guyana</a> that you let me live in house with you in Boa Vista.';
+	
 	$text['thank_you_note_06'] = 'Thank you, %hostingercouk% for free hosting where is now Bible Site. ';
 
 	$text['text_search'] = 'Search';
@@ -172,6 +173,7 @@
 	$text['reset_by_email_warning'] = 'You are not able to reset password by email now. Be sure that you filled and remembered "Secret Question" and "Secret Answer" fields.';
 
 	$text['reset_password_email_vf_exception'] = 'Your email not found or incorrect verification code.';
+	
 	$text['text_date'] = 'Date';
 	$text['text_timetable'] = 'Timetable';
 	$text['timetable_exception'] = $text['text_sorry'] . ' Timetable is not opened. ' . $text['please_contact_support'];

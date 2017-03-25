@@ -33,7 +33,7 @@ $text['reset_password_mail'] = 'Beannachtaí, %user_name%. '. PHP_EOL
 . 'Más mian leat a athshocrú do phasfhocal, le do thoil, cliceáil ar an nasc:'. PHP_EOL
 . 'http://%http_host%/?menu=users_resetPasswordByEMail'
 . '&verification_code=%verification_code%'
-. '&reset_email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
+. '&email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
 . 'Mura ndearna tú iarratas ar an oibríocht, ach ná bac leis an litir.'
 . 'Go raibh maith agat.';
 $text['reset_mail_sent'] = 'Litir chuig do r-phost `%user_email%` Cuireadh. Le do thoil, seiceáil do bhosca. Mura ndearna tú é, seiceáil do "Spam" fillteán ';

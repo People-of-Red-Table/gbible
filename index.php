@@ -7,7 +7,7 @@
 	require 'language.php';
 	require './users/init.php';
 	$file = @fopen('./logs/visits.txt', 'a');
-	@fwrite($file, $country.';'.$language.';'. (new DateTime()) -> format("Y-m-d H:i:s"));
+	@fwrite($file, $country.';'.$language.';'. (new DateTime()) -> format("Y-m-d H:i:s") . ';' . $_SERVER['REMOTE_ADDR'] . ';' . $_SERVER['QUERY_STRING'] . PHP_EOL);
 	@fclose($file);
 	require 'charity.php';
 	require 'header.php';

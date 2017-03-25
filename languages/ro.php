@@ -33,7 +33,7 @@
 	. 'Dacă doriți să resetați parola, vă rugăm, faceți clic pe acest link: '. PHP_EOL
 	. 'http://%http_host%/?menu=users_resetPasswordByEMail'
 	. '&verification_code=%verification_code%'
-	. '&reset_email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
+	. '&email=%user_email%'. PHP_EOL. PHP_EOL. PHP_EOL
 	. 'Dacă nu ați solicitat această operație, trebuie doar să ignorați această scrisoare.'
 	. 'Mulțumesc.';
 	$text['reset_mail_sent'] = 'Scrisoare către un e-mail `%user_email%` a fost trimis. Vă rugăm să verificați inbox-ul. Dacă nu l-au găsit, verificați dosarul "Spam" ';

@@ -33,7 +33,7 @@
 	. 'Si desea restablecer su contraseña, haga clic en este enlace:'. PHP_EOL
 	. 'http://%http_host%/?menu =users_resetPasswordByEMail'
 	. '&verification_code=%verification_code%'
-	. '&reset_email=%user_email%'. PHP_EOL . PHP_EOL . PHP_EOL
+	. '&email=%user_email%'. PHP_EOL . PHP_EOL . PHP_EOL
 	. 'Si no pidió esta operación, simplemente ignore esta carta'
 	. 'Gracias.';
 	$text['reset_mail_sent'] = 'Se envió una carta a su correo electrónico `%user_email%`. Por favor, compruebe su bandeja de entrada. Si no lo encontraste, comprueba tu carpeta "Spam"';
