@@ -122,11 +122,6 @@
 			$message = $text['different_passwords'];
 		}
 	}
-	else
-	{
-		$msg_type = 'danger';
-		$message =  $text['please_contact_support'];
-	}
 	
 	if (isset($message) and isset($msg_type))
 	{

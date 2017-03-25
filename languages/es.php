@@ -5,12 +5,12 @@
 	$text['please_contact_support'] = 'Póngase en contacto con el servicio de asistencia.';
 	$text['favorite_verses_exception'] = 'Tenemos problemas con los versos favoritos';
 	$text['verse_already_in_fav'] = 'El verso ya está en favoritos.';
-	$text['sign_in_exception'] = 'Vaya, tenemos problemas con \ "Iniciar sesión \".';
+	$text['sign_in_exception'] = 'Vaya, tenemos problemas con \"Iniciar sesión\".';
 	$text['incorrect_auth_info'] = 'La información de autenticación es incorrecta.';
 	$text['text_country'] = 'País';
 	$text['text_language'] = 'Idioma';
 	$text['my_favorite_verses'] = 'Mis Versículos Favoritos';
-	$text['my_favorite_verses_exception'] = 'Tenemos problemas con \ "Mis versos favoritos \".';
+	$text['my_favorite_verses_exception'] = 'Tenemos problemas con \"Mis versos favoritos\".';
 	$text['mfv_bible_exception'] = 'Tenemos problemas con versículos favoritos [elegir una Biblia]';
 	$text['password_reset_exception'] = 'Tenemos problemas con restablecer la contraseña.';
 	$text['password_changed'] = 'Contraseña cambiada.';
@@ -143,10 +143,11 @@
 
 	$text['thank_you_notes'] = 'Gracias Notas';
 	$text['thank_you_note_01'] = 'Gracias %bibledotcom% por sus buenas Biblias en su sitio.';
-	$text['thank_you_note_02'] = 'Gracias Victor Guryev que pagaste por el primer año de %golddashbibledotcom%.';
-	$text['thank_you_note_03'] = 'Gracias %blizzarddotcom% por el apoyo a la idea de la Cruz Roja y las organizaciones de caridad.';
-	$text['thank_you_note_04'] = 'Gracias, %JimmyFallonShow% por "Thak You Notes".';
-	$text['thank_you_note_05'] = 'Gracias, por Internet gratis a la agencia de viajes "PAULLY", la agencia de autobuses "ASATUR" y la familia "Benevides" de Boa Vista de Brasil, que me dio educadamente para trabajar en Bible Site. ';
+	$text['thank_you_note_02'] = 'Gracias Victor Guryev de <a href="./?menu=charityOrganizationsOf&charity_country=nl" target="_blank"> Holanda </a> que pagaste por el primer año de %golddashbibledotcom% . ';
+	$text['thank_you_note_03'] = 'Gracias %blizzarddotcom% por el apoyo a las ideas <a href="redcross.org" target="_blank"> Cruz Roja Americana </a> y organizaciones benéficas.';
+	$text['thank_you_note_04'] = 'Gracias, %JimmyFallonShow% por "Gracias Notas".';
+	$text['thank_you_note_05'] = 'Gracias, por internet gratis a agencia de viajes "PAULLY", agencia de autobuses "ASATUR" y familia "Benevides", familia de Jaime y Celestia de Boa Vista de <a href="./?menu=charityOrganizationsOf&charity_country=br"> Brasil </a>, que educadamente me dio a trabajar en el sitio de la Biblia. ';
+	$text['thank_you_note_05dot1'] = 'Gracias, Angy y Lin de <a href="./?menu=charityOrganizationsOf&charity_country=gy" target="_blank"> Guyana </a> que me dejas vivir en casa contigo En Boa Vista. ';
 
 	$text['thank_you_note_06'] = 'Gracias, %hostingercouk% por alojamiento gratuito donde está ahora Sitio de la Biblia. ';
 
@@ -172,4 +173,54 @@
 
 	$text['reset_password_email_vf_exception'] = 'Tu correo electrónico no encontrado o código de verificación incorrecto.';
 
+	$text['text_date'] = 'Fecha';
+	$text['text_timetable'] = 'Calendario';
+	$text['timetable_exception'] = $text['text_sorry']. 'El horario no se abre. '. $text['please_contact_support'];
+
+	$text['timetable_229'] = 'Hoy es 29 de febrero, el calendario predeterminado no tiene lecturas de hoy. ';
+	$text['schedule_have_no_reading_today'] = 'El horario no tiene lecturas de hoy.';
+	$text['timetable_create_def_tt_exception'] = 'El horario de esta Biblia no fue creado. '. $text['please_contact_support'];
+
+	$text['choose_not_h_bibles'] = 'No todas las Biblias están disponibles para el horario. Tienes que elegir Biblias sin \'[H]\' en su título. ';
+	$text['bible_for_a_year'] = 'Biblia por un año';
+
+	$text['to_schedule'] = 'Programar esta lectura';
+	$text['to_unschedule'] = 'Desembolsar esta lectura';
+
+	$text['schedules_selection_exception'] = 'El sistema no pudo seleccionar horarios para su horario. '. $text['please_contact_support'];
+
+	$text['scheduling_exception'] = 'El sistema no pudo programar la lectura. '. $text['please_contact_support'];
+	$text['unscheduling_exception'] = 'El sistema no ha podido programar la lectura. '. $text['please_contact_support'];
+	$text['tt_readings_exception'] = 'El sistema no pudo seleccionar sus lecturas. '. $text['please_contact_support'];
+	$text['tt_schedules_exception'] = 'El sistema no pudo seleccionar sus horarios. '. $text['please_contact_support'];
+	$text['tt_reading_update_exception'] = 'El sistema no pudo actualizar su lectura para el horario. '. $text['please_contact_support'];
+
+	$text['create_own_timetable'] = 'Crear mi propio horario';
+	$text['chapters_in'] = 'Capítulos en';
+	$text['text_monday'] = 'Lunes';
+	$text['text_tuesday'] = 'Martes';
+	$text['text_wednesday'] = 'Miércoles';
+	$text['text_thursday'] = 'Jueves';
+	$text['text_friday'] = 'Viernes';
+	$text['text_saturday'] = 'Sábado';
+	$text['text_sunday'] = 'Domingo';
+	$text['text_submit'] = 'Enviar';
+	$text['choose_bible'] = 'Elige la Biblia';
+	$text['from_date'] = 'Desde fecha';
+	$text['text_title'] = 'Título';
+
+	$text['parallel_bibles_scheduled'] = 'Las Biblias Paralelas estaban programadas.';
+	$text['text_and'] = 'y';
+
+	$text['first_page'] = 'Primera página';
+	$text['last_page'] = 'Última página';
+
+	$text['title_refresh'] = 'Actualizar';
+
+	$text['create_timetable_note'] = '¿Tienes días de semana demasiado ocupados? ¡Crea tu propio calendario para la lectura de la Biblia! ';
+	$text['text_delete'] = 'Eliminar';
+	$text['fv_deleting_exception'] = 'El sistema no pudo eliminar el verso de los favoritos. '. $text['please_contact_support'];
+	$text['fv_deleted'] = 'El verso fue borrado de favoritos.';
+
+	$text['schedule_ok'] = 'La lectura de la Biblia fue programada.';	
 ?>

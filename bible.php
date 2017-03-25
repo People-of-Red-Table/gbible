@@ -211,7 +211,7 @@
 						$update_query = 'update schedules set `read` = now() where timetable_id = :timetable_id and book = :book and chapter = :chapter';
 						$update_statement = $pdo -> prepare($update_query);
 						$result = $update_statement -> execute(['timetable_id' => $timetable_row['id'], 'book' => $book, 'chapter' => $chapter]);
-						$message = check_result($result, $update_statement, $text['tt_reading_update'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');
+						$message = check_result($result, $update_statement, $text['tt_reading_update_exception'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');
 						if (!empty($message))
 							echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';
 					}
@@ -246,27 +246,30 @@
 			echo '<p style="font-size: 0.75em">' . $verse_paragraph_title . '</p>';
 		}
 
-		$bfy_scheduled = FALSE;
-
-
-		$statement_schedules = $pdo -> prepare('select user_id, b_code, scheduled from bible_for_a_year_schedules where user_id = :user_id and scheduled is not null');
-		$statement_schedules -> execute(['user_id' => $_SESSION['uid']]);
-		$schedules_rows = $statement_schedules -> fetchAll();
-
-		foreach ($schedules_rows as $schedule_row) 
+		if ($_SESSION['uid'] > -1)
 		{
-			if (strcasecmp($schedule_row['b_code'], $b_code) === 0)
-			{
-				$bfy_scheduled = true;
-				break;
-			}
-		}
+			$bfy_scheduled = FALSE;
 
-		if (!$bfy_scheduled)
-			echo '<form method="post">
-						<input type="hidden" name="menu" value="timetable">
-						<input type="hidden" name="action" value="schedule">
-						<input type="submit" class="btn btn-default form-control" name="submit" value="' . $text['to_schedule'] . '"></form>';
-		else
-			echo '<a href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
+
+			$statement_schedules = $pdo -> prepare('select user_id, b_code, scheduled from bible_for_a_year_schedules where user_id = :user_id and scheduled is not null');
+			$statement_schedules -> execute(['user_id' => $_SESSION['uid']]);
+			$schedules_rows = $statement_schedules -> fetchAll();
+
+			foreach ($schedules_rows as $schedule_row) 
+			{
+				if (strcasecmp($schedule_row['b_code'], $b_code) === 0)
+				{
+					$bfy_scheduled = true;
+					break;
+				}
+			}
+
+			if (!$bfy_scheduled)
+				echo '<form method="post">
+							<input type="hidden" name="menu" value="timetable">
+							<input type="hidden" name="action" value="schedule">
+							<input type="submit" class="btn btn-default form-control" name="submit" value="' . $text['to_schedule'] . '"></form>';
+			else
+				echo '<a href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
+		}
 	?>

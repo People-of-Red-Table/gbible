@@ -6,6 +6,9 @@
 	require './obj/objects.php';
 	require 'language.php';
 	require './users/init.php';
+	$file = @fopen('./logs/visits.txt', 'a');
+	@fwrite($file, $country.';'.$language.';'. (new DateTime()) -> format("Y-m-d H:i:s"));
+	@fclose($file);
 	require 'charity.php';
 	require 'header.php';
 	require 'content.php';

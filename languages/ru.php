@@ -139,10 +139,11 @@
 
 	$text['thank_you_notes'] = 'Благодарственные письма';
 	$text['thank_you_note_01'] = 'Спасибо %bibledotcom% за ваши хорошие Библии на вашем сайте.';
-	$text['thank_you_note_02'] = 'Спасибо, Виктор Гурьев, что вы заплатили за первый год %golddashbibledotcom%.';
-	$text['thank_you_note_03'] = 'Спасибо, %blizzarddotcom% за идею поддержки Красного Креста и благотворительных организаций.';
-	$text['thank_you_note_04'] = 'Спасибо, %JimmyFallonShow% для "Thak You Notes".';
-	$text['thank_you_note_05'] = 'Спасибо, за бесплатный интернет туристическое агентство «PAULLY», автобусное агентство «ASATUR» и семью «Benevides» из Боа Виста Бразилии, который вежливо дал мне работу на Библейском сайте. ';
+	$text['thank_you_note_02'] = 'Спасибо, Виктор Гурьев из <a href="./?menu=charityOrganizationsOf&charity_country=nl" target="_blank"> Нидерландов </a>, что вы заплатили за первый год %golddashbibledotcom% . ';
+	$text['thank_you_note_03'] = 'Спасибо %blizzarddotcom% за поддержку идеи <a href="redcross.org" target="_blank"> Американский Красный Крест </a> и благотворительные организации.';
+	$text['thank_you_note_04'] = 'Спасибо, %JimmyFallonShow% за «Спасибо, что вы записали».';
+	$text['thank_you_note_05'] = 'Спасибо, за бесплатный интернет туристическое агентство «PAULLY», автобусное агентство «ASATUR» и семью «Benevides», семью Хайме и Селестии [с бабушкой Марией Хосе Гомеш] из Боа Виста <a href="./?menu=charityOrganizationsOf&charity_country=br"> Бразилия </a>, который вежливо дал мне работу на сайте Библии. ';
+	$text['thank_you_note_05dot1'] = 'Спасибо, Энги и Лин из <a href="./?menu=charityOrganizationsOf&charity_country=gy" target="_blank"> Гайаны </a>, что вы позволили мне жить в доме с вами В Боа-Виста. ';
 
 	$text['thank_you_note_06'] = 'Спасибо, %hostingercouk% за бесплатный хостинг, где сейчас находится сайт Библии. ';
 
@@ -167,5 +168,57 @@
 	$text['reset_by_email_warning'] = 'Вы не можете восстановить пароль по электронной почте сейчас. Убедитесь, что вы заполнили и запомнили поля «Секретный вопрос» и «Секретный ответ». ';
 
 	$text['reset_password_email_vf_exception'] = 'Ваш адрес электронной почты не найден или неверный проверочный код.';
+
+
+	$text['text_date'] = 'Дата';
+$text['text_timetable'] = 'Расписание';
+$text['timetable_exception'] = 'Расписание не открыто. '. $text['please_contact_support'];
+
+$text['timetable_229'] = 'Сегодня 29 февраля, расписание по умолчанию не имеет показаний на сегодня. ';
+$text['schedule_have_no_reading_today'] = 'Расписание не имеет показаний на сегодня.';
+$text['timetable_create_def_tt_exception'] = 'Расписание для этой Библии не было создано. '. $text['please_contact_support'];
+
+$text['choose_not_h_bibles'] = 'Не каждая Библия доступна для расписания. Вы должны выбрать Библию без \'[H]\' в своем названии. ';
+$text['bible_for_a_year'] = 'Библия за год';
+
+$text['to_schedule'] = 'Расписание этого чтения';
+$text['to_unschedule'] = 'Unschedule This Reading';
+
+$text['schedules_selection_exception'] = 'Система не может выбирать расписания для вашего расписания. '. $text['please_contact_support'];
+
+$text['scheduling_exception'] = 'Системе не удалось запланировать чтение. '. $text['please_contact_support'];
+$text['unscheduling_exception'] = 'Система не могла не запланировать чтение. '. $text['please_contact_support'];
+$text['tt_readings_exception'] = 'Система не может выбрать ваши показания. '. $text['please_contact_support'];
+$text['tt_schedules_exception'] = 'Система не может выбирать ваши расписания. '. $text['please_contact_support'];
+$text['tt_reading_update_exception'] = 'Системе не удалось обновить ваше расписание для расписания. '. $text['please_contact_support'];
+
+$text['create_own_timetable'] = 'Создать собственное расписание';
+$text['chapters_in'] = 'Главы в';
+$text['text_monday'] = 'Понедельник';
+$text['text_tuesday'] = 'вторник';
+$text['text_wednesday'] = 'среда';
+$text['text_thursday'] = 'четверг';
+$text['text_friday'] = 'Пятница';
+$text['text_saturday'] = 'суббота';
+$text['text_sunday'] = 'Воскресенье';
+$text['text_submit'] = 'Отправить';
+$text['choose_bible'] = 'Выберите Библию';
+$text['from_date'] = 'From Date';
+$text['text_title'] = 'Название';
+
+$text['parallel_bibles_scheduled'] = 'Запланированы параллельные Библии.';
+$text['text_and'] = 'и';
+
+$text['first_page'] = 'Первая страница';
+$text['last_page'] = 'Последняя страница';
+
+$text['title_refresh'] = 'Обновить';
+
+$text['create_timetable_note'] = 'У вас слишком занятые дни недели? Создайте свое собственное расписание для чтения Библии! ';
+$text['text_delete'] = 'Удалить';
+$text['fv_deleting_exception'] = 'Системе не удалось удалить стих из избранного. '. $text['please_contact_support'];
+$text['fv_deleted'] = 'Стих был удален из избранного.';
+
+$text['schedule_ok'] = 'Было запланировано чтение Библии.';
 
 ?>

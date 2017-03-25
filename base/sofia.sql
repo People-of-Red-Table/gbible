@@ -171,7 +171,7 @@ create table bible_for_a_year_readings
     schedule_id int,
     book varchar(3),
     chapter int,
-    read datetime
+    `read` datetime
 );
 
 DROP TABLE IF EXISTS `continents`;

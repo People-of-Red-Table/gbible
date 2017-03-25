@@ -33,7 +33,7 @@
 	else
 		require './timetables/show.php';
 
-	if (stripos($action, 'unschedule') !== FALSE) 
+	if (stripos($action, 'schedule') !== FALSE) 
 		require './timetables/show.php';
 
 ?>

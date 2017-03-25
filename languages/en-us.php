@@ -33,7 +33,7 @@
 					. ' If you want to reset your password, please, click this link: ' . PHP_EOL
 					. 'http://%http_host%/?menu=users_resetPasswordByEMail' 
 					. '&verification_code=%verification_code%'
-					. '&reset_email=%user_email% ' . PHP_EOL . PHP_EOL . PHP_EOL
+					. '&email=%user_email% ' . PHP_EOL . PHP_EOL . PHP_EOL
 					. 'If you didn\'t request this operation, just ignore this letter.'
 					. 'Thank you.';
 	$text['reset_mail_sent'] = 'Letter to your email `%user_email%` was sent. Please, check your inbox. If you didn\'t find it, check your "Spam" folder';

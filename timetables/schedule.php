@@ -22,4 +22,5 @@
 		$messages[] = ['type' => 'danger', 'message' => $text['scheduling_exception']];
 		log_msg(__FILE__ . ':' . __LINE__ . ' Schedule selection exception. Info = ' . json_encode($statement_schedule -> errorInfo()) . ', $_REQUEST = ' . json_encode($_REQUEST));
 	}
+	else echo '<p class="alert alert-success">' . $text['schedule_ok'] . '</p>';
 ?>
