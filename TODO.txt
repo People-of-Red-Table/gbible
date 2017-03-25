@@ -1,4 +1,6 @@
 
+Preparing to Weekend's Deploy.
+
 update for internet version:
 tables: 
 book_titles, timetables, schedules, bible_for_a_year, bible_for_a_year_schedules, bible_for_a_year_readings
@@ -9,35 +11,40 @@ Bible Reading Timetable
 
 timetable: 
 
-timetable has got bug with timezones.
++ schedule reading on the page of Bibles.
 
-For "Bible for a Year" timetable.
++ Bible has around 1189 chapters, which is three and quarter chapters per a day.
 
-Site's timetables "Bible for a Year".
 
-Timetable has got issue with timezones.
++ For "Bible for a Year" timetable.
++ User timetables like: one chapter per a day, or one[few] chapter[s] per Saturday/Sunday.
 
-Timetable for Parallel Bibles.
++ Site's timetables "Bible for a Year".
 
-Bible for a Year timed to Holidays, e.g. first chapters of Gospel at the end of December, last chapters at Easter.
++ Timetable for Parallel Bibles.
+
+- Bible for a Year timed to Holidays, e.g. first chapters of Gospel at the end of December, last chapters at Easter.
+	- NEEDS official Christian timetables.
 
 Get Easter: <?php
-function get_easter_datetime($year) {
+function get_easter_datetime($year) 
+{
     $base = new DateTime("$year-03-21");
     $days = easter_days($year);
 
     return $base->add(new DateInterval("P{$days}D"));
 }
 
-foreach (range(2012, 2015) as $year) {
+foreach (range(2012, 2015) as $year) 
+{
     printf("Easter in %d is on %s\n",
            $year,
            get_easter_datetime($year)->format('F j'));
 }
-?>  
+?>
 
-And we have individuals on the Earth such as... ru - they have Christmas in January 7th...
-All world celebrates Christmas in 25th Decmber, except them.
+- And we have individuals on the Earth such as... ru - they have Christmas in January 7th...
+	All world celebrates Christmas in 25th Decmber, except them.
 
 
 ==================================
@@ -66,7 +73,7 @@ Charity Links
 Achievements
 ============
 
-Achievements for Bible reading, first chapter, first book, books, sets of books, Read All Bible. For last one "read twice", "...thrice" and so on.
+- Achievements for Bible reading, first chapter, first book, books, sets of books, Read All Bible. For last one "read twice", "...thrice" and so on.
 
 =================
 Top and Favorites

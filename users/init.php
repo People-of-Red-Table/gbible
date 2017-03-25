@@ -9,6 +9,14 @@
 					 'b_code2', 'country2', 'language2',
 					 'tt_b_code', 'tt_country', 'tt_language' ];
 
+	if (isset($_REQUEST['action']) 
+		and (stripos($_REQUEST['action'], 'parallel_bibles') !==FALSE) )
+		foreach (['tt_b_code1', 'tt_country1', 'tt_language1',
+					 'tt_b_code2', 'tt_country2', 'tt_language2'] as $item) 
+		{		
+			$auto_save[] = $item;
+		}
+
 	// load variables
 	foreach ($auto_save as $item)
 	{
@@ -82,13 +90,48 @@
 			$b_code2 = $userBibleB -> b_code;
 			break;
 		case 'timetable':
-			if(isset($_REQUEST['action']) and ($_REQUEST['action'] === 'create_own_timetable')) 
+			if (isset($_REQUEST['action']) 
+					and (stripos($_REQUEST['action'], 'parallel_bibles') !==FALSE) )
+			{
+				if (!isset($tt_language1))
+					$tt_language1 = $language;
+				if (!isset($tt_country1))
+					$tt_country1 = $country;
+				if (!isset($tt_language2))
+					$tt_language2 = $language;
+				if (!isset($tt_country2))
+					$tt_country2 = $country;
+			
+				$tt_userBibleA = new UserBible($pdo, $mysql);
+				$tt_userBibleA -> setCountry($tt_country1);
+				$tt_userBibleA -> setLanguage($tt_language1);
+				if (isset($tt_b_code1))
+					$tt_userBibleA -> setBCode($tt_b_code1);
+				else
+				{
+					$tt_userBibleA -> setBCode('=]');
+				}
+				$tt_b_code1 = $tt_userBibleA -> b_code;
+
+				$tt_userBibleB = new UserBible($pdo, $mysql);
+				$tt_userBibleB -> setCountry($tt_country2);
+				$tt_userBibleB -> setLanguage($tt_language2);
+				if (isset($tt_b_code2))
+					$tt_userBibleB -> setBCode($tt_b_code2);
+				else
+				{
+					$tt_userBibleB -> setBCode('=]');
+				}
+				$tt_b_code2 = $tt_userBibleB -> b_code;				
+			}
+			else
 			{
 				foreach (['b_code' => 'tt_b_code', 'country' => 'tt_country', 'language' => 'tt_language'] as $key => $value) 
 				{
 					if(!isset($_REQUEST[$value]))
 						$$value = $$key;
 				}
+
 				$ttBible = new UserBible($pdo, $mysql);
 				$ttBible -> setCountry($tt_country);
 				$ttBible -> setLanguage($tt_language);

@@ -306,4 +306,41 @@
 		{	
 			echo '<p style="font-size: 0.75em">' . $verse_paragraph_title . '</p>';
 		}
+
+
+
+		$pb_scheduled = FALSE;
+
+
+		$statement_timetables = $pdo -> prepare('select id, user_id, b_code, b_code2, scheduled from timetables 
+												where user_id = :user_id and scheduled is not null 
+												and b_code = :b_code1 and b_code2 = :b_code2');
+
+		$statement_timetables -> execute(['user_id' => $_SESSION['uid'], 'b_code1' => $b_code1, 'b_code2' => $b_code2]);
+		$tt_rows = $statement_timetables -> fetchAll();
+
+		foreach ($tt_rows as $tt_row) 
+		{
+			if ( (strcasecmp($tt_row['b_code'], $b_code1) === 0)
+				and (strcasecmp($tt_row['b_code2'], $b_code2) === 0) )
+			{
+				$pb_scheduled = true;
+
+
+				$update_query = 'update schedules set `read` = now() where timetable_id = :timetable_id and book = :book and chapter = :chapter';
+				$update_statement = $pdo -> prepare($update_query);
+				$result = $update_statement -> execute(['timetable_id' => $tt_row['id'], 'book' => $book, 'chapter' => $chapter]);
+				$messages[] = check_result($result, $update_statement, $text['tt_reading_update'], __FILE__ . ':' . __LINE__ . ' Update reading exception.');				
+			}
+		}
+
+		if (!$pb_scheduled)
+			echo '<form method="post" action="./">
+						<input type="hidden" name="menu" value="timetable">
+						<input type="hidden" name="action" value="create_schedule_for_parallel_bibles">
+						<input type="hidden" name="tt_b_code1" value="' . $b_code1 . '">
+						<input type="hidden" name="tt_b_code2" value="' . $b_code2 . '">
+						<input type="submit" class="btn btn-default form-control" name="submit" value="' . $text['to_schedule'] . '"></form>';
+		else
+			echo '<a href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
 	?>

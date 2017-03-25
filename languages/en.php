@@ -189,6 +189,7 @@
 	$text['schedules_selection_exception'] = 'The system could not select schedules for your timetable. ' . $text['please_contact_support'];
 
 	$text['scheduling_exception'] = 'The system could not schedule the reading. ' . $text['please_contact_support'];
+	$text['unscheduling_exception'] = 'The system could not unschedule the reading. ' . $text['please_contact_support'];
 	$text['tt_readings_exception'] = 'The system could not select your readings. ' . $text['please_contact_support'];
 	$text['tt_schedules_exception'] = 'The system could not select your schedules. ' . $text['please_contact_support'];
 	$text['tt_reading_update'] = 'The system could not update your reading for timetable. ' . $text['please_contact_support'];
@@ -207,4 +208,6 @@
 	$text['from_date'] = 'From Date';
 	$text['text_title'] = 'Title';
 
+	$text['parallel_bibles_scheduled'] = 'Parallel Bibles were scheduled.';
+	$text['text_and'] = 'and';
 ?>

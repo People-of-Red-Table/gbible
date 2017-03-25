@@ -1,11 +1,11 @@
 <?php
 
-	if(isset($_GET['menu']) && $_GET['menu'] === 'sign_out')
+	if(isset($_REQUEST['menu']) && $_REQUEST['menu'] === 'sign_out')
 	{
 		session_unset(session_id());
 	}
 
-	if(isset($_POST['menu']) && $_POST['menu'] === 'users_signingIn')
+	if(isset($_REQUEST['menu']) && $_REQUEST['menu'] === 'users_signingIn')
 	{
 		$params = array('email' => $_POST['email'], 'password' => $_POST['password']);
 		$statement = $links['sofia']['pdo'] -> prepare('select * from users where email = :email and password = md5(:password)');

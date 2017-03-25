@@ -234,4 +234,28 @@
 		{	
 			echo '<p style="font-size: 0.75em">' . $verse_paragraph_title . '</p>';
 		}
+
+		$bfy_scheduled = FALSE;
+
+
+		$statement_schedules = $pdo -> prepare('select user_id, b_code, scheduled from bible_for_a_year_schedules where user_id = :user_id and scheduled is not null');
+		$statement_schedules -> execute(['user_id' => $_SESSION['uid']]);
+		$schedules_rows = $statement_schedules -> fetchAll();
+
+		foreach ($schedules_rows as $schedule_row) 
+		{
+			if (strcasecmp($schedule_row['b_code'], $b_code) === 0)
+			{
+				$bfy_scheduled = true;
+				break;
+			}
+		}
+
+		if (!$bfy_scheduled)
+			echo '<form method="post">
+						<input type="hidden" name="menu" value="timetable">
+						<input type="hidden" name="action" value="schedule">
+						<input type="submit" class="btn btn-default form-control" name="submit" value="' . $text['to_schedule'] . '"></form>';
+		else
+			echo '<a href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
 	?>

@@ -41,7 +41,7 @@
 			$verse_paragraph_title .= $text['copy_link_to_verse'] . '.';		
 
 		$html_verse .= '<div class="dropdown">
-						<p class="dropdown-toggle" title="' . $verse_paragraph_title . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="' . $verse_row['verseID'] . '">'; 
+						<p class="dropdown-toggle" title="' . $verse_paragraph_title . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="' . $verse_row['verseID'] . '" align="justify">'; 
 		if (strcasecmp($menu, 'search') !== 0)
 			$html_verse .= '<sup>' . $verse_row['startVerse'] . '</sup> ';
 

@@ -131,7 +131,9 @@ create table timetables
     id int primary key auto_increment,
     user_id int,
     title varchar(100),
-    b_code varchar(20)
+    b_code varchar(20),
+    b_code2 varchar(20),
+    scheduled date
 );
 
 create table schedules
