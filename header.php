@@ -57,12 +57,12 @@
 		<script type="text/javascript" src="./js/lib.js"></script>
 		<link rel="stylesheet" href="./style.css">
 	</head>
-	<body>
+	<body<?php if ($_SERVER['HTTP_HOST'] == '127.0.0.1') echo ' background="../bg.png"';?>>
 	<!-- Facebook Share and Like-->
 	<div id="fb-root"></div>
 <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js =  d.createElement(s); js.id = id; js.src = "//connect.facebook.net/<?=$fb_language_country;?>/sdk.js#xfbml=1&version=v2.8"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
 
-		<nav class="nav navbar-inverse" role="navigation">
+		<nav class="nav navbar-inverse hidden-print" role="navigation">
 			<div class="container-fluid">
 
 				<div class="navbar-header">
@@ -81,7 +81,7 @@
 						<li><a href="./?menu=topVerses"><?=$text['top_verses'];?></a></li>
 
 					<?php
-						if ($_SESSION['uid'] > -1)
+						if ($_SESSION['role'] === 'user')
 						{
 					?>
 						<li><a href="./?menu=users_myFavoriteVerses"><?=$text['favorite_verses'];?></a></li>
@@ -108,12 +108,12 @@
 
 						<li><a href="./?menu=timetable"><?=$text['text_timetable'];?></a></li>
 					<?php
-						if ($_SESSION['uid'] > -1)
+						if ($_SESSION['role'] === 'user')
 						{
 					?>
 						<li><a href="./?menu=users_settings"><?=$text['text_settings'];?></a></li>
 						<li><a href="./?menu=sign_out"><?=$text['sign_out'];?></a></li>
-						<li><a href="#"><b><?=$_SESSION['nickname'];?></b></a></li>
+						<li><a><b><?=$_SESSION['nickname'];?></b></a></li>
 					<?php
 						}
 						else 

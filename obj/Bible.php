@@ -4,6 +4,7 @@
 	{
 		public $country;
 		public $language;
+		public $language_code;
 		public $b_code;
 		public $table_name;
 		public $title;
@@ -65,7 +66,7 @@
 		function setLanguage($language)
 		{
 			$language = strtolower($language);
-			$query = 'select distinct t.language_name, case when iso_ms.native_language_name is null then 				t.language_name else iso_ms.native_language_name end `native_language_name` from
+			$query = 'select distinct t.language_name, case when iso_ms.native_language_name is null then 				t.language_name else iso_ms.native_language_name end `native_language_name`, iso_ms.iso_language_code from
 						(
 							select distinct language `language_name` from b_shelf
 							where country = :country_name
@@ -90,18 +91,23 @@
 			else
 			{
 				$statement_language = $this -> pdo -> prepare('
-					select language_name from iso_ms_languages where lower(language_code) = :language and language_name in (select distinct language from b_shelf)
+					select language_name, iso_language_code from iso_ms_languages where lower(language_code) = :language and language_name in (select distinct language from b_shelf)
 					union
-					select language_name from iso_ms_languages where language_name = :language and language_name in (select distinct language from b_shelf)
+					select language_name, iso_language_code from iso_ms_languages where language_name = :language and language_name in (select distinct language from b_shelf)
 					union
-					select language_name from iso_ms_languages where country_name = :country  and language_name in (select distinct language from b_shelf)
+					select language_name, iso_language_code from iso_ms_languages where country_name = :country  and language_name in (select distinct language from b_shelf)
 					union
-					select language_name from iso_ms_languages where country_code = :country and language_name in (select distinct language from b_shelf)
+					select language_name, iso_language_code from iso_ms_languages where country_code = :country and language_name in (select distinct language from b_shelf)
 					union
-					select language `language_name` from b_shelf where language = :language
-					union
-					select language `language_name` from b_shelf where country = :country
+					select b_shelf.language `language_name`, iml.iso_language_code  from b_shelf
+						join iso_ms_languages iml on b_shelf.language = iml.language_name
+						where language = :language
 					');
+				/*
+
+					union
+					select b_shelf.language `language_name` from b_shelf where country = :country
+				*/
 				$result = $statement_language -> execute(array('language' => $language, 'country' => $this -> country));
 
 				if (!$result)
@@ -133,11 +139,15 @@
 					{
 						$found_language = true;
 						$this -> language = $language_name;
+						$this -> language_code = strtolower($row['iso_language_code']);
 						break;
 					}
 				}
 				if(!$found_language)
+				{
 					$this -> language = strtolower($languages_rows[0]['language_name']);
+					$this -> language_code = strtolower($languages_rows[0]['iso_language_code']);
+				}
 			}
 		}// function setLanguage
 

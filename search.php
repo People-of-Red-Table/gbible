@@ -1,5 +1,15 @@
 <h1><a href="./?menu=search"><?=$text['text_search'];?></a></h1>
 <?php
+
+	if (!isset($_REQUEST['page']))
+		$page = 1;
+	else
+		$page =$_REQUEST['page'];
+
+	$page_nav = '<ul class="pagination">';
+	$prev_next_nav = $page_nav;
+
+
 	if (isset($_REQUEST['search_query']))
 		$search_query = $_REQUEST['search_query'];
 	else $search_query = '';
@@ -48,11 +58,61 @@
 			$search_query = htmlspecialchars($search_query);
 			$search_query = mysqli_real_escape_string($mysql, $search_query);
 
-			$query = 'select * from ' . $info_row['table_name'] . ' where verseText like \'%' . $search_query . '%\'
-						
-				';
+			$query = 'select * from ' . $info_row['table_name'] . ' where verseText like \'%' . $search_query . '%\''.
+						' limit ' . ($page - 1) * $_SESSION['tf_verses_per_page'] . ', ' . $_SESSION['tf_verses_per_page'];
 			$search_result = mysqli_query($mysql, $query);
 
+			$all_results_query = 'select * from ' . $info_row['table_name'] . ' where verseText like \'%' . $search_query . '%\'';
+			$all_results = mysqli_query($mysql, $all_results_query);
+
+			/////////////////////////////
+
+			$verse_count = mysqli_num_rows($all_results);
+			$page_count = floor($verse_count / $_SESSION['tf_verses_per_page']);
+
+			if ($verse_count % $_SESSION['tf_verses_per_page'] !== 0)
+				$page_count++;
+
+			if ($page_count > 1)
+			{
+				if ($page != 1)
+					$page_nav .= '<li><a href="./?menu=search&search_query=' . $_REQUEST['search_query'] . '&page=1">' . $text['first_page'] . '</a></li>';
+				else
+					$page_nav .= '<li><a><b>' . $text['first_page'] . '</b></a></li>';
+
+				for ($i=1; $i <= $page_count; $i++)
+				{
+					if ($page != $i)
+						$page_nav .= '<li><a href="./?menu=search&search_query=' . $_REQUEST['search_query'] . '&page=' . $i . '">' . $i . '</a></li>';
+					else
+						$page_nav .= '<li><a><b>' . $i . '</b></a></li>';
+				}
+				if ($page != $page_count)
+					$page_nav .= '<li><a href="./?menu=search&search_query=' . $_REQUEST['search_query'] . '&page=' . $page_count . '">' . $text['last_page'] . '</a></li>';
+				else
+					$page_nav .= '<li><a><b>' . $text['last_page'] . '</b></a></li>';
+
+				$page_nav .= '</ul>';
+
+				if ($page !== 1)
+					$prev_next_nav .= '<li><a href="./?menu=search&search_query=' . $_REQUEST['search_query'] . '&page=' . ($page - 1) . '">' . $text['text_previous'] . '</a></li>';
+
+				if ($page < $page_count)
+					$prev_next_nav .= '<li><a href="./?menu=search&search_query=' . $_REQUEST['search_query'] . '&page=' . ($page + 1) . '">' . $text['text_next'] . '</a></li>';
+
+
+				$prev_next_nav .= '</ul><br />';
+
+			}
+			else
+			{
+				$page_nav = '';
+				$prev_next_nav = '';
+			}
+
+			echo $page_nav . $prev_next_nav;
+
+			/////////////////////////////
 			if ($search_result)
 			{
 				if (mysqli_num_rows($search_result) > 0)
@@ -86,5 +146,7 @@
 	{
 		echo '<p class="alert alert-' . $msg_type . '">' . $message . '</p>';
 	}
+
+	echo $prev_next_nav . $page_nav;
 
 ?>

@@ -1,17 +1,18 @@
 
 	<div class="container">
-
-	<div class="row">
-		<div class="col-md-12">
-			<center><a href="http://www.israelgives.org/" target="_blank"><?=$text['israel_gives'];?></a></center>
-		</div>
-	</div><br />
+		<div class="row">
+			<div class="col-md-12">
+				<center><a href="http://www.israelgives.org/" target="_blank"><?=$text['israel_gives'];?></a></center>
+			</div>
+		</div><br />
 
 		<?=$charity_links;?>
 		<br />
-		<div class="footer">
+	</div>
+	
+
 			 <nav class="nav navbar-inverse">
-				<div class="container-fluid">
+				<div class="container-fluid hidden-print">
 					<ul class="nav navbar-nav">
 						<li><a href="./?menu=charityLinks"><?=$text['charity_of_world'];?></a></li>
 						<li><a href="./?menu=charityOrganizationsOf"><?=$text['charity_of_your_country'];?>  <?=$charity_country_native;?></a></li>
@@ -32,11 +33,11 @@
 						<li><a href="https://plus.google.com/115380489639432555966" target="_blank"><?=$text['google_plus'];?></a></li>
 						<li><a href="https://www.youtube.com/channel/UCCWrFOJPlLyW85xf40afNJg" target="_blank">YouTube</a></li>
 					</ul>
-			 	</div>		
+				</div>
 			 </nav>
-		</div>
 		<br />
-		<center><?=$text['powered_by'];?> <a href="http://charity-port.16mb.com/" target="_blank">PoRT</a> <br /><a href="https://plus.google.com/115380489639432555966" target="_blank">Stanislav Demchenko</a></p></center>
-	</div>
+		<center>
+			<?=$text['powered_by'];?> <a href="http://charity-port.16mb.com/" target="_blank">PoRT</a> <br /><a class="hidden-print" href="https://plus.google.com/115380489639432555966" target="_blank">Stanislav Demchenko</a><br /><br /><br />
+		</center>
 	</body>
 </html>

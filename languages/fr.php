@@ -124,7 +124,7 @@
 	$text['choose_language'] = 'Choisissez la langue';
 
 
-	$text['use_ctrl_s'] = 'Vous pouvez enregistrer ces versets supérieurs sur votre ordinateur - utilisez <kbd> Ctrl + S </ kbd> pour cela.';
+	$text['use_ctrl_s'] = 'Vous pouvez enregistrer ces versets supérieurs sur votre ordinateur - utilisez <kbd> Ctrl + S </kbd> pour cela.';
 	$text['remember_me'] = 'Se souvenir de moi';
 
 

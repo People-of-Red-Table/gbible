@@ -69,8 +69,9 @@
 		{
 			$statement_fav_verses = $links['sofia']['pdo']
 			 -> prepare('
-					 		select fv.id, b.book, b.chapter, b.startVerse, b.verseID, b.verseText, fv.inserted from ' . $bible_row['table_name'] . ' b ' .
+					 		select fv.id, b.book, b.chapter,  case when bt.shorttitle is null then b.book else bt.shorttitle end `book_title`, b.startVerse, b.verseID, b.verseText, fv.inserted from ' . $bible_row['table_name'] . ' b ' .
 							'join fav_verses fv on fv.verseID = b.verseID
+				 			left join book_titles bt on b.book = bt.book and bt.language_code = "' . $userBible -> language_code . '"
 							where fv.user_id = :user_id
 							order by inserted desc
 							limit ' . ($page - 1) * $_SESSION['tf_verses_per_page'] . ', ' . $_SESSION['tf_verses_per_page']
@@ -86,12 +87,14 @@
 				foreach ($fav_verses_rows as $fav_verse_row) 
 				{
 					echo '<blockquote>' . $fav_verse_row['verseText'] . '
-						<footer>' . $fav_verse_row['book'] . ' ' . $fav_verse_row['chapter'] 
-						. ':' . $fav_verse_row['startVerse'] . ' ' . $bible_row['title'] .' <a href="' . $bible_row['link'] . '">' . $bible_row['license'] . '</a></footer>
-						</blockquote><p align="right"><a href="users_myFavoriteVerses&action=delete_fav_verse&id=' . $fav_verse_row['id'] . '"><button class="btn btn-sm btn-danger">' . $text['text_delete'] . '</button></a></p><br />';
+						<footer><a class="hidden-print" href="./?menu=bible&b_code=' . $b_code . '&book=' . $fav_verse_row['book'] . '&chapter=' . $fav_verse_row['chapter'] . '&verse=' . $fav_verse_row['startVerse'] . '" target="_blank">' . $fav_verse_row['book_title'] . ' ' . $fav_verse_row['chapter'] 
+						. ':' . $fav_verse_row['startVerse'] . '</a> <span class="visible-print">' . $fav_verse_row['book_title'] . ' ' . $fav_verse_row['chapter'] 
+						. ':' . $fav_verse_row['startVerse'] . '</span>' . $bible_row['title'] .' <a href="' . $bible_row['link'] . '">' . $bible_row['license'] . '</a></footer>
+						</blockquote><p align="right" class="hidden-print"><a href="users_myFavoriteVerses&action=delete_fav_verse&id=' . $fav_verse_row['id'] . '"><button class="btn btn-sm btn-danger">' . $text['text_delete'] . '</button></a></p><br />';
 				}
 				echo $page_nav;
-				echo '<br /><br /><br /><p>' . $text['use_ctrl_s'] . '</p>';
+				echo '<br /><br /><br /><div class="hidden-print"><p>' . $text['use_ctrl_s'] . '</p>';
+				echo '<p>' . $text['use_ctrl_p'] . '</p></div>';
 			}
 			else
 			{

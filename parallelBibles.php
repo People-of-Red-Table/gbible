@@ -51,8 +51,9 @@
 		{
 			$books = [];
 			$statement_books = $links['sofia']['pdo'] -> prepare('
-								select distinct book from ' . $table_name1
-								.' where book in (select distinct book from ' . $table_name2 . ')'
+								select distinct t.book, case when bt.shorttitle is not null then bt.shorttitle else t.book end `shorttitle` from ' . $table_name1 . ' t 
+								left join book_titles bt on t.book = bt.book and language_code = "' . $interface_language . '"
+								where t.book in (select distinct book from ' . $table_name2 . ')'
 							);
 
 			$books_result = $statement_books -> execute();
@@ -63,15 +64,18 @@
 							'
 							;
 
-
+			$book_title = $book;
 			foreach ($books_rows as $row) 
 			{
 				$books[] = $row['book'];
-				$books_nav .=  '<a href="./?menu=parallelBibles&book=' . $row['book'] . '">' . $row['book'] . '</a> ';
+				$books_nav .=  '<a href="./?menu=parallelBibles&book=' . $row['book'] . '">' . $row['shorttitle'] . '</a> ';
 				$selected = '';
 				if ($book === $row['book'])
+				{
 					$selected = ' selected="selected"';
-				$books_form .= '<option value="' . $row['book'] . '"' . $selected . '>' . $row['book'] . '</option>';
+					$book_title = $row['shorttitle'];
+				}
+				$books_form .= '<option value="' . $row['book'] . '"' . $selected . '>' . $row['shorttitle'] . '</option>';
 			}
 				$books_form .= '</select></form>';
 				$books_nav .= '</div>';
@@ -88,7 +92,7 @@
 					</div>
 				</div>
 			</div>
-			<nav class="gb-books-nav"><?=$books_nav.'<br/>'.$books_form;?></nav>
+			<nav class="gb-books-nav hidden-print"><?=$books_nav.'<br/>'.$books_form;?></nav>
 		<?php
 			if (!isset($book) or !in_array($book, $books))
 				$book = $books_rows[0]['book'];
@@ -137,9 +141,9 @@
 				$chapter_nav .= '</td></tr></table>'; 
 
 		?>
-			<div id="book-title"><center><h3><?=$book;?> <?=$chapter;?></h3></center></div>
-			<nav class="gb-pagination"><?=$chapters_links.'<br/>'.$chapters_form;?></nav><br />
-			<nav class="gb-chapter-nav"><?=$chapter_nav;?></nav>
+			<div id="book-title"><center><h3><?=$book_title;?> <?=$chapter;?></h3></center></div>
+			<nav class="gb-pagination hidden-print"><?=$chapters_links.'<br/>'.$chapters_form;?></nav><br />
+			<nav class="gb-chapter-nav hidden-print"><?=$chapter_nav;?></nav>
 
 		</div>
 		<?php
@@ -277,9 +281,9 @@
 		?>
 		<div class="panel-body"><?=$verses;?></div>
 
-	<nav class="gb-chapter-nav"><?=$chapter_nav;?></nav><br />
-	<nav class="gb-pagination"><?=$chapters_links;?></nav><br />
-	<nav class="gb-books-nav"><?=$books_nav;?></nav>
+	<nav class="gb-chapter-nav hidden-print"><?=$chapter_nav;?></nav><br />
+	<nav class="gb-pagination hidden-print"><?=$chapters_links;?></nav><br />
+	<nav class="gb-books-nav hidden-print"><?=$books_nav;?></nav>
 
 	<?php
 		}
@@ -340,13 +344,15 @@
 			}
 
 			if (!$pb_scheduled)
-				echo '<form method="post" action="./">
+				echo '<form method="post" action="./" class="hidden-print">
 							<input type="hidden" name="menu" value="timetable">
 							<input type="hidden" name="action" value="create_schedule_for_parallel_bibles">
 							<input type="hidden" name="tt_b_code1" value="' . $b_code1 . '">
 							<input type="hidden" name="tt_b_code2" value="' . $b_code2 . '">
 							<input type="submit" class="btn btn-default form-control" name="submit" value="' . $text['to_schedule'] . '"></form>';
 			else
-				echo '<a href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
-		}
+				echo '<a class="hidden-print" href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
+		} // </if-not-guest>
+
+		
 	?>

@@ -64,8 +64,10 @@
 		{
 			$statement_fav_verses = $links['sofia']['pdo']
 			 -> prepare('
-				 		select fv.verseID, count(fv.verseID), vpl.book, vpl.chapter, vpl.startVerse, vpl.verseText from fav_verses fv 
-				 		join ' . $bible_row['table_name'] . ' vpl on vpl.verseID = fv.verseID group by verseID 
+				 		select fv.verseID, count(fv.verseID), vpl.book, case when bt.shorttitle is null then vpl.book else bt.shorttitle end `book_title`, vpl.chapter, vpl.startVerse, vpl.verseText from fav_verses fv 
+				 		join ' . $bible_row['table_name'] . ' vpl on vpl.verseID = fv.verseID
+				 		left join book_titles bt on vpl.book = bt.book and bt.language_code = "' . $userBible -> language_code . '"
+				 		group by verseID 
 				 		order by count(fv.verseID) desc
 				 		limit ' . ($page - 1) * $_SESSION['tf_verses_per_page'] . ', ' . $_SESSION['tf_verses_per_page']
 					);
@@ -80,17 +82,20 @@
 				foreach ($fav_verses_rows as $fav_verse_row) 
 				{
 					echo '<blockquote>' . $fav_verse_row['verseText'] . '
-						<footer>' . $fav_verse_row['book'] . ' ' . $fav_verse_row['chapter'] 
-						. ':' . $fav_verse_row['startVerse'] . ' ' . $bible_row['title'] .' <a href="' . $bible_row['link'] . '">' . $bible_row['license'] . '</a></footer>
+						<footer><a class="hidden-print" href="./?menu=bible&b_code=' . $b_code . '&book=' . $fav_verse_row['book'] . '&chapter=' . $fav_verse_row['chapter'] . '&verse=' . $fav_verse_row['startVerse'] . '" target="_blank">' . $fav_verse_row['book_title'] . ' ' . $fav_verse_row['chapter'] 
+						. ':' . $fav_verse_row['startVerse'] . '</a> <span class="visible-print">' . $fav_verse_row['book_title'] . ' ' . $fav_verse_row['chapter'] 
+						. ':' . $fav_verse_row['startVerse'] . '</span>' . $bible_row['title'] .' <a href="' . $bible_row['link'] . '">' . $bible_row['license'] . '</a></footer>
 						</blockquote><br />';
 				}
 				echo $page_nav;
-				echo '<br /><br /><br /><p>' . $text['use_ctrl_s'] . '</p>';
+				echo '<br /><br /><br /><div class="hidden-print"><p>' . $text['use_ctrl_s'] . '</p>';
+				echo '<p>' . $text['use_ctrl_p'] . '</p></div>';
 			}
 			else
 			{
 				$message = $text['top_verses_exception'];
 				$msg_type = 'danger';
+				log_msg(__FILE__ . ':' . __LINE__ . ' Select fav verses. Exception. Info = {' . json_encode($statement_fav_verses -> errorInfo()) . '}, REQUEST = {' . json_encode($_REQUEST) . '}');
 			}
 		}
 		else

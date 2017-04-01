@@ -57,6 +57,13 @@
 		require 'countryAndLanguageFields.php';
 	?>
 
+	<div class="form-group">
+			<label for="signUpCaptcha"><?=$text['type_captcha'];?></label>
+			<iframe src="./lib/get_captcha.php" border="none" width="155" height="55" name="signUpCaptchaFrame"></iframe>
+			<a href="./lib/get_captcha.php" target="signUpCaptchaFrame"><span class="glyphicon glyphicon-refresh"></span></a>
+			<input type="text" class="form-control" name="user_captcha" id="signUpCaptcha">
+	</div>	
+
 	<input type="hidden" name="menu" value="users_registration">
 	<!-- TO DO: check email by pattern-->
 	<input type="submit" class="btn btn-default form-control" name="submit" value="<?=$text['sign_up'];?>" />

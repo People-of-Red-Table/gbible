@@ -26,7 +26,7 @@
 	if (stripos($b_code, 'http') === FALSE)
 	{
 ?>
-<form method="post">
+<form method="post" class="hidden-print">
 	<input type="hidden" name="menu" value="search" />
 	<input type="hidden" name="search_in" value="<?=$b_code;?>" />
 	<div class="input-group input-group-sm">
@@ -47,29 +47,37 @@
 			$table_name = $info_row['table_name'];
 
 			$statement_books = $links['sofia']['pdo'] -> prepare('
-								select distinct book from ' . $table_name
+								select distinct t.book, case when bt.shorttitle is not null then bt.shorttitle else t.book end `shorttitle` from ' . $table_name . ' t '.
+								'left join book_titles bt on t.book = bt.book and language_code = "' . $userBible -> language_code . '"'
 							);
-			$books_result = $statement_books -> execute();
+			//log_msg(__FILE__ . ':' . __LINE__ . ' $userBible -> language_code = ' . $userBible -> language_code);
+			$result = $books_result = $statement_books -> execute();
+			if (!$result)
+			{
+				display_message(['type' => 'danger', 'message' => $text['book_titles_exception']]);
+				log_msg(__FILE__ . ':' . __LINE__ . ' Select book for titles. Exception. Info = {' . json_encode($statement_books -> errorInfo()) . '}, REQUEST = {' .json_encode($_REQUEST) . '}');
+			}
 			$books_rows = $statement_books -> fetchAll();
-			$books_nav = '<div width="80%" align="center">';
-			$books_form = '<form method="post" name="bookSelectionFormFromChosenBible">
+			$books_nav = '<div width="80%" align="center" class="hidden-print">';
+			$books_form = '<form method="post" name="bookSelectionFormFromChosenBible" class="hidden-print">
 							<input type="hidden" name="b_code" value="' . $b_code . '">
 							<select name="book" class="form-control" onchange="bookSelectionFormFromChosenBible.submit()">
 							'
 							;
 
-
+			$book_title = $book;
 			$found_book = FALSE;
 			foreach ($books_rows as $row) 
 			{
-				$books_nav .=  '<a href="./?b_code=' . $b_code . '&book=' . $row['book'] . '">' . $row['book'] . '</a> ';
+				$books_nav .=  '<a href="./?b_code=' . $b_code . '&book=' . $row['book'] . '">[' . $row['shorttitle'] . ']</a> ';
 				$selected = '';
 				if (!$found_book and (strcasecmp($book, $row['book']) === 0) )
 				{
 					$selected = ' selected="selected"';
 					$found_book = true;
+					$book_title = $row['shorttitle'];
 				}
-				$books_form .= '<option value="' . $row['book'] . '"' . $selected . '>' . $row['book'] . '</option>';
+				$books_form .= '<option value="' . $row['book'] . '"' . $selected . '>' . $row['shorttitle'] . '</option>';
 			}
 				if (!$found_book)
 				$book = $books_rows[0]['book'];
@@ -79,7 +87,7 @@
 
 		?>
 			<div><center><h2 id="bibleTitle" title="<?=$bible_description;?>"><?=$bible_title;?></h2></center></div>
-			<nav class="gb-books-nav"><?=$books_nav.'<br/>'.$books_form;?></nav>
+			<nav class="gb-books-nav hidden-print"><?=$books_nav.'<br/>'.$books_form;?></nav>
 		<?php
 			if (!isset($book))
 				$book = $books_rows[0]['book'];
@@ -97,7 +105,7 @@
 					log_msg(__FILE__ . ':' . __LINE__ . ' PDO chapters query exception. Info = {' . json_encode($statement_chapters -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}, \$table_name = `' . $table_name . '`.' );
 
 				$chapters_rows = $statement_chapters -> fetchAll();
-				$chapters_links = '<div width="80%" align="center">';
+				$chapters_links = '<div width="80%" align="center" class="hidden-print">';
 				$chapter_count=0;
 
 				$chapters_form = '<form method="post" name="chapterSelectionFormFromChosenBible">
@@ -128,9 +136,9 @@
 				$chapter_nav .= '</td></tr></table>'; 
 
 		?>
-			<div id="book-title"><center><h3><?=$book;?> <?=$chapter;?></h3></center></div>
-			<nav class="gb-pagination"><?=$chapters_links.'<br/>'.$chapters_form;?></nav><br />
-			<nav class="gb-chapter-nav"><?=$chapter_nav;?></nav>
+			<div id="book-title"><center><h3><?=$book_title;?> <?=$chapter;?></h3></center></div>
+			<nav class="gb-pagination hidden-print"><?=$chapters_links.'<br/>'.$chapters_form;?></nav><br />
+			<nav class="gb-chapter-nav hidden-print"><?=$chapter_nav;?></nav>
 
 		</div>
 		<?php
@@ -220,9 +228,9 @@
 		?>
 		<div class="panel-body"><?=$verses;?></div>
 
-	<nav class="gb-chapter-nav"><?=$chapter_nav;?></nav><br />
-	<nav class="gb-pagination"><?=$chapters_links;?></nav><br />
-	<nav class="gb-books-nav"><?=$books_nav;?></nav>
+	<nav class="gb-chapter-nav hidden-print"><?=$chapter_nav;?></nav><br />
+	<nav class="gb-pagination hidden-print"><?=$chapters_links;?></nav><br />
+	<nav class="gb-books-nav hidden-print"><?=$books_nav;?></nav>
 
 	<?php
 		}
@@ -265,11 +273,14 @@
 			}
 
 			if (!$bfy_scheduled)
-				echo '<form method="post">
+				echo '<form method="post" class="hidden-print">
 							<input type="hidden" name="menu" value="timetable">
 							<input type="hidden" name="action" value="schedule">
 							<input type="submit" class="btn btn-default form-control" name="submit" value="' . $text['to_schedule'] . '"></form>';
 			else
-				echo '<a href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
-		}
+				echo '<a class="hidden-print" href="./?menu=timetable"><button class="btn btn-default form-control">' . $text['text_timetable'] . '</button></a>';
+		} // </if-not-guest>
+		
+		echo '<br /><br /><br /><div class="hidden-print"><p>' . $text['use_ctrl_s'] . '</p>';
+		echo '<p>' . $text['use_ctrl_p'] . '</p></div>';
 	?>

@@ -1,4 +1,10 @@
+			
+			<?php
+				require './timetables/tt_exception.php';
+			?>
+
 			<form method="post">
+				<input type="hidden" name="menu" value="timetable">
 				<div class="form-group">
 					<label for="timetableDateField"><?=$text['text_date'];?></label>
 					<input type="date" name="date" class="form-control" value="<?=$date->format('Y-m-d');?>" />
@@ -19,7 +25,7 @@
 					foreach ($timetables_rows as $timetable_row) 
 					{
 						echo '<br/><h3>' . $timetable_row['title'] . '</h3><br/>';
-						$select_query = 'select s.book, case when bt.title is null then s.book else bt.title end `title`, s.chapter, s.`read` from schedules s
+						$select_query = 'select s.book, case when bt.shorttitle is null then s.book else bt.shorttitle end `title`, s.chapter, s.`read` from schedules s
 										left join book_titles bt on s.book = bt.book
 										where s.timetable_id = :timetable_id
 										and s.`when` = :date';

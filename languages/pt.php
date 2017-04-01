@@ -128,7 +128,7 @@
 	$text['choose_language'] = 'Escolher Idioma';
 
 
-	$text['use_ctrl_s'] = 'Você pode salvar esses versículos no seu computador - use <kbd>Ctrl + S</ kbd> para ele.';
+	$text['use_ctrl_s'] = 'Você pode salvar esses versículos no seu computador - use <kbd>Ctrl + S</kbd> para ele.';
 	$text['remember_me'] = 'Me Lembre';
 
 

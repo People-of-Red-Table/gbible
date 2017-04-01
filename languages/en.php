@@ -130,7 +130,7 @@
 	$text['choose_language'] = 'Choose Language';
 
 
-	$text['use_ctrl_s'] = 'You can save these top verses on your computer - use <kbd>Ctrl+S</kbd> for it.';
+	$text['use_ctrl_s'] = 'You can save these verses on your computer - use <kbd>Ctrl+S</kbd> for it.';
 	$text['remember_me'] = 'Remember Me';
 
 
@@ -148,7 +148,7 @@
 	$text['thank_you_note_02'] = 'Thank you Victor Guryev from <a href="./?menu=charityOrganizationsOf&charity_country=nl" target="_blank">Netherlands</a> that you paid for very first year of %golddashbibledotcom%.';
 	$text['thank_you_note_03'] = 'Thank you %blizzarddotcom% for idea support <a href="redcross.org" target="_blank">American Red Cross</a> and charity organizations.';
 	$text['thank_you_note_04'] = 'Thank you, %JimmyFallonShow% for "Thank You Notes".';
-	$text['thank_you_note_05'] = 'Thank you, for free internet to travel agency "PAULLY", bus agency "ASATUR" and family "Benevides", family of Jaime and Celestia [with her grandmother Maria Jose Gomes] from Boa Vista of <a href="./?menu=charityOrganizationsOf&charity_country=br" target="_blank">Brazil</a>, who politely gave me to work on Bible Site. ';
+	$text['thank_you_note_05'] = 'Thank you, for free internet to travel agency "PAULLY", hotel "POUSADA neto", bus agency "ASATUR" and family "Benevides", family of Jaime and Celestia [with her grandmother Maria Jose Gomes] from Boa Vista of <a href="./?menu=charityOrganizationsOf&charity_country=br" target="_blank">Brazil</a>, who gave me to work on Bible Site. ';
 	$text['thank_you_note_05dot1'] = 'Thank You, Angy and Lin from <a href="./?menu=charityOrganizationsOf&charity_country=gy" target="_blank">Guyana</a> that you let me live in house with you in Boa Vista.';
 	
 	$text['thank_you_note_06'] = 'Thank you, %hostingercouk% for free hosting where is now Bible Site. ';
@@ -224,4 +224,24 @@
 	$text['fv_deleted'] = 'The verse was deleted from favorites.';
 
 	$text['schedule_ok'] = 'Bible reading was scheduled.';
+
+	$text['use_ctrl_p'] = 'You are able to <b>print</b> these verses - use <kbd>Ctrl+P</kbd> for it. [Printer is required ;]';
+	$text['daily_readings'] = 'Daily Readings';
+
+	$text['welcome_subject'] = 'Welcome to Golden Bible';
+	$text['reg_mail'] = 'Welcome to Golden Bible, %user_name%.' . PHP_EOL . PHP_EOL
+						. 'Your password is `%password%`.';
+
+	$text['type_captcha'] = 'Enter code from image';
+	$text['incorrect_captcha'] = 'You typed incorrect code from image.';
+
+	$text['email_warning'] = 'Email is incorrect.';
+	$text['pas_length_warning'] = 'Password is too short, use at least 5 characters.';
+	$text['text_return'] = 'Return';
+
+
+	$text['text_next'] = 'Next';
+	$text['text_previous'] = 'Previous';
+
+	$text['book_titles_exception'] = 'We have got issue with book titles. ' . $text['please_contact_support'];
 ?>

@@ -124,7 +124,7 @@ $text['text_int_languages'] = 'Interfaccia Lingue ';
 $text['choose_language'] = 'Scegli la lingua';
 
 
-$text['use_ctrl_s'] = 'È possibile salvare questi primi versi sul computer - uso <kbd> Ctrl + S </ kbd> per esso.';
+$text['use_ctrl_s'] = 'È possibile salvare questi primi versi sul computer - uso <kbd> Ctrl + S </kbd> per esso.';
 $text['remember_me'] = 'Ricordati di me';
 
 

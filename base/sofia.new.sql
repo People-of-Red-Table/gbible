@@ -13,7 +13,7 @@
   
   -- book shelf structure
   create table b_shelf (
-    id int primary key auto_increment,
+    id varchar(32) primary key auto_increment,
     country varchar(100),
     language varchar(200),
     dialect varchar(200),
@@ -34,35 +34,24 @@ create table  new_identities
 
 create table book_titles
 (
-  id int auto_increment primary key,
+  id varchar(32) primary key,
   language_code varchar(10),
   book varchar(3),
   title varchar(20),
   shorttitle varchar(20)
 );
+alter table  book_titles add unique (language_code, book, shorttitle, title);
 
 create table book_synonyms
 (
-  id int auto_increment primary key,
+  id varchar(32) primary key,
   book1 varchar(3),
   book2 varchar(3)
 );
-insert into book_synonyms (book1, book2) values ('SOL', 'SNG'), ('JOL', 'JOE'), ('MRK', 'MAR'), ('JOH', 'JHN'),('PHP','PHI'),('JAM','JAS'),
-('1JO','1JN'),('2JO','2JN'),('3JO','3JN');
-
-create table book_sort
-(
-  id int auto_increment primary key,
-  book varchar(3),
-  sort int
-);
-
-insert into book_sort (book, sort) values 
-('GEN', 1),('EXO', 2),('LEV', 3),('NUM', 4),('DEU', 5),('JOS', 6),('JDG', 7),('RUT', 8),('1SA', 9),('2SA', 10),('1KI', 11),('2KI', 12),('1CH', 13),('2CH', 14),('EZR', 15),('NEH', 16),('EST', 17),('JOB', 18),('PSA', 19),('PRO', 20),('ECC', 21),('SOL', 22),('SNG', 23),('ISA', 24),('JER', 25),('LAM', 26),('EZK', 27),('DAN', 28),('HOS', 29),('JOE', 30),('AMO', 31),('OBA', 32),('JON', 33),('MIC', 34),('NAM', 35),('HAB', 36),('ZEP', 37),('HAG', 38),('ZEC', 39),('MAL', 40),('TOB', 41),('JDT', 42),('WIS', 43),('SIR', 44),('BAR', 45),('1MA', 46),('2MA', 47),('1ES', 48),('MAN', 49),('PS2', 50),('3MA', 51),('2ES', 52),('4MA', 53),('DAG', 54),('MAT', 55),('MAR', 56),('LUK', 57),('JOH', 58),('ACT', 59),('ROM', 60),('1CO', 61),('2CO', 62),('GAL', 63),('EPH', 64),('PHI', 65),('COL', 66),('1TH', 67),('2TH', 68),('1TI', 69),('2TI', 70),('TIT', 71),('PHM', 72),('HEB', 73),('JAM', 74),('1PE', 75),('2PE', 76),('1JO', 77),('2JO', 78),('3JN', 79),('JUD', 80),('REV', 81);
 
 create table users
 (
-	id int auto_increment primary key,
+	id varchar(32) primary key,
 	nickname varchar(30),
 	full_name varchar(50),
 	email varchar(100),
@@ -91,8 +80,8 @@ create table users
 
 create table fav_verses
 (
-	id int auto_increment primary key,
-	user_id int,
+	id varchar(32) primary key,
+	user_id varchar(32),
 	verseID varchar(16),
 	b_code varchar(20),
 	inserted datetime,
@@ -101,22 +90,22 @@ create table fav_verses
 
 create table tweeted_verses
 (
-	id int auto_increment primary key,
+	id varchar(32) primary key,
 	verseID varchar(16),
 	times_tweeted int
 );
 
 create table shared_verses
 (
-	id int auto_increment primary key,
-	sn_id int,
+	id varchar(32) primary key,
+	sn_id varchar(32),
 	verseID varchar(16),
 );
 
 
 create table social_networks
 (
-	id int auto_increment primary key,
+	id varchar(32) primary key,
 	network_name varchar(50),
 	base_url varchar(50)
 );
@@ -125,14 +114,14 @@ insert into social_networks (network_name, base_url) values ('Facebook', 'https:
 
 create table charity_organization_types
 (
-    id int primary key auto_increment,
+    id varchar(32) primary key auto_increment,
     name varchar(20)
 );
 
 create table feedback
   (
-    id int primary key auto_increment,
-    user_id int NULL,
+    id varchar(32) primary key auto_increment,
+    user_id varchar(32) NULL,
     email varchar(100),
     full_name varchar(50),
     subject varchar(100),
@@ -142,8 +131,8 @@ create table feedback
 
 create table charity_organizations
 (
-    id int primary key auto_increment,
-    charity_organization_type_id int,
+    id varchar(32) primary key auto_increment,
+    charity_organization_type_id varchar(32),
     country_code varchar(5),
     english_name varchar(200),
     native_name varchar(200),
@@ -153,8 +142,8 @@ create table charity_organizations
 
 create table timetables
 (
-    id int primary key auto_increment,
-    user_id int,
+    id varchar(32) primary key auto_increment,
+    user_id varchar(32),
     title varchar(100),
     b_code varchar(20),
     b_code2 varchar(20),
@@ -163,8 +152,8 @@ create table timetables
 
 create table schedules
 (
-    id int primary key auto_increment,
-    timetable_id int,
+    id varchar(32) primary key auto_increment,
+    timetable_id varchar(32),
     `when` date,
     `read` date,
     book varchar(3),
@@ -173,7 +162,7 @@ create table schedules
 
 create table bible_for_a_year
 (
-    id int primary key auto_increment,
+    id varchar(32) primary key auto_increment,
     b_code varchar(20),
     year int,
     month int,
@@ -184,8 +173,8 @@ create table bible_for_a_year
 
 create table bible_for_a_year_schedules
 (
-    id int primary key auto_increment,
-    user_id int,
+    id varchar(32) primary key auto_increment,
+    user_id varchar(32),
     b_code varchar(20),
     daily_reading bool,
     scheduled datetime
@@ -193,8 +182,8 @@ create table bible_for_a_year_schedules
 
 create table bible_for_a_year_readings
 (
-    id int primary key auto_increment,
-    schedule_id int,
+    id varchar(32) primary key auto_increment,
+    schedule_id varchar(32),
     book varchar(3),
     chapter int,
     `read` datetime

@@ -22,6 +22,7 @@
 		if ($row['email'] === $_POST['email'])
 		{
 			$_SESSION['uid'] = $row['id'];
+			$_SESSION['role'] = 'user';
 			$menu = 'bible';
 			if(isset($_REQUEST['remember_me']) && ($_REQUEST['remember_me'] == true))
 				setcookie(session_name(), session_id(), time() + 30 * 24 * 3600);
@@ -40,24 +41,26 @@
 	if (!isset($_SESSION['uid']))
 	{
 		$_SESSION['uid'] = -1;
-		//$_SESSION['role_id'] = 6;
 		$_SESSION['timezone'] = 'America/New_York';
-		$_SESSION['topics_per_page'] = 25;
-		$_SESSION['posts_per_page'] = 25;
+		$_SESSION['role'] = 'guest';
 		$_SESSION['tf_verses_per_page'] = 25;
-		$_SESSION['messages_per_page'] = 25;
-	}
-	else
+		$_SESSION['last_hit'] = 0;
+	}	
+
+	if ($_SESSION['role'] === 'user')
 	{
+		$statement_prev_hit_select = $pdo -> prepare('select last_hit from users where id = :uid');
+		$statement_prev_hit_select -> execute([ 'uid' => $_SESSION['uid'] ]);
+		$prev_hit_row = $statement_prev_hit_select -> fetch();
+		$prev_hit = $prev_hit_row[0];
+		$prev_hit_dt = new DateTime($prev_hit);
+		$_SESSION['previous_hit'] = $prev_hit_dt -> getTimestamp();
+
 		$statement_lhit = $pdo -> prepare('update users set last_hit = now(), remote_addr = :remote_addr where id = :uid');
 		$result = $statement_lhit -> execute(['remote_addr' => $_SERVER['REMOTE_ADDR'], 'uid' => $_SESSION['uid'] ]);
 		if (!$result)
 			log_msg(__FILE__ . ':' . __LINE__ . ' Update user\'s `last_hit` durig `Sign In` exception. $_REQUEST = {' . json_encode($_REQUEST) . '}');
-	}
 
-
-	if ($_SESSION['uid'] > 0)
-	{
 		$statement = $links['sofia']['pdo'] -> prepare('select * from users join countries cnt on users.country = cnt.name where id = :id');
 		$result = $statement -> execute(array('id' => $_SESSION['uid']));
 
@@ -76,9 +79,10 @@
 			$_SESSION['tf_verses_per_page'] = $row['tf_verses_per_page'];
 
 
-			$result_language = mysqli_query($links['sofia']['mysql'],'select code from iso_639_languages where language_name = "' . $row['language'] . '" union select code from iso_639_languages where code = "' . $row['language'] . '"');
+			$result_language = mysqli_query($links['sofia']['mysql'],'select language_code from iso_639_1_languages where language_name = "' . $row['language'] . '" union select language_code from iso_639_1_languages where language_code = "' . $row['language'] . '"');
 			$language_row = mysqli_fetch_assoc($result_language);
-			$user_language = $language_row['code'];
+			$user_language = $language_row['language_code'];
+			$interface_language = $user_language;
 
 			$lang_path = './languages/' . strtolower($user_language) . '.php';
 
@@ -98,14 +102,13 @@
 					require $lang_path;
 				}
 			}
-			
-
-			$_SESSION['topics_per_page'] = (empty($row['topics_per_page'])) ? 25 : $row['topics_per_page'];
-			$_SESSION['posts_per_page'] = (empty($row['posts_per_page'])) ? 25 : $row['posts_per_page'];
-			$_SESSION['messages_per_page'] = (empty($row['messages_per_page'])) ? 25 : $row['messages_per_page'];
 		}
 	}
-
+	else
+	{
+		$_SESSION['previous_hit'] = $_SESSION['last_hit'];
+		$_SESSION['last_hit'] = time();
+	}
 
 	if (!isset($menu) and !isset($_REQUEST['menu']))
 		$menu = 'bible';

@@ -128,7 +128,7 @@
 	$text['choose_language'] = 'Elija Idioma';
 
 
-	$text['use_ctrl_s'] = 'Puede guardar estos versículos en su computadora - use <kbd>Ctrl + S</ kbd> para ello.';
+	$text['use_ctrl_s'] = 'Puede guardar estos versículos en su computadora - use <kbd>Ctrl + S</kbd> para ello.';
 	$text['remember_me'] = 'Recuérdeme';
 
 

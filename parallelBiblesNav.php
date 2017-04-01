@@ -2,7 +2,7 @@
 	$b_code1 = $userBibleA -> b_code;
 	$b_code2 = $userBibleB -> b_code;
 ?>
-<div class="row">
+<div class="row hidden-print">
 	<div class="col-md-6 hidden-print">
 		<!-- Bible 1 -->
 			<br/><h5><b><?=$text['bible_a'];?></b></h5>
@@ -187,7 +187,7 @@
 
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-6 hidden-print">
 		<!-- Bible 2 -->
 		<br/><h5><b><?=$text['bible_b'];?></b></h5>
 		<form method="post" name="countrySelectionForm2">

@@ -36,11 +36,6 @@
 		}
 	}
 
-	if (isset($_REQUEST['book']) and !isset($_REQUEST['chapter']))
-	{
-		$chapter = 1;
-	}
-
 	$userBible = new UserBible($pdo, $mysql);
 	$userBible -> setCountry($country);
 	$userBible -> setLanguage($language);
@@ -54,8 +49,46 @@
 
 	$b_code = $userBible -> b_code;
 
+	$interval_sec = $_SESSION['last_hit'] - $_SESSION['previous_hit'];
+	$date = new DateTime();
+	$date = set_user_timezone($date);
+
 	switch ($menu) 
 	{
+		case 'bible':
+			
+			if ((!isset($_REQUEST['book']) and ($interval_sec > 3600))
+				or (!isset($book)))
+			{
+				// after one hour without activity
+				// current book changes to Daily Reading
+				
+				$statement_bfy = $pdo -> prepare('select b_code, book, chapter from bible_for_a_year where `month` = :month and `day` = :day and `year` = :year and b_code = :b_code');
+				$result_bfy = $statement_bfy -> execute(['day' => $date -> format('j'), 'month' => $date -> format('n'), 'year' => $date->format('Y'), 'b_code' => $b_code]);
+
+				if(!$result_bfy)
+				{
+					$message = ['type' => 'danger', 'message' => $text['timetable_exception']];
+					log_msg(__FILE__ . ':' . __LINE__ . ' Timetable PDO query exception. Info = ' . json_encode($statement_bfy -> errorInfo()) . ', $_REQUEST = ' . json_encode($_REQUEST));
+					//display_message($message);
+				}
+				else
+				{
+					if ($statement_bfy -> rowCount() === 0)
+					{
+						create_daily_reading($b_code);
+					} /// </daily-readings-creating>
+				}
+
+				$select_first_daily_reading = $pdo -> prepare('select * from bible_for_a_year where b_code=:b_code and year=:year and month=:month and day=:day limit 0, 1');
+				$select_first_daily_reading -> execute(['b_code' => $b_code, 'year' => $date->format('Y'), 'month' => $date->format('n'), 'day' => $date->format('j')]);
+				$dr_row = $select_first_daily_reading->fetch();
+				$book = $dr_row['book'];
+				$chapter = $dr_row['chapter'];
+				$_SESSION['book'] = $book;
+				$_SESSION['chapter'] = $chapter;
+			}
+			break;
 		case 'parallelBibles':
 	
 			if (!isset($language1))
@@ -81,6 +114,7 @@
 			$userBibleB = new UserBible($pdo, $mysql);
 			$userBibleB -> setCountry($country2);
 			$userBibleB -> setLanguage($language2);
+
 			if (isset($b_code2))
 				$userBibleB -> setBCode($b_code2);
 			else
@@ -88,6 +122,8 @@
 				$userBibleB -> setBCode('=]');
 			}
 			$b_code2 = $userBibleB -> b_code;
+			
+
 			break;
 		case 'timetable':
 			if (isset($_REQUEST['action']) 
@@ -128,7 +164,8 @@
 			{
 				foreach (['b_code' => 'tt_b_code', 'country' => 'tt_country', 'language' => 'tt_language'] as $key => $value) 
 				{
-					if(!isset($_REQUEST[$value]))
+					if(!isset($_REQUEST[$value])
+						and !isset($$value))
 						$$value = $$key;
 				}
 
@@ -149,6 +186,11 @@
 		default:
 			# code...
 			break;
+	}
+
+	if (isset($_REQUEST['book']) and !isset($_REQUEST['chapter']))
+	{
+		$chapter = 1;
 	}
 
 	/*$check_array = [

@@ -1,97 +1,23 @@
 <?php
 
-	function html_verse($verse_row)
-	{
-		global $pdo;
-		global $mysql;
-		global $base_url;
-		global $text;
-		global $menu;
-
-		global $b_code;
-		global $book;
-		global $chapter;
-		global $verse;
-
-
-		$html_verse = '';
-
-		if ($verse_row['startVerse'] == $verse)
-		{
-			$b_start = '<b>';
-			$b_end = '</b>';
-		}
-		else
-		{
-			$b_start = '';
-			$b_end = '';
-		}
-		if (strpos($verse_row['verseText'], '¶') !== FALSE)
-		{
-			$html_verse .= '<br />';
-			$verse_row['verseText'] = str_replace('¶', '', $verse_row['verseText']);
-		}
-		// fav = glyphicon glyphicon-heart
-		$first_words = substr($verse_row['verseText'], 0, 90) ;
-		if (strlen($verse_row['verseText']) > 90) $first_words .= '...';
-
-		$verse_paragraph_title = $text['click_to_share'];
-			if ($_SESSION['uid'] > -1)
-				$verse_paragraph_title .= $text['add_to_fav_addition'];
-			$verse_paragraph_title .= $text['copy_link_to_verse'] . '.';		
-
-		$html_verse .= '<div class="dropdown">
-						<p class="dropdown-toggle" title="' . $verse_paragraph_title . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="' . $verse_row['verseID'] . '" align="justify">'; 
-		if (strcasecmp($menu, 'search') !== 0)
-			$html_verse .= '<sup>' . $verse_row['startVerse'] . '</sup> ';
-
-		$html_verse .= $b_start . $verse_row['verseText'] . $b_end . '</p><ul class="dropdown-menu" aria-labelledby="' . $verse_row['verseID'] . '">';
-
-		if ($_SESSION['uid'] > - 1)
-			 $html_verse .= '<li><a href="./?menu=users_addVerseToFavorites&b_code=' . $b_code . '&id=' . $verse_row['verseID'] . '" target="_blank"><span class="glyphicon glyphicon-heart"></span> Add To Favorites</a></li>';
-
-		$url = $base_url . '?b_code=' . $b_code . '&book=' . $verse_row['book'] . '&chapter=' . $chapter . '&verse=' . $verse_row['startVerse'] . '#' . $verse_row['verseID'];
-
-		// Facebook Share
-		$html_verse .= '<li><div class="fb-share-button" data-href="%SHARE_URL%" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url) . '&src=sdkpreparse">Share</a></div></li>';
-
-		// Facebook Like
-
-		$html_verse .= '<li><div class="fb-like" data-href="' . $url . '" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div></li>';
-
-		// VK Share Link
-
-		$html_verse .= '<li><a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank"><span class="glyphicon glyphicon-share"></span> ' . $text['share_in_vk'] . '</a></li>';
-
-		// VK Share https://vk.com/editapp?act=create
-		/*$html_verse .= '<a href="http://vk.com/share.php?url=' . urlencode($url) . '" target="_blank">Share in VK</a><br />';
-		*/
-		// VK Like https://vk.com/editapp?act=create
-		/*$html_verse .= '<div id="vk_like_' . $verse_row['verseID'] . '"></div>
-					<script type="text/javascript">
-					VK.init({apiId: 111, onlyWidgets: true});
-					 VK.Widgets.Like(\'vk_like_' . $verse_row['verseID'] . '\', {pageUrl: \'' . $url .'\', pageTitle: \'' . $bible_title . ' ' . $verse_row['book'] . ' ' . $chapter . ':' . $verse_row['startVerse'] . '\'}, \'' . $b_code . $verse_row['verseID'] . '\');</script>';
-		*/
-
-		// Twitter 
-		$html_verse .= '<li><a href="./?menu=tweetVerse&id=' . $verse_row['verseID'] . '&b_code=' . $b_code . '&book=' . $verse_row['book'] . '&chapter=' . $chapter . '&verseNumber=' . $verse_row['startVerse'] . '&first_words=' . $first_words . '" target="_blank"><span class="glyphicon glyphicon-comment"></span> ' . $text['text_tweet'] . '</a></li>';
-
-
-
-		$html_verse .= '<li><a onclick="clipboard.copy(window.location.origin + window.location.pathname + \'?b_code=' 
-			. $b_code . '&book=' . $verse_row['book'] . '&chapter=' . $chapter . 
-			'&verse=' . $verse_row['startVerse'] . '#'. $verse_row['verseID'] . '\')"><span class="glyphicon glyphicon-copy"></span> ' . $text['copy_link_to_the_verse'] . '</a></li>'
-			. '</ul></div>' . PHP_EOL;
-
-		return $html_verse;
-	}
+	require './lib/html_verse.php';
+	require './lib/get_new_id.php';
+	/*
+		Tables of "Bible for a Year" readings are having
+		two types of readings: [1] Bible for a Year and [2] Daily Readings.
+		[1] Just readings from Genesis to Revelation from first to last day of a year;
+				year is null here; [Deprecated]
+		[2] Readings which are timed to big Christian Holidays: Christmas, Good Friday and Easter.
+				year is not null here, cause Easter's date is differs.
+		TODO: Daily Readings.
+	*/
 
 	function display_bfy_schedule($bfy_b_code, $date)
 	{
 		global $pdo;
 		global $mysql;
 		global $text;
-
+		global $interface_language;
 		$messages = [];
 
 		$statement_info = $pdo -> prepare('select b_code, title, table_name from b_shelf where b_code = :b_code');
@@ -99,16 +25,22 @@
 
 		$info_row = $statement_info -> fetch();
 
-		$statement_bfy = $pdo -> prepare('select b_code, book, chapter from bible_for_a_year where month = :month and day = :day and b_code = :b_code');
+		/*$statement_bfy = $pdo -> prepare('select b_code, book,  case when bt.shorttitle is not null then bt.shorttitle else t.book end `shorttitle`, chapter 
+								from bible_for_a_year 
+								left join book_titles bt on bible_for_a_year.book = bt.book and language_code = "' . $interface_language . '"
+								where month = :month and day = :day and b_code = :b_code and year is not null');
 		$result_bfy = $statement_bfy -> execute(['day' => $date -> format('j'), 'month' => $date -> format('n'), 'b_code' => $bfy_b_code]);
+		*/
+		/*
+
+		// Deprecated
 
 		if(!$result_bfy)
 		{
 			$messages[] = ['type' => 'danger', 'message' => $text['timetable_exception']];
 			log_msg(__FILE__ . ':' . __LINE__ . ' Timetable PDO query exception. Info = ' . json_encode($statement_bfy -> errorInfo()) . ', $_REQUEST = ' . json_encode($_REQUEST));
 		}
-		else
-		{
+			// if Bible does not have BfaY timetable system creates it
 			if ($statement_bfy -> rowCount() === 0)
 			{
 				// create new timetable for this $b_code
@@ -152,9 +84,25 @@
 					$messages[] = ['type' => 'danger', 'message' => $text['timetable_create_def_tt_exception']];
 					log_msg(__FILE__ . ':' . __LINE__ . ' Timetable PDO query exception. Info = "' . mysqli_error($mysql) . '", $_REQUEST = ' . json_encode($_REQUEST));
 				}
-			}
-			
+			} // </bfy creating>
+			*/
+			// Daily Readings checking
+
+			require './lib/create_daily_reading.php';
+						
+						/*
+
+		$statement_bfy = $pdo -> prepare('select b_code, book,  case when bt.shorttitle is not null then bt.shorttitle else t.book end `shorttitle`, chapter 
+								from bible_for_a_year 
+								left join book_titles bt on bible_for_a_year.book = bt.book and language_code = "' . $interface_language . '"
+								where month = :month and day = :day and b_code = :b_code and year is not null');
+		$result_b
+						*/
 			// display today readings
+			$statement_bfy = $pdo -> prepare('select bfy.b_code, bfy.book,   case when bt.shorttitle is not null then bt.shorttitle else bfy.book end `shorttitle`, bfy.chapter 
+				from bible_for_a_year bfy
+				left join book_titles bt on bfy.book = bt.book and bt.language_code = "' . $interface_language . '"
+				where bfy.`month` = :month and bfy.`day` = :day and bfy.b_code = :b_code and bfy.year is not null');
 			echo '<br /><h3>' . $text['bible_for_a_year'] . '</h3> ' . $info_row['title'] . '<br />';
 			$result_bfy = $statement_bfy -> execute(['day' => $date -> format('j'), 'month' => $date -> format('n'), 'b_code' => $bfy_b_code]);
 
@@ -172,7 +120,7 @@
 					$statement_schedule = $pdo -> prepare('select scheduled from bible_for_a_year_schedules bfys 
 															where user_id = :user_id and b_code = :b_code');
 					$result = $statement_schedule -> execute(['user_id' => $_SESSION['uid'], 'b_code' => $bfy_b_code]);
-					$messages[] = check_result($result, $statement_schedule, $text['tt_schedules_exception'], 'Schedule selection exception');
+					$messages[] = check_result($result, $statement_schedule, $text['tt_schedules_exception'],  __FILE__ . ':' . __LINE__ . ' Schedule selection exception');
 					if ($result)
 					{
 						if ($statement_schedule -> rowCount() == 0)
@@ -190,7 +138,7 @@
 																join bible_for_a_year_schedules bfys on bfyr.schedule_id = bfys.id
 																where bfys.user_id = :user_id and book = :book and chapter = :chapter');
 						$result = $statement_schedule -> execute(['book' => $row['book'], 'chapter' => $row['chapter'], 'user_id' => $_SESSION['uid']]);
-						$message = $messages[] = check_result($result, $statement_schedule, $text['tt_readings_exception'], 'Readings selection exception');
+						$message = $messages[] = check_result($result, $statement_schedule, $text['tt_readings_exception'],  __FILE__ . ':' . __LINE__ . ' Readings selection exception');
 						if ($result)
 						{
 							$schedule_row = $statement_schedule -> fetch();
@@ -204,23 +152,18 @@
 							elseif ($scheduled)
 								$alert = ' class="alert alert-warning"';
 
-							echo '<a href="./?menu=bible&b_code=' . $bfy_b_code . '&book=' . $row['book'] . '&chapter=' . $row['chapter'] . '" target="_blank"><span' . $alert . '><b>' . $row['book'] .'</b> ' . $row['chapter'] . '</span></a> ';
+							echo '<a href="./?menu=bible&b_code=' . $bfy_b_code . '&book=' . $row['book'] . '&chapter=' . $row['chapter'] . '" target="_blank"><span' . $alert . '><b>' . $row['shorttitle'] .'</b> ' . $row['chapter'] . '</span></a> ';
 						}
 					
 					}
 				}
-			}
+			//}
 		}
 		return $messages;
 	}
 
-
-	function set_user_timezone($datetime)
-	{
-		$user_date = new DateTime($datetime -> format('Y-m-d H:i:s'));
-		$timezone = new DateTimezone($_SESSION['timezone']);
-		$user_date -> setTimezone($timezone);
-		return $user_date;
-	}
+	require './lib/create_daily_reading.fun.php';
+	require './lib/timezones.php';
+	require './lib/alerts.php';
 
 ?>

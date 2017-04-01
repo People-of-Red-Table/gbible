@@ -60,3 +60,13 @@ To continue on specific VPL type `php -f prepare.php name_vpl` and script will s
 if it doesn't show Bible texts - run directly update commands for Bible database:
 php -f just_prepare_sql.php
 If you have got issue with languages, for example, in Microsoft table of languages, there is no Angola with Portuguese. This function is doing `./install/add_languages.php`, it is already included to `./prepare.php`. If anyway you still having it, try to run this script.
+
+-------------------------
+3.1 Multi-Language Titles
+-------------------------
+
+Installation directory has script `make_titles.php` which scans current directory and looks there for folders with InScript or "_html" Bibles, it needs only main index HTML file [`index.html` for InScript and `index.htm` for "_html" from eBible.org].
+From these HTML files script extracts titles and inserts it to the database.
+
+If script has got REQUEST argument `dir`, it looks for titles in `./{$dir}/`.
+If you run it from command line: `php -f make_titles.php` you can add there directory too: `php -f make_titles.php English`.
