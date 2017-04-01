@@ -40,9 +40,20 @@
 		$msg_type = 'danger';
 	}
 
+	$book_title_statement = $pdo -> prepare('select shorttitle from book_titles bt where book = :book and language_code = :language_code');
+	$book_title_statement -> execute(['book' => $_REQUEST['book'], 'language_code' => $userBible -> language_code]);
+	if ($book_title_statement -> rowCount() > 0)
+	{
+		$book_title = $book_title_statement -> fetch()['shorttitle'];
+	}
+	else
+	{
+		$book_title = $_REQUEST['book'];
+	}
+
 
 	$url = 'https://twitter.com/intent/tweet?text=' . urlencode($_REQUEST['first_words']) . 
-		urlencode(' [') . $_REQUEST['book'] . urlencode(' ') . $_REQUEST['chapter'] . urlencode(':') . $_REQUEST['verseNumber'] . urlencode('] #Bible')
+		urlencode(' [') . $book_title . urlencode(' ') . $_REQUEST['chapter'] . urlencode(':') . $_REQUEST['verseNumber'] . urlencode('] #Bible')
 					. '&via=goldenbible_org';
 ?>
 <div class="alert alert-info"><?=$text['wait_for_tweeting'];?></div>
