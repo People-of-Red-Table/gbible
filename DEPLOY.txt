@@ -23,3 +23,21 @@ Current server is on free [!] hosting, so, it is not so fast and sometimes web s
 
 But "we" PoRT [or me =] are grateful, cause it is not easy to find good free hosting with PHP and SQL.
 http://hostinger.co.uk/
+
+If countries ad languages updated and you need list of Bibles for all countries execute this query:
+`
+select distinct country, language, b_code, link, length(link) `length` from
+(
+select country, language, b_code, 
+concat("'#Bible for #", REPLACE(country, ' ', ''), " in #", REPLACE(REPLACE(language, ' ', ''), ',', ''), ": http://gold-bible.16mb.com/?b_code=", b_code,"&country=", replace(case when iml.country_code is null then b_shelf.country else iml.country_code end, ' ', '%20') ,"&language=", REPLACE(REPLACE(case when imlang.iso_language_code is null then b_shelf.language else imlang.iso_language_code end, ' ', '%20'), ',', '%2C'),"',")  `link`
+    from b_shelf
+join iso_ms_languages iml on iml.country_name = b_shelf.country
+join iso_ms_languages imlang on imlang.language_name = b_shelf.language
+union
+select iso_ms_languages.country_name `country`, iso_ms_languages.language_name `language`, b_shelf.b_code, concat("'#Bible for #", REPLACE(iso_ms_languages.country_name, ' ', ''), " in #", REPLACE(REPLACE(iso_ms_languages.language_name, ' ', ''), ',', ''), ": http://gold-bible.16mb.com/?b_code=", b_code,"&country=", iso_ms_languages.country_code ,"&language=", iso_ms_languages.iso_language_code, "',")  `link`
+    from iso_ms_languages
+join b_shelf on iso_ms_languages.language_name = b_shelf.language
+where language_name in (select distinct language from b_shelf)
+) t
+order by country desc, language, b_code
+`

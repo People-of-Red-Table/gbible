@@ -36,6 +36,20 @@
 		}
 	}
 
+	if (strlen($country) === 2)
+	{
+		$select_code = $pdo -> prepare('select name from countries where code = :code');
+		$select_code -> execute(['code' => $country]);
+		$country = $select_code -> fetch()['name'];
+	}
+
+	if (strlen($language) === 2)
+	{
+		$select_code = $pdo -> prepare('select language_name `name` from iso_ms_languages where iso_language_code = :code');
+		$select_code -> execute(['code' => $language]);
+		$language = $select_code -> fetch()['name'];
+	}
+
 	$userBible = new UserBible($pdo, $mysql);
 	$userBible -> setCountry($country);
 	$userBible -> setLanguage($language);
