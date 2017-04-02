@@ -7,13 +7,13 @@ Download InScript Bibles to get tranlsations for book titles. Amen =]
 Some shall be translated manually as Portuguese, for example.
 prepared titles:
 
-	 en
-	 pt
-	 es
-	 ru
-	 de
-	 fr
-	 zh
+	 + en
+	 + pt
+	 + es
+	 + ru
+	 + de
+	 + fr
+	 + zh
 	 el
 	 ar
 
@@ -21,10 +21,7 @@ prepared titles:
 -/+ Book titles in different languages, not an easy thing - VPLs are using books as three-letter abbreviation and it differs from translation to translation: somewhere Joel is JOE, in another place it can be JOL.
 	- Get other translations, insript and _html from eBible.org
 
-- Upload Timetables Promo Video.
-
-+? alter table bible_for_a_year add column year int;
-+? alter table bible_for_a_year_schedules add column daily_reading bool;
++ Upload Timetables Promo Video.
 
 Add languages, finish downloading of external Bibles, add them too.
 

@@ -3,6 +3,9 @@ If it is your first deploy read INSTALL.txt for instructions.
 
 Before deploy check the site, commit and only then deploy. [or code can be lost during copying to remote server, for example, messed up with tabs FTP and files]
 
+`header.php` checks for file `deployment_flag.txt` and if it exists script warns visitors about maintenance work on the site.
+It is not a flag variable in the config, because flag can be forgotten. Flag file - you will see.
+
 During deploying watch changes at `git status` [in saved file] and copy these files to the server [if you didn't commit yet].
 Use `git add .` and deploy.
 

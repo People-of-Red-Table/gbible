@@ -10,7 +10,7 @@
 
 	// create new timetable for this $tt_b_code
 
-	/*$statement_chapters = $pdo -> prepare('select distinct book, chapter from ' . $info_row['table_name']);
+	$statement_chapters = $pdo -> prepare('select distinct book, chapter from ' . $info_row['table_name']);
 	$result_chapters = $statement_chapters -> execute();
 	$chapters_amount = $statement_chapters -> rowCount();
 
@@ -79,7 +79,7 @@
 				log_msg(__FILE__ . ':' . __LINE__ . ' Timetable PDO query exception. Info = "' . mysqli_error($mysql) . '", $_REQUEST = ' . json_encode($_REQUEST) . ', query = ' . $insert_timetable_query);
 			}
 		}
-	}*/
+	}
 
 	
 ?>

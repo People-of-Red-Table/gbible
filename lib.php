@@ -99,6 +99,7 @@
 		$result_b
 						*/
 			// display today readings
+
 			$statement_bfy = $pdo -> prepare('select bfy.b_code, bfy.book,   case when bt.shorttitle is not null then bt.shorttitle else bfy.book end `shorttitle`, bfy.chapter 
 				from bible_for_a_year bfy
 				left join book_titles bt on bfy.book = bt.book and bt.language_code = "' . $interface_language . '"

@@ -473,4 +473,9 @@
 		}
 	}
 
+	if (strpos($interface_language, '-') !== FALSE)
+	{
+		$interface_language = explode('-', $interface_language)[0];
+	}
+
 ?>

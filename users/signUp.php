@@ -38,8 +38,6 @@
 			<input type="password" class="form-control" name="password_repeat" maxlength="16" id="signUpRepeatPassword">
 	</div>
 
-	<p class="alert alert-warning"><?=$text['reset_by_email_warning'];?></p>
-
 	<div class="form-group">
 			<!-- for next lang-pack add title="" -->
 			<label for="signUpSecretQuestion"><?=$text['secret_question'];?></label>
@@ -57,12 +55,12 @@
 		require 'countryAndLanguageFields.php';
 	?>
 
-	<div class="form-group">
+	<!--<div class="form-group">
 			<label for="signUpCaptcha"><?=$text['type_captcha'];?></label>
 			<iframe src="./lib/get_captcha.php" border="none" width="155" height="55" name="signUpCaptchaFrame"></iframe>
 			<a href="./lib/get_captcha.php" target="signUpCaptchaFrame"><span class="glyphicon glyphicon-refresh"></span></a>
 			<input type="text" class="form-control" name="user_captcha" id="signUpCaptcha">
-	</div>	
+	</div>	-->
 
 	<input type="hidden" name="menu" value="users_registration">
 	<!-- TO DO: check email by pattern-->

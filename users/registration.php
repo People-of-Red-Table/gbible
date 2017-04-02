@@ -5,8 +5,8 @@
 	$messages = [];
 
 
-	if (strcasecmp($_SESSION['captcha_code'], $_REQUEST['user_captcha'] ) !== 0)
-		$messages[] = ['type' => 'danger', 'message' => $text['incorrect_captcha']];
+	/*if (strcasecmp($_SESSION['captcha_code'], $_REQUEST['user_captcha'] ) !== 0)
+		$messages[] = ['type' => 'danger', 'message' => $text['incorrect_captcha']];*/
 
 	if ($_POST['password'] !== $_POST['password_repeat'])
 		$messages[] = ['type' => 'danger', 'message' => $text['different_passwords']];
