@@ -185,3 +185,9 @@
 		</div><br />
 	</div>
 
+	<?php
+		if (file_exists('./deployment_flag.txt'))
+		{
+			echo '<p class="alert alert-info">' . $text['maintenance_warning'] . '</p>';
+		}
+	?>

@@ -1,7 +1,22 @@
 Weekend's Deploy.
 
+First: database deploy, then file deploying.
+
 TITLES TITLES! =]
 Download InScript Bibles to get tranlsations for book titles. Amen =]
+Some shall be translated manually as Portuguese, for example.
+prepared titles:
+
+	 en
+	 pt
+	 es
+	 ru
+	 de
+	 fr
+	 zh
+	 el
+	 ar
+
 
 -/+ Book titles in different languages, not an easy thing - VPLs are using books as three-letter abbreviation and it differs from translation to translation: somewhere Joel is JOE, in another place it can be JOL.
 	- Get other translations, insript and _html from eBible.org
@@ -71,7 +86,19 @@ Other Timetables
 
 + User timetables like: one chapter per a day, or one[few] chapter[s] per Saturday/Sunday.
 
+- two different types of timetables: timed to Holidays and not timed, warn about capacity: 8 chapters for a week.
+	
+for gospels - 89 chapters
+NT after gospels: 171 chapter - ~33 weeks
+OT - 929 chapters
+
+e.g. 3 chapters for each weekend day [Saturday - 3 chapters, Sunday - 3 chapters]:
+
+~89 chapters for a days from Christmas to Easter which is impossible with capacity of 72 chapters.
+so - minimum 8 chapters for a week. And in this case no reading except gospels between Christmas and Easter.
+
 + Timetable for Parallel Bibles.
+
 
 
 ==================================

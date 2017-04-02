@@ -128,7 +128,7 @@
 	$text['choose_language'] = 'Elija Idioma';
 
 
-	$text['use_ctrl_s'] = 'Puede guardar estos versículos en su computadora - use <kbd>Ctrl + S</kbd> para ello.';
+	$text['use_ctrl_s'] = 'Puede guardar estos versículos en su computadora - use <kbd>Ctrl+S</kbd> para ello.';
 	$text['remember_me'] = 'Recuérdeme';
 
 
@@ -223,4 +223,31 @@
 	$text['fv_deleted'] = 'El verso fue borrado de favoritos.';
 
 	$text['schedule_ok'] = 'La lectura de la Biblia fue programada.';	
+
+
+	$text['use_ctrl_p'] = 'Eres capaz de <b>imprimir</b> estos versos - use <kbd>Ctrl+P</kbd> para ello. [Se requiere impresoras;] ';
+	$text['daily_readings'] = 'Lecturas diarias';
+
+	$text['welcome_subject'] = 'Bienvenidos a la Biblia de Oro';
+	$text['reg_mail'] = 'Bienvenido a Golden Bible,% nombre_usuario%.' . PHP_EOL. PHP_EOL
+	. 'Su contraseña es `% password%`.';
+
+	$text['type_captcha'] = 'Introducir código de la imagen';
+	$text['incorrect_captcha'] = 'Ha escrito un código incorrecto de la imagen.';
+
+	$text['email_warning'] = 'El correo electrónico es incorrecto.';
+	$text['pas_length_warning'] = 'La contraseña es demasiado corta, utilice al menos 5 caracteres.';
+	$text['text_return'] = 'Retorno';
+
+
+	$text['text_next'] = 'Siguiente';
+	$text['text_previous'] = 'Anterior';
+
+	$text['book_titles_exception'] = 'Tenemos problemas con los títulos de los libros. '. $text['please_contact_support'];
+
+	$text['timed_to_holidays'] = 'Tiempo de vacaciones';
+	$text['tth_info'] = 'La cantidad mínima de capítulos por semana con vacaciones programadas es de ocho capítulos. ';
+
+	$text['maintenance_warning'] = 'Sitio de la Biblia está en mantenimiento por varios minutos. Por favor, mantén la calma si ves algo inusual =] ';
+	
 ?>

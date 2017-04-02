@@ -244,4 +244,9 @@
 	$text['text_previous'] = 'Previous';
 
 	$text['book_titles_exception'] = 'We have got issue with book titles. ' . $text['please_contact_support'];
+
+	$text['timed_to_holidays'] = 'Timed to Holidays';
+	$text['tth_info'] = 'Minimum amount of chapters per a week with timed Holidays is eight chapters. ';
+
+	$text['maintenance_warning'] = 'Bible Site is under maintenance for several minutes. Please, keep calm if you will see something unusual =]';
 ?>

@@ -41,6 +41,7 @@ create table book_titles
   shorttitle varchar(20)
 );
 
+-- deprecated
 create table book_synonyms
 (
   id int auto_increment primary key,
@@ -50,6 +51,7 @@ create table book_synonyms
 insert into book_synonyms (book1, book2) values ('SOL', 'SNG'), ('JOL', 'JOE'), ('MRK', 'MAR'), ('JOH', 'JHN'),('PHP','PHI'),('JAM','JAS'),
 ('1JO','1JN'),('2JO','2JN'),('3JO','3JN');
 
+-- deprecated
 create table book_sort
 (
   id int auto_increment primary key,

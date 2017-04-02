@@ -128,7 +128,7 @@
 	$text['choose_language'] = 'Escolher Idioma';
 
 
-	$text['use_ctrl_s'] = 'Você pode salvar esses versículos no seu computador - use <kbd>Ctrl + S</kbd> para ele.';
+	$text['use_ctrl_s'] = 'Você pode salvar esses versículos no seu computador - use <kbd>Ctrl+S</kbd> para ele.';
 	$text['remember_me'] = 'Me Lembre';
 
 
@@ -223,4 +223,29 @@
 	$text['fv_deleted'] = 'O verso foi excluído dos favoritos.';
 
 	$text['schedule_ok'] = 'A leitura da Bíblia foi programada.';
+
+	$text['use_ctrl_p'] = 'Você é capaz de <b>imprimir</b> esses versículos - use <kbd>Ctrl+P</kbd> para isso. [A impressora é necessária;] ';
+	$text['daily_readings'] = 'Leituras diárias';
+
+	$text['welcome_subject'] = 'Bem-vindo à Bíblia Dourada';
+	$text['reg_mail'] = 'Bem-vindo à Bíblia Dourada,% user_name%.' . PHP_EOL. PHP_EOL
+	. 'Sua senha é `% password%`.';
+
+	$text['type_captcha'] = 'Inserir código da imagem';
+	$text['incorrect_captcha'] = 'Você digitou código incorreto da imagem.';
+
+	$text['email_warning'] = 'O e-mail está incorreto.';
+	$text['pas_length_warning'] = 'A senha é muito curta, use pelo menos 5 caracteres.';
+	$text['text_return'] = 'Retorno';
+
+
+	$text['text_next'] = 'Próximo';
+	$text['text_previous'] = 'Anterior';
+
+	$text['book_titles_exception'] = 'Temos problemas com títulos de livros. '. $text['please_contact_support'];
+
+	$text['timed_to_holidays'] = 'Temporário para feriados';
+	$text['tth_info'] = 'Quantidade mínima de capítulos por semana com feriados programados é de oito capítulos. ';
+
+	$text['maintenance_warning'] = 'Site da Bíblia está em manutenção por vários minutos. Por favor, mantenha a calma se você vai ver algo incomum =] ';	
 ?>

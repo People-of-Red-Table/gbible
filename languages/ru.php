@@ -124,7 +124,7 @@
 	$text['choose_language'] = 'Выбрать язык';
 
 
-	$text['use_ctrl_s'] = 'Вы можете сохранить эти верхние стихи на своем компьютере - используйте для них <kbd> Ctrl + S </kbd>.';
+	$text['use_ctrl_s'] = 'Вы можете сохранить эти верхние стихи на своем компьютере - используйте для них <kbd>Ctrl+S</kbd>.';
 	$text['remember_me'] = 'Запомнить меня';
 
 
@@ -171,54 +171,79 @@
 
 
 	$text['text_date'] = 'Дата';
-$text['text_timetable'] = 'Расписание';
-$text['timetable_exception'] = 'Расписание не открыто. '. $text['please_contact_support'];
+	$text['text_timetable'] = 'Расписание';
+	$text['timetable_exception'] = 'Расписание не открыто. '. $text['please_contact_support'];
 
-$text['timetable_229'] = 'Сегодня 29 февраля, расписание по умолчанию не имеет показаний на сегодня. ';
-$text['schedule_have_no_reading_today'] = 'Расписание не имеет показаний на сегодня.';
-$text['timetable_create_def_tt_exception'] = 'Расписание для этой Библии не было создано. '. $text['please_contact_support'];
+	$text['timetable_229'] = 'Сегодня 29 февраля, расписание по умолчанию не имеет показаний на сегодня. ';
+	$text['schedule_have_no_reading_today'] = 'Расписание не имеет показаний на сегодня.';
+	$text['timetable_create_def_tt_exception'] = 'Расписание для этой Библии не было создано. '. $text['please_contact_support'];
 
-$text['choose_not_h_bibles'] = 'Не каждая Библия доступна для расписания. Вы должны выбрать Библию без \'[H]\' в своем названии. ';
-$text['bible_for_a_year'] = 'Библия за год';
+	$text['choose_not_h_bibles'] = 'Не каждая Библия доступна для расписания. Вы должны выбрать Библию без \'[H]\' в своем названии. ';
+	$text['bible_for_a_year'] = 'Библия за год';
 
-$text['to_schedule'] = 'Расписание этого чтения';
-$text['to_unschedule'] = 'Unschedule This Reading';
+	$text['to_schedule'] = 'Расписание этого чтения';
+	$text['to_unschedule'] = 'Unschedule This Reading';
 
-$text['schedules_selection_exception'] = 'Система не может выбирать расписания для вашего расписания. '. $text['please_contact_support'];
+	$text['schedules_selection_exception'] = 'Система не может выбирать расписания для вашего расписания. '. $text['please_contact_support'];
 
-$text['scheduling_exception'] = 'Системе не удалось запланировать чтение. '. $text['please_contact_support'];
-$text['unscheduling_exception'] = 'Система не могла не запланировать чтение. '. $text['please_contact_support'];
-$text['tt_readings_exception'] = 'Система не может выбрать ваши показания. '. $text['please_contact_support'];
-$text['tt_schedules_exception'] = 'Система не может выбирать ваши расписания. '. $text['please_contact_support'];
-$text['tt_reading_update_exception'] = 'Системе не удалось обновить ваше расписание для расписания. '. $text['please_contact_support'];
+	$text['scheduling_exception'] = 'Системе не удалось запланировать чтение. '. $text['please_contact_support'];
+	$text['unscheduling_exception'] = 'Система не могла не запланировать чтение. '. $text['please_contact_support'];
+	$text['tt_readings_exception'] = 'Система не может выбрать ваши показания. '. $text['please_contact_support'];
+	$text['tt_schedules_exception'] = 'Система не может выбирать ваши расписания. '. $text['please_contact_support'];
+	$text['tt_reading_update_exception'] = 'Системе не удалось обновить ваше расписание для расписания. '. $text['please_contact_support'];
 
-$text['create_own_timetable'] = 'Создать собственное расписание';
-$text['chapters_in'] = 'Главы в';
-$text['text_monday'] = 'Понедельник';
-$text['text_tuesday'] = 'вторник';
-$text['text_wednesday'] = 'среда';
-$text['text_thursday'] = 'четверг';
-$text['text_friday'] = 'Пятница';
-$text['text_saturday'] = 'суббота';
-$text['text_sunday'] = 'Воскресенье';
-$text['text_submit'] = 'Отправить';
-$text['choose_bible'] = 'Выберите Библию';
-$text['from_date'] = 'From Date';
-$text['text_title'] = 'Название';
+	$text['create_own_timetable'] = 'Создать собственное расписание';
+	$text['chapters_in'] = 'Главы в';
+	$text['text_monday'] = 'Понедельник';
+	$text['text_tuesday'] = 'вторник';
+	$text['text_wednesday'] = 'среда';
+	$text['text_thursday'] = 'четверг';
+	$text['text_friday'] = 'Пятница';
+	$text['text_saturday'] = 'суббота';
+	$text['text_sunday'] = 'Воскресенье';
+	$text['text_submit'] = 'Отправить';
+	$text['choose_bible'] = 'Выберите Библию';
+	$text['from_date'] = 'From Date';
+	$text['text_title'] = 'Название';
 
-$text['parallel_bibles_scheduled'] = 'Запланированы параллельные Библии.';
-$text['text_and'] = 'и';
+	$text['parallel_bibles_scheduled'] = 'Запланированы параллельные Библии.';
+	$text['text_and'] = 'и';
 
-$text['first_page'] = 'Первая страница';
-$text['last_page'] = 'Последняя страница';
+	$text['first_page'] = 'Первая страница';
+	$text['last_page'] = 'Последняя страница';
 
-$text['title_refresh'] = 'Обновить';
+	$text['title_refresh'] = 'Обновить';
 
-$text['create_timetable_note'] = 'У вас слишком занятые дни недели? Создайте свое собственное расписание для чтения Библии! ';
-$text['text_delete'] = 'Удалить';
-$text['fv_deleting_exception'] = 'Системе не удалось удалить стих из избранного. '. $text['please_contact_support'];
-$text['fv_deleted'] = 'Стих был удален из избранного.';
+	$text['create_timetable_note'] = 'У вас слишком занятые дни недели? Создайте свое собственное расписание для чтения Библии! ';
+	$text['text_delete'] = 'Удалить';
+	$text['fv_deleting_exception'] = 'Системе не удалось удалить стих из избранного. '. $text['please_contact_support'];
+	$text['fv_deleted'] = 'Стих был удален из избранного.';
 
-$text['schedule_ok'] = 'Было запланировано чтение Библии.';
+	$text['schedule_ok'] = 'Было запланировано чтение Библии.';
+
+	$text['use_ctrl_p'] = 'Вы можете <b>распечатать</b> эти стихи - используйте для него <kbd>Ctrl+P</kbd>. Требуется принтер; ';
+	$text['daily_readings'] = 'Ежедневные чтения';
+
+	$text['welcome_subject'] = 'Добро пожаловать в Золотую Библию';
+	$text['reg_mail'] = 'Добро пожаловать в Золотую Библию,% user_name%.' . PHP_EOL. PHP_EOL
+	. 'Ваш пароль: `% password%`.';
+
+	$text['type_captcha'] = 'Введите код с изображения';
+	$text['incorrect_Captcha'] = 'Вы ввели неверный код с изображения.';
+
+	$text['email_warning'] = 'Электронная почта неверна.';
+	$text['pas_length_warning'] = 'Пароль слишком короткий, используйте не менее 5 символов.';
+	$text['text_return'] = 'Возврат';
+
+
+	$text['text_next'] = 'Далее';
+	$text['text_previous'] = 'Предыдущая';
+
+	$text['book_titles_exception'] = 'У нас проблема с названиями книг. '. $text['please_contact_support'];
+
+	$text['timed_to_holidays'] = 'Приурочено к праздникам';
+	$text['tth_info'] = 'Минимальное количество разделов в неделю с учетом времени праздников - восемь глав. ';
+
+	$text['maintenance_warning'] = 'Библейский сайт находится под техническим обслуживанием в течение нескольких минут. Пожалуйста, сохраняйте спокойствие, если вы увидите что-то необычное =] ';
 
 ?>
