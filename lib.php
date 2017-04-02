@@ -151,8 +151,13 @@
 							if ($scheduled and $read >= $date -> format('Y'))
 								$alert = ' class="alert alert-success"';
 							elseif ($scheduled)
-								$alert = ' class="alert alert-warning"';
-
+							{
+								if (in_array($row['book'], ['MAT', 'MRK', 'MAR', 'LUK', 'JHN', 'JOH']))	
+									$alert = ' class="alert alert-danger"';
+								else
+									$alert = ' class="alert alert-warning"';
+							}
+					
 							echo '<a href="./?menu=bible&b_code=' . $bfy_b_code . '&book=' . $row['book'] . '&chapter=' . $row['chapter'] . '" target="_blank"><span' . $alert . '><b>' . $row['shorttitle'] .'</b> ' . $row['chapter'] . '</span></a> ';
 						}
 					

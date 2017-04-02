@@ -103,7 +103,7 @@
 								union
 								select language `language_name` from b_shelf where country = :country
 								');
-							$result = $statement_language -> execute(array('language' => $ttBible -> language, 'country' => $ttBible -> $country));
+							$result = $statement_language -> execute(array('language' => $ttBible -> language, 'country' => $ttBible -> country));
 							if (!$result)
 							{
 								log_msg(__FILE__ . ':' . __LINE__ . ' Languages PDO query exception. Info = {' . json_encode($statement_language -> errorInfo()) . '}, $_REQUEST = {' . json_encode($_REQUEST) . '}');

@@ -21,11 +21,11 @@
 			{
 				echo '<br/><h3>' . $timetable_row['title'] . '</h3><br/>';
 				$select_query = 'select s.book, case when bt.shorttitle is null then s.book else bt.shorttitle end `title`, s.chapter, s.`read` from schedules s
-								left join book_titles bt on s.book = bt.book
+								left join book_titles bt on s.book = bt.book and bt.language_code = :language_code
 								where s.timetable_id = :timetable_id
 								and s.`when` = :date';
 				$select_readings_statement = $pdo -> prepare($select_query);
-				$result = $select_readings_statement -> execute(['timetable_id' => $timetable_row['id'], 'date' => $date -> format('Y-m-d')]);
+				$result = $select_readings_statement -> execute(['timetable_id' => $timetable_row['id'], 'date' => $date -> format('Y-m-d'), 'language_code' => $interface_language]);
 				$message = check_result($result, $select_readings_statement, $text['tt_readings_exception'], 'Select readings for today exception.');
 				if (!empty($message))
 					echo '<p class="alert alert-' . $message['type'] . '">' . $message['message'] . '</p>';

@@ -1,6 +1,6 @@
 Weekend's Deploy.
 
-First: database deploy, then file deploying.
+Firstly, database deploy, then file deploying.
 
 TITLES TITLES! =]
 Download InScript Bibles to get tranlsations for book titles. Amen =]
@@ -15,7 +15,7 @@ prepared titles:
 	 + fr
 	 + zh
 	 el
-	 ar
+	 + ar
 
 
 -/+ Book titles in different languages, not an easy thing - VPLs are using books as three-letter abbreviation and it differs from translation to translation: somewhere Joel is JOE, in another place it can be JOL.
@@ -70,7 +70,7 @@ Easter: Matthew 28, Mark 16, Luke 24, John 20 21
 Next days after Easter Acts and next books.
 
 + And we have individuals on the Earth such as... ru - they have Christmas in January 7th...
-	All world celebrates Christmas in 25th Decmber, except them.
+	All world celebrates Christmas in 25th December, except them.
 
 
 ----------------
