@@ -1,10 +1,14 @@
 <?php
+
 	function create_daily_reading($b_code)
 	{
 		global $pdo;
 		global $mysql;
 		global $text;
 		global $date;
+
+		if (strpos($b_code, '_http') !== FALSE)
+			return;
 
 		$statement_info = $pdo -> prepare('select b_code, title, table_name from b_shelf where b_code = :b_code');
 		$statement_info -> execute(['b_code' => $b_code]);

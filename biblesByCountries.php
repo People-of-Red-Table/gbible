@@ -45,7 +45,8 @@
 	else
 	{
 		$query = '
-			select b_code, title, description from b_shelf where language in
+			select b_shelf.b_code, b_shelf.title, b_shelf.description, b_shelf.country, b_shelf.language from b_shelf 
+			where b_shelf.language in
 			(
 			select language_name from iso_ms_languages where country_name = :country  and language_name in (select distinct language from b_shelf)
 			union
@@ -60,7 +61,7 @@
 			echo '<table clas=="table table-striped">';
 			foreach ($bibles_rows as $row) 
 			{
-				echo '<tr><td><a href="./?menu=bible&b_code=' . $row['b_code'] . '">' . $row['title'] . '</a>'
+				echo '<tr><td><a href="./?menu=bible&country=' . $_REQUEST['bible_country'] . '&language=' . $row['language'] . '&b_code=' . $row['b_code'] . '">' . $row['title'] . '</a>'
 						. '<p>' . $row['description'] . '</p>'
 						.'</td></tr>';
 			}
