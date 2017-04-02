@@ -53,10 +53,10 @@
 
 
 	$url = 'https://twitter.com/intent/tweet?text=' . urlencode($_REQUEST['first_words']) . 
-		urlencode(' [') . $book_title . urlencode(' ') . $_REQUEST['chapter'] . urlencode(':') . $_REQUEST['verseNumber'] . urlencode('] #Bible')
+		urlencode(' [#') . $book_title . urlencode(' ') . $_REQUEST['chapter'] . urlencode(':') . $_REQUEST['verseNumber'] . urlencode('] #Bible')
 					. '&via=goldenbible_org';
 ?>
-<div class="alert alert-info"><?=$text['wait_for_tweeting'];?></div>
+<div class="alert alert-info"><a class='alert-link' href='<?=$url;?>'><?=$text['wait_for_tweeting'];?></a></div>
 <meta http-equiv="refresh" content="1; <?=$url;?>">
 <?php
 	if (isset($message) and isset($msg_type))
