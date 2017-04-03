@@ -1,3 +1,11 @@
+At 2nd April of 2017 
+Bible Site has no signed up users except me and test account.
+
+People visit site and leave.
+
+No one leaves feedback. Sign Up and Feedback Forms are working fine.
+
+
 Weekend's Deploy.
 
 Firstly, database deploy, then file deploying.
