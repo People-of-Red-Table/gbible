@@ -1,4 +1,7 @@
-# Golden Bible
+============
+Golden Bible
+============
+
 http://gold-bible.16mb.com/.
 
 Previous version of Bible Site available at http://gold-bible.16mb.com/
