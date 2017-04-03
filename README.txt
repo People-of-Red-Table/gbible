@@ -1,6 +1,7 @@
-Golden Bible [http://gold-bible.com/]. 
-Golden Bible Site
-http://gold-bible.16mb.com/
+# Golden Bible
+http://gold-bible.16mb.com/.
+
+Previous version of Bible Site available at http://gold-bible.16mb.com/
 
 Project of Charity Support Community PoRT [http://charity-port.16mb.com/].
 
