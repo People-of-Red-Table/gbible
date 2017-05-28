@@ -157,7 +157,7 @@
 
 			$charity_links .=  '<div class="col-md-2"><a href="http://www.evansnyc.com/charity/" target="_blank">' . $text['charity_for_russia'] . '</a></div>';
 
-			$charity_links .= '<div class="col-md-2"><a href="http://cvbsp.org.br/redcross/index.php?p=pages/home" target="_blank">' . $text['brazilian_red_cross'] . '</a></div>';
+			$charity_links .= '<div class="col-md-2"><a href="http://www.cruzvermelha.org.br/" target="_blank">' . $text['brazilian_red_cross'] . '</a></div>';
 
 			$charity_links .= '<div class="col-md-2"><a href="http://redcross.org.uk/" target="_blank">' . $text['british_red_cross'] . '</a></div>';
 	
